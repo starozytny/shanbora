@@ -11,24 +11,66 @@
 {% block title %}Home{% endblock %}
 
 {% block main_content %}
-    Hello world
+    <header>
+        <div class="header-infos">
+            <div class="header-title">
+                <div class="subtitle">Explorateur développeur</div>
+                <div class="title">
+                    <span>Salut, je m'appelle </span>
+                    <h1>Chanbora Chhun.</h1>
+                    <p>Je suis Développeur Web à Marseille.</p>
+                </div>
+            </div>
+            <div class="header-scroll">
+                <a href="#gardons-contact">
+                    <span class="icon-down-arrow"></span>
+                    <span>En savoir plus</span>
+                </a>
+            </div>
+        </div>
+        <div class="header-drawing">
+            <div class="image">
+                <img src="" alt="">
+                <img src="" alt="">
+                <img src="" alt="">
+            </div>
+        </div>
+    </header>
 
-    <ul>
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <li><a href="{{ path('app_logout') }}">Logout</a></li>
-            {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
-                <li><a href="{{ path('super_users_index', {'_switch_user': '_exit'}) }}">Exit Impersonate</a></li>
-            {% endif %}
-        {% else %}
-            <li><a href="{{ path('app_login') }}">Login</a></li>
-        {% endif %}
-        <li><a href="{{ path('app_mentions') }}">Mentions</a></li>
-        <li><a href="{{ path('app_politique') }}">Politique</a></li>
-        <li><a href="{{ path('app_cookies') }}">Cookies</a></li>
-        <li><a href="{{ path('app_rgpd') }}">RGPD</a></li>
-        <li><a href="{{ path('app_contact') }}">Contact</a></li>
-
-    </ul>
+    <section id="gardons-contact">
+        <h2>Gardons contact !</h2>
+        <div class="content">
+            <div class="social">
+                <p>
+                    N'hésites pas à me contacter à travers mon compte Instagram ou mon compte LinkedIn !
+                    Que ce soit pour discuter d'un projet, d'échanger des informations en programmation web,
+                    de parler de technologies ou tout simplement discuter.
+                </p>
+                <div class="socal-links">
+                    <a href="">
+                        <span class="icon-instagram"></span> Instagram
+                    </a>
+                    <a href="">
+                        <span class="icon-linkedin"></span> LinkedIn
+                    </a>
+                    <a href="">
+                        <span class="icon-github"></span> GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="newsletter">
+                <p>
+                    Je vais remplir, au fur et à mesure, ce site internet avec des projets personnels qui
+                    seront pour la grande majorité totalement gratuite d'utilisations (gestionnaire de budget,
+                    partage de photographies, partage de recettes de cuisines, blog aventure en randonnées !)
+                    <br><br>
+                    Tu peux rester informé des nouvelles mises à jour de contenu grâce au formulaire juste en dessous !
+                    Je garderai ton adresse e-mail que pour cet usage.
+                </p>
+                <div id="newsletter"></div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
 
 {% block javascripts %}

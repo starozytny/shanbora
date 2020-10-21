@@ -29,14 +29,6 @@
         }
     ] %}
 
-    {% set menuAccount = [
-        {
-            'path': path('app_login'),
-            'label': 'Se connecter',
-            'name': 'connexion'
-        }
-    ] %}
-
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         {% set menuAccount = [
             {
@@ -57,11 +49,15 @@
                 
             ] %}
 
-            {% set menuAccount = menuAccount | merge(menuImpersonate) %}
+            {% if menuAccount is defined %}
+                {% set menuAccount = menuAccount | merge(menuImpersonate) %}
+            {% endif %}
         {% endif %}
     {% endif %}
-        
-    {% set menu = menu | merge(menuAccount) %}
+
+    {% if menuAccount is defined %}
+        {% set menu = menu | merge(menuAccount) %}
+    {% endif %}
 
     <div id="default" data-menu="{{ menu | json_encode() }}"></div>
 

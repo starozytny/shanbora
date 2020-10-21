@@ -35,6 +35,9 @@ nav{
         z-index: 1;
         @include flex(row, center, space-between);
         padding: 10px;
+        @include fontBold();
+        font-size: 24px;
+        color: var(--color0);
 
         [class^="icon-"]{ 
             padding: 12px;

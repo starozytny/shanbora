@@ -60,7 +60,7 @@ export class Menu extends Component {
             <nav className={menuOpened}>
                 <div className="nav-header">
                     <a href={Routing.generate('app_homepage')} title="Logilink">
-                        <img src="../../build/themes/default/front/images/logo.svg" alt="logo"/>
+                        Shanbo
                     </a>
                     <div className="nav-header-actions">
                         <span className={"icon-menu " + (menuOpened == "" ? "active" : null)} onClick={onOpenMenu}></span>

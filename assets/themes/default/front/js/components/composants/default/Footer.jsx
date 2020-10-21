@@ -9,18 +9,16 @@ export class Footer extends Component {
                     <div className="footer-menu">
                         <div className="footer-logo">
                             <a href={Routing.generate('app_homepage')} title="Logilink">
-                                <img src="../../build/themes/default/front/images/logo.svg" alt="Logo"/>
+                                Shanbo - Chanbora Chhun de Marseille
                             </a>
-                            <span>Site internet</span>
                         </div>
                         <div className="footer-items">
                             <a rel="nofollow" href={Routing.generate('app_mentions')}>Mentions légales</a>
                             <a rel="nofollow" href={Routing.generate('app_politique')}>Politique de confidentialité</a>
                             <a rel="nofollow" href={Routing.generate('app_cookies')}>Gestion des cookies</a>
-                            <a rel="nofollow" href={Routing.generate('app_login')}>Espace client</a>
                         </div>
                     </div>
-                    <div className="copyright">Copyright © 2020 - <a href={Routing.generate('app_homepage')}>Logilink</a></div>
+                    <div className="copyright">Copyright © 2020 - <a href={Routing.generate('app_homepage')}>Chanbora Chhun</a></div>
                 </div>
             </footer>
         </>
