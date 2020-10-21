@@ -2,14 +2,14 @@
 
 .card-dash{
     width: 100%;
-    border: 1px solid $colorBorder;
+    border: 1px solid var(--colorBorder);
     padding: 16px 12px;
     border-radius: 5px;
-    background-color: $alpha;
+    background-color: var(--alpha);
     @include boxshadow();
     @include flex(row, center, space-between);
     margin-bottom: 12px;
-    color: $beta;
+    color: var(--beta);
     transition: all 0.2s ease-in-out;
 
     &:hover{
@@ -25,7 +25,7 @@
         }
         .number-new{
             font-size: 20px;
-            color: $primary;
+            color: var(--primary);
         }
         .label{
             margin-top: 12px;
@@ -39,14 +39,14 @@
         @include flex(row, center, center);
 
         .card-illu{
-            background-color: $colorDisabled;
+            background-color: var(--colorDisabled);
             width: 52px; height: 52px;
             border-radius: 100px;
             @include flex(row, center, center);
 
             [class^="icon-"]{
                 font-size: 22px;
-                color: $alpha;
+                color: var(--alpha);
             }
         }
 
@@ -54,7 +54,7 @@
             background-color: rgba(26, 83, 92, 0.4);
 
             [class^="icon-"]{
-                color: $color0;
+                color: var(--color0);
             }
         }
 
@@ -62,23 +62,23 @@
             background-color: rgba(78, 205, 196, 0.4);
 
             [class^="icon-"]{
-                color: $color1;
+                color: var(--color1);
             }
         }
     }
 }
 
 .card-dash-danger{
-    background-color: transparentize($color: $danger, $amount: 0.4);
+    background-color: rgba(var(--dangerRGBA), 0.6);
 
     form{
         label{
-            color: $alpha;
+            color: var(--alpha);
         }
     }
     .form-group-error{
         .error{
-            color: $alpha;
+            color: var(--alpha);
         }
     }
 }

@@ -20,7 +20,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/login", name="app_login")
+     * @Route("/connexion", options={"expose"=true}, name="app_login")
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
@@ -43,7 +43,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/logout", options={"expose"=true}, name="app_logout")
+     * @Route("/deconnexion", options={"expose"=true}, name="app_logout")
      */
     public function logout()
     {
@@ -51,7 +51,7 @@ class SecurityController extends AbstractController
     }
 
     /**
-     * @Route("/lost/{user}", options={"expose"=true}, name="app_password_lost")
+     * @Route("/mot-de-passe-oublie/{user}", options={"expose"=true}, name="app_password_lost")
      */
     public function lost(Request $request, Mailer $mailer, SettingsService $settingsService, CheckTime $checkTime, User $user = null)
     {

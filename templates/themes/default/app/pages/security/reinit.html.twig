@@ -1,13 +1,20 @@
 {% extends 'themes/default/app/pages/security/template.html.twig' %}
 
-{% block title %}Réinitialisation de mot de passe{% endblock %}
+{% block title %}Gestion du mot de passe {{ parent() }}{% endblock %}
 
 {% block main_content %}
-    {% if type == "reinit" %}
-        <div id="form-reinit" data-url={{ path('app_password_reinit', {'token': token, 'code': code}) }}></div>
-    {% elseif type == "renouv" %}
-        <div id="form-reinit" data-url={{ path('app_password_renouv', {'token': token, 'code': code}) }}></div>
-    {% else %}
-        <div id="form-reinit" data-url={{ path('app_password_unlock', {'token': token}) }}></div>
-    {% endif %}
+    <div id="login">
+        <section class="formulaire">
+            {% if type == "reinit" %}
+                <h1>Réinitialisation du mot de passe</h1>
+                <div id="form-reinit" data-url={{ path('app_password_reinit', {'token': token, 'code': code}) }}></div>
+            {% elseif type == "renouv" %}
+                <h1>Renouvellement du mot de passe</h1>
+                <div id="form-reinit" data-url={{ path('app_password_renouv', {'token': token, 'code': code}) }}></div>
+            {% else %}
+                <h1>Création du mot de passe</h1>
+                <div id="form-reinit" data-url={{ path('app_password_unlock', {'token': token}) }}></div>
+            {% endif %}
+        </section>
+    </div>
 {% endblock %}

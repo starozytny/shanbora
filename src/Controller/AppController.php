@@ -21,7 +21,7 @@ class AppController extends AbstractController
         return $this->render('root/app/index.html.twig');
     }
     /**
-     * @Route("/legales/mentions-legales", name="app_mentions")
+     * @Route("/legales/mentions-legales", options={"expose"=true}, name="app_mentions")
      */
     public function mentions()
     {

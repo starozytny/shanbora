@@ -39,6 +39,15 @@ Encore
         to: 'themes/default/super/images/[path][name].[ext]',
     })
 
+    // .copyFiles({
+    //     from: './assets/themes/default/user/fonts',
+    //     to: 'themes/default/user/fonts/[path][name].[ext]',
+    // })
+    // .copyFiles({
+    //     from: './assets/themes/default/user/images',
+    //     to: 'themes/default/user/images/[path][name].[ext]',
+    // })
+
     .configureFilenames({
         css: 'css/[name].css',
         js: 'js/[name].js'
@@ -62,6 +71,9 @@ Encore
     .addEntry('default_super_users', './assets/themes/default/super/js/pages/users.jsx')
     .addEntry('default_super_rgpd', './assets/themes/default/super/js/pages/rgpd.jsx')
     .addEntry('default_super_settings', './assets/themes/default/super/js/pages/settings.jsx')
+
+    .addEntry('default_user', './assets/themes/default/user/js/default.jsx')
+    .addEntry('default_user_agenda', './assets/themes/default/user/js/pages/agenda.jsx')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

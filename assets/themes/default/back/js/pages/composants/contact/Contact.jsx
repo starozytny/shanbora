@@ -12,22 +12,18 @@ export class ContactList extends Component {
         }
 
         this.handleClick = this.handleClick.bind(this)
-        this.handleDelete = this.handleDelete.bind(this)
     }
 
-    handleClick = (e) => {
-        let id = e.currentTarget.dataset.id;
-        let seen = e.currentTarget.dataset.seen;
+    handleClick = (id, seen) => {
         this.setState({ cardOpened: (id == this.state.cardOpened) ? null : id })
 
-        if(seen == "false"){
+        if(seen == false){
             this.props.onUpdateSeen(id)
         }
     }
-    handleDelete = (e) => { this.props.onDelete(e.currentTarget.dataset.id) }
 
     render () {
-        const {demandes} = this.props
+        const {demandes, onDelete} = this.props
         const {cardOpened} = this.state
 
         let items = <div className="alert alert-primary">Aucun enregistrement.</div>;
@@ -37,31 +33,24 @@ export class ContactList extends Component {
 
                 let bodyOpened = (cardOpened != null && cardOpened == elem.id) ? true : false;
     
-                return <div className={"card1 card1-" + bodyOpened} key={elem.id}>
-                    <div className="card1-header">
-                        <div className="card1-header-title">
-                            <div className="title">{elem.firstname}</div>
-                            <div className="subtitle">{elem.email}</div>
-                        </div>
-                        <div className="card1-header-toggle-body" data-id={elem.id} data-seen={elem.isSeen} onClick={this.handleClick} >
-                            <div className="btn-icon">
-                                <span className="icon-chevron-down"></span>
-                            </div>
-                        </div>
+                return <div className={"card-2 card-2-opened-" + bodyOpened + " card-2-isSeen-" + elem.isSeen} key={elem.id}>
+                    <div className="card-2-header" onClick={e => this.handleClick(elem.id, elem.isSeen)}>
+                        <div className="title">{elem.firstname}</div>
+                        <div className="subtitle">{elem.email}</div>
                     </div>
-                    <div className="card1-body">
-                        <p>{elem.message}</p>
+                    <div className="card-2-body" onClick={e => this.handleClick(elem.id, elem.isSeen)}>
+                        <p className="content">{elem.message}</p>
                     </div>
-                    <div className="card1-footer">
-                        <div className="card1-footer-left">
-                            <div className="btn-isSeen">
-                                    {elem.isSeen ? <span className="icon-vision"></span> : <span className="icon-vision-not"></span>}
+                    <div className="card-2-footer">
+                        <div className="date">
+                            {elem.isSeen ? <span className="icon-vision"></span> : <span className="icon-vision-not"></span>}
+                            <span>{elem.createAtString}</span>
+                        </div>
+                        <div className="actions">
+                            <div className="item">
+                                <div className="btn-icon" onClick={e => onDelete(elem.id)}>
+                                    <span className="icon-trash"></span>
                                 </div>
-                                <div className="date-discret">{elem.createAtString}</div>
-                            </div>
-                        <div className="card1-footer-right">
-                            <div className="btn-icon" data-id={elem.id} onClick={this.handleDelete}>
-                                <span className="icon-trash"></span>
                             </div>
                         </div>
                     </div>
@@ -69,7 +58,9 @@ export class ContactList extends Component {
             })
         }
 
-        return <> {items} </>
+        return <div className="cards-container">
+            <div className="cards-items"> {items} </div>
+        </div>
     }
 }
 

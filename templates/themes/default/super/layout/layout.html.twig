@@ -7,6 +7,10 @@
 {% endblock %}
 
 {% block body %}
+
+    {# --------------- VARIABLES ---------------- #}
+    {% set path_images = "build/themes/default/super/images/" %}
+
     {% set menu = [
         {
             'path': path('super_dashboard'),
@@ -33,6 +37,12 @@
             'name': 'parametres'
         },
         {
+            'path': path('super_styleguide_index'),
+            'icon': 'heart',
+            'label': 'Styleguide',
+            'name': 'styleguide'
+        },
+        {
             'path': path('admin_contact_index'),
             'icon': 'email',
             'label': 'Contact',
@@ -46,6 +56,12 @@
             'icon': 'earth',
             'label': 'Retour au site',
             'name': 'site'
+        },
+        {
+            'path': path('user_dashboard'),
+            'icon': 'earth',
+            'label': 'Dashboard utilisateur',
+            'name': 'espace-utilisateur'
         },
         {
             'path': path('admin_dashboard'),

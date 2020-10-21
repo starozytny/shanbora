@@ -1,0 +1,89 @@
+@import "../../../vars/vars.scss";
+
+.card-1{
+    border: 1px solid var(--colorBorder);
+    border-radius: 5px;
+    background-color: var(--alpha);
+    @include boxshadow();
+    margin-bottom: 24px;
+
+    .title{
+        @include fontSemibold();
+        font-size: 24px;
+    }
+
+    img{
+        width: 100%;
+    }
+}
+
+.card-1-drawing{
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    max-height: 148px;
+}
+
+.card-1-header, .card-1-body, .card-1-footer{
+    padding: 12px 12px 0 12px;
+}
+
+.card-1-body{
+    opacity: 0.7;
+}
+
+.card-1-footer{
+    margin-top: 24px;
+    margin-bottom: 12px;
+
+    .items{
+        @include flex(row, flex-start, flex-start);
+        flex-wrap: wrap;
+
+        .item{
+            margin-right: 8px;
+        }
+
+        img{
+            width: 36px; height: 36px;
+            border-radius: 50px;
+            @include boxshadow(0.6);
+        }
+    }
+}
+
+//                      __   _____ __    ___    __
+//                     | _| |___  / /_  ( _ )  |_ |
+//    _____ _____ _____| |     / / '_ \ / _ \   | |_____ _____ _____
+//   |_____|_____|_____| |    / /| (_) | (_) |  | |_____|_____|_____|
+//                     | |   /_/  \___/ \___/   | |
+//                     |__|                    |__|
+@media (min-width:768px) {
+    .cards-container{
+        overflow: hidden; 
+    }
+    .cards-items{
+        @include flex(row, flex-start, flex-start);
+        flex-wrap: wrap;
+        width: calc(100% + 24px);
+    }
+    .card-1{
+        width: calc(50% - 26px);
+        margin-right: 24px;
+    }
+}
+
+//                      __   _ ____  ___   ___    __
+//                     | _| / |___ \( _ ) / _ \  |_ |
+//    _____ _____ _____| |  | | __) / _ \| | | |  | |_____ _____ _____
+//   |_____|_____|_____| |  | |/ __/ (_) | |_| |  | |_____|_____|_____|
+//                     | |  |_|_____\___/ \___/   | |
+//                     |__|                      |__|
+@media (min-width:1280px) {
+    .cards-items{
+        width: calc(100% + 36px);
+    }
+    .card-1{
+        width: calc(33% - 26px);
+        margin-right: 24px;
+    }
+}

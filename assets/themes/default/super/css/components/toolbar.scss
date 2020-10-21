@@ -1,13 +1,26 @@
 @import "../vars/vars.scss";
 
 .toolbar{
-    padding-bottom: 25px;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    border-bottom: 1px solid $color5;
+    margin-top: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--color5);
 
     .toolbar-left + .toolbar-right{
-        margin-top: 10px;
+        margin-top: 12px;
+    }
+
+    .toolbar-left{
+        .toolbar-item:first-child{
+            .btn{
+                margin-top: 0;
+            }
+        }
+        .toolbar-item:last-child{
+            .btn{
+                margin-bottom: 0;
+            }
+        }
     }
 
     button.btn{
@@ -22,7 +35,7 @@
 .toolbar{
     input[type="search"]{
         width: 100%;
-        outline-color: $alpha;
+        outline-color: var(--alpha);
     }
 }
 

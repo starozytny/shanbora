@@ -1,17 +1,20 @@
 import '../../css/pages/security.scss';
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import FormLost from './components/security/FormLost';
-import FormReinit from './components/security/FormReinit';
+import {ButtonLost} from './components/security/FormLost';
+import {FormReinit} from './components/security/FormReinit';
 
 formulaireLost();
 formulaireReinit();
 
 function formulaireLost(){
-    let form = document.querySelector('#form-lost');
+    let form = document.querySelector('#lost');
 
     if(form !== null){
-        ReactDOM.render(<FormLost />, form);
+        ReactDOM.render(
+            <ButtonLost />,
+            form
+        );
     }
 }
 

@@ -1,5 +1,10 @@
 {% extends 'themes/default/app/layout/layout.html.twig' %}
 
+{% block noindex %}
+    <meta name="robots" content="noindex">
+    <meta name="googlebot" content="noindex">
+{% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
     {{ encore_entry_link_tags('default_security') }}

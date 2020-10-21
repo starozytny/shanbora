@@ -8,40 +8,28 @@
   align-items: $align;justify-content: $justify;
 }
 
-@mixin boxshadow(){
-  box-shadow: 0 0 10px transparentize($color: $color0, $amount: 0.9);
+@mixin boxshadow($opacity: 0.9){
+  box-shadow: 0 0 10px transparentize($color: #4ECDC4, $amount: $opacity);
 }
 
-$color0: #1A535C;
-$color1: #4ECDC4;
-$color2: #F7FFF7;
-$color3: #FF6B6B;
-$color4: #E7CF56;
-$color5: #dddddd;
-$color6: #5D5D5D;
+@mixin scrollbar(){
+  /* width */
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
 
-$colorDisabled: #BCC0BC;
+  /* Track */
+  &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+  }
 
-$nuance0: #ffcbf2;
-$nuance1: #deaaff;
-$nuance2: #c8e7ff;
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+      background: #888;
+  }
 
-$nuanceColor4: #d1c169;
-
-$error: #e63946;
-$errorBg: #ffb9b9;
-$successBg: #83ffc5;
-$info: #405fb5;
-$infoBg: #9ff0ff;
-
-$colorFond: #F9F9F9;
-$alpha: #fff;
-$beta: #000;
-
-$primary:#5b3cc4;
-$success: rgb(23, 201, 100);
-$danger: rgb(242, 19, 93);
-$warning: rgb(255, 130, 0);
-$dark: rgb(36, 33, 69);
-
-$colorBorder: #bcc0bc75;
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+  }
+}

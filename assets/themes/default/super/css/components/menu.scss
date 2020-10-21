@@ -2,7 +2,7 @@
 
 nav{
     width: 85%;
-    background-color: $alpha;
+    background-color: var(--alpha);
     height: 100vh;
     position: fixed;
     top: 0; left: 0;
@@ -19,23 +19,23 @@ nav{
 }
 
 .nav-header{
-    padding: 25px;
+    padding: 24px;
     @include flex(row, center, space-between);
 
     a{
         @include fontBold();
-        color: $color0;
+        color: var(--color0);
         font-size: 24px;
     }
 
     [class^="icon-"]{
         font-weight: bold;
-        color: $color3;
+        color: var(--color3);
     }
 }
 
 .nav-body{
-    padding: 25px 15px;
+    padding: 24px 16px;
     height: calc(100% - 130px);
     overflow-y: auto;
 }
@@ -46,13 +46,13 @@ nav{
 }
 
 a.nav-item{
-    width: calc(100% - 20px);
-    margin-bottom: 10px;
+    width: calc(100% - 16px); // nav-body
+    margin-bottom: 8px;
     padding: 8px;
     border-radius: 8px;
     @include flex(row, center, flex-start);
     font-size: 16px;
-    color: $beta;
+    color: var(--beta);
     opacity: 0.8;
     transition: all 0.2s ease-in-out;
 
@@ -63,18 +63,21 @@ a.nav-item{
 
     & > span:first-child{
         display: inline-block;
-        margin-right: 10px;
+        margin-right: 12px;
     }
 
     &.active{
-        background-color: $color0;
-        color: $color2;
+        background-color: var(--color0);
+        color: var(--color2);
         opacity: 1;
+    }
+
+    &:last-child{
+        margin-bottom: 0;
     }
 }
 
 .nav-items-bottom, .nav-items-top{
-    // width: calc(100% - 30px);
     width: 100%;
 }
 //                      __   _____ __    ___    __
@@ -97,7 +100,7 @@ a.nav-item{
 //                     |__|                       |__|
 @media (min-width: 1024px) {
     nav{
-        width: 25%;
+        width: 24%;
         opacity: 1;
         z-index: 10;
         transform: translateX(0);
@@ -123,10 +126,10 @@ a.nav-item{
         width: 18%;
     }
     .nav-header{
-        padding: 35px 25px;
+        padding: 36px 24px;
     }
     .nav-body{
-        height: calc(100% - 150px);
+        height: calc(100% - 152px);
     }
 }
 

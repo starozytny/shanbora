@@ -1,62 +1,21 @@
 @import "../vars/vars.scss";
 
-.card1{
-
-    .btn-isSeen{
-        margin-right: 8px;
-    }
-
-    .subject{
-        margin-top: 4px;
-        font-size: 14px;
-        opacity: 0.6;
-    }
+.rgpd-subject{
+    display: inline-block;
+    width: 10px; height: 10px;
+    border-radius: 20px;
+    background-color: var(--colorDisabled);
+    margin-right: 4px;
 }
 
-//                      __   _____ __    ___    __
-//                     | _| |___  / /_  ( _ )  |_ |
-//    _____ _____ _____| |     / / '_ \ / _ \   | |_____ _____ _____
-//   |_____|_____|_____| |    / /| (_) | (_) |  | |_____|_____|_____|
-//                     | |   /_/  \___/ \___/   | |
-//                     |__|                    |__|
-@media (min-width:768px) {
-    .liste-rgpd{
-        @include flex(row, flex-start, flex-start);
-        flex-wrap: wrap;
-    }
-    .card1{
-        width: calc(50% - 38px);
-        margin-bottom: 12px;
+$types:
+    "0" var(--color0),
+    "1" var(--color3),
+    "2" var(--color4),
+    "3" var(--nuance1);
 
-        &:nth-child(odd){
-            margin-right: 12px;
-        }
-        &:nth-child(even){
-            margin-left: 12px;
-        }
-    }
-}
-
-
-//                      __   _ ____  ___   ___    __
-//                     | _| / |___ \( _ ) / _ \  |_ |
-//    _____ _____ _____| |  | | __) / _ \| | | |  | |_____ _____ _____
-//   |_____|_____|_____| |  | |/ __/ (_) | |_| |  | |_____|_____|_____|
-//                     | |  |_|_____\___/ \___/   | |
-//                     |__|                      |__|
-@media (min-width:1280px) {
-    .liste-rgpd{
-        width: calc(100% + 22px);
-    }
-    .card1{
-        width: calc(33% - 38px);
-
-        &:nth-child(odd){
-            margin-right: 12px;
-        }
-        &:nth-child(even){
-            margin-left: 0;
-            margin-right: 12px;
-        }
+@each $name, $color in $types{
+    .rgpd-subject-#{$name}{
+        background-color: $color;
     }
 }

@@ -8,25 +8,22 @@
   align-items: $align;justify-content: $justify;
 }
 
-@mixin boxshadow(){
-  box-shadow: 0 0 10px transparentize($color: $color3, $amount: 0.9);
+@mixin maxscreen(){
+  max-width: 1366px;
+  margin: 0 auto;
 }
 
-$color0: #2B96D6;
-$color1: #FEC61F;
-$color2: #103044;
-$color3: #15120D;
-$color4: #F1ECEC;
-$color5: #FDFCFC;
-$color6: #676767;
-$color7: #C6C3C3;
-$color8: #DFDDDD;
+@mixin boxshadow(){
+  box-shadow: 0 0 10px transparentize($color: #15120D, $amount: 0.9);
+}
 
-$error: #d40d0e;
-$errorBg: #ffb9b9;
-$success: #169f50;
-$successBg: #83ffc5;
-$info: #405fb5;
-$infoBg: #9ff0ff;
-
-$alpha: #FFF;
+@mixin overlay(){
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(var(--color0RGBA), 0.4);
+  z-index: 5;
+}

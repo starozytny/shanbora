@@ -4,7 +4,7 @@ import {Formulaire} from '../../../../../react/composants/Formulaire';
 import Validateur from '../../../../../react/functions/validateur';
 import AjaxSend from '../../../../../react/functions/ajax_classique';
 
-class FormReinit extends Component {
+export class FormReinit extends Component {
     constructor(props) {
         super();
 
@@ -41,7 +41,7 @@ class FormReinit extends Component {
 
         if(password.value != password2.value){
             validate.code = false;
-            validate.errors = {...validate.errors, ...{password: {value: password.value, error: 'Les mots de passe ne sont pas similaires.'}}};
+            validate.errors = {...validate.errors, ...{password: {value: password.value, error: 'Les mots de passe ne sont pas identiques.'}}};
         }
 
         //Display error if validate != true else call Ajax password lost
@@ -75,8 +75,12 @@ class FormReinit extends Component {
                     success={success} error={error}
                     inputs={
                         <>
-                            <Input valeur={password} type="password" identifiant="password" onChange={this.handleChange}>Mot de passe</Input>
-                            <Input valeur={password2} type="password" identifiant="password2" onChange={this.handleChange}>Confirmer le mot de passe</Input>
+                            <div className="line">
+                                <Input valeur={password} type="password" identifiant="password" onChange={this.handleChange}>Mot de passe</Input>
+                            </div>
+                            <div className="line">
+                                <Input valeur={password2} type="password" identifiant="password2" onChange={this.handleChange}>Confirmer le mot de passe</Input>
+                            </div>
                         </>
                     }
                     btn="Réinitialiser"
@@ -85,5 +89,3 @@ class FormReinit extends Component {
         );
     }
 }
-
-export default FormReinit;

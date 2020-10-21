@@ -1,19 +1,79 @@
 {% extends 'themes/default/base.html.twig' %}
 
-{% block title %}| {% endblock %}
+{% block title %}| Site internet{% endblock %}
 
 {% block stylesheets %}
     {{ encore_entry_link_tags('default_app') }}
 {% endblock %}
 
 {% block body %}
+    <div id="top"></div>
+
+    <div class="toUp">
+        <a href="#top"><span class="icon-arrow-up"></span></a>
+    </div>
 
     {# --------------- VARIABLES ---------------- #}
     {% set path_images = "build/themes/default/front/images/" %}
 
-    <main>        
+    {% set menu = [
+        {
+            'path': path('app_homepage'),
+            'label': 'Accueil',
+            'name': 'accueil'
+        },
+        {
+            'path': path('app_contact'),
+            'label': 'CONTACT',
+            'name': 'nous-contacter'
+        }
+    ] %}
+
+    {% set menuAccount = [
+        {
+            'path': path('app_login'),
+            'label': 'Se connecter',
+            'name': 'connexion'
+        }
+    ] %}
+
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {% set menuAccount = [
+            {
+                'path': path('app_logout'),
+                'label': 'Se déconnecter',
+                'name': 'logout'
+            }, 
+            
+        ] %}
+        
+        {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+            {% set menuImpersonate = [
+                {
+                    'path': path('super_users_index', {'_switch_user': '_exit'}),
+                    'label': 'Quitter impersonate',
+                    'name': 'exit-impersonate'
+                }, 
+                
+            ] %}
+
+            {% set menuAccount = menuAccount | merge(menuImpersonate) %}
+        {% endif %}
+    {% endif %}
+        
+    {% set menu = menu | merge(menuAccount) %}
+
+    <div id="default" data-menu="{{ menu | json_encode() }}"></div>
+
+    <main>    
+        
+        {% block header %}{% endblock %}
+        
         {% block main_content %}{% endblock %}
+        
     </main>
+
+    <div id="footer"></div>
 {% endblock %}
 
 

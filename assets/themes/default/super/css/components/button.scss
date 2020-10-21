@@ -2,16 +2,16 @@
 
 .btn{
     display: inline-block;
-    border: 1px solid $color5;
+    border: 1px solid var(--color5);
     text-transform: uppercase;
-    padding: 10px 22px;
-    margin: 10px 0;
+    padding: 12px 22px;
+    margin: 12px 0;
     border-radius: 5px;
     cursor: pointer;
-    transition: opacity 0.2s ease-in-out;
-    background-color: $alpha;
+    background-color: var(--alpha);
     outline: none;
-    color: $color0;
+    color: var(--color0);
+    transition: all 0.2s ease-in-out;
 
     span{
         display: inline-block;
@@ -33,8 +33,8 @@ a.btn{
     position: relative;
     display: flex;
     border-radius: 5px;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     opacity: 0.6;
     cursor: pointer;
     transition: opacity 0.2s ease-in-out;
@@ -42,7 +42,7 @@ a.btn{
     background-color: transparent;
 
     [class^="icon-"]{
-        font-size: 20px;
+        font-size: 18px;
     }
 
     &:hover{
@@ -58,8 +58,8 @@ a.btn{
         position: absolute;
         top: -30px;
         right: 0;
-        background-color: transparentize($color: $beta, $amount: 0.3);
-        color:$alpha;
+        background-color: rgba(var(--betaRGBA), 0.7);
+        color: var(--alpha);
         padding: 2px 6px;
         border-radius: 4px 4px 0 4px;
         transform: scale(0);
@@ -86,29 +86,21 @@ a.btn{
     }
 }
 
-.btn-primary{
-    color: $alpha;
-    background-color: $primary;
+$types:
+    "primary" var(--alpha) var(--primary) var(--primaryRGBA),
+    "warning" var(--alpha) var(--warning) var(--warningRGBA),
+    "danger" var(--alpha) var(--danger) var(--dangerRGBA);
 
-    &:hover, &:focus{
-        opacity: 0.93;
-    }
-}
-
-.btn-warning{
-    color: $alpha;
-    background-color: $warning;
-
-    &:hover, &:focus{
-        opacity: 0.93;
-    }
-}
-
-.btn-danger{
-    color: $alpha;
-    background-color: $danger;
-
-    &:hover, &:focus{
-        opacity: 0.93;
+@each $name, $txtColor, $mainColor, $shadowColor in $types{
+    .btn-#{$name}{
+        color: $txtColor;
+        background-color: $mainColor;
+        border-color: $mainColor;
+        box-shadow: 0 0 15px rgba($shadowColor, 0.25);
+    
+        &:hover, &:focus{
+            opacity: 0.95;
+            box-shadow: 0 0 15px rgba($shadowColor, 0.4);
+        }
     }
 }

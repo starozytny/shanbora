@@ -1,7 +1,15 @@
 {% extends 'themes/default/app/pages/security/template.html.twig' %}
 
-{% block title %}Réinitialisation de mot de passe{% endblock %}
+{% block title %}Expiration du lien de gestion du mot de passe {{ parent() }}{% endblock %}
 
 {% block main_content %}
-    {{message}}
+    <div id="login">
+        <h1>Expiration du lien de gestion du mot de passe</h1>
+        <div class="formulaire">
+            <div class="alert alert-danger active">
+                <p><span class="icon-warning"></span>{{message}}</p>
+            </div>
+        </div>
+    </div>
+    
 {% endblock %}

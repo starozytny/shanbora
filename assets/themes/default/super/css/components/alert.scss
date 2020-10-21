@@ -1,7 +1,7 @@
 @import "../vars/vars.scss";
 
 .alert{
-    @include flex(row, flex-start, flex-start);
+    display: none;
     margin: 15px 0;
     padding: 10px;
     font-size: 14px;
@@ -14,24 +14,22 @@
     }
 }
 
-.alert-danger{
-    background-color: transparentize($color: $error, $amount: 0.89);
-    color: $error;
+.alert.active{
+    @include flex(row, flex-start, flex-start);
 }
 
-.alert-primary, .alert-info{
-    background-color: transparentize($color: $primary, $amount: 0.89);
-    color: $primary;
-}
+$types:
+    "danger" var(--danger) var(--dangerRGBA),
+    "primary" var(--primary) var(--primaryRGBA),
+    "info" var(--primary) var(--primaryRGBA),
+    "warning" var(--warning) var(--warningRGBA),
+    "success" var(--success) var(--successRGBA);
 
-.alert-warning{
-    background-color: transparentize($color: $warning, $amount: 0.89);
-    color: $warning;
-}
-
-.alert-success{
-    background-color: transparentize($color: $success, $amount: 0.89);
-    color: $success;
+@each $name, $color, $shadowColor in $types{
+    .alert-#{$name}{
+        background-color: rgba($shadowColor, 0.29);
+        color: $color;
+    }
 }
 
 .alert-color{

@@ -40,4 +40,4 @@ security:
     access_control:
         - { path: ^/administrator, roles: ROLE_SUPER_ADMIN }
         - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/espace-utilisateur, roles: ROLE_USER }

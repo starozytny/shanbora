@@ -5,8 +5,8 @@ export function Formulaire({onSubmit, inputs, success, error, btn, children}) {
     return ( 
         <form onSubmit={onSubmit}> 
             <div>
-                <Alert type="success" message={success} active="active" />
-                <Alert type="danger" message={error} active="active" />
+                <Alert type="success" message={success} active={success != "" ? true : false} />
+                <Alert type="danger" message={error} active={error != "" ? true : false} />
             </div>
             <div>
                 {inputs}

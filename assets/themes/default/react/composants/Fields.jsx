@@ -34,7 +34,7 @@ export function Checkbox({items, name, valeur, onChange, children}) {
 
     let content = <div className="checkbox-items">{itemsInputs}</div>
 
-    return (<ClassiqueStructure valeur={valeur} identifiant={identifiant} content={content} label={children} classForm="form-group-checkbox " />)
+    return (<ClassiqueStructure valeur={valeur} identifiant="" content={content} label={children} classForm="form-group-checkbox " />)
 }
 
 export function Radiobox({items, name, valeur, onChange, children}) {
@@ -49,7 +49,7 @@ export function Radiobox({items, name, valeur, onChange, children}) {
 
     let content = <div className="radiobox-items">{itemsInputs}</div>
 
-    return (<ClassiqueStructure valeur={valeur} identifiant={identifiant} content={content} label={children} classForm="form-group-radiobox " />)
+    return (<ClassiqueStructure valeur={valeur} identifiant="" content={content} label={children} classForm="form-group-radiobox " />)
 }
 
 export function TextArea({identifiant, valeur, onChange, rows="8", children}) {

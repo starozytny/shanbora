@@ -1,0 +1,98 @@
+{% extends 'themes/default/base.html.twig' %}
+
+{% block title %}| Espace utilisateur{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('default_super') }}
+    {{ encore_entry_link_tags('default_admin') }}
+    {{ encore_entry_link_tags('default_user') }}
+{% endblock %}
+
+{% block body %}
+
+    {# --------------- VARIABLES ---------------- #}
+    {% set path_images = "build/themes/default/user/images/" %}
+
+    {% set menu = [
+        {
+            'path': path('user_dashboard'),
+            'icon': 'home',
+            'label': 'Dashboard',
+            'name': 'espace-utilisateur'
+        },
+        {
+            'path': path('user_agenda_index'),
+            'icon': 'calendar',
+            'label': 'Agenda',
+            'name': 'agenda'
+        }
+    ] %}
+
+    {% set menuBottom = [
+        {
+            'path': path('app_homepage'),
+            'icon': 'earth',
+            'label': 'Retour au site',
+            'name': 'site'
+        }
+    ] %}
+
+    {% if is_granted('ROLE_ADMIN') %}
+        {% set menuAdmin = [
+            {
+                'path': path('admin_dashboard'),
+                'icon': 'earth',
+                'label': 'Dashboard admin',
+                'name': 'admin'
+            }
+        ] %}
+        {% set menuBottom = menuBottom | merge(menuAdmin) %}
+    {% endif %}
+
+    {% if is_granted('ROLE_SUPER_ADMIN') %}
+        {% set menuSuper = [
+            {
+                'path': path('super_dashboard'),
+                'icon': 'earth',
+                'label': 'Dashboard super',
+                'name': 'administrator'
+            }
+        ] %}
+        {% set menuBottom = menuBottom | merge(menuSuper) %}
+    {% endif %}
+
+    {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+        {% set menuSwitch = [
+            {
+                'path': path('super_users_index', {'_switch_user': '_exit'}),
+                'icon': 'logout',
+                'label': 'Quitter l\'impersonation',
+                'name': 'impersonation'
+            }
+        ] %}
+        {% set menuBottom = menuBottom | merge(menuSwitch) %}
+    {% endif %}
+
+    <div id="default" 
+        data-title="Utilisateur"
+        data-menu="{{ menu | json_encode() }}" 
+        data-menu-bottom="{{ menuBottom | json_encode() }}"
+        data-username="{{ app.user.username | capitalize }}" 
+        data-avatar="{{ app.user.avatar }}"
+    ></div>
+
+    <main>        
+        {% block main_content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="copyright">Copyright 2020 - Logilink</div>
+    </footer>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('default_super') }}
+    {{ encore_entry_script_tags('default_admin') }}
+    {{ encore_entry_script_tags('default_user') }}
+{% endblock %}

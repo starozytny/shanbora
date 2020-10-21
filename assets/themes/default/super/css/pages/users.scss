@@ -1,7 +1,7 @@
 @import "../vars/vars.scss";
 
 .item-user{
-    background-color: $alpha;
+    background-color: var(--alpha);
     padding: 10px 10px 15px 10px;
     @include flex(column, center, flex-start);
     @include boxshadow();
@@ -27,9 +27,9 @@
         transition: background-color 0.2s ease-in-out;
 
         &:hover{
-            background-color: $colorFond;
+            background-color: var(--colorFond);
             .icon-more{
-                color: $color0;
+                color: var(--color0);
             }
             .user-actions-drop{
                 z-index: 1; opacity: 1;
@@ -40,7 +40,7 @@
             display: inline-block;
             transform: rotate(90deg);
             font-weight: bold;
-            color: $colorDisabled;
+            color: var(--colorDisabled);
             transition: color 0.2s ease-in-out;
         }
 
@@ -56,7 +56,7 @@
             }
 
             .drop-items{
-                background-color: $alpha;
+                background-color: var(--alpha);
                 border-radius: 5px;
                 @include boxshadow();
                 @include flex(column, stretch, flex-end);
@@ -68,7 +68,7 @@
                 padding: 5px 10px;
                 opacity: 0.6;
                 transition: opacity 0.2s ease-in-out;
-                color: $beta;
+                color: var(--beta);
 
                 &:hover{
                     opacity: 1;
@@ -104,12 +104,12 @@
     @include flex(row, center, center);
 
     &:hover{
-        color: $color0;
+        color: var(--color0);
     }
 }
 
 .user-new{
-    color: $color4;
+    color: var(--color4);
     cursor: pointer;
     transition: all 0.2s ease-in-out;
     margin-right: 4px;
@@ -153,10 +153,10 @@
         border-radius: 5px;
         font-size: 14px;
 
-        &.user-badge-0{ background-color: $nuance0; }
-        &.user-badge-1{ background-color: $nuance1; }
-        &.user-badge-2{ background-color: $nuance2; }
-        &.user-badge-3{ background-color: $nuanceColor4; }
+        &.user-badge-0{ background-color: var(--nuance0); }
+        &.user-badge-1{ background-color: var(--nuance1); }
+        &.user-badge-2{ background-color: var(--nuance2); }
+        &.user-badge-3{ background-color: var(--nuanceColor4); }
     }
 }
 
@@ -169,9 +169,9 @@
 .aside-user-informations{
     font-size: 14px;
     margin-bottom: 25px;
-    color: $color6;
+    color: var(--color6);
     padding-bottom: 25px;
-    border-bottom: 1px solid $color5;
+    border-bottom: 1px solid var(--color5);
 }
 
 .others + .aside{
@@ -187,28 +187,9 @@
     overflow: auto;
     padding: 12px;
     margin-bottom: 24px;
-    border: 1px solid $danger;
+    border: 1px solid var(--danger);
     border-radius: 5px 0 0 5px;
-
-    /* width */
-    &::-webkit-scrollbar {
-        width: 6px;
-    }
-    
-    /* Track */
-    &::-webkit-scrollbar-track {
-        background: #f1f1f1;
-    }
-    
-    /* Handle */
-    &::-webkit-scrollbar-thumb {
-        background: #888;
-    }
-    
-    /* Handle on hover */
-    &::-webkit-scrollbar-thumb:hover {
-        background: #555;
-    }
+    @include scrollbar();
 
     .anomalie{
         @include flex(row, center, flex-start);
@@ -230,7 +211,7 @@
     .anomalie:not(:last-child){
         padding-bottom: 8px;
         margin-bottom: 8px;
-        border-bottom: 1px solid $colorDisabled;
+        border-bottom: 1px solid var(--colorDisabled);
     }
 }
 

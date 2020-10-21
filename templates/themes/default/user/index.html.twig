@@ -1,0 +1,18 @@
+{% extends 'themes/default/user/layout/layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('default_super_home') }}
+{% endblock %}
+
+{% block title %}Dashboard {{ parent() }}{% endblock %}
+
+{% block main_content %}
+    <h1>Espace utilisateur</h1>
+
+    <section class="dashboard">
+        <div class="dashboard-line dashboard-line-0">
+            Hello world
+        </div>
+    </section>
+{% endblock %}

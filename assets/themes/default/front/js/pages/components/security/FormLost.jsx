@@ -5,7 +5,7 @@ import {Formulaire} from '../../../../../react/composants/Formulaire';
 import Validateur from '../../../../../react/functions/validateur';
 import AjaxSend from '../../../../../react/functions/ajax_classique';
 
-class FormLost extends Component {
+export class FormLost extends Component {
     constructor(props) {
         super();
 
@@ -40,28 +40,63 @@ class FormLost extends Component {
         if(!validate.code){
             this.setState(validate.errors);
         }else{
-            AjaxSend.sendAjax(this, Routing.generate('app_password_lost'), this.state, {
+            AjaxSend.sendAjax(this, Routing.generate('app_password_lost', {'user': null}), this.state, {
                 email: { value: '', error: '' }
             });
         }
     }
 
     render() {
+        const {active, onClose} = this.props
         const {success, error, email} = this.state;
         return (
             <>
-                <Formulaire 
-                    onSubmit={this.handleSubmit}
-                    success={success}
-                    error={error}
-                    inputs={
-                        <Input type="email" valeur={email} identifiant="email" onChange={this.handleChange}>Email</Input>
-                    }
-                    btn="Envoyer"
-                />
+                {active ? <div className="form-lost">
+                    <Formulaire 
+                        onSubmit={this.handleSubmit}
+                        success={success}
+                        error={error}
+                        inputs={
+                            <div className="line">
+                                <Input type="email" valeur={email} identifiant="email" onChange={this.handleChange}>Email</Input>
+                            </div>
+                        }
+                        btn="Envoyer"
+                    />
+                    <div className="overlay" onClick={onClose}></div>
+                </div> : null}
+                
             </>
         );
     }
 }
 
-export default FormLost;
+export class ButtonLost extends Component {
+    constructor (props){
+        super ()
+
+        this.state = {
+            active: false
+        }
+
+        this.handleClick = this.handleClick.bind(this);   
+        this.handleClose = this.handleClose.bind(this);   
+    }
+
+    handleClick = (e) => {
+        this.setState({active: true})
+    }
+
+    handleClose = (e) => {
+        this.setState({active: false})
+    }
+
+    render () {
+        const {active} = this.state
+
+        return <>
+            <a onClick={this.handleClick}>Mot de passe oublié ?</a>
+            <FormLost ref="formlost" active={active} onClose={this.handleClose}/>
+        </>
+    }
+}

@@ -2,8 +2,8 @@
 
 .param-cookies{
   position: fixed;
-  background: $color3;
-  color: $color5;
+  background: var(--color3);
+  color: var(--color5);
   padding: 10px 15px;
   width: calc(100% - 30px);
   z-index: 5000;
@@ -18,12 +18,12 @@
   p > a{
     display: inline-block;
     margin-top: 5px;
-    color: $infoBg;
+    color: var(--primary);
     transition: all 0.3s ease-in-out;
     margin-bottom: 15px;
 
     &:hover{
-      color: $color1;
+      color: var(--color1);
     }
   }
 }
@@ -35,28 +35,28 @@
 
   button{
     margin-right: 10px;
-    background-color: $infoBg;
+    background-color: var(--priamry-bg);
   }
   a{
-    color: $color3;
+    color: var(--color3);
   }
 }
 .btn-cookies{
-  border: 1px solid $color1;
+  border: 1px solid var(--color1);
   border-radius: 5px;
-  background-color: $color5;
+  background-color: var(--color5);
   padding: 5px 15px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 
   &:hover{
-    background-color: $color1;
+    background-color: var(--color1);
   }
 }
 .btn-cookies.active{
-  background-color: $color1;
-  border: 1px solid $color1;
-  color: $alpha;
+  background-color: var(--color1);
+  border: 1px solid var(--color1);
+  color: var(--alpha);
 
 }
 .param-cookies.active{

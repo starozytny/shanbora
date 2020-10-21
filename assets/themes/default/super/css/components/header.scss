@@ -1,24 +1,25 @@
 @import "../vars/vars.scss";
 
 header{
-    background-color: $alpha;
-    margin: 10px;
+    background-color: var(--alpha);
+    margin: 0 12px 12px 12px;
     border-radius: 10px;
-    padding: 15px;
+    padding: 12px;
     @include flex(row, center, space-between);
+    @include boxshadow();
 
-    .icon-menu{color: $color0;}
+    .icon-menu{color: var(--color0);}
 }
 
 .header-user{
     @include flex(row, center, center);
 
     & > *:not(:last-child){
-        margin-right: 10px;
+        margin-right: 8px;
     }
 
     a{
-        color: $color3;
+        color: var(--color3);
     }
 
     .btn-icon{
@@ -47,7 +48,7 @@ header{
 //                     |__|                       |__|
 @media (min-width: 1024px) {
     header{
-        margin: 15px 15px 15px calc(25% + 15px);
+        margin: 0 16px 16px calc(24% + 16px);
         justify-content: flex-end;
 
         .icon-menu{display: none;}
@@ -69,7 +70,7 @@ header{
 //                     |__|                      |__|
 @media (min-width:1280px) {
     header{
-        margin: 25px 30px 25px calc(17% + 30px);
+        margin: 0 32px 24px calc(18% + 32px);
     }
 }
 //                      __   _  __    ___   ___    __
@@ -80,6 +81,6 @@ header{
 //                     |__|                       |__|
 @media (min-width: 1600px){
     header{
-        margin: 25px 5% 25px calc(15% + 5%);
+        margin: 0 5% 24px calc(15% + 5%);
     }
 }

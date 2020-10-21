@@ -1,1 +1,90 @@
 @import "../vars/vars.scss";
+
+main{
+    min-height: 60vh;
+}
+
+.alert{
+    margin-top: 0;
+}
+
+.password-rules{
+    font-size: 14px;
+    opacity: 0.7;
+    margin-top: 24px;
+}
+
+.formulaire{
+    padding: 64px 12px;
+    max-width: 320px;
+    margin: 0 auto;
+
+    form{
+        margin-top: 24px;
+        padding: 24px 12px;
+        background-color: var(--alpha);
+        border-radius: 5px;
+        @include boxshadow();
+        @include flex(column, center, center);
+    }
+}
+
+input{
+    border-color: var(--color6);
+
+    &:focus{
+        border: 1px solid var(--primary);
+    }
+}
+
+.lost{
+    a{
+        display: inline-block;
+        margin-top: 36px;
+        opacity: 0.6;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+
+        &:hover{
+            opacity: 1;
+        }
+    }
+    .form-lost{
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 5000;
+        @include flex(column, center, center);
+        transition: all 0.2s ease-in-out;
+
+        form{
+            position: relative;
+            z-index: 10;
+        }
+
+        .overlay{
+            @include overlay();
+        }
+    }
+}
+
+//                      __   _  ___ ____  _  _     __
+//                     | _| / |/ _ \___ \| || |   |_ |
+//    _____ _____ _____| |  | | | | |__) | || |_   | |_____ _____ _____
+//   |_____|_____|_____| |  | | |_| / __/|__   _|  | |_____|_____|_____|
+//                     | |  |_|\___/_____|  |_|    | |
+//                     |__|                       |__|
+@media (min-width: 1024px) {
+    .formulaire{
+        padding: 64px 18px;
+
+        h1{
+            font-size: 36px;
+        }
+
+        form{
+            padding: 36px 24px;
+        }
+    }
+}

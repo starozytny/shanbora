@@ -1,0 +1,135 @@
+@import "../../../vars/vars.scss";
+
+.card-2{
+    border: 1px solid var(--colorBorder);
+    border-radius: 5px;
+    background-color: var(--alpha);
+    @include boxshadow();
+    margin-bottom: 24px;
+    transition: all 0.2s ease;
+
+    &:hover{
+        opacity: 1;
+    }
+}
+
+.card-2-header{
+    cursor: pointer;
+    
+    .title{
+        @include fontSemibold();
+        font-size: 24px;
+    }
+    .subtitle{
+        font-size: 14px;
+        opacity: 0.7;
+    }
+}
+
+.card-2-header, .card-2-body, .card-2-footer{
+    padding: 12px 12px 0 12px;
+}
+
+.card-2-body{
+    overflow: hidden;
+    max-height: 215px;
+    cursor: pointer;
+
+    .subject{
+        display: inline-block;
+        @include fontSemibold();
+        margin-bottom: 4px;
+    }
+    .content{
+        position: relative;
+        max-height: 200px;
+        overflow: hidden;
+        opacity: 0.7;
+        transition: all 0.2s ease;
+
+        &:before{
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: linear-gradient(transparent, var(--alpha));
+        }
+
+        &:hover{
+            opacity: 1;
+        }
+    }
+}
+
+.card-2-footer{
+    margin-top: 12px;
+    margin-bottom: 12px;
+    @include flex(row, center, space-between);
+
+    .date{
+        @include flex(row, center, flex-start);
+        opacity: 0.7;
+        font-size: 14px;
+
+        [class^="icon-"]{
+            margin-right: 4px;
+        }
+    }
+}
+
+.card-2-opened-true{
+    .card-2-body{
+        max-height: 100%;
+    }
+    .content{
+        overflow-y: auto;
+        @include scrollbar();
+        padding: 12px 0;
+
+        &:before{
+            opacity: 0;
+            z-index: -1;
+        }
+    }
+}
+
+.card-2-isSeen-true{
+    opacity: 0.6;
+}
+
+//                      __   _____ __    ___    __
+//                     | _| |___  / /_  ( _ )  |_ |
+//    _____ _____ _____| |     / / '_ \ / _ \   | |_____ _____ _____
+//   |_____|_____|_____| |    / /| (_) | (_) |  | |_____|_____|_____|
+//                     | |   /_/  \___/ \___/   | |
+//                     |__|                    |__|
+@media (min-width:768px) {
+    .cards-container{
+        overflow: hidden; 
+    }
+    .cards-items{
+        @include flex(row, flex-start, flex-start);
+        flex-wrap: wrap;
+        width: calc(100% + 24px);
+    }
+    .card-2{
+        width: calc(50% - 26px);
+        margin-right: 24px;
+    }
+}
+
+//                      __   _ ____  ___   ___    __
+//                     | _| / |___ \( _ ) / _ \  |_ |
+//    _____ _____ _____| |  | | __) / _ \| | | |  | |_____ _____ _____
+//   |_____|_____|_____| |  | |/ __/ (_) | |_| |  | |_____|_____|_____|
+//                     | |  |_|_____\___/ \___/   | |
+//                     |__|                      |__|
+@media (min-width:1280px) {
+    .cards-items{
+        width: calc(100% + 36px);
+    }
+    .card-2{
+        width: calc(33% - 26px);
+        margin-right: 24px;
+    }
+}
