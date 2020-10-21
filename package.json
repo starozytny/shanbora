@@ -26,6 +26,7 @@
         "not dead"
     ],
     "dependencies": {
+        "aos": "^2.3.4",
         "axios": "^0.19.2",
         "babel-plugin-loop-optimizer": "^1.4.1",
         "js-cookie": "^2.2.1",

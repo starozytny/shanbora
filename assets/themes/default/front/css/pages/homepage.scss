@@ -50,6 +50,19 @@ img, svg{
     color: var(--beta);
     opacity: 0.7;
 
+    @keyframes move{
+      0%{transform: translateY(5px);}
+      50%{transform: translateY(-5px);}
+      100%{transform: translateY(5px);}
+    }
+
+    [class^="icon-"]{
+      display: inline-block;
+      transform: translateY(5px);
+      animation: 3s ease-in-out 1s infinite alternate move;
+      margin-right: 4px;
+    }
+
     &:hover{
       opacity: 1;
     }
@@ -146,7 +159,7 @@ h2{
 //                     |__|                    |__|
 @media (min-width:768px) {
   header{
-    @include flex(row, center, center);
+    @include flex(row, center, space-between);
   }
   .header-infos{
     width: 370px;
@@ -244,5 +257,28 @@ h2{
 //                     | |  |_|  |_|    |_|  \___/   | |
 //                     |__|                         |__|
 @media (min-width: 1440px){
+  main{
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  header{
+    padding: 0 18px;
+  }
+}
 
+//                      __   _  __    ___   ___    __
+//                     | _| / |/ /_  / _ \ / _ \  |_ |
+//    _____ _____ _____| |  | | '_ \| | | | | | |  | |_____ _____ _____
+//   |_____|_____|_____| |  | | (_) | |_| | |_| |  | |_____|_____|_____|
+//                     | |  |_|\___/ \___/ \___/   | |
+//                     |__|                       |__|
+@media (min-width: 1600px){
+  main{
+    max-width: 1366px;
+    margin: 0 auto;
+  }
+  header{
+    padding: 0;
+    min-height: 85vh;
+  }
 }
