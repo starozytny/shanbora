@@ -79,7 +79,7 @@ class FormContact extends Component {
                             <div className="line">
                                 <TextArea valeur={message} identifiant="message" onChange={this.handleChange}>Message</TextArea>
                             </div>
-                            <ReCAPTCHA ref={this.recaptchaRef} size={"invisible"} sitekey="6LeJXdUUAAAAABW3t8yl9tkJ5PpSFdhKqvOpgGyY" />
+                            <ReCAPTCHA ref={this.recaptchaRef} size={"invisible"} sitekey="6LeECdoZAAAAADUrJBn_P5cp6PWfGEcfxlbHuPmL" />
                         </>
                     }
                     btn="Envoyer"
