@@ -74,7 +74,7 @@ export class Newsletter extends Component{
                     <div className="line">
                         <Input type="email" identifiant="email" placeholder="Ton adresse e-mail" valeur={email} onChange={this.handleChange}>Adresse e-mail</Input>
                     </div>
-                    <ReCAPTCHA ref={this.recaptchaRef} size={"invisible"} sitekey="6LeJXdUUAAAAABW3t8yl9tkJ5PpSFdhKqvOpgGyY" />
+                    <ReCAPTCHA ref={this.recaptchaRef} size={"invisible"} sitekey="6LeECdoZAAAAADUrJBn_P5cp6PWfGEcfxlbHuPmL" />
                     <div className="form-button">
                         <button type="submit" className="btn btn-primary"><span className="icon-mail"></span><span>Rester informer</span></button>
                     </div>
