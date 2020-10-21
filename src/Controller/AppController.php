@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Entity\Newsletter;
 use App\Entity\Rgpd;
 use App\Service\Mailer;
 use App\Service\SettingsService;
@@ -122,5 +123,29 @@ class AppController extends AbstractController
         }
 
         return $this->render('root/app/pages/contact/index.html.twig');
+    }
+
+    /**
+     * @Route("/newsletter", options={"expose"=true}, name="app_newsletter")
+     */
+    public function newsletter(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $data = json_decode($request->getContent());
+        $email = $data->email->value;
+
+        $existe = $em->getRepository(Newsletter::class)->findOneBy(['email' => $email]);
+        if($existe){
+            return new JsonResponse(['code' => 0, 'message' => 'Merci, mais j\'ai déjà ton adresse-email ! A bientôt !']);
+        }
+
+        $demande = (new Newsletter())
+            ->setEmail($email)
+        ;
+
+        $em->persist($demande); $em->flush();
+
+        return new JsonResponse(['code' => 1, 'message' => 'Super ! A bientôt pour les mises à jours !']);
     }
 }
