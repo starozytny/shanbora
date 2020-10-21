@@ -18,27 +18,27 @@
 
     {% set menu = [
         {
-            'path': path('app_homepage'),
+            'path': path('app_homepage'), 'blank': false,
             'label': 'Accueil',
             'name': 'accueil'
         },
         {
-            'path': path('app_homepage'),
+            'path': "https://www.instagram.com/shanbo_daltonien/", 'blank': true,
             'label': 'Instragram',
             'name': 'instagram'
         },
         {
-            'path': path('app_homepage'),
+            'path': "https://www.linkedin.com/in/chanbora-chhun-00a0a0112/", 'blank': true,
             'label': 'LinkedIn',
             'name': 'linkedIn'
         },
         {
-            'path': path('app_homepage'),
+            'path': "https://github.com/starozytny", 'blank': true,
             'label': 'Github',
             'name': 'github'
         },
         {
-            'path': path('app_contact'),
+            'path': path('app_contact'), 'blank': false,
             'label': 'CONTACT',
             'name': 'nous-contacter'
         }
@@ -47,7 +47,7 @@
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         {% set menuAccount = [
             {
-                'path': path('app_logout'),
+                'path': path('app_logout'), 'blank': false,
                 'label': 'Se déconnecter',
                 'name': 'logout'
             }, 
@@ -57,7 +57,7 @@
         {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
             {% set menuImpersonate = [
                 {
-                    'path': path('super_users_index', {'_switch_user': '_exit'}),
+                    'path': path('super_users_index', {'_switch_user': '_exit'}), 'blank': false,
                     'label': 'Quitter impersonate',
                     'name': 'exit-impersonate'
                 }, 
