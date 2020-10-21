@@ -37,7 +37,10 @@ nav{
         padding: 10px;
         @include fontBold();
         font-size: 24px;
-        color: var(--color0);
+
+        a{
+            color: var(--color3);
+        }
 
         [class^="icon-"]{ 
             padding: 12px;

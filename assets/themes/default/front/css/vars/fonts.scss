@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Barlow:300,400,600,700&display=swap');
 
-//Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-//Icons made by <a href="https://www.flaticon.com/authors/tomas-knop" title="Tomas Knop">Tomas Knop</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-
-
 @font-face {
     font-family: 'icomoon';
     src:  url('../../fonts/icomoon.eot?s30i5c');
@@ -31,22 +27,11 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+.icon-down-arrow:before {
+  content: "\e901";
+}
 .icon-mail:before {
   content: "\e900";
-}
-.icon-down-arrow .path1:before {
-  content: "\e901";
-  color: rgb(255, 193, 7);
-}
-.icon-down-arrow .path2:before {
-  content: "\e902";
-  margin-left: -1em;
-  color: rgb(0, 0, 0);
-}
-.icon-down-arrow .path3:before {
-  content: "\e903";
-  margin-left: -1em;
-  color: rgb(0, 0, 0);
 }
 .icon-github:before {
   content: "\e904";

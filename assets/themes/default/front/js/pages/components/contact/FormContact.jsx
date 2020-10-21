@@ -72,9 +72,13 @@ class FormContact extends Component {
                     error={error}
                     inputs={
                         <>
-                            <Input valeur={firstname} identifiant="firstname" onChange={this.handleChange}>Nom / Raison sociale</Input>
-                            <Input type="email" valeur={email} identifiant="email" onChange={this.handleChange}>Email</Input>
-                            <TextArea valeur={message} identifiant="message" onChange={this.handleChange}>Message</TextArea>
+                            <div className="line line-2">
+                                <Input valeur={firstname} identifiant="firstname" onChange={this.handleChange}>Nom / Raison sociale</Input>
+                                <Input type="email" valeur={email} identifiant="email" onChange={this.handleChange}>Email</Input>
+                            </div>
+                            <div className="line">
+                                <TextArea valeur={message} identifiant="message" onChange={this.handleChange}>Message</TextArea>
+                            </div>
                             <ReCAPTCHA ref={this.recaptchaRef} size={"invisible"} sitekey="6LeJXdUUAAAAABW3t8yl9tkJ5PpSFdhKqvOpgGyY" />
                         </>
                     }

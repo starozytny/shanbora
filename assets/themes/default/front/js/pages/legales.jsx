@@ -15,7 +15,7 @@ function formulaire(elem){
         ReactDOM.render(
             <FormRgpd url={Routing.generate('app_rgpd')} >
                 Les informations recueillies à partir de ce formulaire sont 
-                transmises au service de communication de Logilink pour traiter vos demandes.
+                transmises à Chanbora Chhun pour traiter vos demandes.
                 <br />
                 Pour plus d'informations, veuillez consulter <a href={Routing.generate('app_politique')}>notre politique de confidentialité</a>.
             </FormRgpd>,

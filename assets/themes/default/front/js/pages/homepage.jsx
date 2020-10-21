@@ -1,4 +1,4 @@
-import '../../css/pages/security.scss';
+import '../../css/pages/homepage.scss';
 import React, {Components} from 'react';
 import ReactDOM from 'react-dom';
 // import Compteur from '../components/composants/Compteur';
