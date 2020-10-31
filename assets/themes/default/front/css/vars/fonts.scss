@@ -27,18 +27,25 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-.icon-down-arrow:before {
-  content: "\e901";
-}
-.icon-mail:before {
-  content: "\e900";
-}
-.icon-github:before {
-  content: "\e904";
-}
-.icon-instagram:before {
-  content: "\e905";
-}
-.icon-linkedin:before {
-  content: "\e906";
-}
+  .icon-cancel:before {
+    content: "\e902";
+  }
+  .icon-menu:before {
+    content: "\e903";
+  }
+  .icon-down-arrow:before {
+    content: "\e901";
+  }
+  .icon-mail:before {
+    content: "\e900";
+  }
+  .icon-github:before {
+    content: "\e904";
+  }
+  .icon-instagram:before {
+    content: "\e905";
+  }
+  .icon-linkedin:before {
+    content: "\e906";
+  }
+  

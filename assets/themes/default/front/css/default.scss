@@ -1,5 +1,9 @@
 @import "~normalize.css";
 
+.grecaptcha-badge{
+    display: none !important;
+}
+
 :root{
     --color0: #9D0208;
     --color1: #FEC61F;
