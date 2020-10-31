@@ -26,7 +26,7 @@ export class Menu extends Component {
         let tab = location.pathname.split("/");
         tab = tab.filter(elem => elem != "");
 
-        if(tab.length === 0){ tab.push('logilink') }
+        if(tab.length === 0){ tab.push('chanbora') }
 
         tab.forEach(element => {
             this.state.menu.forEach(el => {
@@ -59,7 +59,7 @@ export class Menu extends Component {
         return <>
             <nav className={menuOpened}>
                 <div className="nav-header">
-                    <a href={Routing.generate('app_homepage')} title="Logilink">
+                    <a href={Routing.generate('app_homepage')} title="Chanbora Chhun">
                         Shanbo
                     </a>
                     <div className="nav-header-actions">
