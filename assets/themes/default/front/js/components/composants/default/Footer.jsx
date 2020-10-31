@@ -8,7 +8,7 @@ export class Footer extends Component {
                 <div className="footer">
                     <div className="footer-menu">
                         <div className="footer-logo">
-                            <a href={Routing.generate('app_homepage')} title="Logilink">
+                            <a href={Routing.generate('app_homepage')} title="Chanbora Chhun">
                                 Shanbo - Chanbora Chhun développeur web fullstack à Marseille
                             </a>
                         </div>
