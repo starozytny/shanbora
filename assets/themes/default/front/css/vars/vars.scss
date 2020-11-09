@@ -1,7 +1,7 @@
-@mixin fontLight() { font-family: 'Poppins', sans-serif; font-weight: 300; }
-@mixin fontRegular() { font-family: 'Poppins', sans-serif; font-weight: 400; }
-@mixin fontSemibold() { font-family: 'Poppins', sans-serif; font-weight: 600; }
-@mixin fontBold() { font-family: 'Poppins', sans-serif; font-weight: 700; }
+@mixin fontLight() { font-family: 'barlowlight', sans-serif; font-weight: 300; }
+@mixin fontRegular() { font-family: 'barlowregular', sans-serif; font-weight: 400; }
+@mixin fontSemibold() { font-family: 'barlowsemibold', sans-serif; font-weight: 600; }
+@mixin fontBold() { font-family: 'barlowbold', sans-serif; font-weight: 700; }
 
 @mixin flex($direction: row, $align: center, $justify: center) {
   display: flex;flex-direction: $direction;
