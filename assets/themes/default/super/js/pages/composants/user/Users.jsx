@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
-import toastr from 'toastr';
-import axios from 'axios/dist/axios';
-import Routing from '../../../../../../../../public/bundles/fosjsrouting/js/router.min.js';
-import Loader from '../../../../../react/functions/loader';
-import ActionsArray from '../../../../../react/functions/actions_array';
-import {Page} from '../../../../../react/composants/page/Page';
-import {Aside} from '../../../../../react/composants/page/Aside';
-import {getSelector} from '../../../../../react/composants/page/Selector';
-import Swal from 'sweetalert2';
-import {AsideUser} from './AsideUser';
-import {AsideImport} from './AsideImport';
-import {UsersList} from './UsersList';
+import toastr             from 'toastr';
+import axios              from 'axios/dist/axios';
+import Swal               from 'sweetalert2';
+
+import Routing            from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
+import Loader             from '@reactFolder/functions/loader';
+import ActionsArray       from '@reactFolder/functions/actions_array';
+import {Page}             from '@reactFolder/composants/page/Page';
+import {Aside}            from '@reactFolder/composants/page/Aside';
+import {getSelector}      from '@reactFolder/composants/page/Selector';
+
+import {AsideUser}        from './AsideUser';
+import {AsideImport}      from './AsideImport';
+import {UsersList}        from './UsersList';
 
 export class Users extends Component {
     constructor (props) {

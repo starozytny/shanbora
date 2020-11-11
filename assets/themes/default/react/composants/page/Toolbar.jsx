@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Search} from './Search';
+import {Search}           from './Search';
 
 export class Toolbar extends Component {
     render () {

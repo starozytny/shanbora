@@ -1,0 +1,65 @@
+@import "../../../vars/vars.scss";
+
+.event{
+    position: relative;
+    @include flex(row, flex-start, flex-start);
+    background-color: var(--alpha);
+    margin-bottom: 12px;
+    width: 100%;
+    border-radius: 2px;
+    @include boxshadow();
+
+    .event-color{
+        position: absolute;
+        top: 0; left: 0;
+        width: 4px;
+        height: 100%;
+        border-radius: 2px 0 0 2px;
+        background-color: var(--color0);
+    }
+    .event-infos{
+        padding: 8px 12px 8px 14px;
+        width: calc(100% - 26px - 52px);
+    }
+    .event-when{
+        width: 52px;
+        padding: 8px 0;
+        opacity: 0.7;
+        font-size: 14px;
+    }
+    .event-avatars{
+        display: none;
+        @include flex(row, flex-start, flex-start);
+        margin-top: 8px;
+
+        img{
+            width: 24px; height: 24px;
+            border-radius: 50px;
+            @include boxshadow();
+        }
+    }
+}
+
+//                      __   _ ____  ___   ___    __
+//                     | _| / |___ \( _ ) / _ \  |_ |
+//    _____ _____ _____| |  | | __) / _ \| | | |  | |_____ _____ _____
+//   |_____|_____|_____| |  | |/ __/ (_) | |_| |  | |_____|_____|_____|
+//                     | |  |_|_____\___/ \___/   | |
+//                     |__|                      |__|
+@media (min-width:1280px) {
+    .event{
+        .event-infos{
+            padding: 4px 8px 4px 8px;
+            width: calc(100% - 16px);
+            font-size: 14px;
+        }
+        
+        .event-when{
+            padding: 4px 0;
+            display: none;
+        }
+        .event-avatars{
+            display: none;
+        }
+    }
+}

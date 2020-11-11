@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Aside} from './Aside';
+import {Aside}            from './Aside';
 
 export class Others extends Component {
     constructor (props) {

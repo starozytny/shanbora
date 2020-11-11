@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Menu} from './Menu';
+import {Menu}             from './Menu';
 
 export class Default extends Component {
     constructor(props) {

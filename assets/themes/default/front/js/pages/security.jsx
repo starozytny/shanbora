@@ -1,6 +1,6 @@
 import '../../css/pages/security.scss';
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React        from 'react';
+import ReactDOM     from 'react-dom';
 import {ButtonLost} from './components/security/FormLost';
 import {FormReinit} from './components/security/FormReinit';
 

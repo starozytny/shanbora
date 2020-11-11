@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
-import toastr from 'toastr';
-import axios from 'axios/dist/axios';
-import Routing from '../../../../../../../../public/bundles/fosjsrouting/js/router.min.js';
-import Loader from '../../../../../react/functions/loader';
-import Validateur from '../../../../../react/functions/validateur';
-import ActionsArray from '../../../../../react/functions/actions_array';
-import {Input, Checkbox} from '../../../../../react/composants/Fields';
-import {Alert} from '../../../../../react/composants/Alert';
-import {Drop} from '../../../../../react/composants/Drop';
+import toastr             from 'toastr';
+import axios              from 'axios/dist/axios';
+
+import Routing            from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
+import Loader             from '@reactFolder/functions/loader';
+import Validateur         from '@reactFolder/functions/validateur';
+import ActionsArray       from '@reactFolder/functions/actions_array';
+import {Input, Checkbox}  from '@reactFolder/composants/Fields';
+import {Alert}            from '@reactFolder/composants/Alert';
+import {Drop}             from '@reactFolder/composants/Drop';
 
 export class AsideUser extends Component {
     constructor (props) {

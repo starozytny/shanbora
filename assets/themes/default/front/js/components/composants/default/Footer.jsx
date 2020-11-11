@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Routing from '../../../../../../../../public/bundles/fosjsrouting/js/router.min.js';
+import Routing            from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
 
 export class Footer extends Component {
     render () {

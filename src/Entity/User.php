@@ -2,8 +2,11 @@
 
 namespace App\Entity;
 
+use App\Entity\Agenda\AgendaEvent;
 use App\Repository\UserRepository;
 use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Exception;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -90,6 +93,11 @@ class User implements UserInterface
      */
     private $last_login;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=AgendaEvent::class, mappedBy="users")
+     */
+    private $agendaEvents;
+
     public function __construct()
     {
         $this->setRoles(['ROLE_USER']);
@@ -102,6 +110,7 @@ class User implements UserInterface
         } catch (Exception $e) {
             throw new Exception($e);
         }
+        $this->agendaEvents = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -339,5 +348,33 @@ class User implements UserInterface
             return null;
         }
         return date_format($this->getLastLogin(), 'd/m/Y \à H:i');
+    }
+
+    /**
+     * @return Collection|AgendaEvent[]
+     */
+    public function getAgendaEvents(): Collection
+    {
+        return $this->agendaEvents;
+    }
+
+    public function addAgendaEvent(AgendaEvent $agendaEvent): self
+    {
+        if (!$this->agendaEvents->contains($agendaEvent)) {
+            $this->agendaEvents[] = $agendaEvent;
+            $agendaEvent->addUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAgendaEvent(AgendaEvent $agendaEvent): self
+    {
+        if ($this->agendaEvents->contains($agendaEvent)) {
+            $this->agendaEvents->removeElement($agendaEvent);
+            $agendaEvent->removeUser($this);
+        }
+
+        return $this;
     }
 }

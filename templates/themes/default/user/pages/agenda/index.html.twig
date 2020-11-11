@@ -3,5 +3,7 @@
 {% block title %}Agenda {{ parent() }}{% endblock %}
 
 {% block main_content %}
-    <h1>Agenda</h1>
+    <h1>Calendrier</h1>
+
+    <div id="agenda" data-week="{{ week }}" data-today="{{ today }}" data-events="{{ events }}"></div>
 {% endblock %}

@@ -1,5 +1,7 @@
 @import "../../../super/css/components/form.scss";
 
-input, textarea, select{
-  border-color: var(--colorBorder);
+.line{
+    input, textarea, select{
+        border-color: var(--colorDisabled);
+    }
 }

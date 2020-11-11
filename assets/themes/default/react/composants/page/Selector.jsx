@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 export function Selector({identifiant}){
     return (
-        <input type="checkbox" name="item-selector" id="item-selector" value={identifiant} />
+        <input type="checkbox" name="item-selector" id={"item-selector-" + identifiant} value={identifiant} />
     )
 }
 
