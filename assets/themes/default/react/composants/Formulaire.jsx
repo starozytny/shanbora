@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Alert} from './Alert';
+import React from 'react';
+import {Alert}            from './Alert';
 
 export function Formulaire({onSubmit, inputs, success, error, btn, children}) {
     return ( 

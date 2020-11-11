@@ -135,6 +135,15 @@ select{
             margin-right: 5px;
         }
     }
+    .form-files{
+        .dzu-dropzone{
+            border: 1px dashed var(--danger);
+        
+            .dzu-inputLabel{
+                color: var(--danger);
+            }
+        }
+    }
 }
 
 .form-button{
@@ -203,7 +212,7 @@ select{
 }
 
 .form-files{
-    @include flex(flex, center, flex-start);
+    @include flex(row, center, flex-start);
 
     .form-image, .form-logo, .form-avatar{
         margin-right: 25px;

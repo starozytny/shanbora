@@ -11,6 +11,143 @@
 {% block title %}Développeur web fullstack Marseille Chanbora Chhun, Symfony, React{% endblock %}
 
 {% block main_content %}
+    <!-- for google page speed -->
+    <style type="text/css">
+        .header-title{ padding: 0 12px; }
+        .header-title .subtitle{
+            display: flex; flex-direction: row;
+            align-items: center; justify-content: flex-start;
+            color: var(--color0);
+            font-family: 'barlowsemibold', sans-serif; font-weight: 600;
+        }
+        .header-title .subtitle::before{
+            content: '';
+            display: inline-block;
+            background: var(--color0);
+            width: 50px;
+            height: 3px;
+            margin-right: 8px;
+        }
+
+        .content{ opacity: 0.85; }
+
+        .title{
+            font-family: 'barlowbold', sans-serif; font-weight: 700;
+            font-size: 28px;
+            padding: 12px 0;
+        }
+        .title h1 { font-size: 28px; }
+
+        .header-scroll{
+            padding: 0 12px;
+            margin-top: 48px;
+            text-align: right;
+        }
+        @keyframes move{
+            0%{transform: translateY(5px);}
+            50%{transform: translateY(-5px);}
+            100%{transform: translateY(5px);}
+        }
+        .header-scroll a{
+            color: var(--beta);
+            opacity: 0.7;            
+        }
+        .header-scroll [class^="icon-"]{
+            display: inline-block;
+            transform: translateY(5px);
+            animation: 3s ease-in-out 0.4s infinite alternate move;
+            margin-right: 4px;
+        }
+        .header-scroll:hover{ opacity: 1; }
+
+        .header-drawing{
+            position: relative;
+            margin-top: 48px;
+        }
+        .header-drawing{ overflow: hidden; }
+
+        img:nth-child(1), img:nth-child(2){
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        img:nth-child(2){
+            transform: scale(0.5);
+        }
+
+        img:nth-child(3){
+            position: relative;
+            z-index: 1;
+            transform: scale(0.95) translateY(50px);
+        }
+
+        @media (min-width:768px) {
+            header{
+                display: flex; flex-direction: row;
+                align-items: center; justify-content: space-between;
+            }
+            .header-infos{ width: 370px; }
+            .header-drawing{
+                width: calc(100% - 370px);
+                margin-top: 0;
+            }
+            .header-scroll{ margin-top: 148px; }
+        }
+
+        @media (min-width: 1024px) {
+            header{ padding: 0 18px; }
+            .header-infos{ margin-right: 150px; }
+            .header-title{ padding: 0; }
+            .header-title .title, .header-title h1 { font-size: 36px; }
+
+            .header-drawing{ width: 468px; overflow: initial; }
+            @keyframes respire {
+                0%{transform: scale(0.3) translate(-550px, 780px) rotate(-14deg);}
+                50%{transform: scale(0.31) translate(-550px, 780px) rotate(-14deg);}
+                100%{transform: scale(0.3) translate(-550px, 780px) rotate(-14deg);}
+            }
+            @keyframes respire2 {
+                0%{transform: scale(1);}
+                50%{transform: scale(1.1);}
+                100%{transform: scale(1);}
+            }
+            .header-drawing .image{ 
+                overflow: initial;
+                transform: translateX(-40px);
+            }
+            .header-drawing img:nth-child(1){ animation: 6s ease-in-out 0.4s infinite alternate respire2; }
+            .header-drawing img:nth-child(3){ transform: scale(1) translateY(100px); }
+            .header-drawing img:nth-child(2){ 
+                transform-origin: center center;
+                transform: scale(0.3) translate(-550px, 780px) rotate(-14deg);
+                animation: 6s ease-in-out 0.4s infinite alternate respire;
+            }
+            .header-scroll{ transform: translateY(100px); }
+        }
+
+        @media (min-width:1280px) {
+            header{ min-height: 90vh; }
+            .header-infos{
+                width: 500px;
+                margin-right: 260px;
+            }
+            .header-title .title, .header-title h1{ font-size: 46px; }
+            .header-title .subtitle { font-size: 20px; }
+            .header-scroll { transform: translateY(70px); }
+        }
+        @media (min-width: 1440px){
+            header{ padding: 0 18px; }
+        }
+        @media (min-width: 1600px){
+            header{
+                padding: 0;
+                min-height: 85vh;
+            }
+        }
+    </style>
+    <!-- for google page speed -->
     <header>
         <div class="header-infos">
             <div class="header-title" data-aos="fade-right">

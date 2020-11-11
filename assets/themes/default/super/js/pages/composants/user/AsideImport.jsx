@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import axios from 'axios/dist/axios';
-import Loader from '../../../../../react/functions/loader';
-import {Radiobox} from '../../../../../react/composants/Fields';
-import {Alert} from '../../../../../react/composants/Alert';
-import {Drop} from '../../../../../react/composants/Drop';
+import axios              from 'axios/dist/axios';
+
+import Loader             from '@reactFolder/functions/loader';
+import {Radiobox}         from '@reactFolder/composants/Fields';
+import {Alert}            from '@reactFolder/composants/Alert';
+import {Drop}             from '@reactFolder/composants/Drop';
 
 export class AsideImport extends Component {
     constructor (props) {

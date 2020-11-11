@@ -1,1 +1,106 @@
-@import "../../../super/css/components/button.scss";
+@import '../vars/vars.scss';
+
+.btn{
+    display: inline-block;
+    border: 1px solid var(--color5);
+    text-transform: uppercase;
+    padding: 12px 22px;
+    margin: 12px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: var(--alpha);
+    outline: none;
+    color: var(--color0);
+    transition: all 0.2s ease-in-out;
+
+    span{
+        display: inline-block;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    &:hover, &:focus{
+        span{
+            transform: scale(0.97);
+        }
+    }
+}
+a.btn{
+    width: calc(100% - 44px);
+    text-align: center;
+}
+
+.btn-icon{
+    position: relative;
+    display: flex;
+    border-radius: 5px;
+    width: 18px;
+    height: 18px;
+    opacity: 0.6;
+    cursor: pointer;
+    transition: opacity 0.2s ease-in-out;
+    border: none;
+    background-color: transparent;
+
+    [class^="icon-"]{
+        font-size: 18px;
+    }
+
+    &:hover{
+        opacity: 1;
+
+        .tooltip{
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .tooltip{
+        position: absolute;
+        top: -30px;
+        right: 0;
+        background-color: rgba(var(--betaRGBA), 0.7);
+        color: var(--alpha);
+        padding: 2px 6px;
+        border-radius: 4px 4px 0 4px;
+        transform: scale(0);
+        font-size: 14px;
+        opacity: 0;
+        transform-origin: bottom right;
+        transition: all 0.1s ease-in-out;
+    }
+    .tooltip-bot-right{
+        top: auto;
+        bottom: -35px;
+        border-radius: 4px 0 4px 4px;
+    }
+}
+
+.btn-isSeen{
+    opacity: 0.4;
+    padding: 0;
+    width: 14px;
+    height: 14px;
+
+    [class^="icon-"]{
+        font-size: 14px;
+    }
+}
+
+$types:
+    "primary" var(--alpha) var(--primary) var(--primaryRGBA),
+    "warning" var(--alpha) var(--warning) var(--warningRGBA),
+    "danger" var(--alpha) var(--danger) var(--dangerRGBA);
+
+@each $name, $txtColor, $mainColor, $shadowColor in $types{
+    .btn-#{$name}{
+        color: $txtColor;
+        background-color: $mainColor;
+        border-color: $mainColor;
+        box-shadow: 0 0 15px rgba($shadowColor, 0.25);
+    
+        &:hover, &:focus{
+            opacity: 0.95;
+            box-shadow: 0 0 15px rgba($shadowColor, 0.4);
+        }
+    }
+}

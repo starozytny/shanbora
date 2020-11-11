@@ -1,0 +1,40 @@
+@import "../../../vars/vars.scss";
+
+.agenda-table-header{
+    @include flex(row, center, flex-start);
+    padding-bottom: 36px;
+
+    .agenda-item{
+        @include flex(column, center, center);
+        width: 14%;
+        opacity: 0.6;
+
+        .label{
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        .label-desktop{
+            display: none;
+        }
+        .number{
+            @include fontSemibold();
+        }
+        
+        &.active{
+            color: var(--color3);
+        }
+    }
+}
+
+//                      __   _ ____  ___   ___    __
+//                     | _| / |___ \( _ ) / _ \  |_ |
+//    _____ _____ _____| |  | | __) / _ \| | | |  | |_____ _____ _____
+//   |_____|_____|_____| |  | |/ __/ (_) | |_| |  | |_____|_____|_____|
+//                     | |  |_|_____\___/ \___/   | |
+//                     |__|                      |__|
+@media (min-width:1280px) {
+    .agenda-table-header{
+        margin-left: 44px;
+        width: calc(100% - 44px - 4px);
+    }
+}

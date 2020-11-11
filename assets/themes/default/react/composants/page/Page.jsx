@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {Pagination} from '../Pagination';
-import {Toolbar} from './Toolbar.jsx';
-import {Others} from './Others.jsx';
+import {Pagination}       from '../Pagination';
+import {Toolbar}          from './Toolbar.jsx';
+import {Others}           from './Others.jsx';
 
 export class Page extends Component {
     constructor (props) {
@@ -20,7 +20,7 @@ export class Page extends Component {
         } = this.props
 
         return <>
-            <div className="page-infos">{infos}</div>
+            {infos ? <div className="page-infos">{infos}</div> : null}
             <Toolbar haveBack={haveBack} hrefBack={hrefBack} txtBack={txtBack} haveSearch={haveSearch} onSearch={onSearch} haveAdd={haveAdd} onAdd={onAdd}/>
             {content}
             {havePagination ? <Pagination perPage={perPage} taille={taille} items={itemsPagination} onUpdate={(items) => this.props.onUpdate(items)}/> : null}

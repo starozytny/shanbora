@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import axios from 'axios/dist/axios';
-import Routing from '../../../../../../../../public/bundles/fosjsrouting/js/router.min.js';
-import Loader from '../../../../../react/functions/loader';
-import Validateur from '../../../../../react/functions/validateur';
-import {Input, TextArea} from '../../../../../react/composants/Fields';
-import {Drop} from '../../../../../react/composants/Drop';
+import axios              from 'axios/dist/axios';
+
+import Routing            from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
+import Loader             from '@reactFolder/functions/loader';
+import Validateur         from '@reactFolder/functions/validateur';
+import {Input, TextArea}  from '@reactFolder/composants/Fields';
+import {Drop}             from '@reactFolder/composants/Drop';
 
 function getBase64(file, self) {
     var reader = new FileReader();

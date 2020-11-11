@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import Routing from '../../../../../../../../public/bundles/fosjsrouting/js/router.min.js';
-import {Selector} from '../../../../../react/composants/page/Selector';
+
+import Routing            from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
+import {Selector}         from '@reactFolder/composants/page/Selector';
 
 export class UsersList extends Component {
     render () {

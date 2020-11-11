@@ -1,4 +1,5 @@
 var Encore = require('@symfony/webpack-encore');
+var path = require('path');
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
@@ -14,6 +15,16 @@ Encore
     // only needed for CDN's or sub-directory deploy
     //.setManifestKeyPrefix('build/')
 
+    .addAliases({
+        '@reactFolder': path.resolve(__dirname, './assets/themes/default/react'),
+        '@frontFolder': path.resolve(__dirname, './assets/themes/default/front'),
+        '@backFolder': path.resolve(__dirname, './assets/themes/default/back'),
+        '@superFolder': path.resolve(__dirname, './assets/themes/default/super'),
+        '@userFolder': path.resolve(__dirname, './assets/themes/default/user'),
+        '@publicFolder': path.resolve(__dirname, './public'),
+        '@nodeModulesFolder': path.resolve(__dirname, './node_modules'),
+    })
+
     .copyFiles({
         from: './assets/themes/default/front/fonts',
         to: 'themes/default/front/fonts/[path][name].[ext]',
@@ -22,14 +33,14 @@ Encore
         from: './assets/themes/default/front/images',
         to: 'themes/default/front/images/[path][name].[ext]',
     })
-    .copyFiles({
-        from: './assets/themes/default/back/fonts',
-        to: 'themes/default/back/fonts/[path][name].[ext]',
-    })
-    .copyFiles({
-        from: './assets/themes/default/back/images',
-        to: 'themes/default/back/images/[path][name].[ext]',
-    })
+    // .copyFiles({
+    //     from: './assets/themes/default/back/fonts',
+    //     to: 'themes/default/back/fonts/[path][name].[ext]',
+    // })
+    // .copyFiles({
+    //     from: './assets/themes/default/back/images',
+    //     to: 'themes/default/back/images/[path][name].[ext]',
+    // })
     .copyFiles({
         from: './assets/themes/default/super/fonts',
         to: 'themes/default/super/fonts/[path][name].[ext]',

@@ -1,1 +1,53 @@
-@import "../../../super/css/components/alert.scss";
+@import "../vars/vars.scss";
+
+.alert{
+    display: none;
+    margin: 15px 0;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+
+    [class^="icon-"]{
+        display: inline-block;
+        margin-right: 10px;
+        transform: translateY(2px);
+    }
+}
+
+.alert.active{
+    @include flex(row, flex-start, flex-start);
+}
+
+$types:
+    "danger" var(--danger) var(--dangerRGBA),
+    "primary" var(--primary) var(--primaryRGBA),
+    "info" var(--primary) var(--primaryRGBA),
+    "warning" var(--warning) var(--warningRGBA),
+    "success" var(--success) var(--successRGBA);
+
+@each $name, $color, $shadowColor in $types{
+    .alert-#{$name}{
+        background-color: rgba($shadowColor, 0.29);
+        color: $color;
+    }
+}
+
+.alert-color{
+    padding: 0px 12px;
+    min-width: 150px;
+    display: inline-block;
+    border-radius: 10px;
+}
+
+.trumbowyg-dropdown button{
+    font-size: 14px !important;
+}
+
+.trumbowyg-alert_danger-dropdown-button,
+.trumbowyg-alert_info-dropdown-button,
+.trumbowyg-alert_primary-dropdown-button,
+.trumbowyg-alert_warning-dropdown-button,
+.trumbowyg-alert_success-dropdown-button{
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
