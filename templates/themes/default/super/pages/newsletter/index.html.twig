@@ -1,0 +1,9 @@
+{% extends 'themes/default/super/pages/newsletter/template.html.twig' %}
+
+{% block title %}Liste des demandes de newsletter{{ parent() }}{% endblock %}
+
+{% block main_content %}
+    <h1>Newsletter</h1>
+        
+    <div id="newsletter" data-demandes="{{ demandes }}"></div>
+{% endblock %}
