@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import ReactPaginate from 'react-paginate';
+import ReactPaginate      from 'react-paginate';
 
 export class Pagination extends Component {
     constructor (props) {

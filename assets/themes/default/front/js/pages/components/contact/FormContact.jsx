@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import {Input, TextArea} from '../../../../../react/composants/Fields';
-import {Formulaire} from '../../../../../react/composants/Formulaire';
-import Validateur from '../../../../../react/functions/validateur';
-import AjaxSend from '../../../../../react/functions/ajax_classique';
+
+import {Input, TextArea}  from '@reactFolder/composants/Fields';
+import {Formulaire}       from '@reactFolder/composants/Formulaire';
+import Validateur         from '@reactFolder/functions/validateur';
+import AjaxSend           from '@reactFolder/functions/ajax_classique';
+
 import ReCAPTCHA from "react-google-recaptcha";
 
 class FormContact extends Component {

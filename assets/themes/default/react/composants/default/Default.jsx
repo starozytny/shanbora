@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Menu} from './Menu';
-import {Header} from './Header';
+import {Menu}             from './Menu';
+import {Header}           from './Header';
 
 export class Default extends Component {
     constructor(props) {

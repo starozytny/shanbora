@@ -1,12 +1,12 @@
 import '../css/default.scss';
 import toastr from 'toastr';
 
-const routes = require('../../../../../public/js/fos_js_routes.json');
-import Routing from '../../../../../public/bundles/fosjsrouting/js/router.min.js';
+const routes = require('@publicFolder/js/fos_js_routes.json');
+import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
 
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import {Default} from '../../react/composants/default/Default';
+import {Default} from '@reactFolder/composants/default/Default';
 import {Settings} from './pages/composants/settings/Settings';
 
 Routing.setRoutingData(routes);

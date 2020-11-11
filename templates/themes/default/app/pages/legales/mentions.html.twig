@@ -5,11 +5,13 @@
 {% block main_content %}
     <h1>Mentions légales</h1>
 
+    {% set websiteName = "Chanbora Chhun" %}
+
     <section class="legales">
         <div>
             <h2>Editeur du site</h2>
             <p>
-                Ce site est édité par la Chanbora Chhun. <br>
+                Ce site est édité par {{ websiteName }}. <br>
                 Adresse : 5 rue nationale, 13001 Marseille. <br>
                 E-mail : chanbora.chhun@outlook.fr
             </p>
@@ -49,12 +51,12 @@
                 <h3>Liens externes</h3>
                 <p>
                     Les liens présents dans les pages de ce site ont été incorporés à titre de commodités. 
-                    N'étant pas propriétaire de ceux-ci et ne disposant sur eux d'aucun contrôle, je décline toutes
-                    responsabilités quant au contenu publié par ces sites tiers, y
+                    N'étant pas propriétaire de ceux-ci et ne disposant sur eux d'aucun contrôle, la société 
+                    {{ websiteName }} décline toutes responsabilités quant au contenu publié par ces sites tiers, y 
                     compris les liens et services qu'ils mettent en oeuvre.
                     <br><br>
                     Tout lien dirigeant vers le présent site doit cibler sa page d'accueil et ne peut être 
-                    autorisé sans le consentement préalable écrit de Chanbora Chhun.
+                    autorisé sans le consentement préalable écrit de la société la société {{ websiteName }}.
                 </p>
             </div>
             <div>

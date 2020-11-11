@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Analytics from '../functions/analytics';
-import Cookies from 'js-cookie/src/js.cookie';
-import Swal from 'sweetalert2'
+import Analytics          from '../functions/analytics';
+import Cookies            from 'js-cookie/src/js.cookie';
+import Swal               from 'sweetalert2'
 
 // Nom cookie pour Google analytics
 const consentGlobal = 'hasConsentGlobalLocal';

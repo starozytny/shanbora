@@ -1,9 +1,10 @@
 import '../../css/pages/legales.scss';
-import Routing from '../../../../../../public/bundles/fosjsrouting/js/router.min.js';
-import React, {Components} from 'react';
-import ReactDOM from 'react-dom';
-import FormRgpd from './components/legales/FormRgpd';
-import {ActionCookies} from '../components/composants/Cookies';
+
+import Routing            from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
+import React              from 'react';
+import ReactDOM           from 'react-dom';
+import FormRgpd           from './components/legales/FormRgpd';
+import {ActionCookies}    from '../components/composants/Cookies';
 
 cookies();
 formulaire('form-rgpd');

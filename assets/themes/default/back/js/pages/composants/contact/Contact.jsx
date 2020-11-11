@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import Routing from '../../../../../../../../public/bundles/fosjsrouting/js/router.min.js';
-import {Page} from '../../../../../react/composants/page/Page';
-import ActionsClassique from '../../../../../react/functions/actions_classique';
+
+import Routing            from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
+import {Page}             from '@reactFolder/composants/page/Page';
+import ActionsClassique   from '@reactFolder/functions/actions_classique';
 
 export class ContactList extends Component {
     constructor (props){

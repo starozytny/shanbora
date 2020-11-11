@@ -1,5 +1,286 @@
-@import "../../../super/css/components/form.scss";
+@import '../vars/vars.scss';
+
+form{
+    .alert{
+        margin-top: 0;
+    }
+}
+
+.form-group{
+    @include flex(column, flex-start, flex-start);
+}
+
+.react-datepicker-wrapper{
+    width: 100%;
+}
+
+.form-title{
+    display: block;
+    @include fontSemibold();
+    margin-bottom: 16px;
+}
+
+.line{
+    @include flex(column, stretch, flex-start);
+    width: 100%;
+    margin-bottom: 20px;
+
+    .form-group:not(:last-child){
+        margin-bottom: 10px;
+    }
+
+    & > .line:last-child{
+        margin-bottom: 0;
+    }
+}
+
+.line{
+    label{
+        display: inline-block;
+        font-size: 14px;
+        text-transform: uppercase;
+        color: var(--color6);
+        margin-bottom: 5px;
+    }
+}
+
+input, textarea, select{
+    border: 1px solid var(--color5);
+    padding: 8px 10px;
+    border-radius: 3px;
+    font-size: 14px;
+    width: calc(100% - 20px);
+    outline: none;
+
+    &:focus{
+        border: 1px solid rgba(var(--color0RGBA), 0.3);
+    }
+}
+
+select{
+    padding: 6.5px 10px;
+}
+
+.checkbox-items, .radiobox-items{
+    @include flex(row, stretch, flex-start);
+    flex-wrap: wrap;
+    & > .checkbox-item:not(:last-child){
+        margin-right: 10px;
+    }
+}
+.checkbox-item{
+    margin-top: 4px;
+    &.checked > label{
+        border: 1px solid var(--color6);
+        color: var(--beta);
+        opacity: 1;
+
+        &:hover{
+            background-color: var(--colorFond);
+        }
+    }
+
+    label{
+        padding: 5px 10px;
+        text-transform: capitalize;
+        border: 1px dashed var(--color5);
+        opacity: 0.7;
+        color: var(--beta);
+        cursor: pointer;
+        border-radius: 3px;
+        transition: all 0.2s ease-in-out;
+
+        &:hover{
+            opacity: 1;
+        }
+    }
+
+    input{
+        display: none;
+    }
+}
+
+.radiobox-items{
+    width: 100%;
+}
+
+.radiobox-item{
+    label{
+        @include flex(row, center, flex-start);
+
+        span{
+            width: calc(95% - 12px);
+        }
+    }
+    input{
+        width: 5%;
+        margin-left: 12px;
+    }
+}
+
+.form-group-error{
+    label{
+        color: var(--danger);
+    }
+    input, textarea{
+        border-color: var(--danger);
+        color: var(--danger);
+    }
+    .error{
+        color: var(--danger);
+        padding: 6px 4px 4px 4px;
+        font-size: 14px;
+
+        [class^="icon-"]{
+            margin-right: 5px;
+        }
+    }
+    .form-files{
+        .dzu-dropzone{
+            border: 1px dashed var(--danger);
+        
+            .dzu-inputLabel{
+                color: var(--danger);
+            }
+        }
+    }
+}
+
+.form-button{
+    & > *{
+        width: 100%;
+    }
+    & > *:not(:last-child){
+        margin-bottom: 12px;
+    }
+}
+
+.toggle-wrapper {
+	display: flex;
+	overflow: hidden;
+    position: relative;
+    
+    input {
+        height: 40px;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        width: 40px;
+    }
+
+    .toggle {
+        position: relative;
+        display: inline-block;
+    }
+
+    label.toggle-item {
+        width: 4em;
+        background: rgba(var(--color0RGBA), 0.25);
+        height: 2em;
+        display: inline-block;
+        border-radius: 50px;
+        position: relative;
+        transition: all .3s ease;
+        transform-origin: 20% center;
+        cursor: pointer;
+    }
+
+    .checkcross {
+        label:before {
+            content: none;
+        }
+        .check {
+            border-radius: 50%;
+            width: 1.5em;
+            height: 1.5em;
+            position: absolute;
+            background: var(--primary);
+            transition: .4s ease;
+            top: 3.5px;
+            left: 3.5px;
+            opacity: 0.65;
+        }
+    }
+    
+    .input-checkcross:checked + label {
+        .check {
+            left: 32px;
+            background: var(--danger);
+        }
+    }
+}
+
+.form-files{
+    @include flex(row, center, flex-start);
+
+    .form-image, .form-logo, .form-avatar{
+        margin-right: 25px;
+    }
+
+    .form-image, .form-logo{
+        img{
+            width: 100px;
+        }
+     }
+
+    .form-avatar{
+        img{
+            border-radius: 100px;
+            width: 64px; height: 64px;
+        }
+    }
+}
+//                      __   _____ __    ___    __
+//                     | _| |___  / /_  ( _ )  |_ |
+//    _____ _____ _____| |     / / '_ \ / _ \   | |_____ _____ _____
+//   |_____|_____|_____| |    / /| (_) | (_) |  | |_____|_____|_____|
+//                     | |   /_/  \___/ \___/   | |
+//                     |__|                    |__|
+@media (min-width:768px) {
+    .line.line-2{
+        flex-direction: row;
+
+        .form-group:first-child{
+            margin-right: 10px;
+            width: 50%;
+        }
+        .form-group:last-child{
+            margin-left: 10px;
+            width: 50%;
+        }
+    }
+
+    .line.line-3{
+        flex-direction: row;
+
+        .form-group{
+            width: 33%;
+        }
+        .form-group:not(:last-child){
+            margin-right: 12px;
+        }
+    }
+
+    .form-button{
+        @include flex(row, stretch, flex-start);
+
+        & > .btn, & > a.btn{
+            width: auto;
+            margin-bottom: 0;
+        }
+        & > *:not(:last-child){
+            margin-right: 12px;
+            margin-bottom: 0;
+        }
+    }
+}
 
 input, textarea, select{
   border-color: var(--colorBorder);
+}
+.line{
+    input, textarea, select{
+        border-color: var(--colorDisabled);
+    }
 }

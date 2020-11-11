@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import toastr from 'toastr';
-import Loader from '../functions/loader';
-import Dropzone from 'react-dropzone-uploader';
+import toastr               from 'toastr';
+import Loader               from '../functions/loader';
+import Dropzone             from 'react-dropzone-uploader';
 
 export class Drop extends Component {
     constructor (props) {
