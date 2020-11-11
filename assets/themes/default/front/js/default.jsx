@@ -5,6 +5,7 @@ import ReactDOM  from 'react-dom';
 
 const routes = require('@publicFolder/js/fos_js_routes.json');
 import Routing   from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
+
 import {Default} from './components/composants/default/Default';
 import {Footer}  from './components/composants/default/Footer';
 

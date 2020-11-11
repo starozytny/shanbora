@@ -83,6 +83,139 @@
         {% set menu = menu | merge(menuAccount) %}
     {% endif %}
 
+    <!-- For Google page speed -->
+    <style>
+        .navigation{ background-color: var(--alpha); }
+
+        nav.active .nav-header, nav.active .nav-body{
+            background-color: var(--colorFond);
+            z-index: 20;
+        }
+        nav.active .nav-header{
+            position: fixed;
+            top: 0; left: 0;
+            width: calc(100% - 20px);
+            z-index: 25;
+        }
+        nav.active .nav-header .icon-menu{ display: none; }
+        nav.active .nav-header .icon-cancel{ display: block; }
+        nav.active .nav-body{ 
+            transform: translateX(0);
+            opacity: 1;
+        }
+        nav img{
+            width: 80px;
+            height: 30px;
+        }
+        nav .nav-header{
+            position: relative;
+            z-index: 1;
+            display: flex; flex-direction: row;
+            align-items: center; justify-content: space-between;
+            padding: 10px;
+            font-family: 'barlowbold', sans-serif; font-weight: 700;
+            font-size: 24px;
+        }
+        nav .nav-header a { color: var(--color3); }
+        nav .nav-header [class^="icon-"] { 
+            padding: 12px;
+            color: var(--color3);
+            font-weight: bold;
+        }
+        nav .nav-header .icon-menu{
+            display: block; 
+            color: var(--beta);
+        }
+        nav .nav-header .icon-cancel{ display: none; }
+        nav .nav-body{ 
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            top: 0; left: 0;
+            padding-top: 50px;
+            transform: translateX(-150px);
+            opacity: 0;
+            transition: all 0.2s ease-in-out;
+            z-index: -1;
+        }
+        nav .nav-items{
+            position: relative;
+            display: flex; flex-direction: column;
+            align-items: flex-start; justify-content: flex-start;
+            height: inherit;
+            padding-top: 25px;
+        }
+        nav .nav-item{
+            padding: 5px 12px;
+            text-transform: uppercase;
+            color: var(--color3);
+            opacity: 0.7;
+            transition: all 0.2s ease-in-out;
+            padding-bottom: 12px;
+            width: calc(100% - 24px);
+        }
+        nav .nav-item:hover, nav .nav-item.active{
+            opacity: 1;
+        }
+        nav .nav-items-active{
+            position: absolute;
+            bottom: 0; left: 0;
+            background-color: var(--color3);
+            width: 0;
+            height: 1px;
+            display: block;
+            margin-top: 4px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        @media (min-width:768px) {
+            nav{
+                display: flex; flex-direction: row;
+                align-items: center; justify-content: space-between;
+                padding: 18px 18px 0 18px;
+            }
+            nav .nav-header{
+                padding: 0;
+                padding-bottom: 18px;
+            }
+            nav .nav-header [class^="icon-"]{ display: none; }
+            nav .nav-body{
+                position: relative;
+                transform: translateX(0);
+                opacity: 1;
+                padding-top: 0;
+                height: auto;
+                display: flex; flex-direction: row;
+                align-items: center; justify-content: flex-end;
+                z-index: 1;
+            }
+            nav .nav-items{
+                display: flex; flex-direction: row;
+                align-items: center; justify-content: flex-end;
+                padding-top: 0;
+            }
+            nav .nav-item{
+                padding-bottom: 26px;
+                width: auto;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            nav{ padding: 26px 18px 0 18px; }
+        }
+
+        @media (min-width:1280px) {
+            nav img{ width: 100px; }
+        }
+
+        @media (min-width: 1600px){
+            nav{ 
+                max-width: 1366px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+
     <div id="default" data-menu="{{ menu | json_encode() }}"></div>
 
     <main>    
