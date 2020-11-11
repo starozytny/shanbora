@@ -108,7 +108,7 @@ h2{
   border-top: 1px solid var(--colorBorder);
 
   .content{
-    max-width: 500px;
+    max-width: 550px;
     margin: 0 auto;
   }
 
@@ -313,6 +313,10 @@ h2{
       h1{
         font-size: 46px;
       }
+    }
+
+    .subtitle{
+      font-size: 20px;
     }
   }
   .header-scroll {
