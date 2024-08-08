@@ -1,0 +1,43 @@
+<div class="w-full px-2 lg:px-8">
+    <div class="md:flex md:flex-col md:justify-center md:items-center">
+        <h2 class="font-bold text-6xl">Let’s talk about your project</h2>
+        <p class="mt-4 text-gray-600 max-w-screen-md md:text-center">
+            Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.
+            Elit sunt amet fugiat veniam occaecat fugiat aliqua.
+        </p>
+    </div>
+
+    <div class="mt-10 md:max-w-[680px] md:mt-12 md:mx-auto md:grid md:grid-cols-2 md:gap-8 lg:gap-12 lg:flex lg:max-w-[904px]" id="restons-en-contact">
+        <div id="contacts_create" class="lg:w-[584px]">
+            {% include "layout/components/tailwind/loaders/loader.html.twig" %}
+        </div>
+        <div class="mt-8 md:mt-0 md:max-w-80">
+            <div class="rounded-md max-h-64 md:max-w-80 overflow-hidden">
+                <img src="{{ asset('build/app/images/tmp.jpg') }}" alt="ppl" class="rounded-md object-cover w-full h-full">
+            </div>
+            <div class="mt-4">
+                <h3 class="font-medium text-xl">Data to enrich your online</h3>
+                <div>Studio Artist</div>
+                <div class="mt-2 md:max-w-80">
+                    Praesentium iure error aliquam voluptas ut libero. Commodi placeat sit iure nulla officiis.
+                    Ut ex sit repellat tempora. Qui est accusamus exercitationem natus ut voluptas.
+                    Officiis velit eos ducimus.
+                </div>
+                <div class="mt-4 flex gap-4">
+                    <a href="" class="relative">
+                        <span class="icon-instagram !text-lg"></span>
+                        <span class="tooltip bg-gray-300 py-1 px-2 rounded absolute -top-7 right-0 text-xs hidden">Instagram</span>
+                    </a>
+                    <a href="" class="relative">
+                        <span class="icon-linkedin !text-lg"></span>
+                        <span class="tooltip bg-gray-300 py-1 px-2 rounded absolute -top-7 right-0 text-xs hidden">LinkedIn</span>
+                    </a>
+                    <a href="" class="relative">
+                        <span class="icon-network !text-lg"></span>
+                        <span class="tooltip bg-gray-300 py-1 px-2 rounded absolute -top-7 right-0 text-xs hidden">Unsplash</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

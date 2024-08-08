@@ -1,5 +1,27 @@
+
+.icon-network:before {
+  content: "\e99e";
+}
+.icon-linkedin:before {
+  content: "\e99f";
+}
+.icon-facebook:before {
+  content: "\e9ab";
+}
+.icon-instagram:before {
+  content: "\e9ac";
+}
+.icon-heart1:before {
+  content: "\e99d";
+}
+.icon-share:before {
+  content: "\e965";
+}
 .icon-close:before {
   content: "\e99b";
+}
+.icon-bed:before {
+  content: "\e9ad";
 }
 .icon-check1:before {
   content: "\e997";
@@ -19,8 +41,14 @@
 .icon-archive-minus:before {
   content: "\e986";
 }
+.icon-arrow-bottom:before {
+  content: "\e9a8";
+}
 .icon-arrow-swap-horizontal:before {
   content: "\e999";
+}
+.icon-arrow-up:before {
+  content: "\e9a9";
 }
 .icon-bank:before {
   content: "\e990";
@@ -46,6 +74,9 @@
 .icon-document-copy:before {
   content: "\e987";
 }
+.icon-edit-2:before {
+  content: "\e9a7";
+}
 .icon-eraser-1:before {
   content: "\e98b";
 }
@@ -54,6 +85,9 @@
 }
 .icon-lock-1:before {
   content: "\e989";
+}
+.icon-path:before {
+  content: "\e9aa";
 }
 .icon-pause-circle:before {
   content: "\e98d";
@@ -396,9 +430,6 @@
 }
 .icon-settings:before {
   content: "\e906";
-}
-.icon-share:before {
-  content: "\e965";
 }
 .icon-shield:before {
   content: "\e962";
