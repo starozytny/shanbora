@@ -8,3 +8,12 @@
 html{
   @include fontRegular();
 }
+
+.homepage_gallery{
+  animation: slide 30s ease infinite;
+}
+
+@keyframes slide {
+  0%{ transform: translateX(0px); }
+  100% { transform: translateX(-2176px); }
+}
