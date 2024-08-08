@@ -21,7 +21,16 @@
                         <div class="hidden md:block">
                             <div class="flex items-baseline uppercase gap-4">
                                 <a href="{{ path('app_homepage') }}" class="text-gray-600 hover:text-gray-900 pl-3 pr-8 py-2 font-semibold border-r-2 border-gray-500">
-                                    <span>Accueil</span>
+                                    <span>Chanbora Chhun</span>
+                                </a>
+                                <a href="https://www.instagram.com/shanbo_daltonien/" target="_blank" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
+                                    <span>Instagram</span>
+                                </a>
+                                <a href="https://www.linkedin.com/in/chanbora-chhun-00a0a0112/" target="_blank" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
+                                    <span>LinkedIn</span>
+                                </a>
+                                <a href="https://unsplash.com/fr/@shanbora" target="_blank" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
+                                    <span>Unsplash</span>
                                 </a>
                                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                     <a href="{{ path('app_logout') }}" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
@@ -32,12 +41,9 @@
                                         <span>Mon espace</span>
                                     </a>
                                 {% else %}
-                                    <a href="{{ path('app_login') }}" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
-                                        <span>Se connecter</span>
-                                    </a>
                                     <a href="{{ path('app_contact') }}"
                                        class="text-color0 px-3 py-2 font-semibold bg-white rounded-md border-2 border-color0 transition-transform hover:-translate-y-1.5">
-                                        <span>Essayer</span>
+                                        <span>Me contacter</span>
                                     </a>
                                 {% endif %}
                             </div>
@@ -79,6 +85,15 @@
                                             </div>
                                             <div class="relative mt-6 flex-1 px-4 sm:px-6">
                                                 <div class="flex flex-col gap-4">
+                                                    <a href="https://www.instagram.com/shanbo_daltonien/" target="_blank" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
+                                                        <span>Instagram</span>
+                                                    </a>
+                                                    <a href="https://www.linkedin.com/in/chanbora-chhun-00a0a0112/" target="_blank" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
+                                                        <span>LinkedIn</span>
+                                                    </a>
+                                                    <a href="https://unsplash.com/fr/@shanbora" target="_blank" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
+                                                        <span>Unsplash</span>
+                                                    </a>
                                                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                                         <a href="{{ path('app_logout') }}" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
                                                             <span>Déconnexion</span>
@@ -88,12 +103,9 @@
                                                             <span>Mon espace</span>
                                                         </a>
                                                     {% else %}
-                                                        <a href="{{ path('app_login') }}" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
-                                                            <span>Se connecter</span>
-                                                        </a>
                                                         <a href="{{ path('app_contact') }}"
                                                            class="text-color0 px-3 py-2 font-semibold bg-white rounded-md border-2 border-color0 transition-transform hover:-translate-y-1.5">
-                                                            <span>Essayer</span>
+                                                            <span>Me contacter</span>
                                                         </a>
                                                     {% endif %}
                                                 </div>

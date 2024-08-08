@@ -86,14 +86,14 @@ export class ContactFormulaire extends Component {
 				{success && <div><Alert type="blue" icon="check1">{success}</Alert></div>}
 				<div className="flex gap-4">
 					<div className="w-full">
-						<Input identifiant="name" valeur={name} {...params0}>Nom / Raison sociale</Input>
+						<Input identifiant="name" valeur={name} {...params0}>Qui es-tu ? pour savoir à qui je m'adresse</Input>
 					</div>
 					<div className="w-full">
-						<Input identifiant="email" valeur={email} {...params0} type="email">Adresse e-mail</Input>
+						<Input identifiant="email" valeur={email} {...params0} type="email">Une adresse email pour garder contact</Input>
 					</div>
 				</div>
 				<div>
-					<TextArea identifiant="message" valeur={message} {...params0}>Message</TextArea>
+					<TextArea identifiant="message" valeur={message} {...params0}>Ton message pour comprendre ton projet ou ta demande d'informations</TextArea>
 				</div>
 				<div className="critere">
 					<Input identifiant="critere" valeur={critere} {...params0}>Critère</Input>
@@ -108,12 +108,12 @@ export class ContactFormulaire extends Component {
 						et vous recontacter si besoin.
 						<br />
 						Plus d'informations sur le traitement de vos données dans
-						notre <a target="_blank" href={Routing.generate('app_politique')} className="text-blue-700 underline">politique de confidentialité</a>.
+						ma <a target="_blank" href={Routing.generate('app_politique')} className="text-blue-700 underline">politique de confidentialité</a>.
 					</div>
 				</Alert>
 			</div>
 			<div className="mt-4">
-				<Button type="blue" isSubmit={true} width="w-full" pa="p-4">Envoyer</Button>
+				<Button type="blue" isSubmit={true} width="w-full" pa="p-4">Envoyer ton message</Button>
 			</div>
 		</form>
 	}
