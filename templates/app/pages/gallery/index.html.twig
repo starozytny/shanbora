@@ -1,0 +1,25 @@
+{% extends 'app/pages/gallery/template.html.twig' %}
+
+{% set page_title %}Galerie de photos{% endset %}
+
+{% block main_content %}
+    <div class="w-full px-2 lg:px-8">
+        <div class="md:flex md:flex-col md:justify-center md:items-center">
+            <div class="text-yellow-500 font-semibold text-lg">Quelques photos</div>
+            <h2 class="font-bold text-6xl">Une exploration photographique</h2>
+            <p class="mt-4 text-gray-600 max-w-screen-md md:text-center">
+                Contactez-moi dès aujourd'hui pour discuter de votre projet et
+                planifier une séance photo qui vous ressemble vraiment.
+            </p>
+        </div>
+
+        <div class="mt-10 flex flex-col gap-8">
+            <div class="flex flex-col gap-8 md:grid grid-cols-3">
+                <img src="{{ asset('build/app/images/gallery/nuage-1.jpg') }}" alt="photo nuage 1" class="pointer-events-none">
+                <img src="{{ asset('build/app/images/gallery/nuage-2.jpg') }}" alt="photo nuage 2" class="pointer-events-none">
+                <img src="{{ asset('build/app/images/gallery/nuage-3.jpg') }}" alt="photo nuage 3" class="pointer-events-none">
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
