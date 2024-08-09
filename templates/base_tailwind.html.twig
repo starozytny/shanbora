@@ -7,15 +7,15 @@
         <meta name="keywords" content="{% block meta_keywords %}{% endblock %}" />
         {% block noindex %}{% endblock %}
         {% block openGraph %}{% endblock %}
-        <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/ico">
-        <link rel="apple-touch-icon" href="{{ asset('logo-apple-touch.png') }}"/>
-        <title>{% block title %}{% endblock %}</title>
+        <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/png">
+{#        <link rel="apple-touch-icon" href="{{ asset('logo-apple-touch.png') }}"/>#}
+        <title>{% block title %}Chanbora Chhun photographe et développeur web fullstack à Marseille{% endblock %}</title>
 
         {% block stylesheets %}
             {{ encore_entry_link_tags('tailwind_app') }}
         {% endblock %}
 
-        {% set consent = "logilinkLocalCookie" %} <!-- CONSENT Value -->
+        {% set consent = "ShanboraLocalCookie" %} <!-- CONSENT Value -->
     </head>
     <body class="h-full">
 
