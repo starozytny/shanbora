@@ -94,11 +94,19 @@ class GalleryUpdateDataCommand extends Command
                 }
                 $originalFile->save($this->galleryDirectory . $filename . '/thumbs/', $newFilename);
 
+                $info = new \SplFileInfo($file->getRealPath());
+
+                $lastModif = new \DateTime();
+                if($info->isFile() && $info->getMTime() !== false){
+                    $lastModif->setTimestamp($info->getMTime());
+                }
+
                 $newImage = (new GaImage())
                     ->setUser($user)
                     ->setOriginalName($file->getFilename())
                     ->setFile($newFilename)
                     ->setThumbs($newFilename)
+                    ->setDateAt($lastModif)
                 ;
 
                 $em->persist($newImage);

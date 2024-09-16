@@ -5,6 +5,7 @@ namespace App\Entity\Main\Gallery;
 use App\Entity\DataEntity;
 use App\Entity\Main\User;
 use App\Repository\Main\Gallery\GaImageRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: GaImageRepository::class)]
@@ -30,6 +31,9 @@ class GaImage extends DataEntity
 
     #[ORM\Column(length: 255)]
     private ?string $originalName = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $dateAt = null;
 
     public function getId(): ?int
     {
@@ -104,5 +108,17 @@ class GaImage extends DataEntity
     public function getThumbsFile(): ?string
     {
         return $this->getFileOrDefault($this->thumbs, $this->user->getUsername() . '/thumbs', null);
+    }
+
+    public function getDateAt(): ?\DateTimeInterface
+    {
+        return $this->dateAt;
+    }
+
+    public function setDateAt(\DateTimeInterface $dateAt): static
+    {
+        $this->dateAt = $dateAt;
+
+        return $this;
     }
 }
