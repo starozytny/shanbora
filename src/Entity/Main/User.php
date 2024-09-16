@@ -3,6 +3,7 @@
 namespace App\Entity\Main;
 
 use App\Entity\DataEntity;
+use App\Entity\Main\Gallery\GaImage;
 use App\Repository\Main\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -96,6 +97,12 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
     private Collection $mails;
 
     /**
+     * @var Collection<int, GaImage>
+     */
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: GaImage::class)]
+    private Collection $gaImages;
+
+    /**
      * @throws Exception
      */
     public function __construct()
@@ -103,6 +110,7 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
         $this->createdAt = new \DateTimeImmutable();
         $this->token = $this->initToken();
         $this->mails = new ArrayCollection();
+        $this->gaImages = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -399,6 +407,36 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
             // set the owning side to null (unless already changed)
             if ($mail->getUser() === $this) {
                 $mail->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, GaImage>
+     */
+    public function getGaImages(): Collection
+    {
+        return $this->gaImages;
+    }
+
+    public function addGaImage(GaImage $gaImage): static
+    {
+        if (!$this->gaImages->contains($gaImage)) {
+            $this->gaImages->add($gaImage);
+            $gaImage->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGaImage(GaImage $gaImage): static
+    {
+        if ($this->gaImages->removeElement($gaImage)) {
+            // set the owning side to null (unless already changed)
+            if ($gaImage->getUser() === $this) {
+                $gaImage->setUser(null);
             }
         }
 
