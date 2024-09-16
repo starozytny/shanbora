@@ -8,6 +8,7 @@ import Formulaire from "@commonFunctions/formulaire";
 
 const URL_GET_DATA = "intern_api_user_gallery_fetch_images";
 const URL_READ_IMAGE = "intern_api_user_gallery_read_image";
+const URL_DOWNLOAD_FILE = "intern_api_user_gallery_download";
 
 const InfiniteGallery = () => {
 	const [images, setImages] = useState([]); // Stocke les images
@@ -24,7 +25,7 @@ const InfiniteGallery = () => {
 			axios({ method: "GET", url: Routing.generate(URL_GET_DATA, { page: page }), data: {} })
 				.then(function (response) {
 					const data = response.data;
-					setImages(prevImages => [...prevImages, ...data.images]); // Ajoute les nouvelles images à celles déjà chargées
+					setImages(prevImages => [...prevImages, ...JSON.parse(data.images)]); // Ajoute les nouvelles images à celles déjà chargées
 					setHasMore(data.hasMore); // Met à jour s'il reste encore des images à charger
 				})
 				.catch(function (error) {
@@ -53,14 +54,16 @@ const InfiniteGallery = () => {
 		return () => window.removeEventListener('scroll', handleScroll); // Nettoie l'événement lors du démontage du composant
 	}, [hasMore]);
 
-
 	return (
 		<div>
 			<div className="masonry">
 				{images.map((image, index) => (
-					<div key={index} className="masonry-item">
-						<img src={Routing.generate(URL_READ_IMAGE, {filename: image})} alt={`Photo ${index}`} />
-					</div>
+					<a key={index} className="block masonry-item"
+					   href={Routing.generate(URL_DOWNLOAD_FILE, { id: image.id })}
+					   download={image.originalName}
+					>
+						<img src={Routing.generate(URL_READ_IMAGE, {id: image.id})} alt={`Photo ${index}`} />
+					</a>
 				))}
 			</div>
 

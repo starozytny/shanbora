@@ -7,13 +7,17 @@ use App\Entity\Main\User;
 use App\Repository\Main\Gallery\GaImageRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: GaImageRepository::class)]
 class GaImage extends DataEntity
 {
+    const LIST = ['ga_img_list'];
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups(['ga_img_list'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
@@ -23,6 +27,7 @@ class GaImage extends DataEntity
     private ?string $thumbs = null;
 
     #[ORM\Column]
+    #[Groups(['ga_img_list'])]
     private ?int $nbDownload = 0;
 
     #[ORM\ManyToOne(inversedBy: 'gaImages')]
@@ -30,6 +35,7 @@ class GaImage extends DataEntity
     private ?User $user = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['ga_img_list'])]
     private ?string $originalName = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
@@ -100,16 +106,6 @@ class GaImage extends DataEntity
         return $this;
     }
 
-    public function getFileFile(): ?string
-    {
-        return $this->getFileOrDefault($this->file, $this->user->getUsername() . '/original', null);
-    }
-
-    public function getThumbsFile(): ?string
-    {
-        return $this->getFileOrDefault($this->thumbs, $this->user->getUsername() . '/thumbs', null);
-    }
-
     public function getDateAt(): ?\DateTimeInterface
     {
         return $this->dateAt;
@@ -120,5 +116,15 @@ class GaImage extends DataEntity
         $this->dateAt = $dateAt;
 
         return $this;
+    }
+
+    public function getFileFile(): ?string
+    {
+        return $this->getFileOrDefault($this->file, $this->user->getUsername() . '/original', null);
+    }
+
+    public function getThumbsFile(): ?string
+    {
+        return $this->getFileOrDefault($this->thumbs, $this->user->getUsername() . '/thumbs', null);
     }
 }
