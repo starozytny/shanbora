@@ -6,9 +6,12 @@ import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
 
 import Formulaire from "@commonFunctions/formulaire";
 
+import { ButtonA } from "@tailwindComponents/Elements/Button";
+
 const URL_GET_DATA = "intern_api_user_gallery_fetch_images";
 const URL_READ_IMAGE = "intern_api_user_gallery_read_image";
 const URL_DOWNLOAD_FILE = "intern_api_user_gallery_download";
+const URL_DOWNLOAD_ARCHIVE = "intern_api_user_gallery_archive";
 
 const InfiniteGallery = () => {
 	const [images, setImages] = useState([]); // Stocke les images
@@ -56,6 +59,11 @@ const InfiniteGallery = () => {
 
 	return (
 		<div>
+			<div className="mb-12 flex items-center justify-center">
+				<ButtonA type="blue" onClick={Routing.generate(URL_DOWNLOAD_ARCHIVE)}>
+					Télécharger toutes les photos
+				</ButtonA>
+			</div>
 			<div className="masonry">
 				{images.map((image, index) => (
 					<a key={index} className="block masonry-item"

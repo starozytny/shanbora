@@ -3,6 +3,7 @@
 namespace App\Controller\InternApi\Gallery;
 
 use App\Entity\Main\Gallery\GaImage;
+use App\Entity\Main\User;
 use App\Repository\Main\Gallery\GaImageRepository;
 use App\Service\ApiResponse;
 use Knp\Component\Pager\PaginatorInterface;
@@ -73,5 +74,19 @@ class UserController extends AbstractController
         }
 
         return $this->file($file, $obj->getOriginalName());
+    }
+
+    #[Route('/archive', name: 'archive', options: ['expose' => true], methods: 'GET')]
+    public function archive(ApiResponse $apiResponse): BinaryFileResponse|JsonResponse
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+        $file = $this->getParameter('private_directory') . "import/gallery/" . $user->getUsername() . ".zip";
+
+        if(!file_exists($file)){
+            return $apiResponse->apiJsonResponseBadRequest("Le fichier n'existe pas.");
+        }
+
+        return $this->file($file);
     }
 }
