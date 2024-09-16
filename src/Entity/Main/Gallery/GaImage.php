@@ -2,12 +2,13 @@
 
 namespace App\Entity\Main\Gallery;
 
+use App\Entity\DataEntity;
 use App\Entity\Main\User;
 use App\Repository\Main\Gallery\GaImageRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: GaImageRepository::class)]
-class GaImage
+class GaImage extends DataEntity
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -21,11 +22,14 @@ class GaImage
     private ?string $thumbs = null;
 
     #[ORM\Column]
-    private ?int $nbDownload = null;
+    private ?int $nbDownload = 0;
 
     #[ORM\ManyToOne(inversedBy: 'gaImages')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $originalName = null;
 
     public function getId(): ?int
     {
@@ -78,5 +82,27 @@ class GaImage
         $this->user = $user;
 
         return $this;
+    }
+
+    public function getOriginalName(): ?string
+    {
+        return $this->originalName;
+    }
+
+    public function setOriginalName(string $originalName): static
+    {
+        $this->originalName = $originalName;
+
+        return $this;
+    }
+
+    public function getFileFile(): ?string
+    {
+        return $this->getFileOrDefault($this->file, $this->user->getUsername() . '/original', null);
+    }
+
+    public function getThumbsFile(): ?string
+    {
+        return $this->getFileOrDefault($this->thumbs, $this->user->getUsername() . '/thumbs', null);
     }
 }
