@@ -96,9 +96,9 @@ class GalleryUpdateDataCommand extends Command
 
                 $info = new \SplFileInfo($file->getRealPath());
 
-                $lastModif = new \DateTime();
-                if($info->isFile() && $info->getMTime() !== false){
-                    $lastModif->setTimestamp($info->getMTime());
+                $dateAt = new \DateTime();
+                if($info->isFile() && $info->getCTime() !== false){
+                    $dateAt->setTimestamp($info->getCTime());
                 }
 
                 $newImage = (new GaImage())
@@ -106,7 +106,7 @@ class GalleryUpdateDataCommand extends Command
                     ->setOriginalName($file->getFilename())
                     ->setFile($newFilename)
                     ->setThumbs($newFilename)
-                    ->setDateAt($lastModif)
+                    ->setDateAt($dateAt)
                 ;
 
                 $em->persist($newImage);
