@@ -41,15 +41,16 @@
         </div>
 
         <div class="mt-10 flex flex-col gap-8">
-            <div class="masonry">
-                {% for image in images %}
-                    <div class="masonry-item">
-                        <img src="{{ path('user_photo_read', {filename: image}) }}" alt="Photo" class="gallery-img" loading="lazy">
-                    </div>
-                {% else %}
-                    <p>Aucune image disponible.</p>
-                {% endfor %}
-            </div>
+            <div id="gallery_index"></div>
+{#            <div class="masonry">#}
+{#                {% for image in images %}#}
+{#                    <div class="masonry-item">#}
+{#                        <img src="{{ path('user_photo_read', {filename: image}) }}" alt="Photo" class="gallery-img" loading="lazy">#}
+{#                    </div>#}
+{#                {% else %}#}
+{#                    <p>Aucune image disponible.</p>#}
+{#                {% endfor %}#}
+{#            </div>#}
         </div>
     </div>
 {% endblock %}

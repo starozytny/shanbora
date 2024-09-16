@@ -10,6 +10,7 @@ import Menu from "@tailwindFunctions/menu";
 import Toastr from "@tailwindFunctions/toastr";
 
 import { Cookies, CookiesGlobalResponse } from "@tailwindComponents/Modules/Cookies/Cookies";
+import InfiniteGallery from "@userPages/InfiniteGallery";
 
 Routing.setRoutingData(routes);
 
@@ -24,4 +25,9 @@ if(ck){
 let cookiesGlobalResponse = document.getElementById("cookies-global-response");
 if (cookiesGlobalResponse) {
     createRoot(cookiesGlobalResponse).render(<CookiesGlobalResponse {...cookiesGlobalResponse.dataset} />)
+}
+
+let gallery = document.getElementById("gallery_index");
+if (gallery) {
+    createRoot(gallery).render(<InfiniteGallery />)
 }
