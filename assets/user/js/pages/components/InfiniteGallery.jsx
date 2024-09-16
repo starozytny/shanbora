@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 
 import axios from "axios";
 import debounce from 'lodash.debounce';
+import LightGallery from 'lightgallery/react';
+
+import 'lightgallery/scss/lightgallery.scss';
+import 'lightgallery/scss/lg-zoom.scss';
+
 import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
 
 import Formulaire from "@commonFunctions/formulaire";
@@ -57,6 +62,10 @@ const InfiniteGallery = () => {
 		return () => window.removeEventListener('scroll', handleScroll); // Nettoie l'événement lors du démontage du composant
 	}, [hasMore]);
 
+	const onInit = () => {
+		console.log('lightGallery has been initialized');
+	};
+
 	return (
 		<div>
 			<div className="mb-12 flex items-center justify-center">
@@ -65,14 +74,19 @@ const InfiniteGallery = () => {
 				</ButtonA>
 			</div>
 			<div className="masonry">
-				{images.map((image, index) => (
-					<a key={index} className="block masonry-item"
-					   href={Routing.generate(URL_DOWNLOAD_FILE, { id: image.id })}
-					   download={image.originalName}
-					>
-						<img src={Routing.generate(URL_READ_IMAGE, {id: image.id})} alt={`Photo ${index}`} />
-					</a>
-				))}
+				<LightGallery
+					onInit={onInit}
+					speed={500}
+				>
+					{images.map((image, index) => (
+						<a key={index} className="block masonry-item"
+						   href={Routing.generate(URL_DOWNLOAD_FILE, { id: image.id })}
+						   download={image.originalName}
+						>
+							<img src={Routing.generate(URL_READ_IMAGE, {id: image.id})} alt={`Photo ${index}`} />
+						</a>
+					))}
+				</LightGallery>
 			</div>
 
 			{loading && <div className="text-center text-gray-600 text-sm mt-4">Chargement...</div>}
