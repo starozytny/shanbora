@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Main\User;
+use App\Service\Gallery\GalleryService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,16 +14,12 @@ use Symfony\Component\Routing\Attribute\Route;
 class UserController extends AbstractController
 {
     #[Route('/', name: 'homepage')]
-    public function index(): Response
+    public function index(GalleryService $galleryService): Response
     {
         /** @var User $user */
         $user = $this->getUser();
-        $userDirectory = $this->getParameter('private_directory') . 'gallery/' . $user->getUsername() . '/';
-        if(!is_dir($userDirectory)) {
-            throw $this->createNotFoundException('Le dossier n\'existe pas.');
-        }
-        $photoDirectory = $this->getParameter('private_directory') . 'gallery/' . $user->getUsername() . '/thumbs/';
-        if(!is_dir($photoDirectory)) {
+        $photoDirectory = $galleryService->getUserFolderThumbs($user);
+        if($photoDirectory === false) {
             throw $this->createNotFoundException('Le dossier n\'existe pas.');
         }
 
@@ -40,11 +37,15 @@ class UserController extends AbstractController
     }
 
     #[Route('/photo/{filename}', name: 'photo_read')]
-    public function photo($filename): Response
+    public function photo($filename, GalleryService $galleryService): Response
     {
         /** @var User $user */
         $user = $this->getUser();
-        $photoPath = $this->getParameter('private_directory') . 'gallery/' . $user->getUsername() . '/thumbs/' . $filename;
+        $photoDirectory = $galleryService->getUserFolderThumbs($user);
+        if($photoDirectory === false) {
+            throw $this->createNotFoundException('Le dossier n\'existe pas.');
+        }
+        $photoPath = $photoDirectory . $filename;
 
         if (!file_exists($photoPath)) {
             throw $this->createNotFoundException('La photo demandée n\'existe pas.');
