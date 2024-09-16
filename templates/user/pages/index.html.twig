@@ -4,7 +4,52 @@
 {% set page_title %}Hello UserController!{% endset %}
 
 {% block main_content %}
-<div class="example-wrapper">
-    <h1>Hello world</h1>
-</div>
+    <style>
+        .masonry {
+            column-count: 3; /* Nombre de colonnes */
+            column-gap: 10px;
+        }
+        .masonry-item {
+            margin-bottom: 10px;
+            break-inside: avoid; /* Évite que les images se cassent sur plusieurs colonnes */
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .masonry-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        @media (max-width: 800px) {
+            .masonry {
+                column-count: 2;
+            }
+        }
+        @media (max-width: 600px) {
+            .masonry {
+                column-count: 1;
+            }
+        }
+    </style>
+    <div class="w-full px-2 lg:px-8">
+        <div class="md:flex md:flex-col md:justify-center md:items-center">
+            <div class="text-yellow-500 font-semibold text-lg">date</div>
+            <h2 class="font-bold text-6xl">Test private image</h2>
+            <p class="mt-4 text-gray-600 max-w-screen-md md:text-center">
+
+            </p>
+        </div>
+
+        <div class="mt-10 flex flex-col gap-8">
+            <div class="masonry">
+                {% for image in images %}
+                    <div class="masonry-item">
+                        <img src="{{ path('user_photo_read', {filename: image}) }}" alt="Photo" class="gallery-img" loading="lazy">
+                    </div>
+                {% else %}
+                    <p>Aucune image disponible.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
