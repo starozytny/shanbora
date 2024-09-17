@@ -51,7 +51,7 @@ const InfiniteGallery = () => {
 	}, []);
 
 	let handleLightbox = (elem) => {
-		refLightbox.current.handleUpdateContent(<LightboxContent identifiant="lightbox" images={images} elem={elem} />);
+		refLightbox.current.handleUpdateContent(<LightboxContent key={elem.rankPhoto} identifiant="lightbox" images={images} elem={elem} />);
 		refLightbox.current.handleClick();
 	}
 
@@ -64,8 +64,9 @@ const InfiniteGallery = () => {
 			</div>
 			<div className="flex flex-col gap-4 md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 pswp-gallery" id="gallery">
 				{images.map(image => (
-					<div key={image.id} className="block gallery-item bg-white" onClick={() => handleLightbox(image)}>
-						<img src={Routing.generate(URL_READ_IMAGE, { id: image.id })} alt={`Photo ${image.originalName}`} className="pointer-events-none" loading="lazy"/>
+					<div key={image.id} className="cursor-pointer group block gallery-item bg-white overflow-hidden" onClick={() => handleLightbox(image)}>
+						<img src={Routing.generate(URL_READ_IMAGE, { id: image.id })} alt={`Photo ${image.originalName}`}
+							 className="pointer-events-none group-hover:scale-105 transition-transform" loading="lazy"/>
 					</div>
 				))}
 			</div>
@@ -85,7 +86,7 @@ export class LightboxContent extends Component {
 
 		this.state = {
 			elem: props.elem ? props.elem : null,
-			actualRank: props.elem ? props.elem.rankPhoto : 1,
+			actualRank: props.actualRank ? props.actualRank : 1,
 			currentIndex: 0,
 			touchStartX: 0,
 			touchEndX: 0,
@@ -171,7 +172,7 @@ export class LightboxContent extends Component {
 		}
 
 		return <>
-			<div className="fixed top-0 left-0 w-full flex justify-between p-4 md:p-8 text-white z-20">
+			<div className="fixed bg-gradient-to-t from-gray-800 to-transparent bottom-0 md:bottom-auto md:top-0 md:bg-none left-0 w-full flex justify-between p-4 md:p-8 text-white z-20">
 				<div>{elem.rankPhoto} / {images.length} photos</div>
 				<div className="flex gap-4">
 					<div>
@@ -188,11 +189,7 @@ export class LightboxContent extends Component {
 					</div>
 				</div>
 			</div>
-			<div className="flex justify-center items-center h-full"
-				 onTouchStart={this.handleTouchStart}
-				 onTouchMove={this.handleTouchMove}
-				 onTouchEnd={this.handleTouchEnd}
-			>
+			<div className="flex justify-center items-center h-full">
 				{actualRank > 1
 					? <div className="cursor-pointer fixed h-full top-[56px] left-0 flex items-center justify-center p-4 md:p-8 z-20 text-white"
 						   onClick={() => this.handlePrev(actualRank)}>
@@ -200,11 +197,17 @@ export class LightboxContent extends Component {
 					</div>
 					: null
 				}
-				{images.map(image => {
-					return <div key={image.id} className={`${elem.id === image.id ? "block" : "hidden"} w-full h-full`}>
-						<img src={Routing.generate(URL_READ_IMAGE_HD, { id: elem.id })} alt={`Photo ${elem.originalName}`} className="w-full h-full pointer-events-none object-contain" />
-					</div>
-				})}
+				<div className="flex justify-center items-center h-full"
+					onTouchStart={this.handleTouchStart}
+					onTouchMove={this.handleTouchMove}
+					onTouchEnd={this.handleTouchEnd}
+				>
+					{images.map(image => {
+						return <div key={image.id} className={`${elem.id === image.id ? "block" : "hidden"} w-full h-full`}>
+							<img src={Routing.generate(URL_READ_IMAGE_HD, { id: elem.id })} alt={`Photo ${elem.originalName}`} className="w-full h-full pointer-events-none object-contain" />
+						</div>
+					})}
+				</div>
 				{actualRank < images.length
 					? <div className="cursor-pointer fixed h-full top-[56px] right-0 flex items-center justify-center p-4 md:p-8 z-20 text-white"
 						   onClick={() => this.handleNext(actualRank)}>
