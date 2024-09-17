@@ -88,9 +88,12 @@ export class LightboxContent extends Component {
 			elem: props.elem ? props.elem : null,
 			actualRank: props.elem ? props.elem.rankPhoto : 1,
 			currentIndex: 0,
-			touchStartX: 0,
-			touchEndX: 0,
+			isDragging: false,
+			startX: 0,
+			currentTranslate: 0,
 		}
+
+		this.gallery = React.createRef();
 	}
 
 	handleCloseModal = (e) => {
@@ -103,24 +106,52 @@ export class LightboxContent extends Component {
 		ModalFunctions.closeM(body, modal, modalContent);
 	}
 
+	handleMouseDown = (e) => {
+		this.setState({
+			isDragging: true,
+			startX: e.clientX,
+		})
+		this.gallery.current.style.cursor = 'grabbing';
+	};
+
 	handleTouchStart = (e) => {
-		this.setState({ touchStartX: e.targetTouches[0].clientX })
+		this.setState({ isDragging: true, startX: e.targetTouches[0].clientX })
+	};
+
+	handleMouseMove = (e) => {
+		const { isDragging, startX } = this.state;
+
+		if (!isDragging) return;
+		this.setState({ currentTranslate: e.clientX - startX })
 	};
 
 	handleTouchMove = (e) => {
-		this.setState({ touchEndX: e.targetTouches[0].clientX })
+		const { isDragging, startX } = this.state;
+
+		if (!isDragging) return;
+		this.setState({ currentTranslate: e.touches[0].clientX - startX })
+	};
+
+	handleMouseUp = () => {
+		this.setState({ isDragging: false })
+		this.gallery.current.style.cursor = 'grab';
+		this.handleSwipeEnd();
 	};
 
 	handleTouchEnd = () => {
-		const { actualRank, touchStartX, touchEndX } = this.state;
+		this.setState({ isDragging: false })
+		this.handleSwipeEnd();
+	};
 
-		if (touchStartX - touchEndX > 50) {
+	handleSwipeEnd = () => {
+		const { actualRank, currentTranslate } = this.state;
+
+		if (currentTranslate > 50) {
+			this.handlePrev(actualRank);
+		} else if (currentTranslate < -50) {
 			this.handleNext(actualRank);
 		}
-
-		if (touchStartX - touchEndX < -50) {
-			this.handlePrev(actualRank);
-		}
+		this.setState({ currentTranslate: 0 })
 	};
 
 	handleNext = (rankPhoto) => {
@@ -165,7 +196,7 @@ export class LightboxContent extends Component {
 
 	render () {
 		const { images } = this.props;
-		const { actualRank, elem } = this.state;
+		const { actualRank, elem, currentTranslate } = this.state;
 
 		if(!elem){
 			return;
@@ -197,14 +228,20 @@ export class LightboxContent extends Component {
 					</div>
 					: null
 				}
-				<div className="flex justify-center items-center h-full"
-					onTouchStart={this.handleTouchStart}
-					onTouchMove={this.handleTouchMove}
-					onTouchEnd={this.handleTouchEnd}
+				<div ref={this.gallery} className="flex justify-center items-center h-full"
+					 onMouseDown={this.handleMouseDown}
+					 onMouseMove={this.handleMouseMove}
+					 onMouseUp={this.handleMouseUp}
+					 onMouseLeave={this.handleMouseUp}
+					 onTouchStart={this.handleTouchStart}
+					 onTouchMove={this.handleTouchMove}
+					 onTouchEnd={this.handleTouchEnd}
 				>
 					{images.map(image => {
 						return <div key={image.id} className={`${elem.id === image.id ? "block" : "hidden"} w-full h-full`}>
-							<img src={Routing.generate(URL_READ_IMAGE_HD, { id: elem.id })} alt={`Photo ${elem.originalName}`} className="w-full h-full pointer-events-none object-contain" />
+							<img src={Routing.generate(URL_READ_IMAGE_HD, { id: elem.id })} alt={`Photo ${elem.originalName}`}
+								 className="w-full h-full pointer-events-none object-contain select-none outline-none"
+								 style={{ transform: `translateX(${currentTranslate}px)` }} />
 						</div>
 					})}
 				</div>
