@@ -6,21 +6,38 @@ use App\Entity\Main\Gallery\GaImage;
 use App\Entity\Main\User;
 use App\Repository\Main\Gallery\GaImageRepository;
 use App\Service\ApiResponse;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/intern/api/gallery', name: 'intern_api_user_gallery_')]
 class UserController extends AbstractController
 {
     #[Route('/fetch-images', name: 'fetch_images', options: ['expose' => true], methods: 'GET')]
-    public function fetchImages(ApiResponse $apiResponse, GaImageRepository $imageRepository): Response
+    public function fetchImages(Request $request, PaginatorInterface $paginator, ApiResponse $apiResponse,
+                                GaImageRepository $imageRepository, SerializerInterface $serializer): Response
     {
         $images = $imageRepository->findBy(['user' => $this->getUser()], ['dateAt' => 'ASC']);
-        return $apiResponse->apiJsonResponse($images, GaImage::LIST);
+
+        // Pagination
+        $page = $request->query->getInt('page', 1);
+        $pagination = $paginator->paginate(
+            $images, // Les images récupérées
+            $page,   // La page actuelle
+            20  // Nombre d'images par page
+        );
+
+        return $apiResponse->apiJsonResponseCustom([
+            'images' => $serializer->serialize($images, 'json', ['groups' => GaImage::LIST]),
+            'currentImages' => $serializer->serialize($pagination->getItems(), 'json', ['groups' => GaImage::LIST]),
+            'hasMore' => $pagination->getCurrentPageNumber() < $pagination->getPageCount(),
+        ]);
     }
 
     #[Route('/image/{id}', name: 'read_image', options: ['expose' => true], methods: 'GET')]

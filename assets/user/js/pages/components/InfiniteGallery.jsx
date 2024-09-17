@@ -19,24 +19,34 @@ const URL_DOWNLOAD_ARCHIVE = "intern_api_user_gallery_archive";
 const InfiniteGallery = () => {
 	const refLightbox = useRef(null);
 	const [images, setImages] = useState([]); // Stocke les images
+	const [currentImages, setCurrentImages] = useState([]); // Stocke les imagesI
+	const [page, setPage] = useState(1);      // Page courante
+	const [hasMore, setHasMore] = useState(true); // Indique s'il reste des images à charger
 	const [loading, setLoading] = useState(false); // Indique si un chargement est en cours
 
 	useEffect(() => {
 		// Fonction pour récupérer les images
 		const fetchImages = async () => {
-			if (loading) return; // Ne pas charger si déjà en cours ou s'il n'y a plus d'images
+			if (loading || !hasMore) return; // Ne pas charger si déjà en cours ou s'il n'y a plus d'images
 			setLoading(true);
 
-			axios({ method: "GET", url: Routing.generate(URL_GET_DATA), data: {} })
+			axios({ method: "GET", url: Routing.generate(URL_GET_DATA, {page: page}), data: {} })
 				.then(function (response) {
-					let data = response.data;
+					let data = JSON.parse(response.data.images);
+					let currentData = JSON.parse(response.data.currentImages);
 
 					let i = 1;
 					data.forEach(item => {
 						item.rankPhoto = i++;
 					})
+					let j = 1;
+					currentData.forEach(item => {
+						item.rankPhoto = j++;
+					})
 
-					setImages(prevImages => [...prevImages, ...response.data]); // Ajoute les nouvelles images à celles déjà chargées
+					setImages(data);
+					setCurrentImages(prevImages => [...prevImages, ...currentData]); // Ajoute les nouvelles images à celles déjà chargées
+					setHasMore(response.data.hasMore); // Met à jour s'il reste encore des images à charger
 				})
 				.catch(function (error) {
 					Formulaire.displayErrors(null, error);
@@ -48,7 +58,20 @@ const InfiniteGallery = () => {
 		};
 
 		fetchImages(); // Charge les images lors de chaque changement de page
-	}, []);
+	}, [page]);
+
+	// Gestion du scroll
+	useEffect(() => {
+		const handleScroll = () => {
+			if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 100 && hasMore) {
+				setPage(prevPage => prevPage + 1); // Incrémente la page lorsque l'utilisateur arrive en bas de la page
+			}
+		};
+
+		window.addEventListener('scroll', handleScroll); // Ajoute l'événement de scroll
+
+		return () => window.removeEventListener('scroll', handleScroll); // Nettoie l'événement lors du démontage du composant
+	}, [hasMore]);
 
 	let handleLightbox = (elem) => {
 		refLightbox.current.handleUpdateContent(<LightboxContent key={elem.rankPhoto} identifiant="lightbox" images={images} elem={elem} />);
@@ -63,10 +86,11 @@ const InfiniteGallery = () => {
 				</ButtonA>
 			</div>
 			<div className="flex flex-col gap-4 md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 pswp-gallery" id="gallery">
-				<LazyLoadingGalleryWithPlaceholder images={images} onLightbox={handleLightbox} key={images.length} />
+				<LazyLoadingGalleryWithPlaceholder currentImages={currentImages} onLightbox={handleLightbox} />
 			</div>
 
 			{loading && <div className="text-center text-gray-600 text-sm mt-4">Chargement...</div>}
+			{!hasMore && <div className="text-center text-gray-600 text-sm mt-4">Plus d'images à afficher.</div>}
 
 			{createPortal(<LightBox ref={refLightbox} identifiant="lightbox" content={null}  />
 				, document.body
@@ -75,9 +99,9 @@ const InfiniteGallery = () => {
 	);
 };
 
-function LazyLoadingGalleryWithPlaceholder ({ images, onLightbox }) {
-	const [loaded, setLoaded] = useState(Array(images.length).fill(false));
-	const [error, setError] = useState(Array(images.length).fill(false));
+function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox }) {
+	const [loaded, setLoaded] = useState(Array(currentImages.length).fill(false));
+	const [error, setError] = useState(Array(currentImages.length).fill(false));
 
 	const handleImageLoad = (index) => {
 		const updatedLoaded = [...loaded];
@@ -93,7 +117,7 @@ function LazyLoadingGalleryWithPlaceholder ({ images, onLightbox }) {
 
 	useEffect(() => {
 		// Timeout de 5 secondes pour chaque image
-		const timeoutId = images.map((_, index) =>
+		const timeoutId = currentImages.map((_, index) =>
 			setTimeout(() => {
 				if (!loaded[index]) {
 					handleImageError(index);
@@ -108,15 +132,15 @@ function LazyLoadingGalleryWithPlaceholder ({ images, onLightbox }) {
 	}, [loaded]);
 
 	return <>
-		{images.map((image, index) => (
+		{currentImages.map((image, index) => (
 			<div key={index} className="relative cursor-pointer group block gallery-item overflow-hidden" onClick={() => onLightbox(image)}>
 				{!loaded[index] && !error[index] && (
-					<div className="w-full h-full min-h-96 bg-white flex items-center justify-center">
+					<div className="w-full h-full min-h-[332px] bg-white flex items-center justify-center">
 						<span className="icon-chart-3"></span>
 					</div>
 				)}
 				{error[index] ? (
-					<div className="w-full h-full min-h-56 bg-white flex items-center justify-center">
+					<div className="w-full h-full min-h-[332px] bg-white flex items-center justify-center">
 						Image non disponible
 					</div>
 				) : (
