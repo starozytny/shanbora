@@ -78,7 +78,7 @@ const InfiniteGallery = () => {
 					Télécharger toutes les photos
 				</ButtonA>
 			</div>
-			<div className="flex flex-col gap-4 md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 pswp-gallery" id="gallery">
+			<div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 pswp-gallery" id="gallery">
 				<LazyLoadingGalleryWithPlaceholder currentImages={currentImages} onLightbox={handleLightbox} />
 			</div>
 
@@ -134,7 +134,7 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox }) {
 
 	return <>
 		{currentImages.map((image, index) => (
-			<div key={index} className="relative cursor-pointer min-h-[332px] group block gallery-item overflow-hidden rounded-md" onClick={() => onLightbox(image)}>
+			<div key={index} className="relative cursor-pointer min-h-[205px] md:min-h-[332px] group block gallery-item overflow-hidden rounded-md" onClick={() => onLightbox(image)}>
 				<div className={`w-full h-full bg-white flex items-center justify-center absolute top-0 left-0 ${!loaded[index] && !error[index] ? "opacity-100" : "opacity-0"}`}>
 					<span className="icon-chart-3"></span>
 				</div>
