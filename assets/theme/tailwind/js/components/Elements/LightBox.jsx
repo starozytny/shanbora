@@ -58,14 +58,14 @@ export class LightBox extends Component {
 			nContent = <div dangerouslySetInnerHTML={{ __html: nContent }} />;
 		}
 
-		return <div id={identifiant} className="modal fixed top-0 left-0 w-full h-full -z-10 opacity-0 bg-gray-800/90 overflow-hidden" role="dialog" aria-modal="true">
+		return <div id={identifiant} className="modal cursor-pointer fixed top-0 left-0 w-full h-full -z-10 opacity-0 bg-gray-800/90 overflow-hidden" role="dialog" aria-modal="true">
 			<div className="flex justify-between p-4">
 				<div>TOTAL</div>
 				<div>
 					<div className="close-modal cursor-pointer"><span className="icon-cancel" /></div>
 				</div>
 			</div>
-			<div className="modal-content relative w-screen h-full -translate-y-[56px] bg-gray-800/30 text-left transition-all ease-out duration-300 opacity-0 sm:my-8 sm:w-full" style={divStyle}>
+			<div className="modal-content cursor-default relative w-screen h-full -translate-y-[56px] bg-gray-800/30 text-left transition-all ease-out duration-300 opacity-0 sm:my-8 sm:w-full" style={divStyle}>
 				<div className="flex justify-center items-center h-full">{nContent}</div>
 			</div>
 		</div>

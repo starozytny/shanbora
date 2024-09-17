@@ -7,6 +7,7 @@ import Formulaire from "@commonFunctions/formulaire";
 
 import { ButtonA } from "@tailwindComponents/Elements/Button";
 import { LightBox } from "@tailwindComponents/Elements/LightBox";
+import { createPortal } from "react-dom";
 
 const URL_GET_DATA = "intern_api_user_gallery_fetch_images";
 const URL_READ_IMAGE = "intern_api_user_gallery_read_image";
@@ -66,7 +67,9 @@ const InfiniteGallery = () => {
 
 			{loading && <div className="text-center text-gray-600 text-sm mt-4">Chargement...</div>}
 
-			<LightBox ref={refLightbox} identifiant="lightbox" maxWidth={1024} content={null} footer={null} />
+			{createPortal(<LightBox ref={refLightbox} identifiant="lightbox" maxWidth={1024} content={null} footer={null} />
+				, document.body
+			)}
 		</div>
 	);
 };
