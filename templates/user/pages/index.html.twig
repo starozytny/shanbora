@@ -1,28 +1,19 @@
 {% extends 'user/layout/layout.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
-{% set page_title %}Hello UserController!{% endset %}
+{% block title %}{{ app.user.galleryTitle ? app.user.galleryTitle : "" }}{% endblock %}
+{% set page_title %}{{ app.user.galleryTitle ? app.user.galleryTitle : "" }}{% endset %}
 
 {% block main_content %}
     <style>
         .gallery-item {
             break-inside: avoid; /* Évite que les images se cassent sur plusieurs colonnes */
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
         }
     </style>
     <div class="w-full px-2 lg:px-8">
         <div class="md:flex md:flex-col md:justify-center md:items-center">
-            <div class="text-yellow-500 font-semibold text-lg">date</div>
-            <h2 class="font-bold text-6xl">Test private image</h2>
-            <p class="mt-4 text-gray-600 max-w-screen-md md:text-center">
-
-            </p>
+            <div class="text-yellow-500 font-semibold text-lg">{{ app.user.galleryDate ? app.user.galleryDate | date('d/m/Y') : "" }}</div>
+            <h2 class="font-bold text-6xl">{{ app.user.galleryTitle ? app.user.galleryTitle : "" }}</h2>
+            <p class="mt-4 text-gray-600 max-w-screen-md md:text-center"></p>
         </div>
 
         <div class="mt-10 flex flex-col gap-8">

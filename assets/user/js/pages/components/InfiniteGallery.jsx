@@ -133,7 +133,7 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox }) {
 
 	return <>
 		{currentImages.map((image, index) => (
-			<div key={index} className="relative cursor-pointer group block gallery-item overflow-hidden" onClick={() => onLightbox(image)}>
+			<div key={index} className="relative cursor-pointer group block gallery-item overflow-hidden rounded-md" onClick={() => onLightbox(image)}>
 				{!loaded[index] && !error[index] && (
 					<div className="w-full h-full min-h-[332px] bg-white flex items-center justify-center">
 						<span className="icon-chart-3"></span>
@@ -147,7 +147,7 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox }) {
 					<img
 						src={Routing.generate(URL_READ_IMAGE, { id: image.id })}
 						alt={`Photo ${image.originalName}`}
-						className="pointer-events-none group-hover:scale-105 transition-transform"
+						className="pointer-events-none w-full h-auto rounded-md group-hover:scale-105 transition-transform"
 						loading="lazy"
 						onLoad={() => handleImageLoad(index)} // Appelé quand l'image est chargée
 						onError={() => handleImageError(index)} // En cas d'erreur de chargement

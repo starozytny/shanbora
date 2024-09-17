@@ -29,6 +29,8 @@ class DataMain
             ->setFirstname($this->sanitizeData->sanitizeString($data->firstname))
             ->setLastname($this->sanitizeData->sanitizeString($data->lastname))
             ->setEmail($data->email)
+            ->setGalleryTitle($this->sanitizeData->fullSanitize($data->galleryTitle))
+            ->setGalleryDate($this->sanitizeData->createDatePicker($data->galleryDate))
         ;
     }
 

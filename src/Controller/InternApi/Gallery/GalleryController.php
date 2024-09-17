@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/intern/api/gallery', name: 'intern_api_user_gallery_')]
-class UserController extends AbstractController
+class GalleryController extends AbstractController
 {
     #[Route('/fetch-images', name: 'fetch_images', options: ['expose' => true], methods: 'GET')]
     public function fetchImages(Request $request, PaginatorInterface $paginator, ApiResponse $apiResponse,
