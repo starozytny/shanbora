@@ -64,12 +64,6 @@ const InfiniteGallery = () => {
 			</div>
 			<div className="flex flex-col gap-4 md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 pswp-gallery" id="gallery">
 				<LazyLoadingGalleryWithPlaceholder images={images} onLightbox={handleLightbox} key={images.length} />
-				{/*{images.map(image => (*/}
-				{/*	<div key={image.id} className="cursor-pointer group block gallery-item overflow-hidden" onClick={() => handleLightbox(image)}>*/}
-				{/*		<img src={Routing.generate(URL_READ_IMAGE, { id: image.id })} alt={`Photo ${image.originalName}`}*/}
-				{/*			 className="pointer-events-none group-hover:scale-105 transition-transform" loading="lazy"/>*/}
-				{/*	</div>*/}
-				{/*))}*/}
 			</div>
 
 			{loading && <div className="text-center text-gray-600 text-sm mt-4">Chargement...</div>}
