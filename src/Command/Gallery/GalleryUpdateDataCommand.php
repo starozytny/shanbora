@@ -62,11 +62,15 @@ class GalleryUpdateDataCommand extends Command
             return Command::FAILURE;
         }
 
+        $io->title("Suppression des images existantes");
+
+        $nb = 0;
         $files = $em->getRepository(GaImage::class)->findBy(['user' => $user]);
         foreach($files as $file){
             $fileFile = $this->galleryDirectory . $file->getThumbsFile();
             if(file_exists($fileFile)){
                 unlink($fileFile);
+                $nb++;
             }
             $fileFile = $this->galleryDirectory . $file->getFileFile();
             if(file_exists($fileFile)){
@@ -75,7 +79,12 @@ class GalleryUpdateDataCommand extends Command
 
             $em->remove($file);
         }
+        $io->text($nb . ' images supprimées');
+        $io->text(count($files) . ' entrées supprimées');
 
+        $io->title("Extraction de l'archive");
+
+        $nb = 0;
         if($this->extractZIP($io, $filename)){
             $extractDirectory = $this->galleryDirectory . $filename . '/original/';
 
@@ -111,12 +120,14 @@ class GalleryUpdateDataCommand extends Command
 
                 $em->persist($newImage);
 
-
                 rename($file->getRealPath(), $extractDirectory . $newFilename);
+                $nb++;
             }
         }
 
         $em->flush();
+
+        $io->text($nb . ' images extracted');
 
         $io->newLine();
         $io->comment('--- [FIN DE LA COMMANDE] ---');
