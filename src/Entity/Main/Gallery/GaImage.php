@@ -26,6 +26,9 @@ class GaImage extends DataEntity
     #[ORM\Column(length: 255)]
     private ?string $thumbs = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $lightbox = null;
+
     #[ORM\Column]
     #[Groups(['ga_img_list'])]
     private ?int $nbDownload = 0;
@@ -66,6 +69,18 @@ class GaImage extends DataEntity
     public function setThumbs(string $thumbs): static
     {
         $this->thumbs = $thumbs;
+
+        return $this;
+    }
+
+    public function getLightbox(): ?string
+    {
+        return $this->lightbox;
+    }
+
+    public function setLightbox(string $lightbox): static
+    {
+        $this->lightbox = $lightbox;
 
         return $this;
     }
@@ -126,5 +141,10 @@ class GaImage extends DataEntity
     public function getThumbsFile(): ?string
     {
         return $this->getFileOrDefault($this->thumbs, $this->user->getUsername() . '/thumbs', null);
+    }
+
+    public function getLightboxFile(): ?string
+    {
+        return $this->getFileOrDefault($this->lightbox, $this->user->getUsername() . '/lightbox', null);
     }
 }

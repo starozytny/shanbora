@@ -76,6 +76,10 @@ class GalleryUpdateDataCommand extends Command
             if(file_exists($fileFile)){
                 unlink($fileFile);
             }
+            $fileFile = $this->galleryDirectory . $file->getLightboxFile();
+            if(file_exists($fileFile)){
+                unlink($fileFile);
+            }
 
             $em->remove($file);
         }
@@ -84,9 +88,22 @@ class GalleryUpdateDataCommand extends Command
 
         $io->title("Extraction de l'archive");
 
+
+        $extractDirectory = $this->galleryDirectory . $filename . '/original/';
+        if(!is_dir($extractDirectory)){
+            mkdir($extractDirectory, 0777, true);
+        }
+        $thumbsDirectory = $this->galleryDirectory . $filename . '/thumbs/';
+        if(!is_dir($thumbsDirectory)){
+            mkdir($thumbsDirectory, 0777, true);
+        }
+        $lightboxDirectory = $this->galleryDirectory . $filename . '/lightbox/';
+        if(!is_dir($lightboxDirectory)){
+            mkdir($lightboxDirectory, 0777, true);
+        }
+
         $nb = 0;
         if($this->extractZIP($io, $filename)){
-            $extractDirectory = $this->galleryDirectory . $filename . '/original/';
 
             $finder = new Finder();
             $finder->files()->in($extractDirectory)->name('/\.(jpg|jpeg|png|gif)$/i');
@@ -103,6 +120,12 @@ class GalleryUpdateDataCommand extends Command
                 }
                 $originalFile->save($this->galleryDirectory . $filename . '/thumbs/', $newFilename);
 
+                $originalFile = ImageWorkshop::initFromPath($file->getRealPath());
+                if($originalFile->getWidth() > 1024){
+                    $originalFile->resizeInPixel(1024, null, true);
+                }
+                $originalFile->save($this->galleryDirectory . $filename . '/lightbox/', $newFilename);
+
                 $info = new \SplFileInfo($file->getRealPath());
 
                 $dateAt = new \DateTime();
@@ -115,6 +138,7 @@ class GalleryUpdateDataCommand extends Command
                     ->setOriginalName($file->getFilename())
                     ->setFile($newFilename)
                     ->setThumbs($newFilename)
+                    ->setLightbox($newFilename)
                     ->setDateAt($dateAt)
                 ;
 
@@ -146,10 +170,6 @@ class GalleryUpdateDataCommand extends Command
         $archive = new ZipArchive();
         if($archive->open($file)){
             $extractDirectory = $this->galleryDirectory . $filename . '/original/';
-
-            if(!is_dir($extractDirectory)){
-                mkdir($extractDirectory, 0777, true);
-            }
 
             $archive->extractTo($extractDirectory);
             $archive->close(); unset($archive);
