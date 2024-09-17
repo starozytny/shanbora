@@ -89,8 +89,8 @@ class GalleryUpdateDataCommand extends Command
                 $newFilename = $today->format('d_m_Y_H_i') . '-' . $file->getFilename();
 
                 $originalFile = ImageWorkshop::initFromPath($file->getRealPath());
-                if($originalFile->getWidth() > 448){
-                    $originalFile->resizeInPixel(448, null, true);
+                if($originalFile->getWidth() > 222){
+                    $originalFile->resizeInPixel(222, null, true);
                 }
                 $originalFile->save($this->galleryDirectory . $filename . '/thumbs/', $newFilename);
 

@@ -8,3 +8,14 @@
 html{
   @include fontRegular();
 }
+
+button.pswp__button--test-button {
+  background: #136912 !important;
+  font-size: 20px;
+  color: #fff;
+}
+
+.pswp img {
+  max-width: none;
+  object-fit: contain;
+}

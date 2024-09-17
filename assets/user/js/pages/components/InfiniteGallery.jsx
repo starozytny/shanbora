@@ -1,40 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, Component } from 'react';
 
 import axios from "axios";
-import debounce from 'lodash.debounce';
-import LightGallery from 'lightgallery/react';
-
-import 'lightgallery/scss/lightgallery.scss';
-import 'lightgallery/scss/lg-zoom.scss';
-
 import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
 
 import Formulaire from "@commonFunctions/formulaire";
 
 import { ButtonA } from "@tailwindComponents/Elements/Button";
+import { LightBox } from "@tailwindComponents/Elements/LightBox";
 
 const URL_GET_DATA = "intern_api_user_gallery_fetch_images";
 const URL_READ_IMAGE = "intern_api_user_gallery_read_image";
+const URL_READ_IMAGE_HD = "intern_api_user_gallery_read_image_hd";
 const URL_DOWNLOAD_FILE = "intern_api_user_gallery_download";
 const URL_DOWNLOAD_ARCHIVE = "intern_api_user_gallery_archive";
 
 const InfiniteGallery = () => {
+	const refLightbox = useRef(null);
 	const [images, setImages] = useState([]); // Stocke les images
-	const [page, setPage] = useState(1);      // Page courante
-	const [hasMore, setHasMore] = useState(true); // Indique s'il reste des images à charger
 	const [loading, setLoading] = useState(false); // Indique si un chargement est en cours
 
 	useEffect(() => {
 		// Fonction pour récupérer les images
 		const fetchImages = async () => {
-			if (loading || !hasMore) return; // Ne pas charger si déjà en cours ou s'il n'y a plus d'images
+			if (loading) return; // Ne pas charger si déjà en cours ou s'il n'y a plus d'images
 			setLoading(true);
 
-			axios({ method: "GET", url: Routing.generate(URL_GET_DATA, { page: page }), data: {} })
+			axios({ method: "GET", url: Routing.generate(URL_GET_DATA), data: {} })
 				.then(function (response) {
-					const data = response.data;
-					setImages(prevImages => [...prevImages, ...JSON.parse(data.images)]); // Ajoute les nouvelles images à celles déjà chargées
-					setHasMore(data.hasMore); // Met à jour s'il reste encore des images à charger
+					setImages(prevImages => [...prevImages, ...response.data]); // Ajoute les nouvelles images à celles déjà chargées
 				})
 				.catch(function (error) {
 					Formulaire.displayErrors(null, error);
@@ -46,25 +39,12 @@ const InfiniteGallery = () => {
 		};
 
 		fetchImages(); // Charge les images lors de chaque changement de page
-	}, [page]);
+	}, []);
 
-	// Gestion du scroll
-	useEffect(() => {
-		const handleScroll = () => {
-			if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 100 && hasMore) {
-				setPage(prevPage => prevPage + 1); // Incrémente la page lorsque l'utilisateur arrive en bas de la page
-			}
-		};
-
-		window.addEventListener('scroll', handleScroll); // Ajoute l'événement de scroll
-		window.addEventListener('scroll', debounce(handleScroll, 200)); // 200ms de délai avant d'exécuter la fonction
-
-		return () => window.removeEventListener('scroll', handleScroll); // Nettoie l'événement lors du démontage du composant
-	}, [hasMore]);
-
-	const onInit = () => {
-		console.log('lightGallery has been initialized');
-	};
+	let handleLightbox = (elem) => {
+		refLightbox.current.handleUpdateContent(<LightboxContent images={images} elem={elem} />);
+		refLightbox.current.handleClick();
+	}
 
 	return (
 		<div>
@@ -73,26 +53,38 @@ const InfiniteGallery = () => {
 					Télécharger toutes les photos
 				</ButtonA>
 			</div>
-			<div className="masonry">
-				<LightGallery
-					onInit={onInit}
-					speed={500}
-				>
-					{images.map((image, index) => (
-						<a key={index} className="block masonry-item"
-						   href={Routing.generate(URL_DOWNLOAD_FILE, { id: image.id })}
-						   download={image.originalName}
-						>
-							<img src={Routing.generate(URL_READ_IMAGE, {id: image.id})} alt={`Photo ${index}`} />
-						</a>
-					))}
-				</LightGallery>
+			<div className="flex flex-col gap-4 md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 pswp-gallery" id="gallery">
+				{images.map(image => (
+					<div key={image.id} className="block gallery-item bg-white"
+					   // href={Routing.generate(URL_DOWNLOAD_FILE, { id: image.id })}
+						onClick={() => handleLightbox(image)}
+					>
+						<img src={Routing.generate(URL_READ_IMAGE, { id: image.id })} alt={`Photo ${image.originalName}`} loading="lazy"/>
+					</div>
+				))}
 			</div>
 
 			{loading && <div className="text-center text-gray-600 text-sm mt-4">Chargement...</div>}
-			{!hasMore && <div className="text-center text-gray-600 text-sm mt-4">Plus d'images à afficher.</div>}
+
+			<LightBox ref={refLightbox} identifiant="lightbox" maxWidth={1024} content={null} footer={null} />
 		</div>
 	);
 };
+
+export class LightboxContent extends Component {
+	render () {
+		const { images, elem } = this.props;
+
+		return <>
+			{images.map(image => (
+				<div key={image.id} className={`${elem.id === image.id ? "block" : "hidden"} w-full h-full`}
+					// href={Routing.generate(URL_DOWNLOAD_FILE, { id: image.id })}
+				>
+					<img src={Routing.generate(URL_READ_IMAGE_HD, { id: elem.id })} alt={`Photo ${elem.originalName}`} className="w-full h-full object-contain" loading="lazy" />
+				</div>
+			))}
+		</>
+	}
+}
 
 export default InfiniteGallery;
