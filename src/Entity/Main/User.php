@@ -3,9 +3,11 @@
 namespace App\Entity\Main;
 
 use App\Entity\DataEntity;
+use App\Entity\Main\Gallery\GaImage;
 use App\Repository\Main\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Exception;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -96,6 +98,20 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
     private Collection $mails;
 
     /**
+     * @var Collection<int, GaImage>
+     */
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: GaImage::class)]
+    private Collection $gaImages;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Groups(['user_form'])]
+    private ?string $galleryTitle = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[Groups(['user_form'])]
+    private ?\DateTimeInterface $galleryDate = null;
+
+    /**
      * @throws Exception
      */
     public function __construct()
@@ -103,6 +119,7 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
         $this->createdAt = new \DateTimeImmutable();
         $this->token = $this->initToken();
         $this->mails = new ArrayCollection();
+        $this->gaImages = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -401,6 +418,60 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
                 $mail->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, GaImage>
+     */
+    public function getGaImages(): Collection
+    {
+        return $this->gaImages;
+    }
+
+    public function addGaImage(GaImage $gaImage): static
+    {
+        if (!$this->gaImages->contains($gaImage)) {
+            $this->gaImages->add($gaImage);
+            $gaImage->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGaImage(GaImage $gaImage): static
+    {
+        if ($this->gaImages->removeElement($gaImage)) {
+            // set the owning side to null (unless already changed)
+            if ($gaImage->getUser() === $this) {
+                $gaImage->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getGalleryTitle(): ?string
+    {
+        return $this->galleryTitle;
+    }
+
+    public function setGalleryTitle(?string $galleryTitle): static
+    {
+        $this->galleryTitle = $galleryTitle;
+
+        return $this;
+    }
+
+    public function getGalleryDate(): ?\DateTimeInterface
+    {
+        return $this->galleryDate;
+    }
+
+    public function setGalleryDate(?\DateTimeInterface $galleryDate): static
+    {
+        $this->galleryDate = $galleryDate;
 
         return $this;
     }
