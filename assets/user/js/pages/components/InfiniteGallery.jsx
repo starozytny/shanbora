@@ -279,7 +279,7 @@ export class LightboxContent extends Component {
 		}
 
 		return <>
-			<div className="fixed bg-gradient-to-t from-gray-800 to-transparent bottom-0 md:bottom-auto md:top-0 md:bg-none left-0 w-full flex justify-between p-4 md:p-8 text-white z-20">
+			<div className="fixed bg-gradient-to-t from-gray-800 to-black/30 bottom-0 md:bottom-auto md:top-0 md:bg-none left-0 w-full flex justify-between p-4 md:p-8 text-white z-20">
 				<div className="text-gray-400">{elem.rankPhoto} / {images.length}</div>
 				<div className="flex gap-4">
 					<div>
@@ -296,12 +296,12 @@ export class LightboxContent extends Component {
 					</div>
 				</div>
 			</div>
-			<div className="flex justify-center items-center h-full">
-				<div className="cursor-pointer fixed group h-full top-[56px] left-0 flex items-center justify-center p-4 md:p-8 z-20 text-white"
+			<div className="flex justify-center items-center w-full h-full">
+				<div className="cursor-pointer fixed group top-0 h-[calc(100%-65px)] md:top-[97px] md:h-full left-0 flex items-center justify-center p-4 md:p-8 z-20 text-white"
 					 onClick={() => this.handlePrev(actualRank > 1 ? actualRank : (images.length + 1))}>
 					<span className="icon-left-chevron !text-2xl text-gray-400 group-hover:text-white"></span>
 				</div>
-				<div ref={this.gallery} className="flex justify-center items-center h-full"
+				<div ref={this.gallery} className="relative flex justify-center items-center w-full h-full"
 					 onMouseDown={this.handleMouseDown}
 					 onMouseMove={this.handleMouseMove}
 					 onMouseUp={this.handleMouseUp}
@@ -311,14 +311,14 @@ export class LightboxContent extends Component {
 					 onTouchEnd={this.handleTouchEnd}
 				>
 					{images.map(image => {
-						return <div key={image.id} className={`${elem.id === image.id ? "block" : "hidden"} w-full h-full`}>
+						return <div key={image.id} className={`${elem.id === image.id ? "opacity-100" : "opacity-0"} transition-opacity absolute top-0 left-0 w-full h-full`}>
 							<img src={Routing.generate(URL_READ_IMAGE_HD, { id: elem.id })} alt={`Photo ${elem.originalName}`}
-								 className="w-full h-full pointer-events-none object-contain select-none outline-none"
+								 className="w-full h-full pointer-events-none object-contain select-none outline-none transition-transform"
 								 style={{ transform: `translateX(${currentTranslate}px)` }} />
 						</div>
 					})}
 				</div>
-				<div className="cursor-pointer fixed group h-full top-[56px] right-0 flex items-center justify-center p-4 md:p-8 z-20 text-white"
+				<div className="cursor-pointer fixed group top-0 h-[calc(100%-65px)] md:top-[97px] md:h-full right-0 flex items-center justify-center p-4 md:p-8 z-20 text-white"
 					 onClick={() => this.handleNext(actualRank < images.length ? actualRank : 1)}>
 					<span className="icon-right-chevron !text-2xl text-gray-400 group-hover:text-white"></span>
 				</div>
