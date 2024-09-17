@@ -296,12 +296,12 @@ export class LightboxContent extends Component {
 					</div>
 				</div>
 			</div>
-			<div className="flex justify-center items-center h-full">
+			<div className="flex justify-center items-center w-full h-full">
 				<div className="cursor-pointer fixed group top-0 h-[calc(100%-65px)] md:top-[97px] md:h-full left-0 flex items-center justify-center p-4 md:p-8 z-20 text-white"
 					 onClick={() => this.handlePrev(actualRank > 1 ? actualRank : (images.length + 1))}>
 					<span className="icon-left-chevron !text-2xl text-gray-400 group-hover:text-white"></span>
 				</div>
-				<div ref={this.gallery} className="flex justify-center items-center h-full"
+				<div ref={this.gallery} className="relative flex justify-center items-center w-full h-full"
 					 onMouseDown={this.handleMouseDown}
 					 onMouseMove={this.handleMouseMove}
 					 onMouseUp={this.handleMouseUp}
@@ -311,9 +311,9 @@ export class LightboxContent extends Component {
 					 onTouchEnd={this.handleTouchEnd}
 				>
 					{images.map(image => {
-						return <div key={image.id} className={`${elem.id === image.id ? "block" : "hidden"} w-full h-full`}>
+						return <div key={image.id} className={`${elem.id === image.id ? "opacity-100" : "opacity-0"} transition-opacity absolute top-0 left-0 w-full h-full`}>
 							<img src={Routing.generate(URL_READ_IMAGE_HD, { id: elem.id })} alt={`Photo ${elem.originalName}`}
-								 className="w-full h-full pointer-events-none object-contain select-none outline-none"
+								 className="w-full h-full pointer-events-none object-contain select-none outline-none transition-transform"
 								 style={{ transform: `translateX(${currentTranslate}px)` }} />
 						</div>
 					})}
