@@ -29,6 +29,13 @@ const InfiniteGallery = () => {
 
 			axios({ method: "GET", url: Routing.generate(URL_GET_DATA), data: {} })
 				.then(function (response) {
+					let data = response.data;
+
+					let i = 1;
+					data.forEach(item => {
+						item.rankPhoto = i++;
+					})
+
 					setImages(prevImages => [...prevImages, ...response.data]); // Ajoute les nouvelles images à celles déjà chargées
 				})
 				.catch(function (error) {
@@ -76,6 +83,15 @@ const InfiniteGallery = () => {
 };
 
 export class LightboxContent extends Component {
+	constructor (props) {
+		super(props);
+
+		this.state = {
+			elem: props.elem ? props.elem : null,
+			actualRank: props.elem ? props.elem.rankPhoto : 1
+		}
+	}
+
 	handleCloseModal = (e) => {
 		e.preventDefault();
 
@@ -86,26 +102,92 @@ export class LightboxContent extends Component {
 		ModalFunctions.closeM(body, modal, modalContent);
 	}
 
+	handleNext = (rankPhoto) => {
+		const { images } = this.props;
+		const { elem } = this.state;
+
+		let nRank = rankPhoto + 1;
+
+		if(nRank > images.length){
+			nRank = rankPhoto;
+		}
+
+		let nElem = elem;
+		images.forEach(image => {
+			if(image.rankPhoto === nRank){
+				nElem = image;
+			}
+		})
+
+		this.setState({ actualRank: nRank, elem: nElem })
+	}
+
+	handlePrev = (rankPhoto) => {
+		const { images } = this.props;
+		const { elem } = this.state;
+
+		let nRank = rankPhoto - 1;
+
+		if(nRank < 1){
+			nRank = rankPhoto;
+		}
+
+		let nElem = elem;
+		images.forEach(image => {
+			if(image.rankPhoto === nRank){
+				nElem = image;
+			}
+		})
+
+		this.setState({ actualRank: nRank, elem: nElem })
+	}
+
 	render () {
-		const { images, elem } = this.props;
+		const { images } = this.props;
+		const { actualRank, elem } = this.state;
+
+		if(!elem){
+			return;
+		}
 
 		return <>
-			<div className="fixed top-0 left-0 w-full flex justify-between p-4 text-white z-20">
-				<div>{images.length} photos</div>
-				<div>
-					<div className="close-modal cursor-pointer hover:text-red-500" onClick={this.handleCloseModal}>
-						<span className="icon-close !text-2xl" />
+			<div className="fixed top-0 left-0 w-full flex justify-between p-4 md:p-8 text-white z-20">
+				<div>{elem.rankPhoto} / {images.length} photos</div>
+				<div className="flex gap-4">
+					<div>
+						<a className="lightbox-action relative" href={Routing.generate(URL_DOWNLOAD_FILE, { id: elem.id })} download>
+							<span className="icon-download !text-2xl" />
+							<span className="tooltip bg-gray-300 text-black py-1 px-2 rounded absolute -top-10 right-0 text-xs hidden">Télécharger</span>
+						</a>
+					</div>
+					<div>
+						<div className="lightbox-action relative close-modal cursor-pointer" onClick={this.handleCloseModal}>
+							<span className="icon-close !text-2xl" />
+							<span className="tooltip bg-gray-300 text-black py-1 px-2 rounded absolute -top-7 right-0 text-xs hidden">Supprimer</span>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div className="flex justify-center items-center h-full">
-				{images.map(image => (
-					<div key={image.id} className={`${elem.id === image.id ? "block" : "hidden"} w-full h-full`}
-						// href={Routing.generate(URL_DOWNLOAD_FILE, { id: image.id })}
-					>
-						<img src={Routing.generate(URL_READ_IMAGE_HD, { id: elem.id })} alt={`Photo ${elem.originalName}`} className="w-full h-full object-contain" loading="lazy" />
+				{actualRank > 1
+					? <div className="cursor-pointer fixed h-full top-1/2 left-4 md:left-8 z-20 text-white"
+						   onClick={() => this.handlePrev(actualRank)}>
+						<span className="icon-left-chevron !text-2xl"></span>
 					</div>
-				))}
+					: null
+				}
+				{images.map((image, index) => {
+					return <div key={image.id} className={`${elem.id === image.id ? "block" : "hidden"} w-full h-full`}>
+						<img src={Routing.generate(URL_READ_IMAGE_HD, { id: elem.id })} alt={`Photo ${elem.originalName}`} className="w-full h-full object-contain" />
+					</div>
+				})}
+				{actualRank < images.length
+					? <div className="cursor-pointer fixed h-full top-1/2 right-4 md:right-8 z-20 text-white"
+						   onClick={() => this.handleNext(actualRank)}>
+						<span className="icon-right-chevron !text-2xl"></span>
+					</div>
+					: null
+				}
 			</div>
 		</>
 	}
