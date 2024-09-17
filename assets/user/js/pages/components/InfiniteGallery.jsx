@@ -64,11 +64,8 @@ const InfiniteGallery = () => {
 			</div>
 			<div className="flex flex-col gap-4 md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 pswp-gallery" id="gallery">
 				{images.map(image => (
-					<div key={image.id} className="block gallery-item bg-white"
-					   // href={Routing.generate(URL_DOWNLOAD_FILE, { id: image.id })}
-						onClick={() => handleLightbox(image)}
-					>
-						<img src={Routing.generate(URL_READ_IMAGE, { id: image.id })} alt={`Photo ${image.originalName}`} loading="lazy"/>
+					<div key={image.id} className="block gallery-item bg-white" onClick={() => handleLightbox(image)}>
+						<img src={Routing.generate(URL_READ_IMAGE, { id: image.id })} alt={`Photo ${image.originalName}`} className="pointer-events-none" loading="lazy"/>
 					</div>
 				))}
 			</div>
@@ -88,7 +85,10 @@ export class LightboxContent extends Component {
 
 		this.state = {
 			elem: props.elem ? props.elem : null,
-			actualRank: props.elem ? props.elem.rankPhoto : 1
+			actualRank: props.elem ? props.elem.rankPhoto : 1,
+			currentIndex: 0,
+			touchStartX: 0,
+			touchEndX: 0,
 		}
 	}
 
@@ -101,6 +101,26 @@ export class LightboxContent extends Component {
 
 		ModalFunctions.closeM(body, modal, modalContent);
 	}
+
+	handleTouchStart = (e) => {
+		this.setState({ touchStartX: e.targetTouches[0].clientX })
+	};
+
+	handleTouchMove = (e) => {
+		this.setState({ touchEndX: e.targetTouches[0].clientX })
+	};
+
+	handleTouchEnd = () => {
+		const { actualRank, touchStartX, touchEndX } = this.state;
+
+		if (touchStartX - touchEndX > 50) {
+			this.handleNext(actualRank);
+		}
+
+		if (touchStartX - touchEndX < -50) {
+			this.handlePrev(actualRank);
+		}
+	};
 
 	handleNext = (rankPhoto) => {
 		const { images } = this.props;
@@ -168,21 +188,25 @@ export class LightboxContent extends Component {
 					</div>
 				</div>
 			</div>
-			<div className="flex justify-center items-center h-full">
+			<div className="flex justify-center items-center h-full"
+				 onTouchStart={this.handleTouchStart}
+				 onTouchMove={this.handleTouchMove}
+				 onTouchEnd={this.handleTouchEnd}
+			>
 				{actualRank > 1
-					? <div className="cursor-pointer fixed h-full top-1/2 left-4 md:left-8 z-20 text-white"
+					? <div className="cursor-pointer fixed h-full top-[56px] left-0 flex items-center justify-center p-4 md:p-8 z-20 text-white"
 						   onClick={() => this.handlePrev(actualRank)}>
 						<span className="icon-left-chevron !text-2xl"></span>
 					</div>
 					: null
 				}
-				{images.map((image, index) => {
+				{images.map(image => {
 					return <div key={image.id} className={`${elem.id === image.id ? "block" : "hidden"} w-full h-full`}>
-						<img src={Routing.generate(URL_READ_IMAGE_HD, { id: elem.id })} alt={`Photo ${elem.originalName}`} className="w-full h-full object-contain" />
+						<img src={Routing.generate(URL_READ_IMAGE_HD, { id: elem.id })} alt={`Photo ${elem.originalName}`} className="w-full h-full pointer-events-none object-contain" />
 					</div>
 				})}
 				{actualRank < images.length
-					? <div className="cursor-pointer fixed h-full top-1/2 right-4 md:right-8 z-20 text-white"
+					? <div className="cursor-pointer fixed h-full top-[56px] right-0 flex items-center justify-center p-4 md:p-8 z-20 text-white"
 						   onClick={() => this.handleNext(actualRank)}>
 						<span className="icon-right-chevron !text-2xl"></span>
 					</div>
