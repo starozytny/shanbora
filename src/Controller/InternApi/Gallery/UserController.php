@@ -53,7 +53,7 @@ class UserController extends AbstractController
             throw $this->createNotFoundException('Image not found.');
         }
 
-        $photoPath = $this->getParameter('private_directory') . "gallery/" . $obj->getFileFile();
+        $photoPath = $this->getParameter('private_directory') . "gallery/" . $obj->getLightboxFile();
         if (!file_exists($photoPath)) {
             throw $this->createNotFoundException('La photo demandée n\'existe pas.');
         }

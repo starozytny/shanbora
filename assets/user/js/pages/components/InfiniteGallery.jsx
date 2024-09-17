@@ -4,6 +4,7 @@ import axios from "axios";
 import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
 
 import Formulaire from "@commonFunctions/formulaire";
+import ModalFunctions from '@commonFunctions/modal';
 
 import { ButtonA } from "@tailwindComponents/Elements/Button";
 import { LightBox } from "@tailwindComponents/Elements/LightBox";
@@ -43,7 +44,7 @@ const InfiniteGallery = () => {
 	}, []);
 
 	let handleLightbox = (elem) => {
-		refLightbox.current.handleUpdateContent(<LightboxContent images={images} elem={elem} />);
+		refLightbox.current.handleUpdateContent(<LightboxContent identifiant="lightbox" images={images} elem={elem} />);
 		refLightbox.current.handleClick();
 	}
 
@@ -67,7 +68,7 @@ const InfiniteGallery = () => {
 
 			{loading && <div className="text-center text-gray-600 text-sm mt-4">Chargement...</div>}
 
-			{createPortal(<LightBox ref={refLightbox} identifiant="lightbox" maxWidth={1024} content={null} footer={null} />
+			{createPortal(<LightBox ref={refLightbox} identifiant="lightbox" content={null}  />
 				, document.body
 			)}
 		</div>
@@ -75,17 +76,37 @@ const InfiniteGallery = () => {
 };
 
 export class LightboxContent extends Component {
+	handleCloseModal = (e) => {
+		e.preventDefault();
+
+		const { identifiant } = this.props;
+
+		let [body, modal, modalContent, btns] = ModalFunctions.getElements(identifiant);
+
+		ModalFunctions.closeM(body, modal, modalContent);
+	}
+
 	render () {
 		const { images, elem } = this.props;
 
 		return <>
-			{images.map(image => (
-				<div key={image.id} className={`${elem.id === image.id ? "block" : "hidden"} w-full h-full`}
-					// href={Routing.generate(URL_DOWNLOAD_FILE, { id: image.id })}
-				>
-					<img src={Routing.generate(URL_READ_IMAGE_HD, { id: elem.id })} alt={`Photo ${elem.originalName}`} className="w-full h-full object-contain" loading="lazy" />
+			<div className="fixed top-0 left-0 w-full flex justify-between p-4 text-white z-20">
+				<div>{images.length} photos</div>
+				<div>
+					<div className="close-modal cursor-pointer hover:text-red-500" onClick={this.handleCloseModal}>
+						<span className="icon-close !text-2xl" />
+					</div>
 				</div>
-			))}
+			</div>
+			<div className="flex justify-center items-center h-full">
+				{images.map(image => (
+					<div key={image.id} className={`${elem.id === image.id ? "block" : "hidden"} w-full h-full`}
+						// href={Routing.generate(URL_DOWNLOAD_FILE, { id: image.id })}
+					>
+						<img src={Routing.generate(URL_READ_IMAGE_HD, { id: elem.id })} alt={`Photo ${elem.originalName}`} className="w-full h-full object-contain" loading="lazy" />
+					</div>
+				))}
+			</div>
 		</>
 	}
 }
