@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect, Component } from 'react';
+import { createPortal } from "react-dom";
 
 import axios from "axios";
 import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
@@ -8,7 +9,6 @@ import ModalFunctions from '@commonFunctions/modal';
 
 import { ButtonA } from "@tailwindComponents/Elements/Button";
 import { LightBox } from "@tailwindComponents/Elements/LightBox";
-import { createPortal } from "react-dom";
 
 const URL_GET_DATA = "intern_api_user_gallery_fetch_images";
 const URL_READ_IMAGE = "intern_api_user_gallery_read_image";
@@ -86,7 +86,7 @@ export class LightboxContent extends Component {
 
 		this.state = {
 			elem: props.elem ? props.elem : null,
-			actualRank: props.actualRank ? props.actualRank : 1,
+			actualRank: props.elem ? props.elem.rankPhoto : 1,
 			currentIndex: 0,
 			touchStartX: 0,
 			touchEndX: 0,
@@ -173,17 +173,17 @@ export class LightboxContent extends Component {
 
 		return <>
 			<div className="fixed bg-gradient-to-t from-gray-800 to-transparent bottom-0 md:bottom-auto md:top-0 md:bg-none left-0 w-full flex justify-between p-4 md:p-8 text-white z-20">
-				<div>{elem.rankPhoto} / {images.length} photos</div>
+				<div className="text-gray-400">{elem.rankPhoto} / {images.length}</div>
 				<div className="flex gap-4">
 					<div>
-						<a className="lightbox-action relative" href={Routing.generate(URL_DOWNLOAD_FILE, { id: elem.id })} download>
-							<span className="icon-download !text-2xl" />
+						<a className="lightbox-action relative group" href={Routing.generate(URL_DOWNLOAD_FILE, { id: elem.id })} download>
+							<span className="icon-download !text-2xl text-gray-400 group-hover:text-white" />
 							<span className="tooltip bg-gray-300 text-black py-1 px-2 rounded absolute -top-10 right-0 text-xs hidden">Télécharger</span>
 						</a>
 					</div>
 					<div>
-						<div className="lightbox-action relative close-modal cursor-pointer" onClick={this.handleCloseModal}>
-							<span className="icon-close !text-2xl" />
+						<div className="lightbox-action relative group close-modal cursor-pointer" onClick={this.handleCloseModal}>
+							<span className="icon-close !text-2xl text-gray-400 group-hover:text-white" />
 							<span className="tooltip bg-gray-300 text-black py-1 px-2 rounded absolute -top-7 right-0 text-xs hidden">Supprimer</span>
 						</div>
 					</div>
@@ -191,9 +191,9 @@ export class LightboxContent extends Component {
 			</div>
 			<div className="flex justify-center items-center h-full">
 				{actualRank > 1
-					? <div className="cursor-pointer fixed h-full top-[56px] left-0 flex items-center justify-center p-4 md:p-8 z-20 text-white"
+					? <div className="cursor-pointer fixed group h-full top-[56px] left-0 flex items-center justify-center p-4 md:p-8 z-20 text-white"
 						   onClick={() => this.handlePrev(actualRank)}>
-						<span className="icon-left-chevron !text-2xl"></span>
+						<span className="icon-left-chevron !text-2xl text-gray-400 group-hover:text-white"></span>
 					</div>
 					: null
 				}
@@ -209,9 +209,9 @@ export class LightboxContent extends Component {
 					})}
 				</div>
 				{actualRank < images.length
-					? <div className="cursor-pointer fixed h-full top-[56px] right-0 flex items-center justify-center p-4 md:p-8 z-20 text-white"
+					? <div className="cursor-pointer fixed group h-full top-[56px] right-0 flex items-center justify-center p-4 md:p-8 z-20 text-white"
 						   onClick={() => this.handleNext(actualRank)}>
-						<span className="icon-right-chevron !text-2xl"></span>
+						<span className="icon-right-chevron !text-2xl text-gray-400 group-hover:text-white"></span>
 					</div>
 					: null
 				}
