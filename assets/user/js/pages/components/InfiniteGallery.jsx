@@ -7,7 +7,7 @@ import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
 import Formulaire from "@commonFunctions/formulaire";
 import ModalFunctions from '@commonFunctions/modal';
 
-import { ButtonA } from "@tailwindComponents/Elements/Button";
+import { Button, ButtonA } from "@tailwindComponents/Elements/Button";
 import { LightBox } from "@tailwindComponents/Elements/LightBox";
 
 const URL_GET_DATA = "intern_api_user_gallery_fetch_images";
@@ -18,6 +18,7 @@ const URL_DOWNLOAD_ARCHIVE = "intern_api_user_gallery_archive";
 
 const InfiniteGallery = () => {
 	const refLightbox = useRef(null);
+	const [rankPhoto, setRankPhoto] = useState(1); // Stocke les images
 	const [images, setImages] = useState([]); // Stocke les images
 	const [currentImages, setCurrentImages] = useState([]); // Stocke les imagesI
 	const [page, setPage] = useState(1);      // Page courante
@@ -39,11 +40,12 @@ const InfiniteGallery = () => {
 					data.forEach(item => {
 						item.rankPhoto = i++;
 					})
-					let j = 1;
+					let j = rankPhoto;
 					currentData.forEach(item => {
 						item.rankPhoto = j++;
 					})
 
+					setRankPhoto(prevRankPhoto => prevRankPhoto + 18)
 					setImages(data);
 					setCurrentImages(prevImages => [...prevImages, ...currentData]); // Ajoute les nouvelles images à celles déjà chargées
 					setHasMore(response.data.hasMore); // Met à jour s'il reste encore des images à charger
@@ -60,18 +62,9 @@ const InfiniteGallery = () => {
 		fetchImages(); // Charge les images lors de chaque changement de page
 	}, [page]);
 
-	// Gestion du scroll
-	useEffect(() => {
-		const handleScroll = () => {
-			if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 100 && hasMore) {
-				setPage(prevPage => prevPage + 1); // Incrémente la page lorsque l'utilisateur arrive en bas de la page
-			}
-		};
-
-		window.addEventListener('scroll', handleScroll); // Ajoute l'événement de scroll
-
-		return () => window.removeEventListener('scroll', handleScroll); // Nettoie l'événement lors du démontage du composant
-	}, [hasMore]);
+	const handleMore = () => {
+		setPage(prevPage => prevPage + 1);
+	};
 
 	let handleLightbox = (elem) => {
 		refLightbox.current.handleUpdateContent(<LightboxContent key={elem.rankPhoto} identifiant="lightbox" images={images} elem={elem} />);
@@ -89,8 +82,16 @@ const InfiniteGallery = () => {
 				<LazyLoadingGalleryWithPlaceholder currentImages={currentImages} onLightbox={handleLightbox} />
 			</div>
 
-			{loading && <div className="text-center text-gray-600 text-sm mt-4">Chargement...</div>}
-			{!hasMore && <div className="text-center text-gray-600 text-sm mt-4">Plus d'images à afficher.</div>}
+			<div className="mt-12">
+				{loading && <div className="text-center text-gray-600 text-sm">Chargement...</div>}
+				{!hasMore
+					? <div className="text-center text-gray-600 text-sm">Plus d'images à afficher.</div>
+					: <div className="flex items-center justify-center mt-8">
+						<Button type="default" onClick={handleMore}>Afficher plus</Button>
+					</div>
+				}
+			</div>
+
 
 			{createPortal(<LightBox ref={refLightbox} identifiant="lightbox" content={null}  />
 				, document.body
@@ -133,18 +134,15 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox }) {
 
 	return <>
 		{currentImages.map((image, index) => (
-			<div key={index} className="relative cursor-pointer group block gallery-item overflow-hidden rounded-md" onClick={() => onLightbox(image)}>
-				{!loaded[index] && !error[index] && (
-					<div className="w-full h-full min-h-[332px] bg-white flex items-center justify-center">
-						<span className="icon-chart-3"></span>
+			<div key={index} className="relative cursor-pointer min-h-[332px] group block gallery-item overflow-hidden rounded-md" onClick={() => onLightbox(image)}>
+				<div className={`w-full h-full bg-white flex items-center justify-center absolute top-0 left-0 ${!loaded[index] && !error[index] ? "opacity-100" : "opacity-0"}`}>
+					<span className="icon-chart-3"></span>
+				</div>
+				{error[index]
+					? <div className="w-full h-full bg-white flex items-center justify-center">
+						Rafraichir la page..
 					</div>
-				)}
-				{error[index] ? (
-					<div className="w-full h-full min-h-[332px] bg-white flex items-center justify-center">
-						Image non disponible
-					</div>
-				) : (
-					<img
+					: <img
 						src={Routing.generate(URL_READ_IMAGE, { id: image.id })}
 						alt={`Photo ${image.originalName}`}
 						className="pointer-events-none w-full h-auto rounded-md group-hover:scale-105 transition-transform"
@@ -152,7 +150,7 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox }) {
 						onLoad={() => handleImageLoad(index)} // Appelé quand l'image est chargée
 						onError={() => handleImageError(index)} // En cas d'erreur de chargement
 					/>
-				)}
+				}
 			</div>
 		))}
 	</>
@@ -299,13 +297,10 @@ export class LightboxContent extends Component {
 				</div>
 			</div>
 			<div className="flex justify-center items-center h-full">
-				{actualRank > 1
-					? <div className="cursor-pointer fixed group h-full top-[56px] left-0 flex items-center justify-center p-4 md:p-8 z-20 text-white"
-						   onClick={() => this.handlePrev(actualRank)}>
-						<span className="icon-left-chevron !text-2xl text-gray-400 group-hover:text-white"></span>
-					</div>
-					: null
-				}
+				<div className="cursor-pointer fixed group h-full top-[56px] left-0 flex items-center justify-center p-4 md:p-8 z-20 text-white"
+					 onClick={() => this.handlePrev(actualRank > 1 ? actualRank : (images.length + 1))}>
+					<span className="icon-left-chevron !text-2xl text-gray-400 group-hover:text-white"></span>
+				</div>
 				<div ref={this.gallery} className="flex justify-center items-center h-full"
 					 onMouseDown={this.handleMouseDown}
 					 onMouseMove={this.handleMouseMove}
@@ -323,13 +318,10 @@ export class LightboxContent extends Component {
 						</div>
 					})}
 				</div>
-				{actualRank < images.length
-					? <div className="cursor-pointer fixed group h-full top-[56px] right-0 flex items-center justify-center p-4 md:p-8 z-20 text-white"
-						   onClick={() => this.handleNext(actualRank)}>
-						<span className="icon-right-chevron !text-2xl text-gray-400 group-hover:text-white"></span>
-					</div>
-					: null
-				}
+				<div className="cursor-pointer fixed group h-full top-[56px] right-0 flex items-center justify-center p-4 md:p-8 z-20 text-white"
+					 onClick={() => this.handleNext(actualRank < images.length ? actualRank : 1)}>
+					<span className="icon-right-chevron !text-2xl text-gray-400 group-hover:text-white"></span>
+				</div>
 			</div>
 		</>
 	}
