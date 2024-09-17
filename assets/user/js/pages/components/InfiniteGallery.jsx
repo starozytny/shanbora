@@ -63,12 +63,13 @@ const InfiniteGallery = () => {
 				</ButtonA>
 			</div>
 			<div className="flex flex-col gap-4 md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 pswp-gallery" id="gallery">
-				{images.map(image => (
-					<div key={image.id} className="cursor-pointer group block gallery-item bg-white overflow-hidden" onClick={() => handleLightbox(image)}>
-						<img src={Routing.generate(URL_READ_IMAGE, { id: image.id })} alt={`Photo ${image.originalName}`}
-							 className="pointer-events-none group-hover:scale-105 transition-transform" loading="lazy"/>
-					</div>
-				))}
+				<LazyLoadingGalleryWithPlaceholder images={images} onLightbox={handleLightbox} key={images.length} />
+				{/*{images.map(image => (*/}
+				{/*	<div key={image.id} className="cursor-pointer group block gallery-item overflow-hidden" onClick={() => handleLightbox(image)}>*/}
+				{/*		<img src={Routing.generate(URL_READ_IMAGE, { id: image.id })} alt={`Photo ${image.originalName}`}*/}
+				{/*			 className="pointer-events-none group-hover:scale-105 transition-transform" loading="lazy"/>*/}
+				{/*	</div>*/}
+				{/*))}*/}
 			</div>
 
 			{loading && <div className="text-center text-gray-600 text-sm mt-4">Chargement...</div>}
@@ -79,6 +80,65 @@ const InfiniteGallery = () => {
 		</div>
 	);
 };
+
+function LazyLoadingGalleryWithPlaceholder ({ images, onLightbox }) {
+	const [loaded, setLoaded] = useState(Array(images.length).fill(false));
+	const [error, setError] = useState(Array(images.length).fill(false));
+
+	const handleImageLoad = (index) => {
+		const updatedLoaded = [...loaded];
+		updatedLoaded[index] = true;
+		setLoaded(updatedLoaded);
+	};
+
+	const handleImageError = (index) => {
+		const updatedError = [...error];
+		updatedError[index] = true;
+		setError(updatedError);
+	};
+
+	useEffect(() => {
+		// Timeout de 5 secondes pour chaque image
+		const timeoutId = images.map((_, index) =>
+			setTimeout(() => {
+				if (!loaded[index]) {
+					handleImageError(index);
+				}
+			}, 2000) // 2 secondes
+		);
+
+		return () => {
+			// Nettoyer le timeout à la fin
+			timeoutId.forEach((id) => clearTimeout(id));
+		};
+	}, [loaded]);
+
+	return <>
+		{images.map((image, index) => (
+			<div key={index} className="relative cursor-pointer group block gallery-item overflow-hidden" onClick={() => onLightbox(image)}>
+				{!loaded[index] && !error[index] && (
+					<div className="w-full h-full min-h-96 bg-white flex items-center justify-center">
+						<span className="icon-chart-3"></span>
+					</div>
+				)}
+				{error[index] ? (
+					<div className="w-full h-full min-h-56 bg-white flex items-center justify-center">
+						Image non disponible
+					</div>
+				) : (
+					<img
+						src={Routing.generate(URL_READ_IMAGE, { id: image.id })}
+						alt={`Photo ${image.originalName}`}
+						className="pointer-events-none group-hover:scale-105 transition-transform"
+						loading="lazy"
+						onLoad={() => handleImageLoad(index)} // Appelé quand l'image est chargée
+						onError={() => handleImageError(index)} // En cas d'erreur de chargement
+					/>
+				)}
+			</div>
+		))}
+	</>
+}
 
 export class LightboxContent extends Component {
 	constructor (props) {
