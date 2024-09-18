@@ -66,6 +66,10 @@ class GalleryUpdateDataCommand extends Command
 
         $nb = 0;
         $files = $em->getRepository(GaImage::class)->findBy(['user' => $user]);
+
+        $progressBar = new ProgressBar($output, count($files));
+        $progressBar->start();
+
         foreach($files as $file){
             $fileFile = $this->galleryDirectory . $file->getThumbsFile();
             if(file_exists($fileFile)){
@@ -82,7 +86,10 @@ class GalleryUpdateDataCommand extends Command
             }
 
             $em->remove($file);
+            $progressBar->advance();
         }
+        $progressBar->finish();
+
         $io->text($nb . ' images supprimées');
         $io->text(count($files) . ' entrées supprimées');
 
