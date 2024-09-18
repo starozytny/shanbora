@@ -139,7 +139,7 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox }) {
 					<span className="icon-chart-3"></span>
 				</div>
 				{error[index]
-					? <div className="w-full h-full bg-white flex items-center justify-center">
+					? <div className="w-full h-full bg-gray-900 text-white flex items-center justify-center">
 						Cliquez pour voir la photo..
 					</div>
 					: <img
