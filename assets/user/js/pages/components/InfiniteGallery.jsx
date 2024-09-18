@@ -140,7 +140,7 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox }) {
 				</div>
 				{error[index]
 					? <div className="w-full h-full bg-white flex items-center justify-center">
-						Rafraichir la page..
+						Cliquez pour voir la photo..
 					</div>
 					: <img
 						src={Routing.generate(URL_READ_IMAGE, { id: image.id })}
