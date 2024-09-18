@@ -67,10 +67,6 @@ class GalleryUpdateDataCommand extends Command
 
         $nb = 0;
         $files = $em->getRepository(GaImage::class)->findBy(['user' => $user]);
-
-        $progressBar = new ProgressBar($output, count($files));
-        $progressBar->start();
-
         foreach($files as $file){
             $fileFile = $this->galleryDirectory . $file->getThumbsFile();
             if(file_exists($fileFile)){
@@ -87,9 +83,7 @@ class GalleryUpdateDataCommand extends Command
             }
 
             $em->remove($file);
-            $progressBar->advance();
         }
-        $progressBar->finish();
 
         $io->text($nb . ' images supprimées');
         $io->text(count($files) . ' entrées supprimées');
@@ -119,6 +113,8 @@ class GalleryUpdateDataCommand extends Command
             $today = new \DateTime();
             $today->setTimezone(new \DateTimeZone('Europe/Paris'));
 
+            $progressBar = new ProgressBar($output, count($finder));
+            $progressBar->start();
             foreach ($finder as $file) {
                 $newFilename = $today->format('d_m_Y_H_i') . '-' . $file->getFilename();
 
@@ -154,7 +150,9 @@ class GalleryUpdateDataCommand extends Command
 
                 rename($file->getRealPath(), $extractDirectory . $newFilename);
                 $nb++;
+                $progressBar->advance();
             }
+            $progressBar->finish();
         }
 
         $em->flush();
