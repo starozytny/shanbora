@@ -55,39 +55,6 @@ class GalleryUpdateDataCommand extends Command
         $io = new SymfonyStyle($input, $output);
         $filename = $input->getArgument('username');
 
-        $em = $this->em;
-
-        $user = $em->getRepository(User::class)->findOneBy(['username' => $filename]);
-        if(!$user){
-            $io->error('User not found');
-            return Command::FAILURE;
-        }
-
-        $io->title("Suppression des images existantes");
-
-        $nb = 0;
-        $files = $em->getRepository(GaImage::class)->findBy(['user' => $user]);
-        foreach($files as $file){
-            $fileFile = $this->galleryDirectory . $file->getThumbsFile();
-            if(file_exists($fileFile)){
-                unlink($fileFile);
-                $nb++;
-            }
-            $fileFile = $this->galleryDirectory . $file->getFileFile();
-            if(file_exists($fileFile)){
-                unlink($fileFile);
-            }
-            $fileFile = $this->galleryDirectory . $file->getLightboxFile();
-            if(file_exists($fileFile)){
-                unlink($fileFile);
-            }
-
-            $em->remove($file);
-        }
-
-        $io->text($nb . ' images supprimées');
-        $io->text(count($files) . ' entrées supprimées');
-
         $io->title("Extraction de l'archive");
 
 
@@ -106,6 +73,38 @@ class GalleryUpdateDataCommand extends Command
 
         $nb = 0;
         if($this->extractZIP($io, $filename)){
+
+            $em = $this->em;
+
+            $user = $em->getRepository(User::class)->findOneBy(['username' => $filename]);
+            if(!$user){
+                $io->error('User not found');
+                return Command::FAILURE;
+            }
+            $io->title("Suppression des images existantes");
+
+            $nb = 0;
+            $files = $em->getRepository(GaImage::class)->findBy(['user' => $user]);
+            foreach($files as $file){
+                $fileFile = $this->galleryDirectory . $file->getThumbsFile();
+                if(file_exists($fileFile)){
+                    unlink($fileFile);
+                    $nb++;
+                }
+                $fileFile = $this->galleryDirectory . $file->getFileFile();
+                if(file_exists($fileFile)){
+                    unlink($fileFile);
+                }
+                $fileFile = $this->galleryDirectory . $file->getLightboxFile();
+                if(file_exists($fileFile)){
+                    unlink($fileFile);
+                }
+
+                $em->remove($file);
+            }
+
+            $io->text($nb . ' images supprimées');
+            $io->text(count($files) . ' entrées supprimées');
 
             $finder = new Finder();
             $finder->files()->in($extractDirectory)->name('/\.(jpg|jpeg|png|gif)$/i');
@@ -138,6 +137,10 @@ class GalleryUpdateDataCommand extends Command
 
                 $nb++;
                 $progressBar->advance();
+
+                if($nb%200 == 0){
+                    $em->flush();
+                }
             }
             $progressBar->finish();
             $em->flush();
