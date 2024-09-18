@@ -134,7 +134,7 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox }) {
 
 	return <>
 		{currentImages.map((image, index) => (
-			<div key={index} className="relative cursor-pointer min-h-[205px] md:min-h-[332px] group block gallery-item overflow-hidden rounded-md" onClick={() => onLightbox(image)}>
+			<div key={index} className="relative cursor-pointer flex items-center justify-center bg-gray-900 min-h-[205px] md:min-h-[332px] group gallery-item overflow-hidden rounded-md" onClick={() => onLightbox(image)}>
 				<div className={`w-full h-full bg-white flex items-center justify-center absolute top-0 left-0 ${!loaded[index] && !error[index] ? "opacity-100" : "opacity-0"}`}>
 					<span className="icon-chart-3"></span>
 				</div>
