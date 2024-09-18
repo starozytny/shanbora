@@ -118,18 +118,6 @@ class GalleryUpdateDataCommand extends Command
             foreach ($finder as $file) {
                 $newFilename = $today->format('d_m_Y_H_i') . '-' . $file->getFilename();
 
-                $originalFile = ImageWorkshop::initFromPath($file->getRealPath());
-                if($originalFile->getWidth() > 280){
-                    $originalFile->resizeInPixel(280, null, true);
-                }
-                $originalFile->save($this->galleryDirectory . $filename . '/thumbs/', $newFilename);
-
-                $originalFile = ImageWorkshop::initFromPath($file->getRealPath());
-                if($originalFile->getWidth() > 1024){
-                    $originalFile->resizeInPixel(1024, null, true);
-                }
-                $originalFile->save($this->galleryDirectory . $filename . '/lightbox/', $newFilename);
-
                 $info = new \SplFileInfo($file->getRealPath());
 
                 $dateAt = new \DateTime();
@@ -148,6 +136,29 @@ class GalleryUpdateDataCommand extends Command
 
                 $em->persist($newImage);
 
+                $nb++;
+                $progressBar->advance();
+            }
+            $progressBar->finish();
+            $em->flush();
+
+            $progressBar = new ProgressBar($output, count($finder));
+            $progressBar->start();
+            foreach ($finder as $file) {
+                $newFilename = $today->format('d_m_Y_H_i') . '-' . $file->getFilename();
+
+                $originalFile = ImageWorkshop::initFromPath($file->getRealPath());
+                if($originalFile->getWidth() > 280){
+                    $originalFile->resizeInPixel(280, null, true);
+                }
+                $originalFile->save($this->galleryDirectory . $filename . '/thumbs/', $newFilename);
+
+                $originalFile = ImageWorkshop::initFromPath($file->getRealPath());
+                if($originalFile->getWidth() > 1024){
+                    $originalFile->resizeInPixel(1024, null, true);
+                }
+                $originalFile->save($this->galleryDirectory . $filename . '/lightbox/', $newFilename);
+
                 rename($file->getRealPath(), $extractDirectory . $newFilename);
                 $nb++;
                 $progressBar->advance();
@@ -155,7 +166,6 @@ class GalleryUpdateDataCommand extends Command
             $progressBar->finish();
         }
 
-        $em->flush();
 
         $io->text($nb . ' images extracted');
 
