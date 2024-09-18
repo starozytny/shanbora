@@ -31,7 +31,7 @@ class GalleryController extends AbstractController
         $pagination = $paginator->paginate(
             $images, // Les images récupérées
             $page,   // La page actuelle
-            18  // Nombre d'images par page
+            48  // Nombre d'images par page
         );
 
         return $apiResponse->apiJsonResponseCustom([

@@ -45,7 +45,7 @@ const InfiniteGallery = () => {
 						item.rankPhoto = j++;
 					})
 
-					setRankPhoto(prevRankPhoto => prevRankPhoto + 18)
+					setRankPhoto(prevRankPhoto => prevRankPhoto + 48)
 					setImages(data);
 					setCurrentImages(prevImages => [...prevImages, ...currentData]); // Ajoute les nouvelles images à celles déjà chargées
 					setHasMore(response.data.hasMore); // Met à jour s'il reste encore des images à charger
