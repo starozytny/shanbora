@@ -16,6 +16,16 @@ class GaImageRepository extends ServiceEntityRepository
         parent::__construct($registry, GaImage::class);
     }
 
+    public function save(GaImage $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+
     //    /**
     //     * @return GaImage[] Returns an array of GaImage objects
     //     */
