@@ -21,6 +21,7 @@ class GalleryController extends AbstractController
     public function read($userId, UserRepository $userRepository): Response
     {
         $user = $userRepository->find($userId);
+
         return $this->render('admin/pages/gallery/read.html.twig', [
             'user' => $user,
             'userId' => $userId,

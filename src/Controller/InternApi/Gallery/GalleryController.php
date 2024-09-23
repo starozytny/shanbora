@@ -28,7 +28,11 @@ class GalleryController extends AbstractController
         $user = $this->getUser();
 
         $userId = $request->query->get('userId') ?: $user->getId();
-        $images = $imageRepository->findBy(['user' => $userId], ['originalName' => 'ASC']);
+        if($request->query->get('userId')){
+            $images = $imageRepository->findBy(['user' => $userId], ['nbDownload' => 'DESC']);
+        }else{
+            $images = $imageRepository->findBy(['user' => $userId], ['originalName' => 'ASC']);
+        }
 
         // Pagination
         $page = $request->query->getInt('page', 1);
