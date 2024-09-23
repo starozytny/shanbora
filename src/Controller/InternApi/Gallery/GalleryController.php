@@ -23,7 +23,11 @@ class GalleryController extends AbstractController
     public function fetchImages(Request $request, PaginatorInterface $paginator, ApiResponse $apiResponse,
                                 GaImageRepository $imageRepository, SerializerInterface $serializer): Response
     {
-        $images = $imageRepository->findBy(['user' => $this->getUser()], ['originalName' => 'ASC']);
+        /** @var User $user */
+        $user = $this->getUser();
+
+        $userId = $request->query->get('userId') ?: $user->getId();
+        $images = $imageRepository->findBy(['user' => $userId], ['originalName' => 'ASC']);
 
         // Pagination
         $page = $request->query->getInt('page', 1);

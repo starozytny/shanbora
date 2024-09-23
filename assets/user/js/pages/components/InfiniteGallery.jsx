@@ -16,7 +16,7 @@ const URL_READ_IMAGE_HD = "intern_api_user_gallery_read_image_hd";
 const URL_DOWNLOAD_FILE = "intern_api_user_gallery_download";
 const URL_DOWNLOAD_ARCHIVE = "intern_api_user_gallery_archive";
 
-const InfiniteGallery = () => {
+const InfiniteGallery = ({ userId }) => {
 	const refLightbox = useRef(null);
 	const [rankPhoto, setRankPhoto] = useState(1); // Stocke les images
 	const [images, setImages] = useState([]); // Stocke les images
@@ -31,7 +31,12 @@ const InfiniteGallery = () => {
 			if (loading || !hasMore) return; // Ne pas charger si déjà en cours ou s'il n'y a plus d'images
 			setLoading(true);
 
-			axios({ method: "GET", url: Routing.generate(URL_GET_DATA, {page: page}), data: {} })
+			let url = Routing.generate(URL_GET_DATA, {page: page})
+			if(userId){
+				url = Routing.generate(URL_GET_DATA, {page: page, userId: userId})
+			}
+
+			axios({ method: "GET", url: url, data: {} })
 				.then(function (response) {
 					let data = JSON.parse(response.data.images);
 					let currentData = JSON.parse(response.data.currentImages);

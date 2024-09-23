@@ -42,6 +42,11 @@
         name: "Boite d'envois", icon: "email",
         path: path('admin_mails_index', {'type': 'envoyes'}),
         matchRoute: ['admin_mails_index',]
+    },
+    {
+        name: "Galeries", icon: "image",
+        path: path('admin_galleries_index'),
+        matchRoute: ['admin_galleries_index', 'admin_galleries_read']
     }
 ] %}
 
