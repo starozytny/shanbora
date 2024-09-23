@@ -84,7 +84,7 @@ const InfiniteGallery = ({ userId }) => {
 				</ButtonA>
 			</div>
 			<div className="grid grid-cols-2 gap-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 pswp-gallery" id="gallery">
-				<LazyLoadingGalleryWithPlaceholder currentImages={currentImages} onLightbox={handleLightbox} />
+				<LazyLoadingGalleryWithPlaceholder currentImages={currentImages} onLightbox={handleLightbox} userId={userId} />
 			</div>
 
 			<div className="mt-12">
@@ -105,7 +105,7 @@ const InfiniteGallery = ({ userId }) => {
 	);
 };
 
-function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox }) {
+function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, userId }) {
 	const [loaded, setLoaded] = useState(Array(currentImages.length).fill(false));
 	const [error, setError] = useState(Array(currentImages.length).fill(false));
 
@@ -147,14 +147,24 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox }) {
 					? <div className="w-full h-full bg-gray-900 text-white text-center flex items-center justify-center">
 						Cliquez pour voir la photo..
 					</div>
-					: <img
-						src={Routing.generate(URL_READ_IMAGE, { id: image.id })}
-						alt={`Photo ${image.originalName}`}
-						className="pointer-events-none w-full h-auto rounded-md group-hover:scale-105 transition-transform"
-						loading="lazy"
-						onLoad={() => handleImageLoad(index)} // Appelé quand l'image est chargée
-						onError={() => handleImageError(index)} // En cas d'erreur de chargement
-					/>
+					: <>
+						<img
+							src={Routing.generate(URL_READ_IMAGE, { id: image.id })}
+							alt={`Photo ${image.originalName}`}
+							className="pointer-events-none w-full h-auto rounded-md group-hover:scale-105 transition-transform"
+							loading="lazy"
+							onLoad={() => handleImageLoad(index)} // Appelé quand l'image est chargée
+							onError={() => handleImageError(index)} // En cas d'erreur de chargement
+						/>
+						{userId
+							? <div className="absolute top-2 left-2">
+								<div className="bg-gray-300/80 w-6 h-6 rounded-full text-xs flex justify-center items-center">
+									{image.nbDownload}
+								</div>
+							</div>
+							: null
+						}
+					</>
 				}
 			</div>
 		))}
