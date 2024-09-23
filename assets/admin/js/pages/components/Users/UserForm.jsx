@@ -74,7 +74,7 @@ class Form extends Component {
 	componentDidMount = () => {
 		const { society } = this.props;
 
-		Inputs.initDateInput(this.handleChangeDate, this.handleChange, new Date())
+		Inputs.initDateInput(this.handleChangeDate, this.handleChange, null)
 
 		let self = this;
 		axios({ method: "GET", url: Routing.generate(URL_SELECT_SOCIETIES), data: {} })

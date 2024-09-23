@@ -111,6 +111,10 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
     #[Groups(['user_form'])]
     private ?\DateTimeInterface $galleryDate = null;
 
+    #[ORM\Column]
+    #[Groups(['ga_img_list'])]
+    private ?int $galleryNbDownload = 0;
+
     /**
      * @throws Exception
      */
@@ -472,6 +476,18 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
     public function setGalleryDate(?\DateTimeInterface $galleryDate): static
     {
         $this->galleryDate = $galleryDate;
+
+        return $this;
+    }
+
+    public function getGalleryNbDownload(): ?int
+    {
+        return $this->galleryNbDownload;
+    }
+
+    public function setGalleryNbDownload(int $galleryNbDownload): static
+    {
+        $this->galleryNbDownload = $galleryNbDownload;
 
         return $this;
     }
