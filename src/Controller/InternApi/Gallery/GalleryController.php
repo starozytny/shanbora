@@ -5,6 +5,7 @@ namespace App\Controller\InternApi\Gallery;
 use App\Entity\Main\Gallery\GaImage;
 use App\Entity\Main\User;
 use App\Repository\Main\Gallery\GaImageRepository;
+use App\Repository\Main\UserRepository;
 use App\Service\ApiResponse;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,7 +35,7 @@ class GalleryController extends AbstractController
         $pagination = $paginator->paginate(
             $images, // Les images récupérées
             $page,   // La page actuelle
-            18  // Nombre d'images par page
+            48  // Nombre d'images par page
         );
 
         return $apiResponse->apiJsonResponseCustom([
@@ -93,17 +94,20 @@ class GalleryController extends AbstractController
     {
         $obj = $repository->findOneBy(['id' => $id]);
 
+        $obj->setNbDownload($obj->getNbDownload() + 1);
+
         $file = $this->getParameter('private_directory') . "gallery/" . $obj->getFileFile();
 
         if(!file_exists($file)){
             return $apiResponse->apiJsonResponseBadRequest("Le fichier n'existe pas.");
         }
 
+        $repository->save($obj, true);
         return $this->file($file, $obj->getOriginalName());
     }
 
     #[Route('/archive', name: 'archive', options: ['expose' => true], methods: 'GET')]
-    public function archive(ApiResponse $apiResponse): BinaryFileResponse|JsonResponse
+    public function archive(ApiResponse $apiResponse, UserRepository $repository): BinaryFileResponse|JsonResponse
     {
         /** @var User $user */
         $user = $this->getUser();
@@ -113,6 +117,9 @@ class GalleryController extends AbstractController
             return $apiResponse->apiJsonResponseBadRequest("Le fichier n'existe pas.");
         }
 
+        $user->setGalleryNbDownload($user->getGalleryNbDownload() + 1);
+
+        $repository->save($user, true);
         return $this->file($file);
     }
 }

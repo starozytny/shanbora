@@ -50,7 +50,7 @@ const InfiniteGallery = ({ userId }) => {
 						item.rankPhoto = j++;
 					})
 
-					setRankPhoto(prevRankPhoto => prevRankPhoto + 18)
+					setRankPhoto(prevRankPhoto => prevRankPhoto + 48)
 					setImages(data);
 					setCurrentImages(prevImages => [...prevImages, ...currentData]); // Ajoute les nouvelles images à celles déjà chargées
 					setHasMore(response.data.hasMore); // Met à jour s'il reste encore des images à charger
@@ -139,13 +139,13 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox }) {
 
 	return <>
 		{currentImages.map((image, index) => (
-			<div key={index} className="relative cursor-pointer min-h-[205px] md:min-h-[332px] group block gallery-item overflow-hidden rounded-md" onClick={() => onLightbox(image)}>
+			<div key={index} className="relative cursor-pointer flex items-center justify-center bg-gray-900 min-h-[205px] md:min-h-[332px] group gallery-item overflow-hidden rounded-md" onClick={() => onLightbox(image)}>
 				<div className={`w-full h-full bg-white flex items-center justify-center absolute top-0 left-0 ${!loaded[index] && !error[index] ? "opacity-100" : "opacity-0"}`}>
 					<span className="icon-chart-3"></span>
 				</div>
 				{error[index]
-					? <div className="w-full h-full bg-white flex items-center justify-center">
-						Rafraichir la page..
+					? <div className="w-full h-full bg-gray-900 text-white text-center flex items-center justify-center">
+						Cliquez pour voir la photo..
 					</div>
 					: <img
 						src={Routing.generate(URL_READ_IMAGE, { id: image.id })}
