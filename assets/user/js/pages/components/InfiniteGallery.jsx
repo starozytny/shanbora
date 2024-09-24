@@ -97,7 +97,6 @@ const InfiniteGallery = ({ userId }) => {
 				}
 			</div>
 
-
 			{createPortal(<LightBox ref={refLightbox} identifiant="lightbox" content={null}  />
 				, document.body
 			)}
