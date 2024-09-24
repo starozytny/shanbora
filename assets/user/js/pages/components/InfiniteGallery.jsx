@@ -327,7 +327,7 @@ export class LightboxContent extends Component {
 					{images.map(image => {
 						return <div key={image.id} className={`${elem.id === image.id ? "opacity-100" : "opacity-0"} transition-opacity absolute top-0 left-0 w-full h-full`}>
 							<img src={Routing.generate(URL_READ_IMAGE_HD, { id: elem.id })} alt={`Photo ${elem.originalName}`}
-								 className="w-full h-full pointer-events-none object-contain select-none outline-none transition-transform"
+								 className="max-w-[1024px] mx-auto w-full h-full pointer-events-none object-contain select-none outline-none transition-transform"
 								 style={{ transform: `translateX(${currentTranslate}px)` }} />
 						</div>
 					})}
