@@ -3,5 +3,5 @@
 {% set page_title %}Demande de contact{% endset %}
 
 {% block main_content %}
-    {% include "app/pages/contact/component/content.html.twig" %}
+    {% include "app/pages/contact/component/content.html.twig" with { page: true } %}
 {% endblock %}
