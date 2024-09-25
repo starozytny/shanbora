@@ -11,7 +11,7 @@ class AppController extends AbstractController
     #[Route('/', name: 'app_homepage')]
     public function index(): Response
     {
-        return $this->render('app/pages/index.html.twig', [ 'controller_name' => 'AppController' ]);
+        return $this->render('app/pages/index.html.twig');
     }
 
     #[Route('/contact', name: 'app_contact')]
@@ -24,6 +24,12 @@ class AppController extends AbstractController
     public function gallery(): Response
     {
         return $this->render('app/pages/gallery/index.html.twig');
+    }
+
+    #[Route('/aventures', name: 'app_adventures')]
+    public function adventures(): Response
+    {
+        return $this->render('app/pages/blog/index.html.twig');
     }
 
     #[Route('/legales/mentions-legales', name: 'app_mentions')]

@@ -1,0 +1,47 @@
+{% extends 'app/pages/blog/template.html.twig' %}
+
+{% set page_title %}Lac de l'Orceyrette et le lac d'Eychauda{% endset %}
+
+{% block meta_description %}Découvrez la beauté des lacs d'Orceyrette et d'Eychauda dans les Hautes-Alpes. Randonnées, paysages alpins, et conseils pour explorer ces joyaux naturels en pleine montagne.{% endblock %}
+{% block meta_keywords %}lac d'Orceyrette, lac d'Eychauda, randonnées Hautes-Alpes, nature Alpes françaises, photographie de montagne, randonnée lac de montagne, paysages alpins, randonnée Briançon{% endblock %}
+
+{% block main_content %}
+    <div class="w-full min-h-56">
+        <div class="relative bg-gray-900 rounded-2xl pt-24 pb-12 sm:pt-36 sm:pb-24 overflow-hidden min-h-56">
+            <div class="absolute top-0 left-0 rounded-2xl w-full h-full">
+                <img src="{{ asset('blog/articles/orceyrette/cover-orceyrette.jpg') }}" alt="background image" class="opacity-50 object-cover w-full h-full">
+            </div>
+            <div class="relative px-4 lg:px-8">
+                <div class="text-yellow-500 font-semibold text-lg md:text-center">21 Septembre 2024</div>
+                <h1 class="text-white font-bold text-4xl md:text-6xl md:text-center">Un lac à portée de main et un autre plus difficile</h1>
+                <div class="flex items-end justify-end">
+                    <p class="mt-16 text-gray-300 text-right max-w-screen-md">
+                        Les lacs d'Orceyrette et d'Eychauda sont deux perles naturelles qui séduisent randonneurs et
+                        amoureux de paysages authentiques. Ces plans d’eau, entourés de sommets majestueux et de prairies
+                        alpines, offrent un cadre idéal pour une immersion en pleine nature.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="mt-10 flex flex-col gap-8 w-full max-w-screen-lg mx-auto px-2 lg:px-8">
+        <div class="flex flex-row gap-4">
+            <div class="w-10">
+                <img class="h-10 w-10 rounded-full" src="{{ asset('blog/avatars/chanbora.jpg') }}" alt="Avatar chanbora chhun">
+            </div>
+            <div>
+                <div class="font-medium">Chanbora Chhun</div>
+                <div class="text-sm text-gray-600">Photographe</div>
+            </div>
+        </div>
+        <article>
+            <p>
+                Au cœur des Hautes-Alpes, loin du tumulte du quotidien, les lacs d'Orceyrette et d'Eychauda offrent un
+                sanctuaire de quiétude et de beauté brute. Nichés dans des écrins de verdure et de roche, ces deux lacs
+                de montagne sont des trésors pour les amateurs de nature, de randonnée, et de moments de ressourcement
+                profond.
+            </p>
+        </article>
+    </section>
+{% endblock %}
