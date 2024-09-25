@@ -20,13 +20,13 @@
                         </a>
                         <div class="hidden lg:block">
                             <div class="flex items-baseline uppercase gap-4">
-                                <a href="{{ path('app_homepage') }}" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
+                                <a href="{{ path('app_homepage') }}" class="{{ app.request.get('_route') in ['app_homepage'] ? "text-black" : "text-gray-600 hover:text-gray-900" }} px-3 py-2 font-semibold">
                                     <span>Chanbora Chhun</span>
                                 </a>
-                                <a href="{{ path('app_gallery') }}" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
+                                <a href="{{ path('app_gallery') }}" class="{{ app.request.get('_route') in ['app_gallery'] ? "text-black" : "text-gray-600 hover:text-gray-900" }} px-3 py-2 font-semibold">
                                     <span>Portfolio</span>
                                 </a>
-                                <a href="{{ path('app_adventure') }}" class="text-gray-600 hover:text-gray-900 pl-3 pr-8 py-2 font-semibold border-r-2 border-gray-500">
+                                <a href="{{ path('app_adventure') }}" class="{{ app.request.get('_route') in ['app_adventure'] ? "text-black" : "text-gray-600 hover:text-gray-900" }} pl-3 pr-8 py-2 font-semibold border-r-2 border-gray-500">
                                     <span>Aventures</span>
                                 </a>
                                 <a href="https://www.instagram.com/shanbo_daltonien/" target="_blank" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
@@ -88,13 +88,13 @@
                                             </div>
                                             <div class="relative mt-6 flex-1 px-4 sm:px-6">
                                                 <div class="flex flex-col gap-4">
-                                                    <a href="{{ path('app_homepage') }}" class="text-gray-600 hover:text-gray-900 pl-3 pr-8 py-2 font-semibold border-r-2 border-gray-500">
+                                                    <a href="{{ path('app_homepage') }}" class="{{ app.request.get('_route') in ['app_homepage'] ? "text-black" : "text-gray-600 hover:text-gray-900" }} pl-3 pr-8 py-2 font-semibold border-r-2 border-gray-500">
                                                         <span>Chanbora Chhun</span>
                                                     </a>
-                                                    <a href="{{ path('app_gallery') }}" class="text-gray-600 hover:text-gray-900 pl-3 pr-8 py-2 font-semibold border-r-2 border-gray-500">
+                                                    <a href="{{ path('app_gallery') }}" class="{{ app.request.get('_route') in ['app_gallery'] ? "text-black" : "text-gray-600 hover:text-gray-900" }} pl-3 pr-8 py-2 font-semibold border-r-2 border-gray-500">
                                                         <span>Portfolio</span>
                                                     </a>
-                                                    <a href="{{ path('app_adventure') }}" class="text-gray-600 hover:text-gray-900 pl-3 pr-8 py-2 font-semibold border-r-2 border-gray-500">
+                                                    <a href="{{ path('app_adventure') }}" class="{{ app.request.get('_route') in ['app_adventure'] ? "text-black" : "text-gray-600 hover:text-gray-900" }} pl-3 pr-8 py-2 font-semibold border-r-2 border-gray-500">
                                                         <span>Aventures</span>
                                                     </a>
                                                     <a href="https://www.instagram.com/shanbo_daltonien/" target="_blank" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
