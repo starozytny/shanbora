@@ -13,10 +13,10 @@ class BlogController extends AbstractController
     public function __construct(private readonly BoCommentaryRepository $commentaryRepository)
     {}
 
-    #[Route('/lac-orceyrette-et-eychauda', name: 'orceyrette')]
+    #[Route('/lac-orceyrette', name: 'orceyrette')]
     public function orceyrette(): Response
     {
-        return $this->render('app/pages/blog/2024/lac_orceyrette_et_eychauda.html.twig', $this->getCommentaries(1));
+        return $this->render('app/pages/blog/2024/lac_orceyrette.html.twig', $this->getCommentaries(1));
     }
 
     private function getCommentaries($id): array
