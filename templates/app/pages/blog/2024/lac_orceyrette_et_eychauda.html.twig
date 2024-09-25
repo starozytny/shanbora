@@ -9,7 +9,7 @@
     <div class="w-full min-h-56">
         <div class="relative bg-gray-900 rounded-2xl pt-24 pb-12 sm:pt-36 sm:pb-24 overflow-hidden min-h-56">
             <div class="absolute top-0 left-0 rounded-2xl w-full h-full">
-                <img src="{{ asset('blog/articles/orceyrette/cover-orceyrette.jpg') }}" alt="background image" class="opacity-50 object-cover w-full h-full">
+                <img src="{{ asset('blog/articles/orceyrette/cover-orceyrette.jpg') }}" alt="background image" class="opacity-50 object-cover w-full h-full pointer-events-none">
             </div>
             <div class="relative px-4 lg:px-8">
                 <div class="text-yellow-500 font-semibold text-lg md:text-center">21 Septembre 2024</div>
@@ -42,6 +42,18 @@
                 de montagne sont des trésors pour les amateurs de nature, de randonnée, et de moments de ressourcement
                 profond.
             </p>
+            <div class="mt-6">
+                <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                    <div>
+                        <img src="{{ asset('blog/articles/orceyrette/lac-ponton.jpg') }}" alt="lac orceyrette de face" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 24, apeture: 1.8, speed: '1/800', iso: 100 } %}
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/orceyrette/lac-entier.jpg') }}" alt="lac orceyrette entier" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 24, apeture: 5.4, speed: '1/200', iso: 100 } %}
+                    </div>
+                </div>
+            </div>
         </article>
     </section>
 {% endblock %}
