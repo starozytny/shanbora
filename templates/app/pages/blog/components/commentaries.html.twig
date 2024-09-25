@@ -1,0 +1,74 @@
+<section class="mt-24">
+    <h2 class="text-xl font-bold border-b">{{ commentaries | length }} Commentaire{{ commentaries | length > 1 ? "s" : "" }}</h2>
+    <div class="my-4 pb-4">
+        <div id="commentary_create"
+             data-adventure-id="{{ adventureId }}"
+             data-adventure-name="{{ page_title }}"
+             data-adventure-url="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"
+        >
+            {% include "layout/components/tailwind/loaders/loader.html.twig" %}
+        </div>
+    </div>
+    {% if commentaries | length > 0 %}
+        <div class="flex flex-col gap-8 pt-8 border-t">
+            {% for commentary in commentaries %}
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 bg-white p-4 rounded-md shadow">
+                        <div class="flex gap-2">
+                            <div>
+                                <div class="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center font-semibold">
+                                    <span>{{ commentary.username | slice(0,1) | upper }}</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="font-semibold">{{ commentary.username }}</div>
+                                <div class="text-gray-600 text-xs">{{ commentary.createdAt | date('d/m/Y \\à H\\hi') }}</div>
+                            </div>
+                        </div>
+                        <div>
+                            {{ commentary.message }}
+                        </div>
+                        <div class="flex gap-4">
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <div class="commentary_delete" data-id="{{ commentary.id }}"></div>
+                            {% endif %}
+                            <div class="commentary_response"
+                                 data-id="{{ commentary.id }}"
+                                 data-adventure-id="{{ adventureId }}"
+                                 data-adventure-name="{{ page_title }}"
+                                 data-adventure-url="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"
+                            ></div>
+                        </div>
+                    </div>
+                    {% for resp in responses %}
+                        {% if resp.responseId == commentary.id %}
+                            <div class="pl-12">
+                                <div class="flex flex-col gap-2">
+                                    <div class="flex gap-2">
+                                        <div>
+                                            <div class="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center font-semibold">
+                                                <span>{{ resp.username | slice(0,1) | upper }}</span>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="font-semibold">{{ resp.username }}</div>
+                                            <div class="text-gray-600 text-xs">{{ resp.createdAt | date('d/m/Y \\à H\\hi') }}</div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        {{ resp.message }}
+                                    </div>
+                                    <div class="flex gap-4">
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                            <div class="commentary_delete" data-id="{{ resp.id }}"></div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</section>

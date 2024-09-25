@@ -1,5 +1,6 @@
 const axios = require("axios");
-const toastr = require("toastr");
+const Toastr = require("@tailwindFunctions/toastr");
+
 const moment = require("moment");
 require("moment/locale/fr");
 
@@ -63,21 +64,21 @@ function showErrors(self, validate, text="Veuillez vérifier les informations tr
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }
-    toastr.warning(text);
+    Toastr.toast('warning', text);
     self.setState({ errors: validate.errors });
 }
 
 function displayErrors(self, error, message="Veuillez vérifier les informations transmises."){
     if(Array.isArray(error.response.data)){
-        toastr.error(message);
+        Toastr.toast('error', message);
         if(self){
             self.setState({ errors: error.response.data });
         }
     }else{
         if(error.response.data.message){
-            toastr.error(error.response.data.message)
+            Toastr.toast('error', error.response.data.message);
         }else{
-            toastr.error(message);
+            Toastr.toast('error', message);
         }
     }
 }

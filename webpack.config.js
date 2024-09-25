@@ -70,6 +70,7 @@ Encore
 
     .addEntry('app_app', './assets/app/js/app.js')
     .addEntry('app_security', './assets/app/js/pages/security.js')
+    .addEntry('app_blog', './assets/app/js/pages/blog.js')
 
     .addEntry('admin_app', './assets/admin/js/app.js')
     .addEntry('admin_settings', './assets/admin/js/pages/settings.js')
