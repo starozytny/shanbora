@@ -1,0 +1,22 @@
+{% extends 'app/pages/blog/template.html.twig' %}
+
+{% set page_title %}Lac de l'Orceyrette et le lac d'Eychauda{% endset %}
+
+{% block main_content %}
+    <div class="w-full min-h-56">
+        <div class="relative bg-gray-900 rounded-2xl py-24 sm:py-48 overflow-hidden min-h-56">
+            <div class="absolute top-0 left-0 rounded-2xl w-full h-full">
+                <img src="{{ asset('blog/articles/orceyrette/cover-orceyrette.jpg') }}" alt="background image" class="opacity-50 object-cover w-full h-full">
+            </div>
+            <div class="relative px-4 lg:px-8">
+                <div class="text-yellow-500 font-semibold text-lg md:text-center">21 Septembre 2024</div>
+                <h1 class="text-white font-bold text-4xl md:text-6xl md:text-center">Un lac à portée de main et un autre plus difficile</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-10 flex flex-col gap-8 w-full px-2 lg:px-8">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aut facilis quod repellendus voluptatum! Amet
+        animi architecto delectus ducimus facilis in iure laborum odio odit, officiis quia, quibusdam totam voluptatibus?
+    </div>
+{% endblock %}
