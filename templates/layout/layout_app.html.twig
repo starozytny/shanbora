@@ -18,24 +18,24 @@
                         <a href="{{ path('app_homepage') }}" class="flex flex-shrink-0 items-center font-bold text-3xl">
                             Shanbo
                         </a>
-                        <div class="hidden md:block">
+                        <div class="hidden lg:block">
                             <div class="flex items-baseline uppercase gap-4">
-                                <a href="{{ path('app_homepage') }}" class="text-gray-600 hover:text-gray-900 pw-3 py-2 font-semibold">
+                                <a href="{{ path('app_homepage') }}" class="{{ app.request.get('_route') in ['app_homepage'] ? "text-black" : "text-gray-600 hover:text-gray-900" }} px-3 py-2 font-semibold">
                                     <span>Chanbora Chhun</span>
                                 </a>
-                                <a href="{{ path('app_gallery') }}" class="text-gray-600 hover:text-gray-900 pl-3 pr-8 py-2 font-semibold border-r-2 border-gray-500">
+                                <a href="{{ path('app_gallery') }}" class="{{ app.request.get('_route') in ['app_gallery'] ? "text-black" : "text-gray-600 hover:text-gray-900" }} px-3 py-2 font-semibold">
                                     <span>Portfolio</span>
+                                </a>
+                                <a href="{{ path('app_adventures') }}" class="{{ app.request.get('_route') in ['app_adventures'] ? "text-black" : "text-gray-600 hover:text-gray-900" }} pl-3 pr-8 py-2 font-semibold border-r-2 border-gray-500">
+                                    <span>Aventures</span>
                                 </a>
                                 <a href="https://www.instagram.com/shanbo_daltonien/" target="_blank" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
                                     <span>Instagram</span>
                                 </a>
-                                <a href="https://unsplash.com/fr/@shanbora" target="_blank" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
-                                    <span>Unsplash</span>
+                                <a href="https://nompaw.fr" target="_blank" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
+                                    <span>Nompaw</span>
                                 </a>
                                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                    <a href="{{ path('app_logout') }}" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
-                                        <span>Déconnexion</span>
-                                    </a>
                                     <a href="{{ path('app_login') }}"
                                        class="text-color0 px-3 py-2 font-semibold bg-white rounded-md border-2 border-color0 transition-transform hover:-translate-y-1.5">
                                         <span>Mon espace</span>
@@ -49,7 +49,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="-mr-2 flex md:hidden">
+                    <div class="-mr-2 flex lg:hidden">
                         <button type="button" class="nav-mobile relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                                 id="nav-mobile-main-btn" aria-controls="mobile-menu" aria-expanded="false"
                         >
@@ -85,17 +85,20 @@
                                             </div>
                                             <div class="relative mt-6 flex-1 px-4 sm:px-6">
                                                 <div class="flex flex-col gap-4">
-                                                    <a href="{{ path('app_homepage') }}" class="text-gray-600 hover:text-gray-900 pl-3 pr-8 py-2 font-semibold border-r-2 border-gray-500">
+                                                    <a href="{{ path('app_homepage') }}" class="{{ app.request.get('_route') in ['app_homepage'] ? "text-black" : "text-gray-600 hover:text-gray-900" }} pl-3 pr-8 py-2 font-semibold border-r-2 border-gray-500">
                                                         <span>Chanbora Chhun</span>
                                                     </a>
-                                                    <a href="{{ path('app_gallery') }}" class="text-gray-600 hover:text-gray-900 pl-3 pr-8 py-2 font-semibold border-r-2 border-gray-500">
+                                                    <a href="{{ path('app_gallery') }}" class="{{ app.request.get('_route') in ['app_gallery'] ? "text-black" : "text-gray-600 hover:text-gray-900" }} pl-3 pr-8 py-2 font-semibold border-r-2 border-gray-500">
                                                         <span>Portfolio</span>
+                                                    </a>
+                                                    <a href="{{ path('app_adventures') }}" class="{{ app.request.get('_route') in ['app_adventures'] ? "text-black" : "text-gray-600 hover:text-gray-900" }} pl-3 pr-8 py-2 font-semibold border-r-2 border-gray-500">
+                                                        <span>Aventures</span>
                                                     </a>
                                                     <a href="https://www.instagram.com/shanbo_daltonien/" target="_blank" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
                                                         <span>Instagram</span>
                                                     </a>
-                                                    <a href="https://unsplash.com/fr/@shanbora" target="_blank" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
-                                                        <span>Unsplash</span>
+                                                    <a href="https://nompaw.fr" target="_blank" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
+                                                        <span>Nompaw</span>
                                                     </a>
                                                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                                                         <a href="{{ path('app_logout') }}" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">

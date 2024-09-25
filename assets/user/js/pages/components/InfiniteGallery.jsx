@@ -16,7 +16,7 @@ const URL_READ_IMAGE_HD = "intern_api_user_gallery_read_image_hd";
 const URL_DOWNLOAD_FILE = "intern_api_user_gallery_download";
 const URL_DOWNLOAD_ARCHIVE = "intern_api_user_gallery_archive";
 
-const InfiniteGallery = () => {
+const InfiniteGallery = ({ userId }) => {
 	const refLightbox = useRef(null);
 	const [rankPhoto, setRankPhoto] = useState(1); // Stocke les images
 	const [images, setImages] = useState([]); // Stocke les images
@@ -31,7 +31,12 @@ const InfiniteGallery = () => {
 			if (loading || !hasMore) return; // Ne pas charger si déjà en cours ou s'il n'y a plus d'images
 			setLoading(true);
 
-			axios({ method: "GET", url: Routing.generate(URL_GET_DATA, {page: page}), data: {} })
+			let url = Routing.generate(URL_GET_DATA, {page: page})
+			if(userId){
+				url = Routing.generate(URL_GET_DATA, {page: page, userId: userId})
+			}
+
+			axios({ method: "GET", url: url, data: {} })
 				.then(function (response) {
 					let data = JSON.parse(response.data.images);
 					let currentData = JSON.parse(response.data.currentImages);
@@ -79,7 +84,7 @@ const InfiniteGallery = () => {
 				</ButtonA>
 			</div>
 			<div className="grid grid-cols-2 gap-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 pswp-gallery" id="gallery">
-				<LazyLoadingGalleryWithPlaceholder currentImages={currentImages} onLightbox={handleLightbox} />
+				<LazyLoadingGalleryWithPlaceholder currentImages={currentImages} onLightbox={handleLightbox} userId={userId} />
 			</div>
 
 			<div className="mt-12">
@@ -92,7 +97,6 @@ const InfiniteGallery = () => {
 				}
 			</div>
 
-
 			{createPortal(<LightBox ref={refLightbox} identifiant="lightbox" content={null}  />
 				, document.body
 			)}
@@ -100,7 +104,7 @@ const InfiniteGallery = () => {
 	);
 };
 
-function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox }) {
+function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, userId }) {
 	const [loaded, setLoaded] = useState(Array(currentImages.length).fill(false));
 	const [error, setError] = useState(Array(currentImages.length).fill(false));
 
@@ -142,14 +146,24 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox }) {
 					? <div className="w-full h-full bg-gray-900 text-white text-center flex items-center justify-center">
 						Cliquez pour voir la photo..
 					</div>
-					: <img
-						src={Routing.generate(URL_READ_IMAGE, { id: image.id })}
-						alt={`Photo ${image.originalName}`}
-						className="pointer-events-none w-full h-auto rounded-md group-hover:scale-105 transition-transform"
-						loading="lazy"
-						onLoad={() => handleImageLoad(index)} // Appelé quand l'image est chargée
-						onError={() => handleImageError(index)} // En cas d'erreur de chargement
-					/>
+					: <>
+						<img
+							src={Routing.generate(URL_READ_IMAGE, { id: image.id })}
+							alt={`Photo ${image.originalName}`}
+							className="pointer-events-none w-full h-auto rounded-md group-hover:scale-105 transition-transform"
+							loading="lazy"
+							onLoad={() => handleImageLoad(index)} // Appelé quand l'image est chargée
+							onError={() => handleImageError(index)} // En cas d'erreur de chargement
+						/>
+						{userId
+							? <div className="absolute top-2 left-2">
+								<div className="bg-gray-300/80 w-6 h-6 rounded-full text-xs flex justify-center items-center">
+									{image.nbDownload}
+								</div>
+							</div>
+							: null
+						}
+					</>
 				}
 			</div>
 		))}
@@ -313,7 +327,7 @@ export class LightboxContent extends Component {
 					{images.map(image => {
 						return <div key={image.id} className={`${elem.id === image.id ? "opacity-100" : "opacity-0"} transition-opacity absolute top-0 left-0 w-full h-full`}>
 							<img src={Routing.generate(URL_READ_IMAGE_HD, { id: elem.id })} alt={`Photo ${elem.originalName}`}
-								 className="w-full h-full pointer-events-none object-contain select-none outline-none transition-transform"
+								 className="max-w-[1024px] mx-auto w-full h-full pointer-events-none object-contain select-none outline-none transition-transform"
 								 style={{ transform: `translateX(${currentTranslate}px)` }} />
 						</div>
 					})}

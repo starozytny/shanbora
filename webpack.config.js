@@ -70,6 +70,7 @@ Encore
 
     .addEntry('app_app', './assets/app/js/app.js')
     .addEntry('app_security', './assets/app/js/pages/security.js')
+    .addEntry('app_blog', './assets/app/js/pages/blog.js')
 
     .addEntry('admin_app', './assets/admin/js/app.js')
     .addEntry('admin_settings', './assets/admin/js/pages/settings.js')
@@ -80,6 +81,7 @@ Encore
     .addEntry('admin_agenda', './assets/admin/js/pages/agenda.js')
     .addEntry('admin_storage', './assets/admin/js/pages/storage.js')
     .addEntry('admin_mails', './assets/admin/js/pages/mails.js')
+    .addEntry('admin_galleries', './assets/admin/js/pages/galleries.js')
 
     .addEntry('user_app', './assets/user/js/app.js')
 

@@ -1,0 +1,47 @@
+{% extends 'app/pages/blog/template.html.twig' %}
+
+{% set page_title %}Les aventures de Chanbora Chhun{% endset %}
+
+{% block meta_description %}Explorez la beauté de la nature à travers des escapades en France et à l’étranger. Randonnées, photographie et moments de découverte vous attendent sur ce blog dédié aux amoureux de paysages authentiques.{% endblock %}
+{% block meta_keywords %}blog nature, randonnée France, photographie de paysages, escapades nature, voyage en plein air, photographie de montagne, aventures en pleine nature, spots photos nature, découverte des paysages naturels{% endblock %}
+
+{% block main_content %}
+    <div class="w-full px-2 lg:px-8">
+        <div class="md:flex md:flex-col md:justify-center md:items-center">
+            <div class="text-yellow-500 font-semibold text-lg md:text-center">Escapades et randonnées à travers la France et plus encore</div>
+            <h2 class="font-bold text-4xl md:text-6xl md:text-center">À la recherche de la photo parfaite</h2>
+            <p class="mt-4 text-gray-600 max-w-screen-md md:text-center">
+                À travers ce blog, partons ensemble à la découverte de paysages fantastique, où la nature
+                règne en maître et où chaque saison révèle une nouvelle facette de sa beauté sauvage.
+            </p>
+        </div>
+
+        <div class="mt-10 flex flex-col gap-8 max-w-screen-md mx-auto">
+            <div class="cursor-pointer group flex flex-col gap-4 md:flex-row md:gap-8" onclick="location.href = '{{ path('app_adventures_orceyrette') }}'">
+                <div class="w-80 h-64 overflow-hidden rounded-md shadow md:min-w-80">
+                    <img src="{{ asset('blog/list/orceyrette.jpg') }}" alt="lac orceyrette Alpes de France" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                </div>
+                <div>
+                    <div class="text-gray-600 text-xs">21 Septembre 2024</div>
+                    <div class="mt-2">
+                        <h2 class="font-semibold text-xl">Un lac à portée de main et un autre plus difficile</h2>
+                        <p>
+                            Niché au cœur des montagnes des Hautes-Alpes, le lac d'Orceyrette est une véritable
+                            invitation à l'évasion et à la contemplation. Situé non loin de Briançon, ce lac est un
+                            havre de paix pour les amoureux de la nature, offrant un cadre enchanteur.
+                            Ce site préservé vous promet une parenthèse de déconnexion totale. Nous irons aussi à la
+                            découverte d'un autre lac pour les randonneurs, le lac d'Eychauda.
+                        </p>
+                    </div>
+                    <div class="mt-2 flex flex-wrap gap-2 text-sm">
+                        <div class="text-red-400">Randonnée</div>
+                        <div class="text-red-400">Nature</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-8 md:grid grid-cols-3">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

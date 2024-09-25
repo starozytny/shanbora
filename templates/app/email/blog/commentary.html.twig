@@ -1,0 +1,17 @@
+{% extends 'app/email/template/template.html.twig' %}
+
+{% block preheader %}Commentaire pour l'article {{ adventureName }}.{% endblock %}
+
+{% block title %}Commentaire{% endblock %}
+
+{% block body %}
+    <div>
+        <div>Lien de l'article : <a href="{{ adventureUrl }}">{{ adventureName }}</a></div>
+        <div>Commentaire le {{ elem.createdAt | date('d/m/Y \\à H:i') }}</div>
+        <div>Utilisateur : {{ elem.username }}</div>
+        <p style="width: 540px;">
+            Message : <br>
+            {{ elem.message }}
+        </p>
+    </div>
+{% endblock %}
