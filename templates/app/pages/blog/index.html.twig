@@ -1,0 +1,44 @@
+{% extends 'app/pages/blog/template.html.twig' %}
+
+{% set page_title %}Les aventures de Chanbora Chhun{% endset %}
+
+{% block main_content %}
+    <div class="w-full px-2 lg:px-8">
+        <div class="md:flex md:flex-col md:justify-center md:items-center">
+            <div class="text-yellow-500 font-semibold text-lg md:text-center">Escapades et randonnées à travers la France et plus encore</div>
+            <h2 class="font-bold text-4xl md:text-6xl md:text-center">À la recherche de la photo parfaite</h2>
+            <p class="mt-4 text-gray-600 max-w-screen-md md:text-center">
+                Passionné de randonnées, nature, aventures et photo. Je vous propose de découvrir
+                de beaux paysages à travers mes clichés. Bienvenu dans mon monde !
+            </p>
+        </div>
+
+        <div class="mt-10 flex flex-col gap-8 max-w-screen-md mx-auto">
+            <div class="cursor-pointer group flex flex-col gap-4 md:flex-row md:gap-8" onclick="location.href = '{{ path('app_homepage') }}'">
+                <div class="w-80 h-64 overflow-hidden rounded-md shadow md:min-w-80">
+                    <img src="{{ asset('blog/list/orceyrette.jpg') }}" alt="lac orceyrette Alpes de France" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                </div>
+                <div>
+                    <div class="text-gray-600 text-xs">21 Septembre 2024</div>
+                    <div class="mt-2">
+                        <h2 class="font-semibold text-xl">Un lac à portée de main</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci aliquam consequatur
+                            debitis dolorem ea error illo illum maiores minus mollitia natus, odio porro quis quod rem
+                            saepe vel voluptas! illo illum maiores minus mollitia natus, odio porro quis quod rem
+                            saepe vel voluptas! illo illum maiores minus mollitia natus, odio porro quis quod rem
+                            saepe vel voluptas!
+                        </p>
+                    </div>
+                    <div class="mt-2 flex flex-wrap gap-2 text-sm">
+                        <div class="text-red-400">Randonnée</div>
+                        <div class="text-red-400">Nature</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-8 md:grid grid-cols-3">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

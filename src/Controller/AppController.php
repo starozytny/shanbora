@@ -26,6 +26,12 @@ class AppController extends AbstractController
         return $this->render('app/pages/gallery/index.html.twig');
     }
 
+    #[Route('/aventures', name: 'app_adventure')]
+    public function adventures(): Response
+    {
+        return $this->render('app/pages/blog/index.html.twig');
+    }
+
     #[Route('/legales/mentions-legales', name: 'app_mentions')]
     public function mentions(): Response
     {
