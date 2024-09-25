@@ -25,6 +25,15 @@ class BoCommentaryRepository extends ServiceEntityRepository
         }
     }
 
+    public function remove(BoCommentary $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
     //    /**
     //     * @return BoCommentary[] Returns an array of BoCommentary objects
     //     */

@@ -1,5 +1,12 @@
 {% extends 'app/layout/layout.html.twig' %}
 
+{% block main_content %}
+    {% block main_content_in %}{% endblock %}
+
+    {% include "app/pages/blog/components/commentaries.html.twig" %}
+{% endblock %}
+
+
 {% block javascripts %}
     {{ parent() }}
     {{ encore_entry_script_tags('app_blog') }}

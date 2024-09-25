@@ -66,7 +66,7 @@ class Form extends Component {
 				Formulaire.loader(true);
 				axios({ method: "POST", url: url, data: this.state })
 					.then(function (response) {
-						Toastr.toast('error', "Données enregistrées.");
+						Toastr.toast('error', "Commentaire enregistré.");
 						location.reload();
 					})
 					.catch(function (error) {

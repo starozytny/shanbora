@@ -14,12 +14,18 @@ export class ModalDelete extends Component {
 	handleDelete = () => {
 		const { refModal, element, routeName, msgSuccess, onUpdateList } = this.props;
 
+		console.log(element.id);
+
 		let self = this;
-		axios({ method: "DELETE", url: Routing.generate(routeName, { 'id': element.id }), data: {} })
+		axios({ method: "DELETE", url: Routing.generate(routeName, { id: element.id }), data: {} })
 			.then(function (response) {
 				toastr.info(msgSuccess);
-				onUpdateList(element, "delete");
-				refModal.current.handleClose();
+				if(onUpdateList){
+					onUpdateList(element, "delete");
+					refModal.current.handleClose();
+				}else{
+					location.reload();
+				}
 			})
 			.catch(function (error) {
 				Formulaire.displayErrors(self, error);
@@ -76,7 +82,7 @@ ModalDelete.propTypes = {
 	routeName: PropTypes.string.isRequired,
 	msgSuccess: PropTypes.string.isRequired,
 	element: PropTypes.object,
-	onUpdateList: PropTypes.func.isRequired,
+	onUpdateList: PropTypes.func,
 	identifiant: PropTypes.string,
 	maxWidth: PropTypes.number,
 }

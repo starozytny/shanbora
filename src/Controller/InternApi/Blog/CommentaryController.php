@@ -50,4 +50,16 @@ class CommentaryController extends AbstractController
 
         return $apiResponse->apiJsonResponseSuccessful("Message envoyé.");
     }
+
+    #[Route('/delete/{id}', name: 'delete', options: ['expose' => true], methods: 'DELETE')]
+    public function delete($id, BoCommentaryRepository $repository, ApiResponse $apiResponse): Response
+    {
+        $obj = $repository->find($id);
+        if(!$obj){
+            return $apiResponse->apiJsonResponseBadRequest("Object not found.");
+        }
+
+        $repository->remove($obj, true);
+        return $apiResponse->apiJsonResponseSuccessful("ok");
+    }
 }
