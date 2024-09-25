@@ -36,9 +36,6 @@
                                     <span>Nompaw</span>
                                 </a>
                                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                    <a href="{{ path('app_logout') }}" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
-                                        <span>Déconnexion</span>
-                                    </a>
                                     <a href="{{ path('app_login') }}"
                                        class="text-color0 px-3 py-2 font-semibold bg-white rounded-md border-2 border-color0 transition-transform hover:-translate-y-1.5">
                                         <span>Mon espace</span>
