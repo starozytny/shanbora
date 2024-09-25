@@ -44,4 +44,39 @@
             </p>
         </article>
     </section>
+
+    <section class="mt-24">
+        <h2 class="text-xl font-bold border-b">{{ commentaries | length }} Commentaire{{ commentaries | length > 1 ? "s" : "" }}</h2>
+        <div class="my-4 pb-4">
+            <div id="commentary_create"
+                 data-adventure-id="{{ adventureId }}"
+                 data-adventure-name="{{ page_title }}"
+                 data-adventure-url="{{ path('app_adventures_orceyrette') }}"
+            >
+                {% include "layout/components/tailwind/loaders/loader.html.twig" %}
+            </div>
+        </div>
+        {% if commentaries | length > 0 %}
+            <div class="flex flex-col gap-8 pt-8 border-t">
+                {% for commentary in commentaries %}
+                    <div class="flex flex-col gap-2">
+                        <div class="flex gap-2">
+                            <div>
+                                <div class="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center font-semibold">
+                                    <span>{{ commentary.username | slice(0,1) | upper }}</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="font-semibold">{{ commentary.username }}</div>
+                                <div class="text-gray-600 text-xs">{{ commentary.createdAt | date('d/m/Y \\à H\\hi') }}</div>
+                            </div>
+                        </div>
+                        <div>
+                            {{ commentary.message }}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </section>
 {% endblock %}
