@@ -29,6 +29,10 @@ class CommentaryController extends AbstractController
 
         $obj = $dataEntity->setDataCommentary(new BoCommentary(), $data);
 
+        if($data->responseId){
+            $obj->setResponseId((int) $data->responseId);
+        }
+
         $noErrors = $validator->validate($obj);
         if ($noErrors !== true) {
             return $apiResponse->apiJsonResponseValidationFailed($noErrors);

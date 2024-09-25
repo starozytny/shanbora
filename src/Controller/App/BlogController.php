@@ -21,10 +21,21 @@ class BlogController extends AbstractController
 
     private function getCommentaries($id): array
     {
-        $commentaries = $this->commentaryRepository->findBy(['adventureId' => $id]);
+        $data = $this->commentaryRepository->findBy(['adventureId' => $id]);
+
+        $commentaries = []; $responses = [];
+        foreach($data as $item){
+            if($item->getResponseId()){
+                $responses[] = $item;
+            }else{
+                $commentaries[] = $item;
+            }
+        }
+
         return [
             'adventureId' => $id,
-            'commentaries' => $commentaries
+            'commentaries' => $commentaries,
+            'responses' => $responses,
         ];
     }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { createPortal } from "react-dom";
 
 import { ModalDelete } from "@tailwindComponents/Shortcut/Modal";
 
@@ -23,10 +24,13 @@ export class CommentaryDelete extends Component {
 				Supprimer
 			</div>
 
-			<ModalDelete refModal={this.delete} identifiant={`delete-${id}`} element={{id: id}} routeName={URL_DELETE_ELEMENT}
-						 title="Supprimer ce commentaire" msgSuccess="Commentaire supprimé">
-				Êtes-vous sûr de vouloir supprimer définitivement ce commentaire ?
-			</ModalDelete>
+			{createPortal(
+				<ModalDelete refModal={this.delete} identifiant={`delete-${id}`} element={{id: id}} routeName={URL_DELETE_ELEMENT}
+							 title="Supprimer ce commentaire" msgSuccess="Commentaire supprimé">
+					Êtes-vous sûr de vouloir supprimer définitivement ce commentaire ?
+				</ModalDelete>,
+				document.body
+			)}
 		</>
 	}
 }
