@@ -1,0 +1,242 @@
+{% extends 'app/pages/blog/template.html.twig' %}
+
+{% set page_title %}Lac de Gaube{% endset %}
+
+{% block meta_description %}Découvrez le magnifique lac de Gaube, un joyau naturel des Pyrénées françaises. Profitez de conseils pour la randonnée, des informations pratiques sur l'accès et explorez la beauté de ce site incontournable près de Cauterets.{% endblock %}
+{% block meta_keywords %}llac de gaube, randonnée lac de gaube, Pyrénées françaises, randonnées Pyrénées, lac de montagne France, paysages alpins, lac naturel Pyrénées{% endblock %}
+
+{% block main_content_in %}
+    <div class="w-full min-h-56">
+        <div class="relative bg-gray-900 rounded-2xl pt-24 pb-12 sm:pt-36 sm:pb-24 overflow-hidden min-h-56">
+            <div class="absolute top-0 left-0 rounded-2xl w-full h-full">
+                <img src="{{ asset('blog/articles/2023/gaube/cover-gaube.jpg') }}" alt="background image" class="opacity-50 object-cover w-full h-full pointer-events-none">
+            </div>
+            <div class="relative px-4 lg:px-8">
+                <div class="text-yellow-500 font-semibold text-lg md:text-center">25 Juillet 2023</div>
+                <h1 class="text-white font-bold text-4xl md:text-6xl md:text-center">Lac de Gaube dans les Pyrénées</h1>
+                <div class="flex items-end justify-end">
+                    <p class="mt-16 text-gray-300 text-right max-w-screen-md">
+                        Accessible depuis Cauterets, il offre un cadre idéal pour les amateurs de randonnée et de nature.
+                        Entouré de sommets majestueux, le lac est un lieu de détente et de contemplation, parfait
+                        pour s’évader et profiter de la beauté sauvage des montagnes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="mt-10 flex flex-col gap-8 w-full max-w-screen-lg mx-auto px-2 lg:px-8">
+        {% include "app/pages/blog/components/author.html.twig" %}
+        <article class="flex flex-col gap-12">
+            <div class="flex flex-col gap-6">
+                <p>
+                    Le lac de Gaube, niché au cœur des Pyrénées, est un véritable sanctuaire de nature. Si la plupart
+                    des randonneurs préfèrent le découvrir sous un ciel bleu, il offre une expérience tout aussi magique,
+                    voire mystique, lorsque la pluie et la brume enveloppent les montagnes. Cette randonnée, que vous
+                    décidiez de la faire pour admirer le coucher de soleil, vous emmène dans un paysage féerique où la
+                    nature se transforme sous les caprices du temps.
+                </p>
+                <div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2023/gaube/racine.jpg') }}" alt="racine" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/200', iso: 160 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2023/gaube/arbre.jpg') }}" alt="arbre chemin du lac de gaube" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/200', iso: 250 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2023/gaube/torrent.jpg') }}" alt="torrent sur chemin du lac de gaube" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 18, speed: '1/8', iso: 64 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h3 class="text-2xl font-semibold border-b">Départ</h3>
+                    <p class="mt-4">
+                        Le point de départ de cette randonnée se trouve à Pont d'Espagne, non loin de la station thermale
+                        de Cauterets. Dès le début du sentier, l'humidité dans l'air donne à la végétation une teinte
+                        éclatante.
+                        <br><br>
+                        La montée progressive vous mène à travers une nature sauvage, où les éléments se conjuguent
+                        pour offrir une ambiance digne d’un conte.
+                    </p>
+                </div>
+                <div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2023/gaube/biche.jpg') }}" alt="biche sur le chemin du lac" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/200', iso: 200 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2023/gaube/biche-2.jpg') }}" alt="biche leve la tete sur le chemin" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/200', iso: 200 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h3 class="text-2xl font-semibold border-b">Arrivée au lac de Gaube</h3>
+                    <p class="mt-4">
+                        Dans cet écrin de montagnes, les eaux calmes du lac, habituellement d’un bleu éclatant,
+                        prennent une teinte sombre, presque mystique, sous les nuages gris. La brume danse à la
+                        surface du lac, créant des vagues de vapeur qui se mêlent aux reliefs environnants.
+                        <br><br>
+                        Ce moment, bien que solitaire, n’est pas dénué de chaleur. Il y a quelque chose de profondément
+                        réconfortant à observer ce spectacle naturel, même sous la pluie.
+                    </p>
+                </div>
+                <div>
+                    <div class="flex flex-col gap-4">
+                        <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                            <div>
+                                <img src="{{ asset('blog/articles/2023/gaube/lac.jpg') }}" alt="lac de face" class="pointer-events-none">
+                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/200', iso: 200 } %}
+                            </div>
+                            <div>
+                                <img src="{{ asset('blog/articles/2023/gaube/lac-zoom.jpg') }}" alt="zoom sur le lac" class="pointer-events-none">
+                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 6.3, speed: '1/200', iso: 200 } %}
+                            </div>
+                            <div>
+                                <img src="{{ asset('blog/articles/2023/gaube/montee.jpg') }}" alt="vue sur une montee" class="pointer-events-none">
+                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/200', iso: 160 } %}
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                            <div>
+                                <img src="{{ asset('blog/articles/2023/gaube/nuage-clair-3.jpg') }}" alt="nuage clair 3" class="pointer-events-none">
+                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 4, speed: '1/100', iso: 1250 } %}
+                            </div>
+                            <div>
+                                <img src="{{ asset('blog/articles/2023/gaube/nuage-clair-2.jpg') }}" alt="nuage clair 2" class="pointer-events-none">
+                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 6.3, speed: '1/200', iso: 160 } %}
+                            </div>
+                            <div>
+                                <img src="{{ asset('blog/articles/2023/gaube/nuage-clair.jpg') }}" alt="nuage clair" class="pointer-events-none">
+                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/200', iso: 125 } %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h3 class="text-2xl font-semibold border-b">Bivouac au bord du lac</h3>
+                    <p class="mt-4">
+                        Pour prolonger l'expérience, le bivouac au bord du lac de Gaube est une
+                        option inoubliable. Sous la pluie, le bruissement des gouttes sur la toile de tente
+                        accompagne les heures paisibles passées en pleine nature.
+                    </p>
+                </div>
+                <div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2023/gaube/tente-avant-nuit.jpg') }}" alt="tente pose avant nuit" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/200', iso: 320 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2023/gaube/bivouac-crepuscule.jpg') }}" alt="bivouac au crepuscule" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/200', iso: 160 } %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p>
+                        Par temps pluvieux, le lac de Gaube révèle une atmosphère mystérieuse et apaisante. Les brumes
+                        enveloppent doucement les sommets environnants, créant un paysage presque irréel.
+                    </p>
+                </div>
+                <div>
+                    <div class="flex flex-col gap-4">
+                        <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                            <div>
+                                <img src="{{ asset('blog/articles/2023/gaube/lac-gris.jpg') }}" alt="vue lac gris" class="pointer-events-none">
+                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 2.8, speed: '1/160', iso: 1250 } %}
+                            </div>
+                            <div>
+                                <img src="{{ asset('blog/articles/2023/gaube/montagne.jpg') }}" alt="montagne avant la nuit" class="pointer-events-none">
+                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 2.8, speed: '1/160', iso: 1250 } %}
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                            <div>
+                                <img src="{{ asset('blog/articles/2023/gaube/nuage-gris.jpg') }}" alt="nuage gris" class="pointer-events-none">
+                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/200', iso: 640 } %}
+                            </div>
+                            <div>
+                                <img src="{{ asset('blog/articles/2023/gaube/nuage-vent.jpg') }}" alt="nuage pris au vent" class="pointer-events-none">
+                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 2.8, speed: '1/160', iso: 1250 } %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h3 class="text-2xl font-semibold border-b">Retour : Un sentiment d'accomplissement</h3>
+                    <p class="mt-4">
+                        La descente se fait dans une ambiance sereine, bercée par la douce lumière du matin.
+                        Le chemin du retour, enveloppé par les derniers éclats du jour, vous ramène doucement
+                        à la réalité, mais le souvenir de ce coucher de soleil brumeux restera gravé, comme un secret
+                        partagé avec les montagnes.
+                        <br><br>
+                        Que ce soit par beau temps ou sous une pluie fine, la randonnée vers le lac de Gaube est une
+                        invitation à la découverte d'une nature sauvage et préservée. Mais lorsqu’on choisit d’y arriver
+                        au moment du coucher de soleil, par un temps brumeux et pluvieux, c’est un véritable voyage dans
+                        un autre monde, où la beauté mystérieuse des montagnes des Pyrénées se dévoile dans toute sa splendeur.
+                    </p>
+                </div>
+                <div>
+                    <div class="flex flex-col gap-4">
+                        <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                            <div>
+                                <img src="{{ asset('blog/articles/2023/gaube/lever-soleil.jpg') }}" alt="vue lac au level soleil" class="pointer-events-none">
+                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/200', iso: 400 } %}
+                            </div>
+                            <div>
+                                <img src="{{ asset('blog/articles/2023/gaube/montagne-lever.jpg') }}" alt="montagne lever" class="pointer-events-none">
+                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/200', iso: 160 } %}
+                            </div>
+                            <div>
+                                <img src="{{ asset('blog/articles/2023/gaube/montagne-reflet.jpg') }}" alt="montagne en reflet" class="pointer-events-none">
+                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/320', iso: 320 } %}
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                            <div>
+                                <img src="{{ asset('blog/articles/2023/gaube/eau.jpg') }}" alt="eau herbe" class="pointer-events-none">
+                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/320', iso: 400 } %}
+                            </div>
+                            <div>
+                                <img src="{{ asset('blog/articles/2023/gaube/tronc.jpg') }}" alt="tronc seul" class="pointer-events-none">
+                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/320', iso: 640 } %}
+                            </div>
+                            <div>
+                                <img src="{{ asset('blog/articles/2023/gaube/tronc-mousse.jpg') }}" alt="tronc mousse" class="pointer-events-none">
+                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/160', iso: 640 } %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h3 class="text-2xl font-semibold border-b">Conclusion</h3>
+                    <p class="mt-4">
+                        Techniquement, la randonnée vers le lac de Gaube est accessible à la majorité des marcheurs,
+                        même sous la pluie. Difficile de se tromper sur le sentier, la randonnée se déroule sur une
+                        distance relativement courte (1h30) avec un dénivelé modéré d’environ 320 mètres, rendant la montée
+                        progressive et agréable. Avec de bonnes chaussures de randonnée, l’ascension se fait sans encombre.
+                        Que l’on soit débutant ou randonneur plus expérimenté, l’effort requis est largement récompensé par la beauté
+                        des lieux.
+                    </p>
+                </div>
+            </div>
+            {% include "app/pages/blog/components/social_media.html.twig" %}
+        </article>
+    </section>
+{% endblock %}

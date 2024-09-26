@@ -24,12 +24,33 @@
                 <div>
                     <div class="text-gray-600 text-xs">21 Septembre 2024</div>
                     <div class="mt-2">
-                        <h2 class="font-semibold text-xl">Un lac à portée de main</h2>
+                        <h2 class="font-semibold text-xl">Le lac d'Orceyrette : un lac à portée de main</h2>
                         <p>
                             Niché au cœur des montagnes des Hautes-Alpes, le lac d'Orceyrette est une véritable
                             invitation à l'évasion et à la contemplation. Situé non loin de Briançon, ce lac est un
                             havre de paix pour les amoureux de la nature, offrant un cadre enchanteur.
                             Ce site préservé vous promet une parenthèse de déconnexion totale.
+                        </p>
+                    </div>
+                    <div class="mt-2 flex flex-wrap gap-2 text-sm">
+                        <div class="text-red-400">Balade</div>
+                        <div class="text-red-400">Nature</div>
+                    </div>
+                </div>
+            </div>
+            <div class="cursor-pointer group flex flex-col gap-4 md:flex-row md:gap-8" onclick="location.href = '{{ path('app_adventures_gaube') }}'">
+                <div class="w-80 h-64 overflow-hidden rounded-md shadow md:min-w-80">
+                    <img src="{{ asset('blog/list/gaube.jpg') }}" alt="lac de Gaube Pyrénées" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                </div>
+                <div>
+                    <div class="text-gray-600 text-xs">25 Juillet 2023</div>
+                    <div class="mt-2">
+                        <h2 class="font-semibold text-xl">Le lac de Gaube dans les Pyrénées</h2>
+                        <p>
+                            Le lac de Gaube offre un panorama spectaculaire sur les montagnes environnantes. Accessible
+                            depuis la station thermale de Cauterets, cette randonnée est réalisable que ce soit pour un
+                            randonneur débutant ou plus expérimenté. Le parcours menant au lac de Gaube vous promet une
+                            immersion inoubliable dans l’un des plus beaux paysages des Pyrénées.
                         </p>
                     </div>
                     <div class="mt-2 flex flex-wrap gap-2 text-sm">

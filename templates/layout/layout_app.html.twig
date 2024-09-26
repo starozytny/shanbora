@@ -29,10 +29,10 @@
                                 <a href="{{ path('app_adventures') }}" class="{{ app.request.get('_route') in ['app_adventures'] ? "text-black" : "text-gray-600 hover:text-gray-900" }} pl-3 pr-8 py-2 font-semibold border-r-2 border-gray-500">
                                     <span>Aventures</span>
                                 </a>
-                                <a href="https://www.instagram.com/shanbo_daltonien/" target="_blank" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
+                                <a href="https://www.instagram.com/shanbo_daltonien/" target="_blank" rel="external" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
                                     <span>Instagram</span>
                                 </a>
-                                <a href="https://nompaw.fr" target="_blank" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
+                                <a href="https://nompaw.fr" target="_blank" rel="external" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
                                     <span>Nompaw</span>
                                 </a>
                                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -94,10 +94,10 @@
                                                     <a href="{{ path('app_adventures') }}" class="{{ app.request.get('_route') in ['app_adventures'] ? "text-black" : "text-gray-600 hover:text-gray-900" }} pl-3 pr-8 py-2 font-semibold border-r-2 border-gray-500">
                                                         <span>Aventures</span>
                                                     </a>
-                                                    <a href="https://www.instagram.com/shanbo_daltonien/" target="_blank" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
+                                                    <a href="https://www.instagram.com/shanbo_daltonien/" target="_blank"  rel="external" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
                                                         <span>Instagram</span>
                                                     </a>
-                                                    <a href="https://nompaw.fr" target="_blank" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
+                                                    <a href="https://nompaw.fr" target="_blank" rel="external" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
                                                         <span>Nompaw</span>
                                                     </a>
                                                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}

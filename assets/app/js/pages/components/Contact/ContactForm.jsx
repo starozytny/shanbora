@@ -86,14 +86,14 @@ export class ContactFormulaire extends Component {
 				{success && <div><Alert type="blue" icon="check1">{success}</Alert></div>}
 				<div className="flex gap-4">
 					<div className="w-full">
-						<Input identifiant="name" valeur={name} {...params0}>Qui es-tu ? pour savoir à qui je m'adresse</Input>
+						<Input identifiant="name" valeur={name} {...params0}>Comment dois-je t'appeler ?</Input>
 					</div>
 					<div className="w-full">
 						<Input identifiant="email" valeur={email} {...params0} type="email">Une adresse email pour garder contact</Input>
 					</div>
 				</div>
 				<div>
-					<TextArea identifiant="message" valeur={message} {...params0}>Ton message pour comprendre ton projet ou ta demande d'informations</TextArea>
+					<TextArea identifiant="message" valeur={message} {...params0}>Ton message pour comprendre ton projet ou ta demande</TextArea>
 				</div>
 				<div className="critere">
 					<Input identifiant="critere" valeur={critere} {...params0}>Critère</Input>

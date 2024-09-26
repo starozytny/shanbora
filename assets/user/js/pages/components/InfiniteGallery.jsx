@@ -92,7 +92,7 @@ const InfiniteGallery = ({ userId }) => {
 				{!hasMore
 					? <div className="text-center text-gray-600 text-sm">Plus d'images à afficher.</div>
 					: <div className="flex items-center justify-center mt-8">
-						<Button type="default" onClick={handleMore}>Afficher plus</Button>
+						<Button type="blue" onClick={handleMore}>Afficher plus</Button>
 					</div>
 				}
 			</div>
