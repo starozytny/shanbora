@@ -69,19 +69,22 @@ class AdminCreateUsersCommand extends Command
                 'username' => 'shanbo',
                 'firstname' => 'Dev', 'lastname' => 'Shanbora',
                 'email' => 'chanbora.chhun@outlook.fr',
-                'roles' => ['ROLE_USER','ROLE_ADMIN', 'ROLE_DEVELOPER']
+                'roles' => ['ROLE_USER','ROLE_ADMIN', 'ROLE_DEVELOPER'],
+                'galleryTitle' => null, 'galleryDate' => null
             ],
             [
                 'username' => 'staro',
                 'firstname' => 'Admin', 'lastname' => 'Starozytny',
                 'email' => 'starozytny@hotmail.fr',
-                'roles' => ['ROLE_USER','ROLE_ADMIN']
+                'roles' => ['ROLE_USER','ROLE_ADMIN'],
+                'galleryTitle' => null, 'galleryDate' => null
             ],
             [
                 'username' => 'shanks',
                 'firstname' => 'User', 'lastname' => 'Shanks',
                 'email' => 'shanks@hotmail.fr',
-                'roles' => ['ROLE_USER']
+                'roles' => ['ROLE_USER'],
+                'galleryTitle' => null, 'galleryDate' => null
             ],
         ];
 
