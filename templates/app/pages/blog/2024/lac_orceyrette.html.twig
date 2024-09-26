@@ -13,10 +13,10 @@
             </div>
             <div class="relative px-4 lg:px-8">
                 <div class="text-yellow-500 font-semibold text-lg md:text-center">21 Septembre 2024</div>
-                <h1 class="text-white font-bold text-4xl md:text-6xl md:text-center">Un lac à portée de main</h1>
+                <h1 class="text-white font-bold text-4xl md:text-6xl md:text-center">Lac d'Orceyrette : Un lac à portée de main</h1>
                 <div class="flex items-end justify-end">
                     <p class="mt-16 text-gray-300 text-right max-w-screen-md">
-                        Le lac d'Orceyrette est une perle naturelle qui séduisent randonneurs et
+                        Le lac d'Orceyrette est une perle naturelle qui séduise randonneurs et
                         amoureux de paysages authentiques. Ces plans d’eau, entourés de sommets majestueux et de prairies
                         alpines, offrent un cadre idéal pour une immersion en pleine nature.
                     </p>
@@ -26,15 +26,7 @@
     </div>
 
     <section class="mt-10 flex flex-col gap-8 w-full max-w-screen-lg mx-auto px-2 lg:px-8">
-        <div class="flex flex-row gap-4">
-            <div class="w-10">
-                <img class="h-10 w-10 rounded-full" src="{{ asset('blog/avatars/chanbora.jpg') }}" alt="Avatar chanbora chhun">
-            </div>
-            <div>
-                <div class="font-medium">Chanbora Chhun</div>
-                <div class="text-sm text-gray-600">Photographe</div>
-            </div>
-        </div>
+        {% include "app/pages/blog/components/author.html.twig" %}
         <article class="flex flex-col gap-12">
             <div class="flex flex-col gap-6">
                 <p>

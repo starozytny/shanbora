@@ -1,0 +1,54 @@
+{% extends 'app/pages/blog/template.html.twig' %}
+
+{% set page_title %}Lac de Gaube{% endset %}
+
+{% block meta_description %}Découvrez le magnifique lac de Gaube, un joyau naturel des Pyrénées françaises. Profitez de conseils pour la randonnée, des informations pratiques sur l'accès et explorez la beauté de ce site incontournable près de Cauterets.{% endblock %}
+{% block meta_keywords %}llac de gaube, randonnée lac de gaube, Pyrénées françaises, randonnées Pyrénées, lac de montagne France, paysages alpins, lac naturel Pyrénées{% endblock %}
+
+{% block main_content_in %}
+    <div class="w-full min-h-56">
+        <div class="relative bg-gray-900 rounded-2xl pt-24 pb-12 sm:pt-36 sm:pb-24 overflow-hidden min-h-56">
+            <div class="absolute top-0 left-0 rounded-2xl w-full h-full">
+                <img src="{{ asset('blog/articles/2023/gaube/cover-gaube.jpg') }}" alt="background image" class="opacity-50 object-cover w-full h-full pointer-events-none">
+            </div>
+            <div class="relative px-4 lg:px-8">
+                <div class="text-yellow-500 font-semibold text-lg md:text-center">25 Juillet 2023</div>
+                <h1 class="text-white font-bold text-4xl md:text-6xl md:text-center">Lac de Gaube dans les Pyrénées</h1>
+                <div class="flex items-end justify-end">
+                    <p class="mt-16 text-gray-300 text-right max-w-screen-md">
+                        Accessible depuis Cauterets, il offre un cadre idéal pour les amateurs de randonnée et de nature.
+                        Entouré de sommets majestueux, le lac est un lieu de détente et de contemplation, parfait
+                        pour s’évader et profiter de la beauté sauvage des montagnes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="mt-10 flex flex-col gap-8 w-full max-w-screen-lg mx-auto px-2 lg:px-8">
+        {% include "app/pages/blog/components/author.html.twig" %}
+        <article class="flex flex-col gap-12">
+            <div class="flex flex-col gap-6">
+                <p>
+                    Par temps pluvieux, le lac de Gaube révèle une atmosphère mystérieuse et apaisante. Les brumes
+                    enveloppent doucement les sommets environnants, créant un paysage presque irréel. Les eaux d’un
+                    bleu profond se mêlent aux reflets argentés du ciel, tandis que le calme ambiant invite à la
+                    contemplation. Même sous la pluie, la beauté sauvage du lac reste envoûtante, offrant aux
+                    visiteurs une expérience unique, empreinte de tranquillité et de sérénité.
+                </p>
+                <div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/orceyrette/lac-ponton.jpg') }}" alt="lac orceyrette de face" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 24, apeture: 1.8, speed: '1/800', iso: 100 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/orceyrette/lac-entier.jpg') }}" alt="lac orceyrette entier" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 24, apeture: 5.4, speed: '1/200', iso: 100 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+{% endblock %}
