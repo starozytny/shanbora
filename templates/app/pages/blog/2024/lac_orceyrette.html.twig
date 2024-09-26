@@ -43,7 +43,7 @@
                         </div>
                         <div>
                             <img src="{{ asset('blog/articles/2024/orceyrette/lac-entier.jpg') }}" alt="lac orceyrette entier" class="pointer-events-none">
-                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 24, apeture: 5.4, speed: '1/200', iso: 100 } %}
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 24, apeture: 5.6, speed: '1/200', iso: 100 } %}
                         </div>
                     </div>
                 </div>
@@ -141,20 +141,7 @@
                     </p>
                 </div>
             </div>
-            <div class="flex flex-col gap-6">
-                <div>
-                    <h3 class="text-2xl font-semibold border-b">Un petit coup de pouce</h3>
-                    <p class="mt-4">
-                        N'hésitez pas à me suivre sur les réseaux sociaux pour plus de découvertes !
-                    </p>
-                    <div class="mt-4 flex">
-                        <a href="https://www.instagram.com/shanbo_daltonien/" target="_blank" rel="external" class="flex gap-2 items-center bg-white py-2.5 px-6 rounded-md border border-gray-400 group" title="instagram">
-                            <span class="icon-instagram text-blue-500"></span>
-                            <span class="font-medium group-hover:underline">@shanbo_daltonien</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            {% include "app/pages/blog/components/social_media.html.twig" %}
         </article>
     </section>
 {% endblock %}
