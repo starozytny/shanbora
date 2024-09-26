@@ -5,6 +5,7 @@
              data-adventure-id="{{ adventureId }}"
              data-adventure-name="{{ page_title }}"
              data-adventure-url="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"
+             data-username="{{ is_granted('IS_AUTHENTICATED_REMEMBERED') ? app.user.userIdentifier : "" }}"
         >
             {% include "layout/components/tailwind/loaders/loader.html.twig" %}
         </div>
@@ -16,9 +17,13 @@
                     <div class="flex flex-col gap-2 bg-white p-4 rounded-md shadow">
                         <div class="flex gap-2">
                             <div>
-                                <div class="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center font-semibold">
-                                    <span>{{ commentary.username | slice(0,1) | upper }}</span>
-                                </div>
+                                {% if commentary.user %}
+                                    <img class="w-auto h-10 rounded-full" src="{{ commentary.user.avatarFile }}" alt="Avatar utilisateur">
+                                {% else %}
+                                    <div class="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center font-semibold">
+                                        <span>{{ commentary.username | slice(0,1) | upper }}</span>
+                                    </div>
+                                {% endif %}
                             </div>
                             <div>
                                 <div class="font-semibold">{{ commentary.username }}</div>
@@ -37,6 +42,7 @@
                                  data-adventure-id="{{ adventureId }}"
                                  data-adventure-name="{{ page_title }}"
                                  data-adventure-url="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"
+                                 data-username="{{ is_granted('IS_AUTHENTICATED_REMEMBERED') ? app.user.userIdentifier : "" }}"
                             ></div>
                         </div>
                     </div>

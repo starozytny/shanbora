@@ -2,6 +2,7 @@
 
 namespace App\Entity\Blog;
 
+use App\Entity\Main\User;
 use App\Repository\Blog\BoCommentaryRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -28,6 +29,9 @@ class BoCommentary
 
     #[ORM\Column(nullable: true)]
     private ?int $responseId = null;
+
+    #[ORM\ManyToOne(inversedBy: 'boCommentaries')]
+    private ?User $user = null;
 
     public function __construct()
     {
@@ -95,6 +99,18 @@ class BoCommentary
     public function setResponseId(?int $responseId): static
     {
         $this->responseId = $responseId;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }
