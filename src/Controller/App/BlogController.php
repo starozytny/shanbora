@@ -25,6 +25,12 @@ class BlogController extends AbstractController
         return $this->render('app/pages/blog/2023/lac_gaube.html.twig', $this->getCommentaries(2));
     }
 
+    #[Route('/lac-ayous', name: 'ayous')]
+    public function ayous(): Response
+    {
+        return $this->render('app/pages/blog/2023/lac_ayous.html.twig', $this->getCommentaries(3));
+    }
+
     private function getCommentaries($id): array
     {
         $data = $this->commentaryRepository->findBy(['adventureId' => $id]);
