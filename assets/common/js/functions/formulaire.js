@@ -1,10 +1,9 @@
 const axios = require("axios");
 const Toastr = require("@tailwindFunctions/toastr");
+const Validateur = require("@commonFunctions/validateur");
 
 const moment = require("moment");
 require("moment/locale/fr");
-
-const Validateur = require("@commonFunctions/validateur");
 
 function generiqueSendForm (self, context, paramsToValidate, url, data, urlReload) {
     let validate = Validateur.validateur(paramsToValidate)
@@ -86,6 +85,7 @@ function displayErrors(self, error, message="Veuillez vérifier les informations
 function updateValueCheckbox(e, items, value){
     return (e.currentTarget.checked) ? [...items, ...[value]] : items.filter(v => v !== value)
 }
+
 module.exports = {
     generiqueSendForm,
     axiosGetData,
