@@ -16,7 +16,7 @@
         "sass": "^1.55.0",
         "sass-loader": "^13.0.0",
         "tailwindcss": "^3.4.1",
-        "webpack": "5.94.0",
+        "webpack": "^5.74.0",
         "webpack-cli": "^4.10.0",
         "webpack-notifier": "^1.15.0"
     },
@@ -37,7 +37,7 @@
         "@fullcalendar/timegrid": "^6.0.3",
         "@reduxjs/toolkit": "^1.9.3",
         "@tinymce/tinymce-react": "^4.3.0",
-        "axios": "1.7.4",
+        "axios": "^1.2.1",
         "cleave.js": "^1.6.0",
         "html-react-parser": "^4.2.7",
         "js-datepicker": "^5.18.2",
