@@ -1,0 +1,147 @@
+{% extends 'app/pages/blog/template.html.twig' %}
+
+{% set page_title %}Lac de l'Orceyrette{% endset %}
+
+{% block meta_description %}Découvrez la beauté du lac d'Orceyrette dans les Hautes-Alpes. Randonnées, paysages alpins, et conseils pour explorer ces joyaux naturels en pleine montagne.{% endblock %}
+{% block meta_keywords %}lac d'Orceyrette, randonnées Hautes-Alpes, nature Alpes françaises, photographie de montagne, randonnée lac de montagne, paysages alpins, randonnée Briançon{% endblock %}
+
+{% block main_content_in %}
+    <div class="w-full min-h-56">
+        <div class="relative bg-gray-900 rounded-2xl pt-24 pb-12 sm:pt-36 sm:pb-24 overflow-hidden min-h-56">
+            <div class="absolute top-0 left-0 rounded-2xl w-full h-full">
+                <img src="{{ asset('blog/articles/2024/orceyrette/cover-orceyrette.jpg') }}" alt="background image" class="opacity-50 object-cover w-full h-full pointer-events-none">
+            </div>
+            <div class="relative px-4 lg:px-8">
+                <div class="text-yellow-500 font-semibold text-lg md:text-center">21 Septembre 2024</div>
+                <h1 class="text-white font-bold text-4xl md:text-6xl md:text-center">Lac d'Orceyrette : Un lac à portée de main</h1>
+                <div class="flex items-end justify-end">
+                    <p class="mt-16 text-gray-300 text-right max-w-screen-md">
+                        Le lac d'Orceyrette est une perle naturelle qui séduise randonneurs et
+                        amoureux de paysages authentiques. Ces plans d’eau, entourés de sommets majestueux et de prairies
+                        alpines, offrent un cadre idéal pour une immersion en pleine nature.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="mt-10 flex flex-col gap-8 w-full max-w-screen-lg mx-auto px-2 lg:px-8">
+        {% include "app/pages/blog/components/author.html.twig" %}
+        <article class="flex flex-col gap-12">
+            <div class="flex flex-col gap-6">
+                <p>
+                    Au cœur des Hautes-Alpes, loin du tumulte du quotidien, le lac d'Orceyrette offre un
+                    sanctuaire de quiétude et de beauté brute. Nichés dans des écrins de verdure et de roche, ces deux lacs
+                    de montagne sont des trésors pour les amateurs de nature, de randonnée, et de moments de ressourcement
+                    profond.
+                </p>
+                <div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/orceyrette/lac-ponton.jpg') }}" alt="lac orceyrette de face" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 24, apeture: 1.8, speed: '1/800', iso: 100 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/orceyrette/lac-entier.jpg') }}" alt="lac orceyrette entier" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 24, apeture: 5.6, speed: '1/200', iso: 100 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h3 class="text-2xl font-semibold border-b">Départ</h3>
+                    <p class="mt-4">
+                        Il existe une randonnée pour aller jusqu'au Lac de l'Orceyrette mais nous avons opté pour l'arrivée
+                        en voiture au pied du lac, car nous enchainons la journée avec le lac d'Eychauda.
+                        <br><br>
+                        Les 5-10 dernières minutes avant d'atteindre le lac sont sur une route de cailloux.
+                    </p>
+                </div>
+                <div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/orceyrette/femme-assise-bord-lac.jpg') }}" alt="femme assis au bord du lac" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 24, apeture: 5.6, speed: '1/200', iso: 160 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/orceyrette/pont-lac-orceyrette.jpg') }}" alt="sur le pont du lac" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 24, apeture: 5.6, speed: '1/200', iso: 100 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h3 class="text-2xl font-semibold border-b">Tour du lac</h3>
+                    <p class="mt-4">
+                        Entouré de montagnes majestueuses, de forêts de mélèzes et de prairies alpines, le tour du lac
+                        ne présente aucune difficulté, accessible à tous, idéales pour les familles pour une petite balade.
+                        <br><br>
+                        Le sentier fait le tour du lac en longeant ses rives, traversant une forêt clairsemée de mélèzes.
+                        La première partie du chemin est facile et permet d’approcher l’eau de
+                        près pour profiter des reflets changeants du ciel et des montagnes sur la surface du lac.
+                    </p>
+                </div>
+                <div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/orceyrette/deux-personnes-reflet-lac.jpg') }}" alt="deux personnes au bord du lac en reflet" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 24, apeture: 5.6, speed: '1/200', iso: 160 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/orceyrette/reflet-sur-eau.jpg') }}" alt="reflet montagne sur eau" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 24, apeture: 5.6, speed: '1/200', iso: 160 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h3 class="text-2xl font-semibold border-b">Points fort de la balade</h3>
+                    <p class="mt-4">
+                        Un panorama spectaculaire à chaque virage, offrant des vues splendides sur les montagnes
+                        environnantes et les prairies alpines. Les nuances de bleu et de vert du lac varient
+                        selon la lumière du jour, créant une atmosphère apaisante.
+                        <br><br>
+                        Plusieurs aires de repos naturelles et humaines offrent des emplacements parfaits pour s’arrêter
+                        et pique-niquer au bord de l'eau.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/orceyrette/vache-prairie.jpg') }}" alt="vache prairie" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 24, apeture: 5.6, speed: '1/200', iso: 250 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/orceyrette/femme-dos.jpg') }}" alt="femme dos nature paysage" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 24, apeture: 5.6, speed: '1/200', iso: 250 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/orceyrette/pause-croissant.jpg') }}" alt="pause croissant petit dejeuner nature" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 24, apeture: 5.6, speed: '1/200', iso: 200 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/orceyrette/pause-gouter.jpg') }}" alt="pause gouter nature cookie" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 24, apeture: 8, speed: '1/200', iso: 320 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h3 class="text-2xl font-semibold border-b">Conclusion</h3>
+                    <p class="mt-4">
+                        En somme, le tour du lac de l'Orceyrette est une randonnée accessible, offrant un cadre
+                        splendide et une expérience nature unique, que ce soit pour une sortie en
+                        famille ou une balade tranquille pour se ressourcer.
+                    </p>
+                </div>
+            </div>
+            {% include "app/pages/blog/components/social_media.html.twig" %}
+        </article>
+    </section>
+{% endblock %}

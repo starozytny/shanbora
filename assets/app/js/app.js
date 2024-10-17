@@ -7,7 +7,6 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 
 import Menu from "@tailwindFunctions/menu";
-import Toastr from "@tailwindFunctions/toastr";
 
 import { ContactFormulaire } from "@appFolder/pages/components/Contact/ContactForm";
 import { Cookies, CookiesGlobalResponse } from "@tailwindComponents/Modules/Cookies/Cookies";
@@ -15,7 +14,6 @@ import { Cookies, CookiesGlobalResponse } from "@tailwindComponents/Modules/Cook
 Routing.setRoutingData(routes);
 
 Menu.menuListener();
-Toastr.flashes();
 inputPassword();
 
 let el = document.getElementById("contacts_create");
@@ -53,4 +51,12 @@ function inputPassword () {
             }
         })
     }
+}
+
+let totop = document.querySelector('.to-top');
+if(totop){
+    totop.addEventListener('click', () => {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    })
 }

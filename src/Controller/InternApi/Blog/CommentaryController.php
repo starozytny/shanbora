@@ -3,6 +3,7 @@
 namespace App\Controller\InternApi\Blog;
 
 use App\Entity\Blog\BoCommentary;
+use App\Entity\Main\User;
 use App\Repository\Blog\BoCommentaryRepository;
 use App\Service\ApiResponse;
 use App\Service\Data\DataBlog;
@@ -22,6 +23,8 @@ class CommentaryController extends AbstractController
                            DataBlog $dataEntity, BoCommentaryRepository $repository,
                            MailerService $mailerService, SettingsService $settingsService): Response
     {
+        /** @var ?User $user */
+        $user = $this->getUser();
         $data = json_decode($request->getContent());
         if ($data === null) {
             return $apiResponse->apiJsonResponseBadRequest('Les données sont vides.');
@@ -31,6 +34,13 @@ class CommentaryController extends AbstractController
 
         if($data->responseId){
             $obj->setResponseId((int) $data->responseId);
+        }
+
+        if($user){
+            $obj = ($obj)
+                ->setUsername($user->getUsername())
+                ->setUser($user)
+            ;
         }
 
         $noErrors = $validator->validate($obj);
