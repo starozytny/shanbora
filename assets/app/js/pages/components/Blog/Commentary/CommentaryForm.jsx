@@ -9,11 +9,11 @@ import Validateur from "@commonFunctions/validateur";
 
 import { Button } from "@tailwindComponents/Elements/Button";
 import { CloseModalBtn } from "@tailwindComponents/Elements/Modal";
-import { Input, TextArea } from "@tailwindComponents/Elements/Fields";
+import { Input, InputView, TextArea } from "@tailwindComponents/Elements/Fields";
 
 const URL_CREATE_ELEMENT = "intern_api_blog_commentaries_create";
 
-export function CommentaryFormulaire ({ adventureId, adventureName, adventureUrl, responseId = null, isForm = false, identifiant }) {
+export function CommentaryFormulaire ({ adventureId, adventureName, adventureUrl, username, responseId = null, isForm = false, identifiant }) {
 	let url = Routing.generate(URL_CREATE_ELEMENT);
 
 	return <Form
@@ -24,6 +24,7 @@ export function CommentaryFormulaire ({ adventureId, adventureName, adventureUrl
 		adventureName={adventureName}
 		adventureUrl={adventureUrl}
 		responseId={responseId}
+		username={username}
     />
 }
 
@@ -36,7 +37,7 @@ class Form extends Component {
 			adventureName: props.adventureName,
 			adventureUrl: props.adventureUrl,
 			responseId: props.responseId,
-			username: "",
+			username: props.username ? props.username : "",
 			message: "",
 			critere: "",
 			errors: [],
@@ -98,7 +99,10 @@ class Form extends Component {
 				<div className="px-4 pb-4 pt-5 sm:px-6 sm:pb-4">
 					<div className="flex flex-col gap-4">
 						<div className="max-w-96">
-							<Input identifiant="username" valeur={username} {...params0}>Pseudo</Input>
+							{this.props.username
+								? <InputView identifiant="username" valeur={username} {...params0}>Pseudo</InputView>
+								: <Input identifiant="username" valeur={username} {...params0}>Pseudo</Input>
+							}
 							<div className="critere">
 								<Input identifiant="critere" valeur={critere} {...params0}>Critère</Input>
 							</div>

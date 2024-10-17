@@ -1,0 +1,163 @@
+{% extends 'app/pages/blog/template.html.twig' %}
+
+{% set page_title %}Lac d'Ayous{% endset %}
+
+{% block meta_description %}Découvrez le magnifique lac d'Ayous, niché dans les Pyrénées françaises. Un cadre naturel unique pour des randonnées inoubliables, avec des panoramas époustouflants sur les montagnes environnantes. Guide complet pour organiser votre visite et explorer ce joyau des Pyrénées.{% endblock %}
+{% block meta_keywords %}llac d'ayous, Pyrénées, randonnée lac d'Ayous, lac d'Ayous Pyrénées, itinéraire randonnée lac d'Ayous, lac d'altitude France{% endblock %}
+
+{% block main_content_in %}
+    <div class="w-full min-h-56">
+        <div class="relative bg-gray-900 rounded-2xl pt-24 pb-12 sm:pt-36 sm:pb-24 overflow-hidden min-h-56">
+            <div class="absolute top-0 left-0 rounded-2xl w-full h-full">
+                <img src="{{ asset('blog/articles/2023/ayous/cover-ayous.jpg') }}" alt="background image" class="opacity-50 object-cover w-full h-full pointer-events-none">
+            </div>
+            <div class="relative px-4 lg:px-8">
+                <div class="text-yellow-500 font-semibold text-lg md:text-center">26 Juillet 2023</div>
+                <h1 class="text-white font-bold text-4xl md:text-6xl md:text-center">Lac d'Ayous dans les Pyrénées</h1>
+                <div class="flex items-end justify-end">
+                    <p class="mt-16 text-gray-300 text-right max-w-screen-md">
+                        Entouré de forêts et de montagnes, il offre un cadre idyllique, reflétant les cimes environnantes.
+                        Accessible après une courte randonnée, ce lac paisible est un incontournable pour les
+                        amoureux de la nature et des paysages pyrénéens.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="mt-10 flex flex-col gap-8 w-full max-w-screen-lg mx-auto px-2 lg:px-8">
+        {% include "app/pages/blog/components/author.html.twig" %}
+        <article class="flex flex-col gap-12">
+            <div class="flex flex-col gap-6">
+                <p>
+                    L'idée de randonner jusqu'au lac d'Ayous pour assister au coucher de soleil semblait parfaite.
+                    Ce lac mythique est connu pour ses paysages grandioses et ses reflets somptueux du Pic du Midi d’Ossau.
+                    C’était l’endroit rêvé pour admirer un sunset de montagne inoubliable.
+                </p>
+                <div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2023/ayous/tente.jpg') }}" alt="tente bivouac ayous" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 1.8, speed: '1/100', iso: 2000 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2023/ayous/calme.jpg') }}" alt="calme sur le lac ayous" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 2.8, speed: '1/100', iso: 2500 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h3 class="text-2xl font-semibold border-b">Départ</h3>
+                    <p class="mt-4">
+                        Le point de départ de cette randonnée se trouve au parking du lac de Bious-Artigues.
+                        <br>
+                        Au fil de la montée, le panorama se dévoile progressivement. Après quelques heures de marche,
+                        j'atteins les premiers lacs d’Ayous, entourés de prairies alpines. Le calme règne,
+                        seuls quelques randonneurs croisent mon chemin car, les nuages deviennent menaçant.
+                    </p>
+                </div>
+                <div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2023/ayous/chevaux.jpg') }}" alt="chevaux a cote du lac" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/320', iso: 100 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2023/ayous/moutons.jpg') }}" alt="moutons sur la prairie" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/320', iso: 100 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h3 class="text-2xl font-semibold border-b">Après la nuit en bivouac</h3>
+                    <p class="mt-4">
+                        La lumière dorée du lever de soleil commence à éclairer les sommets environnants, tandis que
+                        le Pic du Midi d'Ossau se dresse majestueusement au loin, sa silhouette tranchant sur
+                        l'immensité du ciel. Le calme après l'orage est palpable.
+                    </p>
+                </div>
+                <div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2023/ayous/sunrise-1.jpg') }}" alt="lever soleil sur lac" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/320', iso: 64 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2023/ayous/sunrise-2.jpg') }}" alt="lever de soleil ayous" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/250', iso: 50 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2023/ayous/tente-sunrise.jpg') }}" alt="tente au lever de soleil" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 2.8, speed: '1/200', iso: 160 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2023/ayous/deux-tentes.jpg') }}" alt="bivouac lever soleil" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/100', iso: 640 } %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    Le silence règne. Nous sommes quelques privilégiés à assister à ce moment de grâce, les yeux rivés
+                    sur l’horizon, contemplant la transformation du paysage sous l'effet du lever de soleil.
+                </div>
+
+                <div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2023/ayous/pic.jpg') }}" alt="pic ossau" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/320', iso: 640 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2023/ayous/vaches.jpg') }}" alt="vaches a cote lac" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/250', iso: 320 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2023/ayous/pic-vaches.jpg') }}" alt="pic ossau et vaches" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/250', iso: 320 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h3 class="text-2xl font-semibold border-b">Une descente sereine et lumineuse</h3>
+                    <p class="mt-4">
+                        Après avoir profité longuement de ce spectacle, il est temps de redescendre. La lumière du jour,
+                        désormais bien installée, éclaire le sentier et les paysages que nous n’avions que devinés à
+                        l’aller. Les montagnes, baignées de soleil, semblent accueillantes, et la fraîcheur matinale
+                        rend la marche agréable.
+                    </p>
+                </div>
+                <div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2023/ayous/lac-sunrise.jpg') }}" alt="vue sur lac durant lever soleil" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/250', iso: 125 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2023/ayous/femme-montee.jpg') }}" alt="femme sur pente montee" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/250', iso: 125 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h3 class="text-2xl font-semibold border-b">Conclusion</h3>
+                    <p class="mt-4">
+                        Chaque pas nous rappelle la puissance de la nature et sa capacité à se réinventer. L’orage n’a
+                        pas gâché notre aventure, il l’a enrichie. Il nous a offert une leçon de patience et une
+                        récompense plus belle encore : un lever de soleil après la tempête, comme une promesse
+                        de sérénité retrouvée.
+                    </p>
+                </div>
+                {% include "app/pages/blog/components/data_technique.html.twig" with { duration: '6h00', km: 16, d: 800, altitude: 2097 } %}
+            </div>
+            {% include "app/pages/blog/components/social_media.html.twig" %}
+        </article>
+    </section>
+{% endblock %}

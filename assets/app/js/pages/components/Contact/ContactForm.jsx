@@ -89,7 +89,7 @@ export class ContactFormulaire extends Component {
 						<Input identifiant="name" valeur={name} {...params0}>Comment dois-je t'appeler ?</Input>
 					</div>
 					<div className="w-full">
-						<Input identifiant="email" valeur={email} {...params0} type="email">Une adresse email pour garder contact</Input>
+						<Input identifiant="email" valeur={email} {...params0} type="email">Une adresse email <span className="hidden md:inline">pour garder contact</span></Input>
 					</div>
 				</div>
 				<div>
