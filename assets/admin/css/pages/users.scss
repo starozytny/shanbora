@@ -1,4 +1,4 @@
-@import "js-datepicker/src/datepicker.scss";
+@use "js-datepicker/src/datepicker.scss";
 
 .blocked{
   color: var(--danger);
