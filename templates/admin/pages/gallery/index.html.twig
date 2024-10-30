@@ -5,24 +5,42 @@
 
 {% block main_content %}
     <div class="flex flex-wrap gap-4">
-        {% for album in albums %}
+        {% for elem in albums %}
             <div>
-                <a class="block p-4 bg-white rounded-md w-96 border hover:border-gray-300" href="{{ path('admin_galleries_read', {id: album.id}) }}">
-                    <div class="font-semibold">{{ album.title }}</div>
-                    <div class="text-gray-600 text-sm">{{ album.dateAt | date('d/m/Y') }}</div>
-                    <div class="mt-4 font-semibold text-lg">
-                        {{ album.nbDownload }} téléchargement{{ album.nbDownload > 1 ? "s" : "" }}
-                    </div>
-                </a>
+
+                <div class="cursor-pointer block p-4 bg-white rounded-md w-96 border group hover:border-gray-300 max-w-[280px]"
+                     onclick="window.location.href = '{{ app.request.schemeAndHttpHost ~ path('admin_galleries_read', {id: elem.id}) }}'"
+                >
+                    <div class="font-semibold text-center">{{ elem.title }}</div>
+                    {% if elem.cover %}
+                        <div class="relative mt-4 rounded w-full h-56 overflow-hidden">
+                            <img src="{{ path('intern_api_user_gallery_albums_read_cover', {id: elem.id}) }}"
+                                 alt="photo couverture de {{ elem.title }}"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                            >
+                            <div class="absolute bottom-0 right-0 text-gray-600 text-xs bg-white pt-2 pb-1 px-4 rounded-tl">
+                                {{ elem.dateAt | date('d/m/Y') }}
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="text-gray-600 text-xs text-center">
+                            {{ elem.dateAt | date('d/m/Y') }}
+                        </div>
+                        <div class="mt-4 font-semibold text-lg text-center">
+                            {{ elem.nbDownload }} téléchargement{{ elem.nbDownload > 1 ? "s" : "" }}
+                        </div>
+                    {% endif %}
+                </div>
+
                 <div class="mt-2 px-2 flex gap-2 justify-between">
                     <div class="flex gap-2 justify-end">
-                        <a href="{{ path('admin_galleries_update', {id: album.id}) }}"
+                        <a href="{{ path('admin_galleries_update', {id: elem.id}) }}"
                            class="text-sm underline cursor-pointer hover:text-gray-700">
                             Modifier
                         </a>
                         <div class="delete-album"
-                             data-id="{{ album.id }}"
-                             data-title="{{ album.title }}"
+                             data-id="{{ elem.id }}"
+                             data-title="{{ elem.title }}"
                         >
                             <div class="text-sm underline cursor-not-allowed hover:text-gray-700">Supprimer</div>
                         </div>
