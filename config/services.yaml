@@ -7,6 +7,8 @@ parameters:
     public_directory: '%kernel.project_dir%/public/'
     private_directory: '%kernel.project_dir%/documents/'
     config_directory: '%kernel.project_dir%/config/'
+    gallery_archive_directory: '%kernel.project_dir%/documents/import/gallery/'
+    gallery_images_directory: '%kernel.project_dir%/documents/gallery/'
     env_file: '%kernel.project_dir%/.env.local'
 
 services:
@@ -18,6 +20,8 @@ services:
             $publicDirectory: '%public_directory%'
             $privateDirectory: '%private_directory%'
             $configDirectory: '%config_directory%'
+            $galleryArchiveDirectory: '%gallery_archive_directory%'
+            $galleryImagesDirectory: '%gallery_images_directory%'
             $envFile: '%env_file%'
             $appEnv: '%env(APP_ENV)%'
 

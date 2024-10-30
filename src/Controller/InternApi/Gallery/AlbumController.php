@@ -16,7 +16,7 @@ class AlbumController extends AbstractController
     #[Route('/archive/{id}', name: 'archive', options: ['expose' => true], methods: 'GET')]
     public function archive(GaAlbum $album, ApiResponse $apiResponse, GaAlbumRepository $repository): BinaryFileResponse|JsonResponse
     {
-        $file = $this->getParameter('private_directory') . "import/gallery/" . $album->getUser()->getUsername() . "/" . $album->getArchive() . ".zip";
+        $file = $this->getParameter('gallery_archive_directory') . $album->getUser()->getUsername() . "/" . $album->getArchive() . ".zip";
 
         if(!file_exists($file)){
             return $apiResponse->apiJsonResponseBadRequest("Le fichier n'existe pas.");

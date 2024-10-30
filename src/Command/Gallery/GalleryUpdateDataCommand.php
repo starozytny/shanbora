@@ -18,7 +18,6 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Finder\Finder;
 use ZipArchive;
 
@@ -33,13 +32,13 @@ class GalleryUpdateDataCommand extends Command
     private string $galleryDirectory;
     private SanitizeData $sanitizeData;
 
-    public function __construct(DatabaseService $databaseService, ParameterBagInterface $params, SanitizeData $sanitizeData)
+    public function __construct(DatabaseService $databaseService, $galleryArchiveDirectory, $galleryImagesDirectory, SanitizeData $sanitizeData)
     {
         parent::__construct();
 
         $this->em = $databaseService->getDefaultManager();
-        $this->importDirectory = $params->get('kernel.project_dir') . '/documents/import/gallery/';
-        $this->galleryDirectory = $params->get('kernel.project_dir') . '/documents/gallery/';
+        $this->importDirectory = $galleryArchiveDirectory;
+        $this->galleryDirectory = $galleryImagesDirectory;
         $this->sanitizeData = $sanitizeData;
     }
 

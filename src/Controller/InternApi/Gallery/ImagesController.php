@@ -52,7 +52,7 @@ class ImagesController extends AbstractController
             throw $this->createNotFoundException('Image not found.');
         }
 
-        $photoPath = $this->getParameter('private_directory') . "gallery/" . $obj->getThumbsFile();
+        $photoPath = $this->getParameter('gallery_images_directory') . $obj->getThumbsFile();
         if (!file_exists($photoPath)) {
             throw $this->createNotFoundException('La photo demandée n\'existe pas.');
         }
@@ -74,7 +74,7 @@ class ImagesController extends AbstractController
             throw $this->createNotFoundException('Image not found.');
         }
 
-        $photoPath = $this->getParameter('private_directory') . "gallery/" . $obj->getLightboxFile();
+        $photoPath = $this->getParameter('gallery_images_directory') . $obj->getLightboxFile();
         if (!file_exists($photoPath)) {
             throw $this->createNotFoundException('La photo demandée n\'existe pas.');
         }
@@ -95,7 +95,7 @@ class ImagesController extends AbstractController
 
         $obj->setNbDownload($obj->getNbDownload() + 1);
 
-        $file = $this->getParameter('private_directory') . "gallery/" . $obj->getFileFile();
+        $file = $this->getParameter('gallery_images_directory') . $obj->getFileFile();
 
         if(!file_exists($file)){
             return $apiResponse->apiJsonResponseBadRequest("Le fichier n'existe pas.");
