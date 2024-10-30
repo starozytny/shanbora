@@ -44,6 +44,9 @@ class GaImage extends DataEntity
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $dateAt = null;
 
+    #[ORM\ManyToOne(inversedBy: 'images')]
+    private ?GaAlbum $album = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -146,5 +149,17 @@ class GaImage extends DataEntity
     public function getLightboxFile(): ?string
     {
         return $this->getFileOrDefault($this->lightbox, $this->user->getUsername() . '/lightbox', null);
+    }
+
+    public function getAlbum(): ?GaAlbum
+    {
+        return $this->album;
+    }
+
+    public function setAlbum(?GaAlbum $album): static
+    {
+        $this->album = $album;
+
+        return $this;
     }
 }

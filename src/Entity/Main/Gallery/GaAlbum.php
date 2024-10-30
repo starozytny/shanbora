@@ -4,6 +4,8 @@ namespace App\Entity\Main\Gallery;
 
 use App\Entity\Main\User;
 use App\Repository\Main\Gallery\GaAlbumRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -27,6 +29,17 @@ class GaAlbum
     #[ORM\ManyToOne(inversedBy: 'gaAlbums')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
+
+    /**
+     * @var Collection<int, GaImage>
+     */
+    #[ORM\OneToMany(mappedBy: 'album', targetEntity: GaImage::class)]
+    private Collection $images;
+
+    public function __construct()
+    {
+        $this->images = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -77,6 +90,36 @@ class GaAlbum
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, GaImage>
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(GaImage $image): static
+    {
+        if (!$this->images->contains($image)) {
+            $this->images->add($image);
+            $image->setAlbum($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(GaImage $image): static
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getAlbum() === $this) {
+                $image->setAlbum(null);
+            }
+        }
 
         return $this;
     }
