@@ -36,8 +36,6 @@ export function UserFormulaire ({ context, element }) {
         firstname={element ? Formulaire.setValue(element.firstname) : ""}
         lastname={element ? Formulaire.setValue(element.lastname) : ""}
         email={element ? Formulaire.setValue(element.email) : ""}
-        galleryTitle={element ? Formulaire.setValue(element.galleryTitle) : ""}
-        galleryDate={element ? Formulaire.setValueDate(element.galleryDate) : ""}
         avatarFile={element ? Formulaire.setValue(element.avatarFile) : null}
         roles={element ? Formulaire.setValue(element.roles, []) : []}
     />
@@ -59,8 +57,6 @@ class Form extends Component {
 			lastname: props.lastname,
 			email: props.email,
 			roles: props.roles,
-			galleryTitle: props.galleryTitle,
-			galleryDate: props.galleryDate,
 			password: '',
 			password2: '',
 			errors: [],
@@ -73,8 +69,6 @@ class Form extends Component {
 
 	componentDidMount = () => {
 		const { society } = this.props;
-
-		Inputs.initDateInput(this.handleChangeDate, this.handleChange, null)
 
 		let self = this;
 		axios({ method: "GET", url: Routing.generate(URL_SELECT_SOCIETIES), data: {} })
@@ -105,10 +99,6 @@ class Form extends Component {
 
 		if (name === "roles") {
 			value = Formulaire.updateValueCheckbox(e, roles, value);
-		}
-
-		if (name === "galleryDate") {
-			value = Inputs.dateInput(e, picker, this.state[name]);
 		}
 
 		this.setState({ [name]: value })
@@ -176,7 +166,7 @@ class Form extends Component {
 
 	render () {
 		const { context, avatarFile } = this.props;
-		const { errors, loadData, username, firstname, lastname, email, password, password2, roles, societyName, galleryTitle, galleryDate } = this.state;
+		const { errors, loadData, username, firstname, lastname, email, password, password2, roles, societyName } = this.state;
 
 		let rolesItems = [
 			{ value: 'ROLE_ADMIN', identifiant: 'admin', label: 'Admin' },
@@ -270,25 +260,6 @@ class Form extends Component {
 					</div>
 					<div className="bg-white p-4 rounded-md ring-1 ring-inset ring-gray-200 xl:col-span-2">
 						<Password password={password} password2={password2} params={params0} />
-					</div>
-				</div>
-
-				<div className="grid gap-2 xl:grid-cols-3 xl:gap-6">
-					<div>
-						<div className="font-medium text-lg">Galerie</div>
-						<div className="text-gray-600 text-sm">
-							Personnalisation du titre et date de la galerie de photos.
-						</div>
-					</div>
-					<div className="flex flex-col gap-4 bg-white p-4 rounded-md ring-1 ring-inset ring-gray-200 xl:col-span-2">
-						<div className="flex gap-4">
-							<div className="w-full">
-								<Input identifiant="galleryTitle" valeur={galleryTitle} {...params0}>Titre</Input>
-							</div>
-							<div className="w-full">
-								<Input type="js-date" identifiant="galleryDate" valeur={galleryDate} {...params}>Date</Input>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>

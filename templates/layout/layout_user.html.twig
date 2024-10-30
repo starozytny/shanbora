@@ -23,7 +23,10 @@
                                 <a href="{{ path('app_homepage') }}" class="text-gray-600 hover:text-gray-900 pw-3 py-2 font-semibold">
                                     <span>Chanbora Chhun</span>
                                 </a>
-                                <a href="https://www.instagram.com/shanbo_daltonien/" target="_blank" rel="external" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
+                                <a href="{{ path('user_homepage') }}" class="{{ app.request.get('_route') in ['user_homepage', 'user_album_read'] ? "text-black" : "text-gray-600 hover:text-gray-900" }} pw-3 py-2 font-semibold">
+                                    <span>Albums</span>
+                                </a>
+                                <a href="https://www.instagram.com/shanbo_daltonien/" target="_blank" rel="external" class="text-gray-600 hover:text-gray-900 pl-3 pr-8 py-2 font-semibold border-r-2 border-gray-500">
                                     <span>Instagram</span>
                                 </a>
                                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}

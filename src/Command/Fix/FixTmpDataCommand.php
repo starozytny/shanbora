@@ -3,7 +3,6 @@
 namespace App\Command\Fix;
 
 use App\Entity\Main\Gallery\GaAlbum;
-use App\Entity\Main\User;
 use App\Service\DatabaseService;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -13,6 +12,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\String\Slugger\AsciiSlugger;
 
 #[AsCommand(
     name: 'fix:tmp:data',
@@ -49,24 +49,12 @@ class FixTmpDataCommand extends Command
 //        if ($input->getOption('option1')) {
 //        }
 
-        $users = $this->em->getRepository(User::class)->findAll();
-
-        foreach($users as $user){
-            if($user->getGalleryTitle()) {
-                $album = (new GaAlbum())
-                    ->setTitle($user->getGalleryTitle())
-                    ->setDateAt($user->getGalleryDate())
-                    ->setNbDownload($user->getGalleryNbDownload())
-                    ->setUser($user)
-                ;
-
-                $this->em->persist($album);
-
-                foreach($user->getGaImages() as $gaImage){
-                    $gaImage->setAlbum($album);
-                }
-            }
+        $data = $this->em->getRepository(GaAlbum::class)->findAll();
+        foreach($data as $item){
+            $slug = new AsciiSlugger();
+            $item->setSlug($slug->slug($item->getTitle()));
         }
+
         $this->em->flush();
 
         $io->newLine();

@@ -10,13 +10,13 @@ import ModalFunctions from '@commonFunctions/modal';
 import { Button, ButtonA } from "@tailwindComponents/Elements/Button";
 import { LightBox } from "@tailwindComponents/Elements/LightBox";
 
-const URL_GET_DATA = "intern_api_user_gallery_fetch_images";
-const URL_READ_IMAGE = "intern_api_user_gallery_read_image";
-const URL_READ_IMAGE_HD = "intern_api_user_gallery_read_image_hd";
-const URL_DOWNLOAD_FILE = "intern_api_user_gallery_download";
-const URL_DOWNLOAD_ARCHIVE = "intern_api_user_gallery_archive";
+const URL_GET_DATA = "intern_api_user_gallery_images_fetch_images";
+const URL_READ_IMAGE = "intern_api_user_gallery_images_read_image";
+const URL_READ_IMAGE_HD = "intern_api_user_gallery_images_read_image_hd";
+const URL_DOWNLOAD_FILE = "intern_api_user_gallery_images_download";
+const URL_DOWNLOAD_ARCHIVE = "intern_api_user_gallery_images_archive";
 
-const InfiniteGallery = ({ userId }) => {
+const InfiniteGallery = ({ isAdmin, albumId }) => {
 	const refLightbox = useRef(null);
 	const [rankPhoto, setRankPhoto] = useState(1); // Stocke les images
 	const [images, setImages] = useState([]); // Stocke les images
@@ -31,9 +31,9 @@ const InfiniteGallery = ({ userId }) => {
 			if (loading || !hasMore) return; // Ne pas charger si déjà en cours ou s'il n'y a plus d'images
 			setLoading(true);
 
-			let url = Routing.generate(URL_GET_DATA, {page: page})
-			if(userId){
-				url = Routing.generate(URL_GET_DATA, {page: page, userId: userId})
+			let url = Routing.generate(URL_GET_DATA, {page: page, albumId: albumId})
+			if(isAdmin){
+				url = Routing.generate(URL_GET_DATA, {page: page, albumId: albumId, isAdmin: isAdmin})
 			}
 
 			axios({ method: "GET", url: url, data: {} })
@@ -84,7 +84,7 @@ const InfiniteGallery = ({ userId }) => {
 				</ButtonA>
 			</div>
 			<div className="grid grid-cols-2 gap-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 pswp-gallery" id="gallery">
-				<LazyLoadingGalleryWithPlaceholder currentImages={currentImages} onLightbox={handleLightbox} userId={userId} />
+				<LazyLoadingGalleryWithPlaceholder currentImages={currentImages} onLightbox={handleLightbox} isAdmin={isAdmin} />
 			</div>
 
 			<div className="mt-12">
@@ -104,7 +104,7 @@ const InfiniteGallery = ({ userId }) => {
 	);
 };
 
-function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, userId }) {
+function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, isAdmin }) {
 	const [loaded, setLoaded] = useState(Array(currentImages.length).fill(false));
 	const [error, setError] = useState(Array(currentImages.length).fill(false));
 
@@ -155,7 +155,7 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, userId 
 							onLoad={() => handleImageLoad(index)} // Appelé quand l'image est chargée
 							onError={() => handleImageError(index)} // En cas d'erreur de chargement
 						/>
-						{userId
+						{isAdmin
 							? <div className="absolute top-2 left-2">
 								<div className="bg-gray-300/80 w-6 h-6 rounded-full text-xs flex justify-center items-center">
 									{image.nbDownload}

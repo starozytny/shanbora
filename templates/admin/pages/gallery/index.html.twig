@@ -5,16 +5,14 @@
 
 {% block main_content %}
     <div class="flex flex-wrap gap-4">
-        {% for user in users %}
-            {% if user.galleryTitle %}
-                <a class="block p-4 bg-white rounded-md w-96 border hover:border-gray-300" href="{{ path('admin_galleries_read', {userId: user.id}) }}">
-                    <div class="font-semibold">{{ user.galleryTitle }}</div>
-                    <div class="text-gray-600 text-sm">{{ user.galleryDate | date('d/m/Y') }}</div>
-                    <div class="mt-4 font-semibold text-lg">
-                        {{ user.galleryNbDownload }} téléchargement{{ user.galleryNbDownload > 1 ? "s" : "" }}
-                    </div>
-                </a>
-            {% endif %}
+        {% for album in albums %}
+            <a class="block p-4 bg-white rounded-md w-96 border hover:border-gray-300" href="{{ path('admin_galleries_read', {id: album.id}) }}">
+                <div class="font-semibold">{{ album.title }}</div>
+                <div class="text-gray-600 text-sm">{{ album.dateAt | date('d/m/Y') }}</div>
+                <div class="mt-4 font-semibold text-lg">
+                    {{ album.nbDownload }} téléchargement{{ album.nbDownload > 1 ? "s" : "" }}
+                </div>
+            </a>
         {% endfor %}
     </div>
 {% endblock %}
