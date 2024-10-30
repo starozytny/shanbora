@@ -3,6 +3,7 @@
 namespace App\Controller\InternApi\Gallery;
 
 use App\Entity\Main\Gallery\GaImage;
+use App\Entity\Main\User;
 use App\Repository\Main\Gallery\GaImageRepository;
 use App\Service\ApiResponse;
 use Knp\Component\Pager\PaginatorInterface;
@@ -91,9 +92,13 @@ class ImagesController extends AbstractController
     #[Route('/download/{id}', name: 'download', options: ['expose' => true], methods: 'GET')]
     public function download($id, GaImageRepository $repository, ApiResponse $apiResponse): BinaryFileResponse|JsonResponse
     {
+        /** @var User $user */
+        $user = $this->getUser();
         $obj = $repository->findOneBy(['id' => $id]);
 
-        $obj->setNbDownload($obj->getNbDownload() + 1);
+        if($user->getHighRoleCode() == User::CODE_ROLE_USER){
+            $obj->setNbDownload($obj->getNbDownload() + 1);
+        }
 
         $file = $this->getParameter('gallery_images_directory') . $obj->getFileFile();
 
