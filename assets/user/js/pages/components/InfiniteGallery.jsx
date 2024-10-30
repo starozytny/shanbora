@@ -136,13 +136,12 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover
 	};
 
 	useEffect(() => {
-		// Timeout de 5 secondes pour chaque image
 		const timeoutId = currentImages.map((_, index) =>
 			setTimeout(() => {
 				if (!loaded[index]) {
 					handleImageError(index);
 				}
-			}, 2000) // 2 secondes
+			}, 500) // 2 secondes
 		);
 
 		return () => {
@@ -177,7 +176,7 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover
 								</div>
 								<ButtonIcon type="default" icon="image" tooltipPosition="-bottom-7 right-0" tooltipWidth={130}
 											onClick={() => onCover(image.id)}>
-									Photo de couverture
+									Image de couverture
 								</ButtonIcon>
 							</div>
 							: null
