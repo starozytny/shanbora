@@ -93,4 +93,21 @@ class AlbumController extends AbstractController
         $repository->save($album, true);
         return $this->file($file);
     }
+
+    #[Route('/cover/{id}', name: 'cover', options: ['expose' => true], methods: 'PUT')]
+    public function cover(Request $request, GaAlbum $album, ApiResponse $apiResponse, GaAlbumRepository $repository,
+                          GaImageRepository $imageRepository): JsonResponse
+    {
+        $data = json_decode($request->getContent());
+
+        $image = $imageRepository->findOneBy(['id' => $data->imageId]);
+        if(!$image){
+            return $apiResponse->apiJsonResponseBadRequest("L'image n'existe pas.");
+        }
+
+        $album->setCover($image->getFile());
+
+        $repository->save($album, true);
+        return $apiResponse->apiJsonResponseSuccessful("ok");
+    }
 }
