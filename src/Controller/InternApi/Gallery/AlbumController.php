@@ -19,7 +19,7 @@ class AlbumController extends AbstractController
     {
         /** @var User $user */
         $user = $this->getUser();
-        $file = $this->getParameter('private_directory') . "import/gallery/" . $user->getUsername() . ".zip";
+        $file = $this->getParameter('private_directory') . "import/gallery/" . $album->getArchive() . ".zip";
 
         if(!file_exists($file)){
             return $apiResponse->apiJsonResponseBadRequest("Le fichier n'existe pas.");

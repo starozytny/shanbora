@@ -41,6 +41,9 @@ class GaAlbum
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $cover = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $archive = null;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -149,6 +152,18 @@ class GaAlbum
     public function setCover(?string $cover): static
     {
         $this->cover = $cover;
+
+        return $this;
+    }
+
+    public function getArchive(): ?string
+    {
+        return $this->archive;
+    }
+
+    public function setArchive(?string $archive): static
+    {
+        $this->archive = $archive;
 
         return $this;
     }
