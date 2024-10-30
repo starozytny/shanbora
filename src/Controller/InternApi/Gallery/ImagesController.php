@@ -17,21 +17,18 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
-#[Route('/intern/api/gallery', name: 'intern_api_user_gallery_')]
-class GalleryController extends AbstractController
+#[Route('/intern/api/gallery/images', name: 'intern_api_user_gallery_images_')]
+class ImagesController extends AbstractController
 {
     #[Route('/fetch-images', name: 'fetch_images', options: ['expose' => true], methods: 'GET')]
     public function fetchImages(Request $request, PaginatorInterface $paginator, ApiResponse $apiResponse,
                                 GaImageRepository $imageRepository, SerializerInterface $serializer): Response
     {
-        /** @var User $user */
-        $user = $this->getUser();
-
-        $userId = $request->query->get('userId') ?: $user->getId();
-        if($request->query->get('userId')){
-            $images = $imageRepository->findBy(['user' => $userId], ['nbDownload' => 'DESC']);
+        $albumId = $request->query->get('albumId');
+        if($request->query->get('isAdmin')){
+            $images = $imageRepository->findBy(['album' => $albumId], ['nbDownload' => 'DESC']);
         }else{
-            $images = $imageRepository->findBy(['user' => $userId], ['originalName' => 'ASC']);
+            $images = $imageRepository->findBy(['album' => $albumId], ['originalName' => 'ASC']);
         }
 
         // Pagination

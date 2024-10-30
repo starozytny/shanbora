@@ -35,6 +35,12 @@ class GaAlbum
     #[ORM\OneToMany(mappedBy: 'album', targetEntity: GaImage::class)]
     private Collection $images;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $slug = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $cover = null;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -119,6 +125,30 @@ class GaAlbum
                 $image->setAlbum(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): static
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getCover(): ?string
+    {
+        return $this->cover;
+    }
+
+    public function setCover(?string $cover): static
+    {
+        $this->cover = $cover;
 
         return $this;
     }
