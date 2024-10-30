@@ -35,7 +35,7 @@ class GaAlbum
     #[ORM\OneToMany(mappedBy: 'album', targetEntity: GaImage::class)]
     private Collection $images;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
     #[ORM\Column(length: 255, nullable: true)]
