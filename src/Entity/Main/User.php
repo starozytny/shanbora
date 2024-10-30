@@ -4,6 +4,7 @@ namespace App\Entity\Main;
 
 use App\Entity\Blog\BoCommentary;
 use App\Entity\DataEntity;
+use App\Entity\Main\Gallery\GaAlbum;
 use App\Entity\Main\Gallery\GaImage;
 use App\Repository\Main\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -123,6 +124,12 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
     private Collection $boCommentaries;
 
     /**
+     * @var Collection<int, GaAlbum>
+     */
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: GaAlbum::class)]
+    private Collection $gaAlbums;
+
+    /**
      * @throws Exception
      */
     public function __construct()
@@ -132,6 +139,7 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
         $this->mails = new ArrayCollection();
         $this->gaImages = new ArrayCollection();
         $this->boCommentaries = new ArrayCollection();
+        $this->gaAlbums = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -524,6 +532,36 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
             // set the owning side to null (unless already changed)
             if ($boCommentary->getUser() === $this) {
                 $boCommentary->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, GaAlbum>
+     */
+    public function getGaAlbums(): Collection
+    {
+        return $this->gaAlbums;
+    }
+
+    public function addGaAlbum(GaAlbum $gaAlbum): static
+    {
+        if (!$this->gaAlbums->contains($gaAlbum)) {
+            $this->gaAlbums->add($gaAlbum);
+            $gaAlbum->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGaAlbum(GaAlbum $gaAlbum): static
+    {
+        if ($this->gaAlbums->removeElement($gaAlbum)) {
+            // set the owning side to null (unless already changed)
+            if ($gaAlbum->getUser() === $this) {
+                $gaAlbum->setUser(null);
             }
         }
 
