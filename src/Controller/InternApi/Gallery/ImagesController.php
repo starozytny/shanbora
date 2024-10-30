@@ -118,7 +118,7 @@ class ImagesController extends AbstractController
             return $apiResponse->apiJsonResponseBadRequest("Le fichier n'existe pas.");
         }
 
-        $user->setGalleryNbDownload($user->getGalleryNbDownload() + 1);
+//        $user->setGalleryNbDownload($user->getGalleryNbDownload() + 1);
 
         $repository->save($user, true);
         return $this->file($file);
