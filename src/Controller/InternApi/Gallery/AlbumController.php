@@ -74,6 +74,13 @@ class AlbumController extends AbstractController
             $imageRepository->remove($image);
         }
 
+        if($album->getCover()){
+            $file = $this->getParameter('gallery_images_directory') . $album->getCoverFile();
+            if(file_exists($file)){
+                unlink($file);
+            }
+        }
+
         $repository->remove($album, true);
         $this->addFlash('info', 'L\'archive existe toujours. Veuillez le supprimer manuellement.');
         return $apiResponse->apiJsonResponseSuccessful("ok");
