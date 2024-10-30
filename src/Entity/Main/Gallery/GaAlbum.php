@@ -35,11 +35,14 @@ class GaAlbum
     #[ORM\OneToMany(mappedBy: 'album', targetEntity: GaImage::class)]
     private Collection $images;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $cover = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $archive = null;
 
     public function __construct()
     {
@@ -149,6 +152,18 @@ class GaAlbum
     public function setCover(?string $cover): static
     {
         $this->cover = $cover;
+
+        return $this;
+    }
+
+    public function getArchive(): ?string
+    {
+        return $this->archive;
+    }
+
+    public function setArchive(?string $archive): static
+    {
+        $this->archive = $archive;
 
         return $this;
     }

@@ -12,7 +12,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\String\Slugger\AsciiSlugger;
 
 #[AsCommand(
     name: 'fix:tmp:data',
@@ -51,8 +50,7 @@ class FixTmpDataCommand extends Command
 
         $data = $this->em->getRepository(GaAlbum::class)->findAll();
         foreach($data as $item){
-            $slug = new AsciiSlugger();
-            $item->setSlug($slug->slug($item->getTitle()));
+            $item->setArchive($item->getUser()->getUsername());
         }
 
         $this->em->flush();

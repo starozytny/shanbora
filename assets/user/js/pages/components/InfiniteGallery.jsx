@@ -14,7 +14,7 @@ const URL_GET_DATA = "intern_api_user_gallery_images_fetch_images";
 const URL_READ_IMAGE = "intern_api_user_gallery_images_read_image";
 const URL_READ_IMAGE_HD = "intern_api_user_gallery_images_read_image_hd";
 const URL_DOWNLOAD_FILE = "intern_api_user_gallery_images_download";
-const URL_DOWNLOAD_ARCHIVE = "intern_api_user_gallery_images_archive";
+const URL_DOWNLOAD_ARCHIVE = "intern_api_user_gallery_albums_archive";
 
 const InfiniteGallery = ({ isAdmin, albumId }) => {
 	const refLightbox = useRef(null);
@@ -79,7 +79,7 @@ const InfiniteGallery = ({ isAdmin, albumId }) => {
 	return (
 		<div>
 			<div className="mb-12 flex items-center justify-center">
-				<ButtonA type="blue" onClick={Routing.generate(URL_DOWNLOAD_ARCHIVE)}>
+				<ButtonA type="blue" onClick={Routing.generate(URL_DOWNLOAD_ARCHIVE, {id: albumId})}>
 					Télécharger toutes les photos
 				</ButtonA>
 			</div>
