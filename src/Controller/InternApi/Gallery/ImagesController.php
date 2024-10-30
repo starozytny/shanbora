@@ -25,7 +25,11 @@ class ImagesController extends AbstractController
     {
         $albumId = $request->query->get('albumId');
         if($request->query->get('isAdmin')){
-            $images = $imageRepository->findBy(['album' => $albumId], ['nbDownload' => 'DESC']);
+            if($request->query->get('sortBy') == "dl"){
+                $images = $imageRepository->findBy(['album' => $albumId], ['nbDownload' => 'DESC']);
+            }else{
+                $images = $imageRepository->findBy(['album' => $albumId], ['originalName' => 'ASC']);
+            }
         }else{
             $images = $imageRepository->findBy(['album' => $albumId], ['originalName' => 'ASC']);
         }

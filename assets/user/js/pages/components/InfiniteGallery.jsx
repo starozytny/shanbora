@@ -16,7 +16,7 @@ const URL_READ_IMAGE_HD = "intern_api_user_gallery_images_read_image_hd";
 const URL_DOWNLOAD_FILE = "intern_api_user_gallery_images_download";
 const URL_DOWNLOAD_ARCHIVE = "intern_api_user_gallery_albums_archive";
 
-const InfiniteGallery = ({ isAdmin, albumId }) => {
+const InfiniteGallery = ({ isAdmin, albumId, sortBy }) => {
 	const refLightbox = useRef(null);
 	const [rankPhoto, setRankPhoto] = useState(1); // Stocke les images
 	const [images, setImages] = useState([]); // Stocke les images
@@ -33,7 +33,7 @@ const InfiniteGallery = ({ isAdmin, albumId }) => {
 
 			let url = Routing.generate(URL_GET_DATA, {page: page, albumId: albumId})
 			if(isAdmin){
-				url = Routing.generate(URL_GET_DATA, {page: page, albumId: albumId, isAdmin: isAdmin})
+				url = Routing.generate(URL_GET_DATA, {page: page, albumId: albumId, isAdmin: isAdmin, sortBy: sortBy})
 			}
 
 			axios({ method: "GET", url: url, data: {} })
