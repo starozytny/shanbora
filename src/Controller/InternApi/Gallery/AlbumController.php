@@ -3,8 +3,7 @@
 namespace App\Controller\InternApi\Gallery;
 
 use App\Entity\Main\Gallery\GaAlbum;
-use App\Entity\Main\User;
-use App\Repository\Main\UserRepository;
+use App\Repository\Main\Gallery\GaAlbumRepository;
 use App\Service\ApiResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -15,11 +14,9 @@ use Symfony\Component\Routing\Attribute\Route;
 class AlbumController extends AbstractController
 {
     #[Route('/archive/{id}', name: 'archive', options: ['expose' => true], methods: 'GET')]
-    public function archive(GaAlbum $album, ApiResponse $apiResponse, UserRepository $repository): BinaryFileResponse|JsonResponse
+    public function archive(GaAlbum $album, ApiResponse $apiResponse, GaAlbumRepository $repository): BinaryFileResponse|JsonResponse
     {
-        /** @var User $user */
-        $user = $this->getUser();
-        $file = $this->getParameter('private_directory') . "import/gallery/" . $album->getArchive() . ".zip";
+        $file = $this->getParameter('gallery_archive_directory') . $album->getUser()->getUsername() . "/" . $album->getArchive() . ".zip";
 
         if(!file_exists($file)){
             return $apiResponse->apiJsonResponseBadRequest("Le fichier n'existe pas.");
@@ -27,7 +24,7 @@ class AlbumController extends AbstractController
 
         $album->setNbDownload($album->getNbDownload() + 1);
 
-        $repository->save($user, true);
+        $repository->save($album, true);
         return $this->file($file);
     }
 }
