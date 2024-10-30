@@ -460,18 +460,6 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
         return $this;
     }
 
-    public function getGalleryNbDownload(): ?int
-    {
-        return $this->galleryNbDownload;
-    }
-
-    public function setGalleryNbDownload(int $galleryNbDownload): static
-    {
-        $this->galleryNbDownload = $galleryNbDownload;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, BoCommentary>
      */
