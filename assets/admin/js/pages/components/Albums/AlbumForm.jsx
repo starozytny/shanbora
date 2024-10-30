@@ -11,8 +11,8 @@ import Validateur from "@commonFunctions/validateur";
 import { Input} from "@tailwindComponents/Elements/Fields";
 import { Button } from "@tailwindComponents/Elements/Button";
 
-const URL_INDEX_ELEMENTS = "admin_users_index";
-const URL_UPDATE_ELEMENT = "intern_api_users_update";
+const URL_INDEX_ELEMENTS = "admin_galleries_index";
+const URL_UPDATE_ELEMENT = "intern_api_user_gallery_albums_update";
 
 export function AlbumFormulaire ({ element }) {
 	let url = Routing.generate(URL_UPDATE_ELEMENT, { id: element.id });

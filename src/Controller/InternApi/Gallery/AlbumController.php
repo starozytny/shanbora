@@ -6,14 +6,48 @@ use App\Entity\Main\Gallery\GaAlbum;
 use App\Entity\Main\User;
 use App\Repository\Main\Gallery\GaAlbumRepository;
 use App\Service\ApiResponse;
+use App\Service\Data\DataGallery;
+use App\Service\ValidatorService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/intern/api/gallery/albums', name: 'intern_api_user_gallery_albums_')]
 class AlbumController extends AbstractController
 {
+    #[Route('/update/{id}', name: 'update', options: ['expose' => true], methods: 'POST')]
+    public function create(Request $request, GaAlbum $obj, ApiResponse $apiResponse, ValidatorService $validator,
+                           DataGallery $dataEntity, GaAlbumRepository $repository): Response
+    {
+        $data = json_decode($request->getContent());
+        if ($data === null) {
+            return $apiResponse->apiJsonResponseBadRequest('Les données sont vides.');
+        }
+
+        $obj = $dataEntity->setDataAlbum($obj, $data);
+
+        if($existe = $repository->findOneBy(['slug' => $obj->getSlug()])){
+            if($existe->getId() != $obj->getId()){
+                return $apiResponse->apiJsonResponseValidationFailed([
+                    ["name" => "title", "message" => "Ce titre existe déjà."]
+                ]);
+            }
+        }
+
+        $noErrors = $validator->validate($obj);
+        if ($noErrors !== true) {
+            return $apiResponse->apiJsonResponseValidationFailed($noErrors);
+        }
+
+        $repository->save($obj, true);
+
+        $this->addFlash('info', 'Données mises à jour.');
+        return $apiResponse->apiJsonResponseSuccessful("ok");
+    }
+
     #[Route('/archive/{id}', name: 'archive', options: ['expose' => true], methods: 'GET')]
     public function archive(GaAlbum $album, ApiResponse $apiResponse, GaAlbumRepository $repository): BinaryFileResponse|JsonResponse
     {
