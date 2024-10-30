@@ -5,7 +5,6 @@ import axios from 'axios';
 import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
 
 import Sort from "@commonFunctions/sort";
-import Inputs from "@commonFunctions/inputs";
 import Formulaire from "@commonFunctions/formulaire";
 import Validateur from "@commonFunctions/validateur";
 
@@ -91,7 +90,7 @@ class Form extends Component {
 		;
 	}
 
-	handleChange = (e, picker) => {
+	handleChange = (e) => {
 		const { roles } = this.state
 
 		let name = e.currentTarget.name;
@@ -101,10 +100,6 @@ class Form extends Component {
 			value = Formulaire.updateValueCheckbox(e, roles, value);
 		}
 
-		this.setState({ [name]: value })
-	}
-
-	handleChangeDate = (name, value) => {
 		this.setState({ [name]: value })
 	}
 

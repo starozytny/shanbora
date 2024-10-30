@@ -1,8 +1,16 @@
+import "../../css/pages/galleries.scss"
+
 import React from "react";
 import { createRoot } from "react-dom/client";
 import InfiniteGallery from "@userPages/InfiniteGallery";
+import { AlbumFormulaire } from "@adminPages/Albums/AlbumForm";
 
-let gallery = document.getElementById("gallery_index");
-if (gallery) {
-	createRoot(gallery).render(<InfiniteGallery {...gallery.dataset} />)
+let el = document.getElementById("gallery_index");
+if (el) {
+	createRoot(el).render(<InfiniteGallery {...el.dataset} />)
+}
+
+el = document.getElementById("albums_update");
+if (el) {
+	createRoot(el).render(<AlbumFormulaire element={JSON.parse(el.dataset.obj)} />)
 }
