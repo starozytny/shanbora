@@ -25,6 +25,15 @@ class GaAlbumRepository extends ServiceEntityRepository
         }
     }
 
+    public function remove(GaAlbum $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
     //    /**
     //     * @return GaAlbum[] Returns an array of GaAlbum objects
     //     */

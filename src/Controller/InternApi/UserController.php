@@ -50,6 +50,8 @@ class UserController extends AbstractController
             return $apiResponse->apiJsonResponseBadRequest('Les données sont vides.');
         }
 
+        $oldUsername = $obj->getUsername();
+
         $society = $em->getRepository(Society::class)->find($data->society);
         if(!$society) throw new NotFoundHttpException("Society not found.");
 
@@ -59,6 +61,18 @@ class UserController extends AbstractController
         }else{
             if($data->password != ""){
                 $obj->setPassword($passwordHasher->hashPassword($obj, $data->password));
+            }
+        }
+
+        if($oldUsername != $obj->getUsername()){
+            $galleryArchive = $this->getParameter('gallery_archive_directory');
+            if(is_dir($galleryArchive . $oldUsername)){
+                rename($galleryArchive . $oldUsername, $galleryArchive . $obj->getUsername());
+            }
+
+            $galleryImages = $this->getParameter('gallery_images_directory');
+            if(is_dir($galleryImages . $oldUsername)){
+                rename($galleryImages . $oldUsername, $galleryImages . $obj->getUsername());
             }
         }
 

@@ -1,0 +1,21 @@
+{% extends 'admin/pages/gallery/template.html.twig' %}
+
+{% set page_title %}Modifier {{ elem.title }} #{{ elem.id }}{% endset %}
+{% set page_subtitle %}Modifier les informations relatives à {{ elem.title }}.{% endset %}
+
+{% set page_actions %}
+    {% include 'layout/components/tailwind/buttons/button.html.twig' with {
+        btn_link: path('admin_galleries_index'),
+        btn_type: 'default',
+        btn_icon: 'left-arrow',
+        btn_text: 'Retourner à la liste'
+    } %}
+{% endset %}
+
+{% block main_content %}
+    <div id="albums_update"
+         data-obj="{{ obj }}"
+    >
+        {% include "layout/components/tailwind/loaders/loader.html.twig" %}
+    </div>
+{% endblock %}

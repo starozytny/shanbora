@@ -6,13 +6,29 @@
 {% block main_content %}
     <div class="flex flex-wrap gap-4">
         {% for album in albums %}
-            <a class="block p-4 bg-white rounded-md w-96 border hover:border-gray-300" href="{{ path('admin_galleries_read', {id: album.id}) }}">
-                <div class="font-semibold">{{ album.title }}</div>
-                <div class="text-gray-600 text-sm">{{ album.dateAt | date('d/m/Y') }}</div>
-                <div class="mt-4 font-semibold text-lg">
-                    {{ album.nbDownload }} téléchargement{{ album.nbDownload > 1 ? "s" : "" }}
+            <div>
+                <a class="block p-4 bg-white rounded-md w-96 border hover:border-gray-300" href="{{ path('admin_galleries_read', {id: album.id}) }}">
+                    <div class="font-semibold">{{ album.title }}</div>
+                    <div class="text-gray-600 text-sm">{{ album.dateAt | date('d/m/Y') }}</div>
+                    <div class="mt-4 font-semibold text-lg">
+                        {{ album.nbDownload }} téléchargement{{ album.nbDownload > 1 ? "s" : "" }}
+                    </div>
+                </a>
+                <div class="mt-2 px-2 flex gap-2 justify-between">
+                    <div class="flex gap-2 justify-end">
+                        <a href="{{ path('admin_galleries_update', {id: album.id}) }}"
+                           class="text-sm underline cursor-pointer hover:text-gray-700">
+                            Modifier
+                        </a>
+                        <div class="delete-album"
+                             data-id="{{ album.id }}"
+                             data-title="{{ album.title }}"
+                        >
+                            <div class="text-sm underline cursor-not-allowed hover:text-gray-700">Supprimer</div>
+                        </div>
+                    </div>
                 </div>
-            </a>
+            </div>
         {% endfor %}
     </div>
 {% endblock %}
