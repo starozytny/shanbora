@@ -16,6 +16,15 @@ class GaAlbumRepository extends ServiceEntityRepository
         parent::__construct($registry, GaAlbum::class);
     }
 
+    public function save(GaAlbum $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
     //    /**
     //     * @return GaAlbum[] Returns an array of GaAlbum objects
     //     */
