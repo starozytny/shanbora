@@ -2,8 +2,6 @@
 
 namespace App\Command\Fix;
 
-use App\Entity\Main\Gallery\GaAlbum;
-use App\Entity\Main\User;
 use App\Service\DatabaseService;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -48,26 +46,6 @@ class FixTmpDataCommand extends Command
 //
 //        if ($input->getOption('option1')) {
 //        }
-
-        $users = $this->em->getRepository(User::class)->findAll();
-
-        foreach($users as $user){
-            if($user->getGalleryTitle()) {
-                $album = (new GaAlbum())
-                    ->setTitle($user->getGalleryTitle())
-                    ->setDateAt($user->getGalleryDate())
-                    ->setNbDownload($user->getGalleryNbDownload())
-                    ->setUser($user)
-                ;
-
-                $this->em->persist($album);
-
-                foreach($user->getGaImages() as $gaImage){
-                    $gaImage->setAlbum($album);
-                }
-            }
-        }
-        $this->em->flush();
 
         $io->newLine();
         $io->comment('--- [FIN DE LA COMMANDE] ---');

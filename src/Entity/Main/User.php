@@ -105,18 +105,6 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: GaImage::class)]
     private Collection $gaImages;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(['user_form'])]
-    private ?string $galleryTitle = null;
-
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    #[Groups(['user_form'])]
-    private ?\DateTimeInterface $galleryDate = null;
-
-    #[ORM\Column]
-    #[Groups(['ga_img_list'])]
-    private ?int $galleryNbDownload = 0;
-
     /**
      * @var Collection<int, BoCommentary>
      */
@@ -468,30 +456,6 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
                 $gaImage->setUser(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getGalleryTitle(): ?string
-    {
-        return $this->galleryTitle;
-    }
-
-    public function setGalleryTitle(?string $galleryTitle): static
-    {
-        $this->galleryTitle = $galleryTitle;
-
-        return $this;
-    }
-
-    public function getGalleryDate(): ?\DateTimeInterface
-    {
-        return $this->galleryDate;
-    }
-
-    public function setGalleryDate(?\DateTimeInterface $galleryDate): static
-    {
-        $this->galleryDate = $galleryDate;
 
         return $this;
     }

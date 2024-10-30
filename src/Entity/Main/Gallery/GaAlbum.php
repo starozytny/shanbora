@@ -27,7 +27,6 @@ class GaAlbum
     private ?int $nbDownload = 0;
 
     #[ORM\ManyToOne(inversedBy: 'gaAlbums')]
-    #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
     /**
