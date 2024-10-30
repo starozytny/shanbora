@@ -174,4 +174,14 @@ class GaAlbum extends DataEntity
 
         return $this;
     }
+
+    public function getCoverThumb()
+    {
+        return $this->getFileOrDefault($this->cover, $this->user->getUsername() . '/' . $this->getArchive() . '/thumbs', null);
+    }
+
+    public function getCoverFile()
+    {
+        return $this->getFileOrDefault($this->cover, $this->user->getUsername() . '/' . $this->getArchive() . '/cover', null);
+    }
 }

@@ -8,7 +8,11 @@ use App\Repository\Main\Gallery\GaAlbumRepository;
 use App\Repository\Main\Gallery\GaImageRepository;
 use App\Service\ApiResponse;
 use App\Service\Data\DataGallery;
+use App\Service\Gallery\ImageService;
 use App\Service\ValidatorService;
+use PHPImageWorkshop\Core\Exception\ImageWorkshopLayerException;
+use PHPImageWorkshop\Exception\ImageWorkshopException;
+use PHPImageWorkshop\ImageWorkshop;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -94,6 +98,10 @@ class AlbumController extends AbstractController
         return $this->file($file);
     }
 
+    /**
+     * @throws ImageWorkshopLayerException
+     * @throws ImageWorkshopException
+     */
     #[Route('/cover/{id}', name: 'cover', options: ['expose' => true], methods: 'PUT')]
     public function cover(Request $request, GaAlbum $album, ApiResponse $apiResponse, GaAlbumRepository $repository,
                           GaImageRepository $imageRepository): JsonResponse
@@ -105,9 +113,66 @@ class AlbumController extends AbstractController
             return $apiResponse->apiJsonResponseBadRequest("L'image n'existe pas.");
         }
 
-        $album->setCover($image->getFile());
+        $coverFile = $this->getParameter('gallery_images_directory') . $image->getFileFile();
+        if($coverFile){
+            $oldCover = $album->getCoverFile();
+            $oldCoverFile = $this->getParameter('gallery_images_directory') . $oldCover;
+            if(file_exists($oldCoverFile)){
+                unlink($oldCoverFile);
+            }
+
+            $directoryCover = $this->getParameter('gallery_images_directory') . $album->getUser()->getUsername() . "/" . $album->getArchive() . "/cover/";
+            if(!is_dir($directoryCover)){
+                mkdir($directoryCover, 0777, true);
+            }
+
+            $originalFile = ImageWorkshop::initFromPath($coverFile);
+            if($originalFile->getWidth() > 1408){
+                $originalFile->cropInPixel($originalFile->getWidth(), 552, 0 ,0, 'MM');
+                $originalFile->resizeInPixel(1408, null, true);
+            }
+            $originalFile->save($directoryCover, $image->getFile());
+
+            $album->setCover($image->getFile());
+        }else{
+            $album->setCover(null);
+        }
 
         $repository->save($album, true);
         return $apiResponse->apiJsonResponseSuccessful("ok");
+    }
+
+    #[Route('/cover/{id}', name: 'read_cover', options: ['expose' => true], methods: 'GET')]
+    public function read($id, GaAlbumRepository $repository, ImageService $imageService): Response
+    {
+        $obj = $repository->findOneBy(['id' => $id]);
+        if($obj === false) {
+            throw $this->createNotFoundException('Album not found.');
+        }
+
+        $response = $imageService->getImageGallery($obj->getCoverThumb());
+
+        if($response === false){
+            throw $this->createNotFoundException('La photo demandée n\'existe pas.');
+        }
+
+        return $response;
+    }
+
+    #[Route('/cover-hd-ultra/{id}', name: 'read_cover_hd_ultra', options: ['expose' => true], methods: 'GET')]
+    public function readHDUltra($id, GaAlbumRepository $repository, ImageService $imageService): Response
+    {
+        $obj = $repository->findOneBy(['id' => $id]);
+        if($obj === false) {
+            throw $this->createNotFoundException('Album not found.');
+        }
+
+        $response = $imageService->getImageGallery($obj->getCoverFile());
+
+        if($response === false){
+            throw $this->createNotFoundException('La photo demandée n\'existe pas.');
+        }
+
+        return $response;
     }
 }
