@@ -2,6 +2,7 @@
 
 namespace App\Entity\Main\Gallery;
 
+use App\Entity\DataEntity;
 use App\Entity\Main\User;
 use App\Repository\Main\Gallery\GaAlbumRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -11,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: GaAlbumRepository::class)]
-class GaAlbum
+class GaAlbum extends DataEntity
 {
     const FORM = ['gallery_form'];
 

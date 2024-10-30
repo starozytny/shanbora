@@ -5,6 +5,7 @@ namespace App\Controller\InternApi\Gallery;
 use App\Entity\Main\Gallery\GaAlbum;
 use App\Entity\Main\User;
 use App\Repository\Main\Gallery\GaAlbumRepository;
+use App\Repository\Main\Gallery\GaImageRepository;
 use App\Service\ApiResponse;
 use App\Service\Data\DataGallery;
 use App\Service\ValidatorService;
@@ -45,6 +46,32 @@ class AlbumController extends AbstractController
         $repository->save($obj, true);
 
         $this->addFlash('info', 'Données mises à jour.');
+        return $apiResponse->apiJsonResponseSuccessful("ok");
+    }
+
+    #[Route('/delete/{id}', name: 'delete', options: ['expose' => true], methods: 'DELETE')]
+    public function delete(GaAlbum $album, ApiResponse $apiResponse, GaAlbumRepository $repository,
+                           GaImageRepository $imageRepository): BinaryFileResponse|JsonResponse
+    {
+        foreach($album->getImages() as $image){
+            $file = $this->getParameter('gallery_images_directory') . $image->getFileFile();
+            if(file_exists($file)){
+                unlink($file);
+            }
+            $file = $this->getParameter('gallery_images_directory') . $image->getThumbsFile();
+            if(file_exists($file)){
+                unlink($file);
+            }
+            $file = $this->getParameter('gallery_images_directory') . $image->getLightboxFile();
+            if(file_exists($file)){
+                unlink($file);
+            }
+
+            $imageRepository->remove($image);
+        }
+
+        $repository->remove($album, true);
+        $this->addFlash('info', 'L\'archive existe toujours. Veuillez le supprimer manuellement.');
         return $apiResponse->apiJsonResponseSuccessful("ok");
     }
 

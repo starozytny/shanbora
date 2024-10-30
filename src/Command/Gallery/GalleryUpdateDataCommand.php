@@ -131,6 +131,8 @@ class GalleryUpdateDataCommand extends Command
             $today->setTimezone(new \DateTimeZone('Europe/Paris'));
             $dateToday = $today->format('d_m_Y_H_i');
 
+            $io->title("Création des données en base");
+
             $progressBar = new ProgressBar($output, count($finder));
             $progressBar->start();
             foreach ($finder as $file) {
@@ -168,6 +170,8 @@ class GalleryUpdateDataCommand extends Command
             $io->newLine();
             $io->newLine();
 
+            $io->title("Importation des photos");
+
             $progressBar = new ProgressBar($output, count($finder));
             $progressBar->start();
             foreach ($finder as $file) {
@@ -192,6 +196,7 @@ class GalleryUpdateDataCommand extends Command
             $progressBar->finish();
         }
 
+        $io->newLine();
         $io->newLine();
         $io->text($nb . ' images extracted');
 
