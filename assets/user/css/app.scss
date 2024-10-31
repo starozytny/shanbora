@@ -9,6 +9,10 @@ html{
   @include vars.fontRegular();
 }
 
+.ft-special{
+  @include vars.fontSpecial();
+}
+
 button.pswp__button--test-button {
   background: #136912 !important;
   font-size: 20px;
