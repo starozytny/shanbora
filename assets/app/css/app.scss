@@ -9,6 +9,10 @@ html{
   @include vars.fontRegular();
 }
 
+.ft-special{
+  @include vars.fontSpecial();
+}
+
 .homepage_gallery{
   animation: slide 40s linear infinite;
 }
