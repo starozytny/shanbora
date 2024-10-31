@@ -27,7 +27,9 @@
                                 <a href="{{ path('app_gallery') }}" class="{{ app.request.get('_route') in ['app_gallery'] ? "underline text-black" : "text-gray-600 hover:text-gray-900 transition-colors" }} px-3 py-2 font-semibold">
                                     <span>Portfolio</span>
                                 </a>
-                                <a href="{{ path('app_adventures') }}" class="{{ app.request.get('_route') in ['app_adventures'] ? "underline text-black" : "text-gray-600 hover:text-gray-900 transition-colors" }} px-3 py-2 font-semibold">
+                                <a href="{{ path('app_adventures') }}" class="{{ app.request.get('_route') in [
+                                    'app_adventures', 'app_adventures_orceyrette', 'app_adventures_gaube', 'app_adventures_ayous'
+                                ] ? "underline text-black" : "text-gray-600 hover:text-gray-900 transition-colors" }} px-3 py-2 font-semibold">
                                     <span>Aventures</span>
                                 </a>
                                 <a href="{{ path('app_contact') }}" class="{{ app.request.get('_route') in ['app_contact'] ? "underline text-black" : "text-gray-600 hover:text-gray-900 transition-colors" }} px-3 py-2 font-semibold">
