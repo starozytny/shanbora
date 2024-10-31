@@ -1,6 +1,13 @@
 {% extends 'app/layout/layout.html.twig' %}
 
 {% block main_content %}
+    <div class="mb-4">
+        <a href="{{ path('app_adventures') }}" class="text-sm group">
+            <span class="icon-left-arrow"></span>
+            <span class="pl-2 group-hover:underline">Retour aux aventures</span>
+        </a>
+    </div>
+
     {% block main_content_in %}{% endblock %}
 
     {% include "app/pages/blog/components/commentaries.html.twig" %}
