@@ -18,7 +18,7 @@
                         <div class="flex gap-2">
                             <div>
                                 {% if commentary.user %}
-                                    <img class="w-auto h-10 rounded-full" src="{{ commentary.user.avatarFile }}" alt="Avatar utilisateur">
+                                    <img class="w-10 h-10 object-cover rounded-full" src="{{ commentary.user.avatarFile }}" alt="Avatar utilisateur">
                                 {% else %}
                                     <div class="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center font-semibold">
                                         <span>{{ commentary.username | slice(0,1) | upper }}</span>
@@ -53,7 +53,7 @@
                                     <div class="flex gap-2">
                                         <div>
                                             {% if resp.user %}
-                                                <img class="w-auto h-10 rounded-full" src="{{ resp.user.avatarFile }}" alt="Avatar utilisateur">
+                                                <img class="w-10 h-10 object-cover rounded-full" src="{{ resp.user.avatarFile }}" alt="Avatar utilisateur">
                                             {% else %}
                                                 <div class="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center font-semibold">
                                                     <span>{{ resp.username | slice(0,1) | upper }}</span>
