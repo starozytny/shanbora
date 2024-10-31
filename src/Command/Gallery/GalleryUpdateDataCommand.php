@@ -2,9 +2,11 @@
 
 namespace App\Command\Gallery;
 
+use App\Entity\Main\Gallery\GaAlbum;
 use App\Entity\Main\Gallery\GaImage;
 use App\Entity\Main\User;
 use App\Service\DatabaseService;
+use App\Service\SanitizeData;
 use Doctrine\Persistence\ObjectManager;
 use PHPImageWorkshop\Core\Exception\ImageWorkshopLayerException;
 use PHPImageWorkshop\Exception\ImageWorkshopException;
@@ -16,7 +18,6 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Finder\Finder;
 use ZipArchive;
 
@@ -29,20 +30,23 @@ class GalleryUpdateDataCommand extends Command
     private ObjectManager $em;
     private string $importDirectory;
     private string $galleryDirectory;
+    private SanitizeData $sanitizeData;
 
-    public function __construct(DatabaseService $databaseService, ParameterBagInterface $params)
+    public function __construct(DatabaseService $databaseService, $galleryArchiveDirectory, $galleryImagesDirectory, SanitizeData $sanitizeData)
     {
         parent::__construct();
 
         $this->em = $databaseService->getDefaultManager();
-        $this->importDirectory = $params->get('kernel.project_dir') . '/documents/import/gallery/';
-        $this->galleryDirectory = $params->get('kernel.project_dir') . '/documents/gallery/';
+        $this->importDirectory = $galleryArchiveDirectory;
+        $this->galleryDirectory = $galleryImagesDirectory;
+        $this->sanitizeData = $sanitizeData;
     }
 
     protected function configure(): void
     {
         $this
-            ->addArgument('username', InputArgument::REQUIRED, 'gallery user username')
+            ->addArgument('username', InputArgument::REQUIRED, 'user username')
+            ->addArgument('archive', InputArgument::REQUIRED, 'gallery archive')
         ;
     }
 
@@ -53,38 +57,50 @@ class GalleryUpdateDataCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
-        $filename = $input->getArgument('username');
+        $username = $input->getArgument('username');
+        $filename = $input->getArgument('archive');
 
         $io->title("Extraction de l'archive");
 
-
-        $extractDirectory = $this->galleryDirectory . $filename . '/original/';
+        $extractDirectory = $this->galleryDirectory . $username . "/" . $filename . '/original/';
         if(!is_dir($extractDirectory)){
             mkdir($extractDirectory, 0777, true);
         }
-        $thumbsDirectory = $this->galleryDirectory . $filename . '/thumbs/';
+        $thumbsDirectory = $this->galleryDirectory . $username . "/" . $filename . '/thumbs/';
         if(!is_dir($thumbsDirectory)){
             mkdir($thumbsDirectory, 0777, true);
         }
-        $lightboxDirectory = $this->galleryDirectory . $filename . '/lightbox/';
+        $lightboxDirectory = $this->galleryDirectory . $username . "/" . $filename . '/lightbox/';
         if(!is_dir($lightboxDirectory)){
             mkdir($lightboxDirectory, 0777, true);
         }
 
         $nb = 0;
-        if($this->extractZIP($io, $filename)){
-
+        if($this->extractZIP($io, $username, $filename)){
             $em = $this->em;
 
-            $user = $em->getRepository(User::class)->findOneBy(['username' => $filename]);
+            $user = $em->getRepository(User::class)->findOneBy(['username' => $username]);
             if(!$user){
                 $io->error('User not found');
                 return Command::FAILURE;
             }
+
             $io->title("Suppression des images existantes");
 
+            $album = $em->getRepository(GaAlbum::class)->findOneBy(['user' => $user, 'archive' => $filename]);
+            if(!$album){
+                $album = (new GaAlbum())
+                    ->setTitle($filename)
+                    ->setDateAt(new \DateTime())
+                    ->setSlug($this->sanitizeData->slugString($filename))
+                    ->setArchive($filename)
+                    ->setUser($user)
+                ;
+            }
+
+            $files = $album->getImages();
+
             $nb = 0;
-            $files = $em->getRepository(GaImage::class)->findBy(['user' => $user]);
             foreach($files as $file){
                 $fileFile = $this->galleryDirectory . $file->getThumbsFile();
                 if(file_exists($fileFile)){
@@ -106,16 +122,21 @@ class GalleryUpdateDataCommand extends Command
             $io->text($nb . ' images supprimées');
             $io->text(count($files) . ' entrées supprimées');
 
+            $io->newLine();
+
             $finder = new Finder();
             $finder->files()->in($extractDirectory)->name('/\.(jpg|jpeg|png|gif)$/i');
 
             $today = new \DateTime();
             $today->setTimezone(new \DateTimeZone('Europe/Paris'));
+            $dateToday = $today->format('d_m_Y_H_i');
+
+            $io->title("Création des données en base");
 
             $progressBar = new ProgressBar($output, count($finder));
             $progressBar->start();
             foreach ($finder as $file) {
-                $newFilename = $today->format('d_m_Y_H_i') . '-' . $file->getFilename();
+                $newFilename = $dateToday . '-' . $file->getFilename();
 
                 $info = new \SplFileInfo($file->getRealPath());
 
@@ -131,6 +152,7 @@ class GalleryUpdateDataCommand extends Command
                     ->setThumbs($newFilename)
                     ->setLightbox($newFilename)
                     ->setDateAt($dateAt)
+                    ->setAlbum($album)
                 ;
 
                 $em->persist($newImage);
@@ -145,22 +167,27 @@ class GalleryUpdateDataCommand extends Command
             $progressBar->finish();
             $em->flush();
 
+            $io->newLine();
+            $io->newLine();
+
+            $io->title("Importation des photos");
+
             $progressBar = new ProgressBar($output, count($finder));
             $progressBar->start();
             foreach ($finder as $file) {
-                $newFilename = $today->format('d_m_Y_H_i') . '-' . $file->getFilename();
+                $newFilename = $dateToday . '-' . $file->getFilename();
 
                 $originalFile = ImageWorkshop::initFromPath($file->getRealPath());
                 if($originalFile->getWidth() > 280){
                     $originalFile->resizeInPixel(280, null, true);
                 }
-                $originalFile->save($this->galleryDirectory . $filename . '/thumbs/', $newFilename);
+                $originalFile->save($thumbsDirectory, $newFilename);
 
                 $originalFile = ImageWorkshop::initFromPath($file->getRealPath());
                 if($originalFile->getWidth() > 1024){
                     $originalFile->resizeInPixel(1024, null, true);
                 }
-                $originalFile->save($this->galleryDirectory . $filename . '/lightbox/', $newFilename);
+                $originalFile->save($lightboxDirectory, $newFilename);
 
                 rename($file->getRealPath(), $extractDirectory . $newFilename);
                 $nb++;
@@ -169,7 +196,8 @@ class GalleryUpdateDataCommand extends Command
             $progressBar->finish();
         }
 
-
+        $io->newLine();
+        $io->newLine();
         $io->text($nb . ' images extracted');
 
         $io->newLine();
@@ -177,9 +205,9 @@ class GalleryUpdateDataCommand extends Command
         return Command::SUCCESS;
     }
 
-    protected function extractZIP(SymfonyStyle $io, $filename): bool
+    protected function extractZIP(SymfonyStyle $io, $username, $filename): bool
     {
-        $file = $this->importDirectory . $filename . ".zip";
+        $file = $this->importDirectory . $username . "/" . $filename . ".zip";
 
         if(!file_exists($file)){
             $io->error("L'archive n'existe pas.");
@@ -188,7 +216,7 @@ class GalleryUpdateDataCommand extends Command
 
         $archive = new ZipArchive();
         if($archive->open($file)){
-            $extractDirectory = $this->galleryDirectory . $filename . '/original/';
+            $extractDirectory = $this->galleryDirectory . $username . "/" . $filename . '/original/';
 
             $archive->extractTo($extractDirectory);
             $archive->close(); unset($archive);

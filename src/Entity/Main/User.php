@@ -4,6 +4,7 @@ namespace App\Entity\Main;
 
 use App\Entity\Blog\BoCommentary;
 use App\Entity\DataEntity;
+use App\Entity\Main\Gallery\GaAlbum;
 use App\Entity\Main\Gallery\GaImage;
 use App\Repository\Main\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -104,23 +105,17 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: GaImage::class)]
     private Collection $gaImages;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    #[Groups(['user_form'])]
-    private ?string $galleryTitle = null;
-
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    #[Groups(['user_form'])]
-    private ?\DateTimeInterface $galleryDate = null;
-
-    #[ORM\Column]
-    #[Groups(['ga_img_list'])]
-    private ?int $galleryNbDownload = 0;
-
     /**
      * @var Collection<int, BoCommentary>
      */
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: BoCommentary::class)]
     private Collection $boCommentaries;
+
+    /**
+     * @var Collection<int, GaAlbum>
+     */
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: GaAlbum::class)]
+    private Collection $gaAlbums;
 
     /**
      * @throws Exception
@@ -132,6 +127,7 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
         $this->mails = new ArrayCollection();
         $this->gaImages = new ArrayCollection();
         $this->boCommentaries = new ArrayCollection();
+        $this->gaAlbums = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -464,42 +460,6 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
         return $this;
     }
 
-    public function getGalleryTitle(): ?string
-    {
-        return $this->galleryTitle;
-    }
-
-    public function setGalleryTitle(?string $galleryTitle): static
-    {
-        $this->galleryTitle = $galleryTitle;
-
-        return $this;
-    }
-
-    public function getGalleryDate(): ?\DateTimeInterface
-    {
-        return $this->galleryDate;
-    }
-
-    public function setGalleryDate(?\DateTimeInterface $galleryDate): static
-    {
-        $this->galleryDate = $galleryDate;
-
-        return $this;
-    }
-
-    public function getGalleryNbDownload(): ?int
-    {
-        return $this->galleryNbDownload;
-    }
-
-    public function setGalleryNbDownload(int $galleryNbDownload): static
-    {
-        $this->galleryNbDownload = $galleryNbDownload;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, BoCommentary>
      */
@@ -524,6 +484,36 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
             // set the owning side to null (unless already changed)
             if ($boCommentary->getUser() === $this) {
                 $boCommentary->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, GaAlbum>
+     */
+    public function getGaAlbums(): Collection
+    {
+        return $this->gaAlbums;
+    }
+
+    public function addGaAlbum(GaAlbum $gaAlbum): static
+    {
+        if (!$this->gaAlbums->contains($gaAlbum)) {
+            $this->gaAlbums->add($gaAlbum);
+            $gaAlbum->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGaAlbum(GaAlbum $gaAlbum): static
+    {
+        if ($this->gaAlbums->removeElement($gaAlbum)) {
+            // set the owning side to null (unless already changed)
+            if ($gaAlbum->getUser() === $this) {
+                $gaAlbum->setUser(null);
             }
         }
 

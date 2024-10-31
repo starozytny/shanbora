@@ -1,22 +1,45 @@
 {% extends 'user/layout/layout.html.twig' %}
 
-{% block title %}{{ app.user.galleryTitle ? app.user.galleryTitle : "" }}{% endblock %}
-{% set page_title %}{{ app.user.galleryTitle ? app.user.galleryTitle : "" }}{% endset %}
+{% set page_title %}Vos albums{% endset %}
 
 {% block main_content %}
-    <style>
-        .gallery-item {
-            break-inside: avoid; /* Évite que les images se cassent sur plusieurs colonnes */
-        }
-    </style>
-    <div class="w-full lg:px-8">
-        <div class="flex flex-col justify-center items-center">
-            <div class="text-yellow-500 font-semibold text-lg text-center">{{ app.user.galleryDate ? app.user.galleryDate | date('d/m/Y') : "" }}</div>
-            <h2 class="font-bold text-6xl text-center">{{ app.user.galleryTitle ? app.user.galleryTitle : "" }}</h2>
+
+    <div class="w-full">
+        <div class="w-full min-h-24">
+            <div class="relative bg-gray-900 rounded-2xl py-12 overflow-hidden min-h-24">
+                <div class="absolute top-0 left-0 rounded-2xl w-full h-full">
+                    <img src="{{ asset('build/app/images/blog/header.jpg') }}" alt="background image" class="opacity-50 object-cover w-full h-full pointer-events-none">
+                </div>
+                <div class="relative px-4 lg:px-8">
+                    <div class="text-yellow-500 font-semibold text-lg md:text-center">Retrouvez l'ensemble des photos en téléchargement en haut qualité.</div>
+                    <h1 class="text-white font-bold text-4xl md:text-6xl md:text-center">Vos albums</h1>
+                </div>
+            </div>
         </div>
 
-        <div class="mt-10 flex flex-col gap-8 min-h-[calc(100vh-100px-80px)]">
-            <div id="gallery_index"></div>
+       <div class="mt-10 flex items-center justify-center flex-wrap gap-4">
+           {% for elem in albums %}
+               <div class="cursor-pointer block p-4 bg-white rounded-md w-96 border group hover:border-gray-300 max-w-[280px]"
+                    onclick="window.location.href = '{{ app.request.schemeAndHttpHost ~ path('user_album_read', {slug: elem.slug}) }}'"
+               >
+                   <div class="font-semibold text-center">{{ elem.title }}</div>
+                   {% if elem.cover %}
+                       <div class="relative mt-4 rounded w-full h-56 overflow-hidden">
+                           <img src="{{ path('intern_api_user_gallery_albums_read_cover', {id: elem.id}) }}"
+                                alt="photo couverture de {{ elem.title }}"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                           >
+                           <div class="absolute bottom-0 right-0 text-gray-600 text-xs bg-white pt-2 pb-1 px-4 rounded-tl">
+                               {{ elem.dateAt | date('d/m/Y') }}
+                           </div>
+                       </div>
+                   {% else %}
+                       <div class="text-gray-600 text-xs text-center">
+                           {{ elem.dateAt | date('d/m/Y') }}
+                       </div>
+                   {% endif %}
+               </div>
+           {% endfor %}
         </div>
     </div>
 {% endblock %}

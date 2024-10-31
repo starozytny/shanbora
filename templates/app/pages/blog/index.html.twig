@@ -7,13 +7,21 @@
 
 {% block main_content %}
     <div class="w-full px-2 lg:px-8">
-        <div class="md:flex md:flex-col md:justify-center md:items-center">
-            <div class="text-yellow-500 font-semibold mb-1 text-lg md:text-center">Escapades et randonnées à travers la France et plus encore</div>
-            <h1 class="font-bold text-4xl md:text-6xl md:text-center">À la recherche de la photo parfaite</h1>
-            <p class="mt-4 text-gray-600 max-w-screen-md md:text-center">
-                À travers ce blog, partons ensemble à la découverte de paysages fantastique, où la nature
-                règne en maître et où chaque saison révèle une nouvelle facette de sa beauté sauvage.
-            </p>
+
+        <div class="w-full min-h-56">
+            <div class="relative bg-gray-900 rounded-2xl py-24 overflow-hidden min-h-56">
+                <div class="absolute top-0 left-0 rounded-2xl w-full h-full">
+                    <img src="{{ asset('build/app/images/blog/header.jpg') }}" alt="background image" class="opacity-50 object-cover w-full h-full pointer-events-none">
+                </div>
+                <div class="relative px-4 lg:px-8">
+                    <div class="text-yellow-500 font-semibold mb-1 text-lg md:text-center">Escapades et randonnées à travers la France et plus encore</div>
+                    <h1 class="text-white font-bold text-4xl md:text-6xl md:text-center">À la recherche de la photo parfaite</h1>
+                    <p class="mt-4 text-gray-300 max-w-screen-md mx-auto md:text-center">
+                        À travers ce blog, partons ensemble à la découverte de paysages fantastique, où la nature
+                        règne en maître et où chaque saison révèle une nouvelle facette de sa beauté sauvage.
+                    </p>
+                </div>
+            </div>
         </div>
 
         <div class="my-10 lg:mt-16 flex flex-col gap-16 md:gap-12">

@@ -7,7 +7,6 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 
 import Menu from "@tailwindFunctions/menu";
-import Toastr from "@tailwindFunctions/toastr";
 
 import { Cookies, CookiesGlobalResponse } from "@tailwindComponents/Modules/Cookies/Cookies";
 import InfiniteGallery from "@userPages/InfiniteGallery";
@@ -15,7 +14,6 @@ import InfiniteGallery from "@userPages/InfiniteGallery";
 Routing.setRoutingData(routes);
 
 Menu.menuListener();
-Toastr.flashes();
 
 let ck = document.getElementById("cookies");
 if(ck){

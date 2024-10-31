@@ -44,6 +44,9 @@ class GaImage extends DataEntity
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $dateAt = null;
 
+    #[ORM\ManyToOne(cascade: ['persist'], inversedBy: 'images')]
+    private ?GaAlbum $album = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -135,16 +138,28 @@ class GaImage extends DataEntity
 
     public function getFileFile(): ?string
     {
-        return $this->getFileOrDefault($this->file, $this->user->getUsername() . '/original', null);
+        return $this->getFileOrDefault($this->file, $this->user->getUsername() . '/' . $this->getAlbum()->getArchive() . '/original', null);
     }
 
     public function getThumbsFile(): ?string
     {
-        return $this->getFileOrDefault($this->thumbs, $this->user->getUsername() . '/thumbs', null);
+        return $this->getFileOrDefault($this->thumbs, $this->user->getUsername() . '/' . $this->getAlbum()->getArchive() . '/thumbs', null);
     }
 
     public function getLightboxFile(): ?string
     {
-        return $this->getFileOrDefault($this->lightbox, $this->user->getUsername() . '/lightbox', null);
+        return $this->getFileOrDefault($this->lightbox, $this->user->getUsername() . '/' . $this->getAlbum()->getArchive() . '/lightbox', null);
+    }
+
+    public function getAlbum(): ?GaAlbum
+    {
+        return $this->album;
+    }
+
+    public function setAlbum(?GaAlbum $album): static
+    {
+        $this->album = $album;
+
+        return $this;
     }
 }

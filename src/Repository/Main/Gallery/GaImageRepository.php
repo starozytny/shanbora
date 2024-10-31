@@ -25,6 +25,15 @@ class GaImageRepository extends ServiceEntityRepository
         }
     }
 
+    public function remove(GaImage $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->remove($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
 
     //    /**
     //     * @return GaImage[] Returns an array of GaImage objects

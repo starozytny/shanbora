@@ -50,6 +50,8 @@ class UserController extends AbstractController
             return $apiResponse->apiJsonResponseBadRequest('Les données sont vides.');
         }
 
+        $oldUsername = $obj->getUsername();
+
         $society = $em->getRepository(Society::class)->find($data->society);
         if(!$society) throw new NotFoundHttpException("Society not found.");
 
@@ -62,6 +64,18 @@ class UserController extends AbstractController
             }
         }
 
+        if($oldUsername != $obj->getUsername()){
+            $galleryArchive = $this->getParameter('gallery_archive_directory');
+            if(is_dir($galleryArchive . $oldUsername)){
+                rename($galleryArchive . $oldUsername, $galleryArchive . $obj->getUsername());
+            }
+
+            $galleryImages = $this->getParameter('gallery_images_directory');
+            if(is_dir($galleryImages . $oldUsername)){
+                rename($galleryImages . $oldUsername, $galleryImages . $obj->getUsername());
+            }
+        }
+
         $obj->setSociety($society);
         $obj->setManager($society->getManager());
 
@@ -69,14 +83,6 @@ class UserController extends AbstractController
             if($type == "create" || ($type == "update" && $existe->getId() != $obj->getId())){
                 return $apiResponse->apiJsonResponseValidationFailed([
                     ["name" => "username", "message" => "Ce nom d'utilisateur existe déjà."]
-                ]);
-            }
-        }
-
-        if($existe = $em->getRepository(User::class)->findOneBy(['email' => $obj->getEmail()])){
-            if($type == "create" || ($type == "update" && $existe->getId() != $obj->getId())){
-                return $apiResponse->apiJsonResponseValidationFailed([
-                    ["name" => "email", "message" => "Cette addresse e-mail existe déjà."]
                 ]);
             }
         }

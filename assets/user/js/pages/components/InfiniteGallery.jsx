@@ -7,16 +7,17 @@ import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
 import Formulaire from "@commonFunctions/formulaire";
 import ModalFunctions from '@commonFunctions/modal';
 
-import { Button, ButtonA } from "@tailwindComponents/Elements/Button";
+import { Button, ButtonA, ButtonIcon } from "@tailwindComponents/Elements/Button";
 import { LightBox } from "@tailwindComponents/Elements/LightBox";
 
-const URL_GET_DATA = "intern_api_user_gallery_fetch_images";
-const URL_READ_IMAGE = "intern_api_user_gallery_read_image";
-const URL_READ_IMAGE_HD = "intern_api_user_gallery_read_image_hd";
-const URL_DOWNLOAD_FILE = "intern_api_user_gallery_download";
-const URL_DOWNLOAD_ARCHIVE = "intern_api_user_gallery_archive";
+const URL_GET_DATA = "intern_api_user_gallery_images_fetch_images";
+const URL_READ_IMAGE = "intern_api_user_gallery_images_read_image";
+const URL_READ_IMAGE_HD = "intern_api_user_gallery_images_read_image_hd";
+const URL_DOWNLOAD_FILE = "intern_api_user_gallery_images_download";
+const URL_DOWNLOAD_ARCHIVE = "intern_api_user_gallery_albums_archive";
+const URL_COVER_ALBUM = "intern_api_user_gallery_albums_cover";
 
-const InfiniteGallery = ({ userId }) => {
+const InfiniteGallery = ({ isAdmin, albumId, sortBy }) => {
 	const refLightbox = useRef(null);
 	const [rankPhoto, setRankPhoto] = useState(1); // Stocke les images
 	const [images, setImages] = useState([]); // Stocke les images
@@ -31,9 +32,9 @@ const InfiniteGallery = ({ userId }) => {
 			if (loading || !hasMore) return; // Ne pas charger si déjà en cours ou s'il n'y a plus d'images
 			setLoading(true);
 
-			let url = Routing.generate(URL_GET_DATA, {page: page})
-			if(userId){
-				url = Routing.generate(URL_GET_DATA, {page: page, userId: userId})
+			let url = Routing.generate(URL_GET_DATA, {page: page, albumId: albumId})
+			if(isAdmin){
+				url = Routing.generate(URL_GET_DATA, {page: page, albumId: albumId, isAdmin: isAdmin, sortBy: sortBy})
 			}
 
 			axios({ method: "GET", url: url, data: {} })
@@ -76,15 +77,29 @@ const InfiniteGallery = ({ userId }) => {
 		refLightbox.current.handleClick();
 	}
 
+	let handleCover = (imageId) => {
+		Formulaire.loader(true);
+		axios({ method: "PUT", url: Routing.generate(URL_COVER_ALBUM, {id: albumId}), data: {imageId: imageId} })
+			.then(function (response) {
+				location.reload();
+			})
+			.catch(function (error) {
+				Formulaire.displayErrors(null, error);
+				Formulaire.loader(false);
+			})
+		;
+	}
+
 	return (
 		<div>
 			<div className="mb-12 flex items-center justify-center">
-				<ButtonA type="blue" onClick={Routing.generate(URL_DOWNLOAD_ARCHIVE)}>
+				<ButtonA type="blue" onClick={Routing.generate(URL_DOWNLOAD_ARCHIVE, {id: albumId})}>
 					Télécharger toutes les photos
 				</ButtonA>
 			</div>
 			<div className="grid grid-cols-2 gap-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 pswp-gallery" id="gallery">
-				<LazyLoadingGalleryWithPlaceholder currentImages={currentImages} onLightbox={handleLightbox} userId={userId} />
+				<LazyLoadingGalleryWithPlaceholder currentImages={currentImages} isAdmin={isAdmin}
+												   onLightbox={handleLightbox} onCover={handleCover} />
 			</div>
 
 			<div className="mt-12">
@@ -104,7 +119,7 @@ const InfiniteGallery = ({ userId }) => {
 	);
 };
 
-function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, userId }) {
+function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover, isAdmin }) {
 	const [loaded, setLoaded] = useState(Array(currentImages.length).fill(false));
 	const [error, setError] = useState(Array(currentImages.length).fill(false));
 
@@ -121,13 +136,12 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, userId 
 	};
 
 	useEffect(() => {
-		// Timeout de 5 secondes pour chaque image
 		const timeoutId = currentImages.map((_, index) =>
 			setTimeout(() => {
 				if (!loaded[index]) {
 					handleImageError(index);
 				}
-			}, 2000) // 2 secondes
+			}, 500) // 2 secondes
 		);
 
 		return () => {
@@ -155,11 +169,15 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, userId 
 							onLoad={() => handleImageLoad(index)} // Appelé quand l'image est chargée
 							onError={() => handleImageError(index)} // En cas d'erreur de chargement
 						/>
-						{userId
-							? <div className="absolute top-2 left-2">
+						{isAdmin
+							? <div className="absolute top-2 left-2 w-[calc(100%-1rem)] flex justify-between gap-2">
 								<div className="bg-gray-300/80 w-6 h-6 rounded-full text-xs flex justify-center items-center">
 									{image.nbDownload}
 								</div>
+								<ButtonIcon type="default" icon="image" tooltipPosition="-bottom-7 right-0" tooltipWidth={130}
+											onClick={() => onCover(image.id)}>
+									Image de couverture
+								</ButtonIcon>
 							</div>
 							: null
 						}

@@ -1,7 +1,7 @@
 {% extends 'admin/pages/gallery/template.html.twig' %}
 
-{% set page_title %}Galerie de {{ user.galleryTitle }}{% endset %}
-{% set page_subtitle %}{{ user.galleryTitle }} au {{ user.galleryDate | date("d/m/Y") }}.{% endset %}
+{% set page_title %}Galerie de {{ album.title }}{% endset %}
+{% set page_subtitle %}{{ album.title }} au {{ album.dateAt | date("d/m/Y") }}.{% endset %}
 
 {% set page_actions %}
     {% include 'layout/components/tailwind/buttons/button.html.twig' with {
@@ -14,7 +14,48 @@
 
 {% block main_content %}
     <div class="mt-10 flex flex-col gap-8 min-h-[calc(100vh-100px-80px)]">
-        <p class="text-center">Les photos sont triées par nombre de téléchargements.</p>
-        <div id="gallery_index" data-user-id="{{ userId }}"></div>
+        <div>
+            {% if album.cover %}
+                <div class="w-full min-h-24">
+                    <div class="relative bg-gray-900 rounded-2xl py-12 overflow-hidden min-h-24">
+                        <div class="absolute top-0 left-0 rounded-2xl w-full h-full">
+                            <img src="{{ path('intern_api_user_gallery_albums_read_cover_hd_ultra', {id: album.id}) }}" alt="background image" class="opacity-50 object-cover w-full h-full pointer-events-none">
+                        </div>
+                        <div class="relative px-4 lg:px-8">
+                            <div class="text-yellow-500 font-semibold text-lg md:text-center">{{ album.dateAt | date('d/m/Y') }}</div>
+                            <h1 class="text-white font-bold text-4xl md:text-6xl md:text-center">{{ album.title }}</h1>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="flex flex-col justify-center items-center">
+                    <div class="text-yellow-500 font-semibold text-lg text-center">{{ album.dateAt | date('d/m/Y') }}</div>
+                    <h2 class="font-bold text-6xl text-center">{{ album.title }}</h2>
+                </div>
+            {% endif %}
+
+            <div class="flex flex-col gap-1 mt-4">
+                <p class="text-center">Les photos sont triées par nombre de téléchargements.</p>
+                {% if app.request.query.get('sortBy') == "name" %}
+                    <a href="{{ path('admin_galleries_read', {id: album.id}) }}"
+                       class="text-center text-sm text-blue-500 hover:text-blue-700 underline"
+                    >
+                        Trier par ordre de téléchargement
+                    </a>
+                {% else %}
+                    <a href="{{ path('admin_galleries_read', {id: album.id, sortBy: 'name'}) }}"
+                       class="text-center text-sm text-blue-500 hover:text-blue-700 underline"
+                    >
+                        Trier par ordre normal
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div id="gallery_index"
+             data-is-admin="1"
+             data-album-id="{{ album.id }}"
+             data-sort-by="{{ app.request.query.get('sortBy') ? app.request.query.get('sortBy') : "dl" }}"
+        ></div>
     </div>
 {% endblock %}

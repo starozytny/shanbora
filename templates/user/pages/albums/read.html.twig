@@ -1,0 +1,35 @@
+{% extends 'user/layout/layout.html.twig' %}
+
+{% set page_title %}{{ album.title }}{% endset %}
+
+{% block main_content %}
+    <style>
+        .gallery-item {
+            break-inside: avoid; /* Évite que les images se cassent sur plusieurs colonnes */
+        }
+    </style>
+    <div class="w-full lg:px-8">
+        {% if album.cover %}
+            <div class="w-full min-h-24">
+                <div class="relative bg-gray-900 rounded-2xl py-12 overflow-hidden min-h-24">
+                    <div class="absolute top-0 left-0 rounded-2xl w-full h-full">
+                        <img src="{{ path('intern_api_user_gallery_albums_read_cover_hd_ultra', {id: album.id}) }}" alt="background image" class="opacity-50 object-cover w-full h-full pointer-events-none">
+                    </div>
+                    <div class="relative px-4 lg:px-8">
+                        <div class="text-yellow-500 font-semibold text-lg md:text-center">{{ album.dateAt | date('d/m/Y') }}</div>
+                        <h1 class="text-white font-bold text-4xl md:text-6xl md:text-center">{{ album.title }}</h1>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="flex flex-col justify-center items-center">
+                <div class="text-yellow-500 font-semibold text-lg text-center">{{ album.dateAt | date('d/m/Y') }}</div>
+                <h2 class="font-bold text-6xl text-center">{{ album.title }}</h2>
+            </div>
+        {% endif %}
+
+        <div class="mt-10 flex flex-col gap-8 min-h-[calc(100vh-100px-80px)]">
+            <div id="gallery_index" data-album-id="{{ album.id }}"></div>
+        </div>
+    </div>
+{% endblock %}

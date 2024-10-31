@@ -101,7 +101,7 @@ export class ContactFormulaire extends Component {
 			</div>
 			<div className="mt-4">
 				<Alert type="gray" icon="question">
-					<div className="text-sm">
+					<div className="text-xs">
 						Les données à caractère personnel collectées dans ce formulaire sont enregistrées dans un fichier
 						informatisé permettant la gestion des demandes de contacts. <br />
 						En validant ce formulaire, vous consentez à nous transmettre vos données pour traiter votre demande
