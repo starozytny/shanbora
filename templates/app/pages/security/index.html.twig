@@ -4,7 +4,7 @@
 
 {% block main_content %}
     <div class="min-h-full max-w-screen-lg mx-auto sm:my-8">
-        <div class="bg-white border shadow-xl rounded-xl md:grid md:grid-cols-2 md:max-h-[520px]">
+        <div class="bg-white border shadow-xl rounded-xl md:flex lg:grid lg:grid-cols-2 md:max-h-[520px]">
             <div class="relative hidden md:block md:max-h-[520px]">
                 <img class="w-full h-full object-cover rounded-l-xl" src="{{ asset('build/app/images/login.jpg') }}" alt="login illustration">
                 <div class="absolute bottom-4 left-4 text-slate-100">
@@ -21,7 +21,7 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col justify-center p-4 px-6 py-12 lg:px-8 md:min-w-[446px] md:max-h-[520px]">
+            <div class="flex flex-col justify-center p-4 px-6 py-12 md:min-w-[320px] md:max-h-[520px] lg:px-8 lg:min-w-[446px]">
                 <div class="sm:mx-auto sm:w-full sm:max-w-sm">
                     <div class="flex justify-center items-center mb-4">
                         <img class="h-8 w-auto rounded-md" src="{{ asset('build/app/images/logo.png') }}" alt="Logo Shanbo">
