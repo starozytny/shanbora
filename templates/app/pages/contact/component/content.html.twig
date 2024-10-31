@@ -1,26 +1,26 @@
 <div class="w-full px-2 lg:px-8">
     <div class="md:flex md:flex-col md:justify-center md:items-center">
-        <div class="text-yellow-500 font-semibold mb-1 text-lg md:text-center">Me contacter</div>
+        <div class="text-yellow-500 font-semibold mb-1 text-lg md:text-center" data-aos="fade-in">Me contacter</div>
         {% if page %}
-            <h1 class="font-bold text-6xl md:text-center">Parlons de votre projet !</h1>
+            <h1 class="font-bold text-6xl md:text-center" data-aos="fade-in">Parlons de votre projet !</h1>
         {% else %}
-            <h2 class="font-bold text-6xl md:text-center">Parlons de votre projet !</h2>
+            <h2 class="font-bold text-6xl md:text-center" data-aos="fade-in">Parlons de votre projet !</h2>
         {% endif %}
-        <p class="mt-4 text-gray-600 max-w-screen-md md:text-center">
+        <p class="mt-4 text-gray-600 max-w-screen-md md:text-center" data-aos="fade-in">
             N'hésitez pas à me contacter pour discuter de vos projets et organiser une séance photo qui vous ressemble.
             Ensemble, créons des souvenirs qui resteront gravés pour toujours.
         </p>
     </div>
 
     <div class="mt-10 md:max-w-[680px] md:mt-12 md:mx-auto md:grid md:grid-cols-2 md:gap-8 lg:gap-12 lg:flex lg:max-w-[904px]" id="restons-en-contact">
-        <div id="contacts_create" class="lg:w-[584px]">
+        <div id="contacts_create" class="lg:w-[584px]" data-aos="fade-up">
             {% include "layout/components/tailwind/loaders/loader.html.twig" %}
         </div>
         <div class="mt-8 md:mt-0 md:max-w-80">
-            <div class="rounded-md max-h-64 md:max-w-80 overflow-hidden">
+            <div class="rounded-md max-h-64 md:max-w-80 overflow-hidden" data-aos="fade-in">
                 <img src="{{ asset('build/app/images/contact.jpg') }}" alt="ppl" class="rounded-md object-cover w-full h-full">
             </div>
-            <div class="mt-4">
+            <div class="mt-4" data-aos="fade-up">
                 <h3 class="font-medium text-xl">Chanbora Chhun</h3>
                 <div class="ft-special">Photographe</div>
                 <div class="mt-2 md:max-w-80">

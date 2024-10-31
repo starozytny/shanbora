@@ -1,4 +1,5 @@
 import '../css/app.scss';
+import 'aos/dist/aos.css';
 
 const routes = require('@publicFolder/js/fos_js_routes.json');
 import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min';
@@ -6,12 +7,15 @@ import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min';
 import React from "react";
 import { createRoot } from "react-dom/client";
 
+import AOS from "aos/dist/aos";
 import Menu from "@tailwindFunctions/menu";
 
 import { ContactFormulaire } from "@appFolder/pages/components/Contact/ContactForm";
 import { Cookies, CookiesGlobalResponse } from "@tailwindComponents/Modules/Cookies/Cookies";
 
 Routing.setRoutingData(routes);
+
+AOS.init();
 
 Menu.menuListener();
 inputPassword();
