@@ -30,18 +30,20 @@
                                 <a href="{{ path('app_adventures') }}" class="{{ app.request.get('_route') in ['app_adventures'] ? "underline text-black" : "text-gray-600 hover:text-gray-900 transition-colors" }} px-3 py-2 font-semibold">
                                     <span>Aventures</span>
                                 </a>
-                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                {% else %}
-                                    <a href="{{ path('app_contact') }}" class="{{ app.request.get('_route') in ['app_contact'] ? "underline text-black" : "text-gray-600 hover:text-gray-900 transition-colors" }} px-3 py-2 font-semibold">
-                                        <span>Me contacter</span>
-                                    </a>
-                                {% endif %}
+                                <a href="{{ path('app_contact') }}" class="{{ app.request.get('_route') in ['app_contact'] ? "underline text-black" : "text-gray-600 hover:text-gray-900 transition-colors" }} px-3 py-2 font-semibold">
+                                    <span>Me contacter</span>
+                                </a>
                                 <a href="{{ path('app_login') }}" class="{{ app.request.get('_route') in ['app_login'] ? "underline text-black" : "text-gray-600 hover:text-gray-900 transition-colors" }} px-3 py-2 font-semibold">
                                     <span>Galerie privée</span>
                                 </a>
                                 <a href="https://www.instagram.com/shanbo_daltonien/" target="_blank" rel="external" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
                                     <span>Instagram</span>
                                 </a>
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    <a href="{{ path('app_logout') }}" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold hidden xl:inline">
+                                        <span>Se déconnecter</span>
+                                    </a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -91,26 +93,23 @@
                                                     <a href="{{ path('app_adventures') }}" class="{{ app.request.get('_route') in ['app_adventures'] ? "text-black" : "text-gray-600 hover:text-gray-900" }} py-2 font-semibold">
                                                         <span>Aventures</span>
                                                     </a>
-                                                    <a href="https://www.instagram.com/shanbo_daltonien/" target="_blank"  rel="external" class="text-gray-600 hover:text-gray-900 py-2 font-semibold">
+                                                    <a href="{{ path('app_contact') }}" class="{{ app.request.get('_route') in ['app_login'] ? "text-black" : "text-gray-600 hover:text-gray-900" }} py-2 font-semibold">
+                                                        <span>Me contacter</span>
+                                                    </a>
+                                                    <a href="{{ path('app_login') }}" class="{{ app.request.get('_route') in ['app_login'] ? "text-black" : "text-gray-600 hover:text-gray-900" }} py-2 font-semibold">
+                                                        <span>Galerie privée</span>
+                                                    </a>
+                                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                                        <a href="{{ path('app_logout') }}" class="text-gray-600 hover:text-gray-900 mt-4 py-2 font-semibold">
+                                                            <span>Se déconnecter</span>
+                                                        </a>
+                                                    {% endif %}
+                                                    <a href="https://www.instagram.com/shanbo_daltonien/" target="_blank"  rel="external" class="mt-10 text-gray-600 hover:text-gray-900 py-2 font-semibold">
                                                         <span>Instagram</span>
                                                     </a>
                                                     <a href="https://nompaw.fr" target="_blank" rel="external" class="text-gray-600 hover:text-gray-900 py-2 font-semibold">
                                                         <span>Nompaw</span>
                                                     </a>
-                                                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                                        <a href="{{ path('app_logout') }}" class="text-gray-600 hover:text-gray-900 mt-4 px-3 py-2 font-semibold">
-                                                            <span>Déconnexion</span>
-                                                        </a>
-                                                        <a href="{{ path('app_login') }}"
-                                                           class="text-color0 px-3 py-2 font-semibold bg-white rounded-md border-2 border-color0 transition-transform hover:-translate-y-1.5">
-                                                            <span>Mon espace</span>
-                                                        </a>
-                                                    {% else %}
-                                                        <a href="{{ path('app_contact') }}"
-                                                           class="text-color0 mt-4 px-3 py-2 font-semibold bg-white rounded-md border-2 border-color0 transition-transform hover:-translate-y-1.5">
-                                                            <span>Me contacter</span>
-                                                        </a>
-                                                    {% endif %}
                                                     <div class="mt-6 flex gap-4">
                                                         <a href="https://www.instagram.com/shanbo_daltonien/" target="_blank" rel="external" class="relative">
                                                             <span class="icon-instagram !text-lg"></span>
