@@ -49,6 +49,26 @@
                 </div>
             </div>
             <div class="flex flex-col gap-12 md:grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+                <div class="cursor-pointer group flex flex-col gap-4" onclick="location.href = '{{ path('app_adventures_miroir') }}'">
+                    <div class="w-full h-48 overflow-hidden rounded-md shadow">
+                        <img src="{{ asset('blog/list/miroir.jpg') }}" alt="lac ayous Pyrénées" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                    </div>
+                    <div>
+                        <div class="text-gray-600 text-xs">14 Octobre 2023</div>
+                        <div class="mt-2">
+                            <h2 class="font-semibold text-xl">Le lac miroir dans le Queyras</h2>
+                            <p>
+                                Dans le Parc naturel régional du Queyras, le Lac Miroir est une destination prisée des
+                                randonneurs et des amoureux de la nature. Niché à plus de 2 200 mètres d'altitude, ce
+                                lac aux eaux reflète les montagnes environnantes, d'où son nom évocateur.
+                            </p>
+                        </div>
+                        <div class="mt-2 flex flex-wrap gap-2 text-sm">
+                            <div class="text-red-400">Randonnée</div>
+                            <div class="text-red-400">Nature</div>
+                        </div>
+                    </div>
+                </div>
                 <div class="cursor-pointer group flex flex-col gap-4" onclick="location.href = '{{ path('app_adventures_ayous') }}'">
                     <div class="w-full h-48 overflow-hidden rounded-md shadow">
                         <img src="{{ asset('blog/list/ayous.jpg') }}" alt="lac ayous Pyrénées" class="w-full h-full object-cover group-hover:scale-105 transition-transform">

@@ -31,6 +31,12 @@ class BlogController extends AbstractController
         return $this->render('app/pages/blog/2023/lac_ayous.html.twig', $this->getCommentaries(3));
     }
 
+    #[Route('/lac-miroir', name: 'miroir')]
+    public function miroir(): Response
+    {
+        return $this->render('app/pages/blog/2023/lac_miroir.html.twig', $this->getCommentaries(4));
+    }
+
     private function getCommentaries($id): array
     {
         $data = $this->commentaryRepository->findBy(['adventureId' => $id]);
