@@ -48,10 +48,10 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col gap-12 md:grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+            <div class="p-4 bg-white border-md rounded-md flex flex-col gap-12 md:grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
                 <div class="cursor-pointer group flex flex-col gap-4" onclick="location.href = '{{ path('app_adventures_miroir') }}'">
                     <div class="w-full h-48 overflow-hidden rounded-md shadow">
-                        <img src="{{ asset('blog/list/miroir.jpg') }}" alt="lac ayous Pyrénées" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                        <img src="{{ asset('blog/list/miroir.jpg') }}" alt="lac miroir Queyras" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
                     </div>
                     <div>
                         <div class="text-gray-600 text-xs">14 Octobre 2023</div>
@@ -104,6 +104,27 @@
                             </p>
                         </div>
                         <div class="mt-2 flex flex-wrap gap-2 text-sm">
+                            <div class="text-red-400">Randonnée</div>
+                            <div class="text-red-400">Nature</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cursor-pointer group flex flex-col gap-4" onclick="location.href = '{{ path('app_adventures_reunion') }}'">
+                    <div class="w-full h-48 overflow-hidden rounded-md shadow">
+                        <img src="{{ asset('blog/list/reunion.jpg') }}" alt="lever soleil reunion mafate" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                    </div>
+                    <div>
+                        <div class="text-gray-600 text-xs">01 Novembre 2022</div>
+                        <div class="mt-2">
+                            <h2 class="font-semibold text-xl">La Réunion</h2>
+                            <p>
+                                La Réunion vous transporte dans un univers d’une richesse exceptionnelle : entre plages
+                                de sable, volcans, forêts tropicales et cirques vertigineux, chaque coin de
+                                l’île réserve des découvertes inoubliables.
+                            </p>
+                        </div>
+                        <div class="mt-2 flex flex-wrap gap-2 text-sm">
+                            <div class="text-red-400">Voyage</div>
                             <div class="text-red-400">Randonnée</div>
                             <div class="text-red-400">Nature</div>
                         </div>
