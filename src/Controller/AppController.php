@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\Blog\BoViewRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -27,9 +28,13 @@ class AppController extends AbstractController
     }
 
     #[Route('/aventures', name: 'app_adventures')]
-    public function adventures(): Response
+    public function adventures(BoViewRepository $viewRepository): Response
     {
-        return $this->render('app/pages/blog/index.html.twig');
+        $views = [];
+        if($this->getUser()){
+            $views = $viewRepository->findAll();
+        }
+        return $this->render('app/pages/blog/index.html.twig', ['views' => $views]);
     }
 
     #[Route('/legales/mentions-legales', name: 'app_mentions')]
