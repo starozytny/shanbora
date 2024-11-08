@@ -16,6 +16,15 @@ class BoViewRepository extends ServiceEntityRepository
         parent::__construct($registry, BoView::class);
     }
 
+    public function save(BoView $entity, bool $flush = false): void
+    {
+        $this->getEntityManager()->persist($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
     //    /**
     //     * @return BoView[] Returns an array of BoView objects
     //     */

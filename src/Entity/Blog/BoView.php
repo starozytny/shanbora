@@ -14,13 +14,13 @@ class BoView
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?int $nbUnique = null;
+    private ?int $nbUnique = 0;
 
     #[ORM\Column]
-    private ?int $nbTotal = null;
+    private ?int $nbTotal = 0;
 
     #[ORM\Column]
-    private ?int $blogId = null;
+    private ?int $adventureId = null;
 
     public function getId(): ?int
     {
@@ -51,14 +51,14 @@ class BoView
         return $this;
     }
 
-    public function getBlogId(): ?int
+    public function getAdventureId(): ?int
     {
-        return $this->blogId;
+        return $this->adventureId;
     }
 
-    public function setBlogId(int $blogId): static
+    public function setAdventureId(int $adventureId): static
     {
-        $this->blogId = $blogId;
+        $this->adventureId = $adventureId;
 
         return $this;
     }
