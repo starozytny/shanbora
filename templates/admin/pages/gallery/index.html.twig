@@ -12,6 +12,7 @@
                      onclick="window.location.href = '{{ app.request.schemeAndHttpHost ~ path('admin_galleries_read', {id: elem.id}) }}'"
                 >
                     <div class="font-semibold text-center">{{ elem.title }}</div>
+                    <div class="text-sm text-center">{{ elem.nbDownload }} téléchargement{{ elem.nbDownload > 1 ? "s" : "" }}</div>
                     {% if elem.cover %}
                         <div class="relative mt-4 rounded w-full h-56 overflow-hidden">
                             <img src="{{ path('intern_api_user_gallery_albums_read_cover', {id: elem.id}) }}"
