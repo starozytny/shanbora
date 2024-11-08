@@ -91,7 +91,6 @@ class BlogController extends AbstractController
         }
 
         $view = ($view)
-            ->setNbUnique($view->getNbUnique() + 1)
             ->setNbTotal($view->getNbTotal() + 1)
         ;
 

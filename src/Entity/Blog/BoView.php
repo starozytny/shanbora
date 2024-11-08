@@ -14,9 +14,6 @@ class BoView
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?int $nbUnique = 0;
-
-    #[ORM\Column]
     private ?int $nbTotal = 0;
 
     #[ORM\Column]
@@ -25,18 +22,6 @@ class BoView
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getNbUnique(): ?int
-    {
-        return $this->nbUnique;
-    }
-
-    public function setNbUnique(int $nbUnique): static
-    {
-        $this->nbUnique = $nbUnique;
-
-        return $this;
     }
 
     public function getNbTotal(): ?int
