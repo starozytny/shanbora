@@ -9,17 +9,18 @@
     <div class="w-full min-h-56">
         <div class="relative bg-gray-900 rounded-2xl pt-24 pb-12 sm:pt-36 sm:pb-24 overflow-hidden min-h-56">
             <div class="absolute top-0 left-0 rounded-2xl w-full h-full">
-                <img src="{{ asset('blog/articles/2023/miroir/cover-miroir.jpg') }}" alt="background image" class="opacity-50 object-cover w-full h-full pointer-events-none">
+                <img src="{{ asset('blog/articles/2022/reunion/cover-reunion.jpg') }}" alt="background image" class="opacity-50 object-cover w-full h-full pointer-events-none">
             </div>
             <div class="relative px-4 lg:px-8">
-                <div class="text-yellow-500 font-semibold text-lg md:text-center">14 octobre 2023</div>
-                <h1 class="text-white font-bold text-4xl md:text-6xl md:text-center">Le lac miroir dans le Queyras</h1>
+                <div class="text-yellow-500 font-semibold text-lg md:text-center">01 Novembre 2022</div>
+                <h1 class="text-white font-bold text-4xl md:text-6xl md:text-center">La réunion et ses cascades, volcans et plages</h1>
                 <div class="flex items-end justify-end">
                     <p class="mt-16 text-gray-300 text-right max-w-screen-md">
-                        Le Lac Miroir est un lac alpin d’une beauté saisissante. Réputé pour ses eaux qui reflètent
-                        parfaitement les sommets environnants, il offre aux randonneurs un cadre paisible avec une forêt de
-                        mélèzes. Accessible par une randonnée depuis Ceillac, ce lac est un lieu idéal pour se
-                        détendre et profiter de la nature préservée des Hautes-Alpes.
+                        La Réunion est une invitation à explorer des merveilles naturelles uniques, à goûter à
+                        la richesse de la culture créole et à profiter de l’accueil chaleureux de ses habitants.
+                        Que vous soyez amateur de randonnée, de détente au bord de l’eau ou curieux des saveurs
+                        locales, un séjour sur l’île Bourbon promet des découvertes inoubliables et une immersion
+                        totale dans un cadre exceptionnel.
                     </p>
                 </div>
             </div>
@@ -30,198 +31,388 @@
         {% include "app/pages/blog/components/author.html.twig" %}
         <article class="flex flex-col gap-12">
             <div class="flex flex-col gap-6">
-                <p>
-                    Le Lac Miroir, situé dans le parc naturel du Queyras, est un célèbre pour les reflets des montagnes
-                    qui l’entourent sur ses eaux et les reflets des mélèzes.
-                </p>
                 <div>
+                    <h2 class="text-2xl font-semibold border-b">La Réunion : Entre cascades, plages, volcans et levers de soleil magiques</h2>
+                    <p class="mt-4">
+                        L’île de La Réunion est une destination à part, où la nature et la culture créole fusionnent
+                        pour offrir aux voyageurs des expériences exceptionnelles. Que vous soyez amateur de paysages
+                        volcaniques, de cascades majestueuses, de plages animées ou de moments de tranquillité en
+                        pleine mer, La Réunion est un terrain de jeu grandeur nature.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                    <div class="w-full">
+                        <img src="{{ asset('blog/articles/2022/reunion/cascade_file.jpg') }}" alt="cascade" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 62.3, apeture: 8, speed: '1', iso: 4000 } %}
+                    </div>
+                    <div class="w-full">
+                        <img src="{{ asset('blog/articles/2022/reunion/plage_sun.jpg') }}" alt="plage sunset" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 200, apeture: 6.3, speed: '1/800', iso: 100 } %}
+                    </div>
+                    <div class="w-full">
+                        <img src="{{ asset('blog/articles/2022/reunion/volcan.jpg') }}" alt="volcan" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 5.6, speed: '1/400', iso: 200 } %}
+                    </div>
+                    <div class="w-full">
+                        <img src="{{ asset('blog/articles/2022/reunion/sunrise.jpg') }}" alt="lever soleil" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 2.8, speed: '1/1250', iso: 400 } %}
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Les cascades de La Réunion : Un spectacle aquatique naturel</h2>
+                    <p class="mt-4">
+                        Dès votre arrivée, laissez-vous captiver par les nombreuses cascades qui jalonnent l’île. La Réunion
+                        est réputée pour ses chutes d’eau spectaculaires, nichées au cœur de paysages verdoyants. Parmi
+                        les incontournables, la cascade Langevin, située au sud de l'île, est un lieu de détente prisé.
+                        Ses eaux limpides, bordées de végétation luxuriante, créent un tableau envoûtant. Les cascades
+                        de Grand Galet, quant à elles, sont idéales pour un pique-nique ou une baignade rafraîchissante.
+                        Ici, la nature est reine, et chaque chute d’eau raconte l’histoire des rivières qui parcourent l'île.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
                     <div class="flex flex-col gap-2 md:flex-row md:gap-1">
-                        <div>
-                            <img src="{{ asset('blog/articles/2023/miroir/lac-miroir.jpg') }}" alt="lac miroir reflet" class="pointer-events-none">
-                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/320', iso: 640 } %}
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/start-0.jpg') }}" alt="chemin cascade" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 159, apeture: 5.6, speed: '1/30', iso: 100 } %}
                         </div>
-                        <div>
-                            <img src="{{ asset('blog/articles/2023/miroir/lac-miroir-2.jpg') }}" alt="reflet miroir foret" class="pointer-events-none">
-                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 7.1, speed: '1/320', iso: 500 } %}
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/start-1.jpg') }}" alt="cascade 1" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 43.8, apeture: 6.3, speed: '1/320', iso: 400 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/start-2.jpg') }}" alt="verdure cascade" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 35, apeture: 5.6, speed: '1/4', iso: 100 } %}
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="flex flex-col gap-6">
-                <div>
-                    <h3 class="text-2xl font-semibold border-b">Départ</h3>
-                    <p class="mt-4">
-                        Le point de départ de cette randonnée se trouve à Ceillac, un charmant village typique des
-                        Hautes-Alpes, point de départ de nombreuses randonnées. Vous pouvez vous garer au parking de la
-                        Côte Belle, d’où le sentier pour le Lac Miroir est bien balisé. Dès les premiers pas, le sentier
-                        serpente à travers des forêts de mélèzes, typiques de la région.
-                        <br>
-                        La montée est progressive, rendant la randonnée accessible aux familles
-                        et aux randonneurs moins expérimentés.
-                    </p>
-                </div>
-                <div>
                     <div class="flex flex-col gap-2 md:flex-row md:gap-1">
-                        <div>
-                            <img src="{{ asset('blog/articles/2023/miroir/cascade-1.jpg') }}" alt="cascade" class="pointer-events-none">
-                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 11, speed: '1/4', iso: 80 } %}
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/start-3.jpg') }}" alt="drone cascade" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 2.8, speed: '1/400', iso: 3200 } %}
                         </div>
-                        <div>
-                            <img src="{{ asset('blog/articles/2023/miroir/cascade-2.jpg') }}" alt="cascade caché" class="pointer-events-none">
-                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 4.5, speed: '1/250', iso: 500 } %}
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/start-4.jpg') }}" alt="cascade file langevin" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 28, apeture: 2.8, speed: '2/5', iso: 4000 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/start-5.jpg') }}" alt="cascade langevin" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 41.9, apeture: 2.8, speed: '2/5', iso: 8000 } %}
                         </div>
                     </div>
                 </div>
             </div>
             <div class="flex flex-col gap-6">
                 <div>
-                    <h3 class="text-2xl font-semibold border-b">La montée vers le Lac Miroir : Forêts dorées en Automne</h3>
+                    <h2 class="text-2xl font-semibold border-b">Sortie pêche en bateau</h2>
                     <p class="mt-4">
-                        Les mélèzes, dans leur parure dorée, contrastent avec les sommets gris et bleutés de la montagne,
-                        créant un panorama saisissant. Le sentier, avec un dénivelé modéré est accessible à tous, permettant
-                        aux randonneurs de prendre leur temps pour admirer chaque recoin de cette palette naturelle.
+                        Pour les lève-tôt, une sortie de pêche au lever du soleil est une expérience incontournable.
+                        Depuis le port de Saint-Pierre, on a loué un bateau de pêche pour explorer
+                        les eaux de l’océan Indien. Au petit matin, la mer est calme, et les premiers rayons du soleil
+                        transforment l’horizon en une palette de couleurs douces.
                     </p>
                 </div>
-                <div>
+                <div class="flex flex-col gap-4">
                     <div class="flex flex-col gap-2 md:flex-row md:gap-1">
-                        <div>
-                            <img src="{{ asset('blog/articles/2023/miroir/meleze-1.jpg') }}" alt="femme foret meleze" class="pointer-events-none">
-                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 6.3, speed: '1/160', iso: 500 } %}
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/peche.jpg') }}" alt="peche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 28, apeture: 5.6, speed: '1/250', iso: 6400 } %}
                         </div>
-                        <div>
-                            <img src="{{ asset('blog/articles/2023/miroir/meleze-2.jpg') }}" alt="meleze automne" class="pointer-events-none">
-                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 6.3, speed: '1/160', iso: 320 } %}
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/poisson.jpg') }}" alt="poisson" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 63, apeture: 5.6, speed: '1/250', iso: 6400 } %}
                         </div>
-                        <div>
-                            <img src="{{ asset('blog/articles/2023/miroir/meleze-3.jpg') }}" alt="sapin automne" class="pointer-events-none">
-                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 6.3, speed: '1/160', iso: 320 } %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="flex flex-col gap-6">
-                <div>
-                    <h3 class="text-2xl font-semibold border-b">Arrivée au Lac Miroir : Un tableau d'automne saisissant</h3>
-                    <p class="mt-4">
-                        Après environ une heure et demie de marche, vous arrivez au Lac Miroir, qui porte bien son nom.
-                        En automne, ses eaux deviennent un miroir parfait, reflétant les couleurs flamboyantes des mélèzes
-                        et les nuances douces du ciel de saison. Ce cadre unique offre aux visiteurs un spectacle
-                        magique : le lac semble se fondre avec les montagnes environnantes, tandis que des touches de rouge,
-                        d’ocre et de doré illuminent la scène. C'est le moment idéal pour une pause, un pique-nique ou
-                        simplement un moment de contemplation face à ce décor de rêve.
-                    </p>
-                </div>
-                <div>
-                    <div class="flex flex-col gap-4">
-                        <div class="flex flex-col gap-2 md:flex-row md:gap-1">
-                            <div>
-                                <img src="{{ asset('blog/articles/2023/miroir/lac-1.jpg') }}" alt="lac miroir" class="pointer-events-none">
-                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/320', iso: 640 } %}
-                            </div>
-                            <div>
-                                <img src="{{ asset('blog/articles/2023/miroir/lac-3.jpg') }}" alt="miroir femme premier plan" class="pointer-events-none">
-                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/320', iso: 500 } %}
-                            </div>
-                            <div>
-                                <img src="{{ asset('blog/articles/2023/miroir/lac-2.jpg') }}" alt="miroir foret" class="pointer-events-none">
-                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/320', iso: 640 } %}
-                            </div>
-                        </div>
-                        <div class="flex flex-col gap-2 md:flex-row md:gap-1">
-                            <div>
-                                <img src="{{ asset('blog/articles/2023/miroir/montagne-1.jpg') }}" alt="foret meleze" class="pointer-events-none">
-                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 6.3, speed: '1/320', iso: 640 } %}
-                            </div>
-                            <div>
-                                <img src="{{ asset('blog/articles/2023/miroir/montagne-2.jpg') }}" alt="montagne et foret" class="pointer-events-none">
-                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 7.1, speed: '1/320', iso: 400 } %}
-                            </div>
-                            <div>
-                                <img src="{{ asset('blog/articles/2023/miroir/montagne-3.jpg') }}" alt="vue lac montagne foret" class="pointer-events-none">
-                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 6.3, speed: '1/320', iso: 640 } %}
-                            </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/canne-peche.jpg') }}" alt="canne peche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 66.3, apeture: 8, speed: '1/1600', iso: 400 } %}
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="flex flex-col gap-6">
-                <div>
-                    <h3 class="text-2xl font-semibold border-b">Le Lac Sainte-Anne : Une excursion supplémentaire au cœur des couleurs</h3>
-                    <p class="mt-4">
-                        Pour ceux qui souhaitent prolonger l’expérience, le sentier mène également au Lac Sainte-Anne,
-                        situé à une heure de marche supplémentaire. À cette époque de l'année, le chemin vers le lac
-                        traverse des zones où les feuillages contrastent avec les parois rocheuses imposantes.
-                    </p>
-                </div>
-                <div>
                     <div class="flex flex-col gap-2 md:flex-row md:gap-1">
-                        <div>
-                            <img src="{{ asset('blog/articles/2023/miroir/anne-1.jpg') }}" alt="vue plaine" class="pointer-events-none">
-                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 6.3, speed: '1/320', iso: 640 } %}
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/bateau.jpg') }}" alt="volant bateau" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 44.9, apeture: 8, speed: '1/1600', iso: 6400 } %}
                         </div>
-                        <div>
-                            <img src="{{ asset('blog/articles/2023/miroir/anne-2.jpg') }}" alt="eau lac" class="pointer-events-none">
-                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5, speed: '1/200', iso: 640 } %}
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/bateu-sunrise.jpg') }}" alt="bateau lever soleil" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 35.9, apeture: 8, speed: '1/1600', iso: 320 } %}
                         </div>
-                        <div>
-                            <img src="{{ asset('blog/articles/2023/miroir/anne-3.jpg') }}" alt="lac avec femme" class="pointer-events-none">
-                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5, speed: '1/200', iso: 640 } %}
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/sea.jpg') }}" alt="ocean indien" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 28, apeture: 5.6, speed: '1/250', iso: 6400 } %}
                         </div>
                     </div>
                 </div>
             </div>
             <div class="flex flex-col gap-6">
                 <div>
-                    <h3 class="text-2xl font-semibold border-b">Retour à Ceillac</h3>
+                    <h2 class="text-2xl font-semibold border-b">Plages et barbecues : Un moment de convivialité créole</h2>
                     <p class="mt-4">
-                        La descente vers Ceillac permet de profiter une dernière fois de l’atmosphère automnale qui
-                        baigne le Queyras. Le sentier retour, moins physique, laisse le temps d’apprécier chaque détail
-                        de ce paysage unique, de respirer l’air frais et de ramener avec soi des souvenirs
-                        inoubliables de cette aventure.
+                        Rien de tel qu’un après-midi détente sur les plages de l’île. L’eau y est turquoise et le lagon
+                        est protégé par une barrière de corail, idéal pour la baignade et le snorkeling. Sur ces plages,
+                        la tradition du barbecue est bien ancrée. Les Réunionnais se retrouvent souvent entre amis ou
+                        en famille autour d’un « boucané » ou de grillades de poisson fraîchement pêché. L’ambiance est
+                        festive, ponctuée de rires et de musique créole, offrant aux visiteurs une immersion dans
+                        la culture chaleureuse de l’île.
                     </p>
                 </div>
-                <div>
+                <div class="flex flex-col gap-4">
                     <div class="flex flex-col gap-2 md:flex-row md:gap-1">
-                        <div>
-                            <img src="{{ asset('blog/articles/2023/miroir/retour-1.jpg') }}" alt="tronc mort automne" class="pointer-events-none">
-                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/200', iso: 400 } %}
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/plage.jpg') }}" alt="plage" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 6.3, speed: '1/400', iso: 640 } %}
                         </div>
-                        <div>
-                            <img src="{{ asset('blog/articles/2023/miroir/retour-2.jpg') }}" alt="chemin retour foret" class="pointer-events-none">
-                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/200', iso: 500 } %}
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/plage-sunset.jpg') }}" alt="plage sunset" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 92, apeture: 6.3, speed: '1/800', iso: 125 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/barbecue-ananas.jpg') }}" alt="barbecue ananas" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 56, apeture: 2.8, speed: '1/250', iso: 12800 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/plage-bateau.jpg') }}" alt="plage voilier" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 11, speed: '1/200', iso: 100 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/sunset-plage.jpg') }}" alt="sunset plage" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 200, apeture: 6.3, speed: '1/800', iso: 100 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/barbecue.jpg') }}" alt="barbecue" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 186, apeture: 6.3, speed: '1/15', iso: 6400 } %}
                         </div>
                     </div>
                 </div>
             </div>
             <div class="flex flex-col gap-6">
                 <div>
-                    <h3 class="text-2xl font-semibold border-b">Conclusion</h3>
+                    <h2 class="text-2xl font-semibold border-b">Salazie : Un paradis verdoyant au cœur des cascades</h2>
                     <p class="mt-4">
-                        Le Lac Miroir en automne est bien plus qu'une randonnée, c'est une immersion dans un tableau
-                        naturel aux couleurs changeantes et éphémères. Entre les mélèzes dorés, les reflets du lac et
-                        la lumière douce de la saison, cette escapade au cœur du Queyras est un voyage enchanteur et
-                        accessible, parfait pour les amoureux de la nature.
+                        Connue pour ses cascades impressionnantes comme le Voile de la Mariée, qui dévale en multiples
+                        chutes sur des parois verdoyantes, Salazie charme immédiatement par ses paysages d’une beauté
+                        naturelle exceptionnelle. En empruntant la route sinueuse qui mène au village de Hell-Bourg,
+                        classé parmi les plus beaux villages de France, les visiteurs découvrent une atmosphère
+                        créole authentique, avec ses cases colorées et ses jardins fleuris. Hell-Bourg est également
+                        un point de départ pour plusieurs randonnées, permettant d’explorer les forêts humides et les
+                        sentiers escarpés du cirque.
                     </p>
-                    <ul class="mt-4">
-                        <li>
-                            <strong>Meilleure période </strong> :
-                            <br> Octobre est idéal pour admirer les couleurs d’automne, mais il est conseillé de vérifier la météo, car le froid peut vite s’installer en altitude.
-                        </li>
-                        <li>
-                            <strong>Équipement recommandé</strong> :
-                            <br> Prévoyez des vêtements chauds, car les températures peuvent baisser rapidement. De bonnes chaussures de randonnée sont indispensables, le sol pouvant être plus humide en cette saison.
-                        </li>
-                        <li>
-                            <strong>Respect de la nature</strong> :
-                            <br> En cette période, la faune se prépare pour l’hiver. Veillez à respecter l’environnement et à ne pas déranger les animaux.
-                        </li>
-                    </ul>
                 </div>
-                {% include "app/pages/blog/components/data_technique.html.twig" with { duration: '3h00', km: 6, d: 570, altitude: 2245 } %}
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/voile-mariee.jpg') }}" alt="cascade voile mariee" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 36.8, apeture: 5, speed: '1/200', iso: 100 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/cascades.jpg') }}" alt="cascades" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 5.6, speed: '1/200', iso: 100 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/jardin.jpg') }}" alt="jardin" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 47.2, apeture: 5.6, speed: '1/200', iso: 320 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/walk.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 34, apeture: 5.6, speed: '1/200', iso: 500 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/feuilles.jpg') }}" alt="feuillages" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 60.4, apeture: 5.6, speed: '1/200', iso: 1250 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/cascade-brume.jpg') }}" alt="cascade brume" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 59.2, apeture: 6.3, speed: '1/800', iso: 1000 } %}
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Piton des Neiges : Un lever de soleil au sommet de La Réunion</h2>
+                    <p class="mt-4">
+                        Le Piton des Neiges, culminant à 3 070 mètres d’altitude, est le plus haut sommet de l'île et
+                        offre une vue panoramique à couper le souffle. Pour vivre pleinement l’expérience, une ascension
+                        nocturne est recommandée, permettant d’atteindre le sommet à temps pour le lever du soleil.
+                        Ce moment magique, où la lumière dorée inonde les cirques de Cilaos, Mafate et Salazie, est une
+                        récompense grandiose pour les randonneurs. En haut, le silence et l’immensité des montagnes
+                        environnantes plongent les voyageurs dans une atmosphère de pure sérénité, une expérience gravée
+                        dans les souvenirs de chaque aventurier.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/piton-0.jpg') }}" alt="group sunrise" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 5.6, speed: '1/200', iso: 12800 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/piton-1.jpg') }}" alt="femme sunrise" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 4.5, speed: '1/200', iso: 6400 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/piton-2.jpg') }}" alt="femme sunrise 2" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 2.8, speed: '1/400', iso: 6400 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/piton-3.jpg') }}" alt="homme sunrise" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 67.4, apeture: 3.2, speed: '1/320', iso: 5000 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/piton-4.jpg') }}" alt="femme sunrise 3" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 2.8, speed: '1/1250', iso: 100 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/piton-5.jpg') }}" alt="sunrise nuage" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 2.8, speed: '1/1250', iso: 100 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Piton de la Fournaise : Le volcan</h2>
+                    <p class="mt-4">
+                        Rendez-vous au Piton de la Fournaise pour une aventure matinale. La route qui mène au volcan
+                        traverse des paysages lunaires où la terre noire et les cendres témoignent des anciennes
+                        coulées de lave. Une fois sur le site, vous pourrez emprunter le sentier balisé qui descend
+                        vers l’Enclos Fouqué, une immense caldeira. Le lever du jour illumine ce paysage unique,
+                        faisant ressortir les contrastes de couleurs entre les roches sombres et le ciel clair.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/fournaise-0.jpg') }}" alt="vue sur volcan interieur" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 28, apeture: 5.6, speed: '1/400', iso: 200 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/fournaise-1.jpg') }}" alt="vue chemin volcan" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 6.3, speed: '1/400', iso: 500 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/fournaise-2.jpg') }}" alt="roche volcan" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 36.2, apeture: 5.6, speed: '1/400', iso: 640 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/fournaise-3.jpg') }}" alt="arbustre" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 42.7, apeture: 2.8, speed: '1/400', iso: 200 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/fournaise-4.jpg') }}" alt="champ" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 42.7, apeture: 5.6, speed: '1/400', iso: 200 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/fournaise-5.jpg') }}" alt="route volcanique" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 55, apeture: 7.1, speed: '1/1600', iso: 1000 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Retour aux cascades : Un plongeon en pleine nature</h2>
+                    <p class="mt-4">
+                        Le Bassin la Paix, le Bassin la Mer, situés dans un écrin de verdure,
+                        sont parfaits pour se détendre et profiter d’un moment de fraîcheur. Les amateurs de photos
+                        seront enchantés par les panoramas exceptionnels offerts par ces cascades, où l’eau, la
+                        végétation et les montagnes se mêlent dans un décor de carte postale.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/cascade-0.jpg') }}" alt="cascade paix" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 30, apeture: 8, speed: '1', iso: 4000 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/cascade-1.jpg') }}" alt="eau calme" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 52.4, apeture: 10, speed: '1/1600', iso: 12800 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/cascade-2.jpg') }}" alt="cascade" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 18, speed: '2/5', iso: 100 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/cascade-3.jpg') }}" alt="torrent" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 29.1, apeture: 8, speed: '1/4', iso: 320 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/cascade-4.jpg') }}" alt="trou cascade" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 171, apeture: 4, speed: '1/4', iso: 2000 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/cascade-5.jpg') }}" alt="cascade verdure" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 62.7, apeture: 5.6, speed: '4/5', iso: 500 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Lever de soleil sur Maïdo : Une conclusion magique</h2>
+                    <p class="mt-4">
+                        Pour clôturer ce séjour en beauté, un lever de soleil au Maïdo est un moment inoubliable.
+                        Ce belvédère, accessible en voiture, offre une vue panoramique spectaculaire sur le cirque de
+                        Mafate. Arrivés la veille, nous avons réservé notre campement pour passer une nuit en altitude.
+                        Dès la tombée du jour, un spectacle rare s’est offert à nous : une mer de nuages s’étendait
+                        sous nos pieds, éclairée faiblement par les lueurs de la lune.
+                        <br><br>
+                        Le lendemain, nous avons rejoint le belvédère avant l’aube pour observer le lever du soleil.
+                        Lorsque les premières lueurs du jour ont coloré l’horizon. Ce point de vue, à plus de 2 200 mètres
+                        d’altitude, est un privilège rare, une véritable récompense pour les voyageurs en quête de
+                        paysages grandioses et d’instants hors du temps.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/maido-0.jpg') }}" alt="mer nuage lune" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 32.7, apeture: 2.8, speed: '2/5', iso: 12800 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/maido-1.jpg') }}" alt="mer de nuage lune 2" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 2.8, speed: '2/5', iso: 12800 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/maido-4.jpg') }}" alt="aube maido" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 28, apeture: 6.3, speed: '1/500', iso: 160 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/maido-3.jpg') }}" alt="lever soleil maido" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 6.3, speed: '1/500', iso: 1000 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/maido-5.jpg') }}" alt="femme lever soleil" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 63, apeture: 6.3, speed: '1/500', iso: 400 } %}
+                        </div>
+                        <div class="w-full">
+                            <img src="{{ asset('blog/articles/2022/reunion/maido-6.jpg') }}" alt="femme lever soleil 2" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 67, apeture: 2.8, speed: '1/500', iso: 125 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             {% include "app/pages/blog/components/social_media.html.twig" %}
 
-            <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CygwG33LC7c/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/CygwG33LC7c/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Voir cette publication sur Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/CygwG33LC7c/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Une publication partagée par Shanbo (@shanbo_daltonien)</a></p></div></blockquote>
+            <div class="flex flex-col gap-2 md:grid md:grid-cols-2 lg:flex lg:flex-row">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CkWDPekskrf/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/CkWDPekskrf/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Voir cette publication sur Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/CkWDPekskrf/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Une publication partagée par Shanbo (@shanbo_daltonien)</a></p></div></blockquote>
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Ckn2rVQsiQh/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/Ckn2rVQsiQh/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Voir cette publication sur Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/Ckn2rVQsiQh/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Une publication partagée par Shanbo (@shanbo_daltonien)</a></p></div></blockquote>
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/CkysIekLSUK/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/CkysIekLSUK/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">Voir cette publication sur Instagram</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/CkysIekLSUK/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">Une publication partagée par Shanbo (@shanbo_daltonien)</a></p></div></blockquote>
+            </div>
             <script async src="//www.instagram.com/embed.js"></script>
         </article>
     </section>
