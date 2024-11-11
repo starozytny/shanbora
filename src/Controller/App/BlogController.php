@@ -12,6 +12,8 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/aventures', name: 'app_adventures_')]
 class BlogController extends AbstractController
 {
+    // LAST 6
+
     public function __construct(private readonly BoCommentaryRepository $commentaryRepository,
                                 private readonly BoViewRepository $viewRepository)
     {}
@@ -23,6 +25,15 @@ class BlogController extends AbstractController
             $this->stat(1);
         }
         return $this->render('app/pages/blog/2024/lac_orceyrette.html.twig', $this->getCommentaries(1));
+    }
+
+    #[Route('/pas-demi-lune-semaphore', name: 'semaphore')]
+    public function semaphore(): Response
+    {
+        if(!$this->isGranted('ROLE_ADMIN')) {
+            $this->stat(6);
+        }
+        return $this->render('app/pages/blog/2024/pas_demi_lune.html.twig', $this->getCommentaries(6));
     }
 
     #[Route('/lac-miroir', name: 'miroir')]
