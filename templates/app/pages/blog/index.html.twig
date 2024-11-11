@@ -50,6 +50,28 @@
                 </div>
             </div>
             <div class="p-4 bg-white border-md rounded-md flex flex-col gap-12 md:grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+                <div class="cursor-pointer group flex flex-col gap-4" onclick="location.href = '{{ path('app_adventures_morgon') }}'">
+                    <div class="w-full h-48 overflow-hidden rounded-md shadow">
+                        <img src="{{ asset('blog/list/morgon.jpg') }}" alt="sunrise pic de morgon" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                    </div>
+                    <div>
+                        <div class="text-gray-600 text-xs">5 Juillet 2024</div>
+                        <div class="mt-2">
+                            <h2 class="font-semibold text-xl">Le Pic de Morgon avec un bivouac au sommet</h2>
+                            <p>
+                                Combinant des panoramas grandioses et une nuit sous les étoiles, le Pic de Morgon
+                                est l’itinéraire parfait. Culminant à plus de 2 300 mètres d'altitude dans les Alpes du Sud,
+                                il surplombe le majestueux lac de Serre-Ponçon et offre aux randonneurs une expérience inoubliable.
+                            </p>
+                        </div>
+                        <div class="mt-2 flex flex-wrap gap-2 text-sm">
+                            <div class="text-red-400">Randonnée</div>
+                            <div class="text-red-400">Bivouac</div>
+                            <div class="text-red-400">Nature</div>
+                        </div>
+                        {% include "app/pages/blog/components/view.html.twig" with { adventureId: 6 } %}
+                    </div>
+                </div>
                 <div class="cursor-pointer group flex flex-col gap-4" onclick="location.href = '{{ path('app_adventures_semaphore') }}'">
                     <div class="w-full h-48 overflow-hidden rounded-md shadow">
                         <img src="{{ asset('blog/list/goudes.jpg') }}" alt="vue goudes" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
@@ -59,10 +81,9 @@
                         <div class="mt-2">
                             <h2 class="font-semibold text-xl">Le Pas de la Demi-lune et Sémaphore</h2>
                             <p>
-                                Le parcours du Pas de la Demi-Lune jusqu’au Sémaphore des Goudes, niché au cœur des
+                                Le Pas de la Demi-Lune jusqu’au Sémaphore des Goudes, niché au cœur des
                                 Calanques de Marseille, offre une expérience unique. Entre falaises abruptes et vues
-                                imprenables sur la Méditerranée, ce sentier expose les randonneurs aux caprices du mistral,
-                                ce vent du sud qui donne un caractère encore plus sauvage à ce lieu emblématique
+                                imprenables sur la Méditerranée, ce sentier expose les randonneurs aux caprices du mistral.
                             </p>
                         </div>
                         <div class="mt-2 flex flex-wrap gap-2 text-sm">
