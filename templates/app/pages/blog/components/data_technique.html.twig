@@ -6,6 +6,8 @@
         {% endif %}
         <div>{{ km }}km</div>
         <div>{{ d }}D+</div>
-        <div>{{ altitude }}m d'altitude</div>
+        {% if altitude is defined %}
+            <div>{{ altitude }}m d'altitude</div>
+        {% endif %}
     </div>
 </div>
