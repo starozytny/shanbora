@@ -11,34 +11,35 @@
     {% include "layout/components/page-loader.html.twig" %}
 
     <div id="body-content" class="relative overflow-hidden">
-        <nav class="relative z-20 md:z-10">
+        <nav class="relative z-20 md:z-10 bg-white">
             <div class="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
-                <div class="flex h-16 xl:h-20 items-center justify-between">
-                    <div class="w-full flex items-center justify-between">
-                        <a href="{{ path('app_homepage') }}" class="flex flex-shrink-0 items-center font-bold text-3xl">
-                            Shanbo
+                <div class="flex h-20 lg:h-40 items-center justify-between lg:items-end">
+                    <div class="w-full flex items-center justify-between lg:flex-col lg:gap-6 lg:pb-4">
+                        <a href="{{ path('app_homepage') }}" class="flex flex-col lg:justify-center lg:items-center leading-3">
+                            <span class="block font-bold text-3xl">Shanbo</span>
+                            <span class="block ft-special font-semibold">Photographe</span>
                         </a>
                         <div class="hidden md:block">
                             <div class="flex items-baseline uppercase gap-4">
-                                <a href="{{ path('app_homepage') }}" class="text-gray-600 hover:text-gray-900 pw-3 py-2 font-semibold">
+                                <a href="{{ path('app_homepage') }}" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
                                     <span>Chanbora Chhun</span>
                                 </a>
-                                <a href="{{ path('user_homepage') }}" class="{{ app.request.get('_route') in ['user_homepage', 'user_album_read'] ? "text-black" : "text-gray-600 hover:text-gray-900" }} pw-3 py-2 font-semibold">
-                                    <span>Albums</span>
+                                <a href="{{ path('user_homepage') }}" class="{{ app.request.get('_route') in ['user_homepage', 'user_album_read'] ? "text-black" : "text-gray-600 hover:text-gray-900" }} px-3 py-2 font-semibold">
+                                    <span>Vos albums</span>
                                 </a>
-                                <a href="https://www.instagram.com/shanbo_daltonien/" target="_blank" rel="external" class="text-gray-600 hover:text-gray-900 pl-3 pr-8 py-2 font-semibold border-r-2 border-gray-500">
+                                <a href="https://www.instagram.com/shanbo_daltonien/" target="_blank" rel="external" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
                                     <span>Instagram</span>
                                 </a>
                                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                    <a href="{{ path('app_logout') }}" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
-                                        <span>Déconnexion</span>
+                                    <a href="{{ path('app_logout') }}" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold hidden xl:inline">
+                                        <span>Se déconnecter</span>
                                     </a>
                                 {% endif %}
                             </div>
                         </div>
                     </div>
                     <div class="-mr-2 flex md:hidden">
-                        <button type="button" class="nav-mobile relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                        <button type="button" class="nav-mobile relative inline-flex items-center justify-center rounded-md p-2 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                                 id="nav-mobile-main-btn" aria-controls="mobile-menu" aria-expanded="false"
                         >
                             <span class="absolute -inset-0.5"></span>
@@ -55,7 +56,7 @@
                             <div class="nav-mobile fixed inset-0 overflow-hidden w-full h-full bg-gray-500 bg-opacity-75">
                                 <div class="pointer-events-none fixed inset-y-0 left-0 flex max-w-full">
                                     <div class="pointer-events-auto relative w-screen max-w-md">
-                                        <div class="absolute z-30 right-0 top-0 -ml-8 flex pr-4 pt-4 sm:-ml-10">
+                                        <div class="absolute z-30 right-0 top-0 -ml-8 flex pr-4 pt-6 sm:-ml-10">
                                             <button type="button" class="relative rounded-md text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-900">
                                                 <span class="absolute -inset-2.5"></span>
                                                 <span class="sr-only">Close panel</span>
@@ -67,23 +68,48 @@
 
                                         <div class="flex h-full flex-col overflow-y-scroll bg-white py-3.5 shadow-xl">
                                             <div class="px-4 sm:px-6">
-                                                <a href="{{ path('app_homepage') }}" class="flex flex-shrink-0 items-center font-bold text-3xl">
-                                                    Shanbo
+                                                <a href="{{ path('app_homepage') }}" class="flex flex-col leading-3">
+                                                    <span class="block font-bold text-3xl">Shanbo</span>
+                                                    <span class="block ft-special font-semibold">Photographe</span>
                                                 </a>
                                             </div>
                                             <div class="relative mt-6 flex-1 px-4 sm:px-6">
-                                                <div class="flex flex-col gap-4">
-                                                    <a href="{{ path('app_homepage') }}" class="text-gray-600 hover:text-gray-900 pl-3 pr-8 py-2 font-semibold border-r-2 border-gray-500">
+                                                <div class="flex flex-col gap-1">
+                                                    <a href="{{ path('app_homepage') }}" class="text-gray-600 hover:text-gray-900 py-2 font-semibold">
                                                         <span>Chanbora Chhun</span>
                                                     </a>
-                                                    <a href="https://www.instagram.com/shanbo_daltonien/" rel="external" target="_blank" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
-                                                        <span>Instagram</span>
+                                                    <a href="{{ path('user_homepage') }}" class="{{ app.request.get('_route') in ['user_homepage', 'user_album_read'] ? "text-black" : "text-gray-600 hover:text-gray-900" }} py-2 font-semibold">
+                                                        <span>Vos albums</span>
                                                     </a>
                                                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                                        <a href="{{ path('app_logout') }}" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
-                                                            <span>Déconnexion</span>
+                                                        <a href="{{ path('app_logout') }}" class="text-gray-600 hover:text-gray-900 mt-4 py-2 font-semibold">
+                                                            <span>Se déconnecter</span>
                                                         </a>
                                                     {% endif %}
+                                                    <a href="https://www.instagram.com/shanbo_daltonien/" target="_blank"  rel="external" class="mt-10 text-gray-600 hover:text-gray-900 py-2 font-semibold">
+                                                        <span>Instagram</span>
+                                                    </a>
+                                                    <a href="https://nompaw.fr" target="_blank" rel="external" class="text-gray-600 hover:text-gray-900 py-2 font-semibold">
+                                                        <span>Nompaw</span>
+                                                    </a>
+                                                    <div class="mt-6 flex gap-4">
+                                                        <a href="https://www.instagram.com/shanbo_daltonien/" target="_blank" rel="external" class="relative">
+                                                            <span class="icon-instagram !text-lg"></span>
+                                                            <span class="tooltip bg-gray-300 py-1 px-2 rounded absolute -top-7 right-0 text-xs hidden">Instagram</span>
+                                                        </a>
+                                                        <a href="https://unsplash.com/fr/@shanbora" target="_blank" rel="external" class="relative">
+                                                            <span class="icon-network !text-lg"></span>
+                                                            <span class="tooltip bg-gray-300 py-1 px-2 rounded absolute -top-7 right-0 text-xs hidden">Unsplash</span>
+                                                        </a>
+                                                        <a href="https://www.linkedin.com/in/chanbora-chhun-00a0a0112/" target="_blank" rel="external" class="relative">
+                                                            <span class="icon-linkedin !text-lg"></span>
+                                                            <span class="tooltip bg-gray-300 py-1 px-2 rounded absolute -top-7 right-0 text-xs hidden">LinkedIn</span>
+                                                        </a>
+                                                        <a href="https://github.com/starozytny" target="_blank" rel="external" class="relative">
+                                                            <span class="icon-github !text-lg"></span>
+                                                            <span class="tooltip bg-gray-300 py-1 px-2 rounded absolute -top-7 right-0 text-xs hidden">GitHub</span>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

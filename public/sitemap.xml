@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://chanbora-chhun.fr/aventures/pic-de-morgon</loc>
+    <lastmod>2024-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://chanbora-chhun.fr/aventures/pas-demi-lune-semaphore</loc>
+    <lastmod>2024-11-11</lastmod>
+  </url>
+  <url>
+    <loc>https://chanbora-chhun.fr/aventures/la-reunion</loc>
+    <lastmod>2024-11-08</lastmod>
+  </url>
+  <url>
+    <loc>https://chanbora-chhun.fr/aventures/lac-ayous</loc>
+    <lastmod>2024-11-07</lastmod>
+  </url>
+  <url>
+    <loc>https://chanbora-chhun.fr/aventures/lac-miroir</loc>
+    <lastmod>2024-11-07</lastmod>
+  </url>
+  <url>
+    <loc>https://chanbora-chhun.fr/aventures</loc>
+    <lastmod>2024-09-26</lastmod>
+  </url>
+  <url>
+    <loc>https://chanbora-chhun.fr/aventures/lac-orceyrette</loc>
+    <lastmod>2024-09-26</lastmod>
+  </url>
+  <url>
+    <loc>https://chanbora-chhun.fr/aventures/lac-gaube</loc>
+    <lastmod>2024-09-26</lastmod>
+  </url>
+  <url>
     <loc>https://chanbora-chhun.fr</loc>
     <lastmod>2023-09-24</lastmod>
   </url>
@@ -15,17 +47,5 @@
   <url>
     <loc>https://chanbora-chhun.fr/galerie</loc>
     <lastmod>2024-09-24</lastmod>
-  </url>
-  <url>
-    <loc>https://chanbora-chhun.fr/aventures</loc>
-    <lastmod>2024-09-26</lastmod>
-  </url>
-  <url>
-    <loc>https://chanbora-chhun.fr/aventures/lac-orceyrette</loc>
-    <lastmod>2024-09-26</lastmod>
-  </url>
-  <url>
-    <loc>https://chanbora-chhun.fr/aventures/lac-gaube</loc>
-    <lastmod>2024-09-26</lastmod>
   </url>
 </urlset>

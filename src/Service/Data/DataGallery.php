@@ -18,7 +18,7 @@ class DataGallery
         return ($obj)
             ->setTitle($title)
             ->setSlug($this->sanitizeData->slugString($title))
-            ->setDateAt($this->sanitizeData->createDatePicker($data->dateAt))
+            ->setDateAt($this->sanitizeData->createDate($data->dateAt))
         ;
     }
 }

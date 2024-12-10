@@ -45,10 +45,76 @@
                             <div class="text-red-400">Balade</div>
                             <div class="text-red-400">Nature</div>
                         </div>
+                        {% include "app/pages/blog/components/view.html.twig" with { adventureId: 1 } %}
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col gap-12 md:grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+            <div class="p-4 bg-white border-md rounded-md flex flex-col gap-12 md:grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+                <div class="cursor-pointer group flex flex-col gap-4" onclick="location.href = '{{ path('app_adventures_morgon') }}'">
+                    <div class="w-full h-48 overflow-hidden rounded-md shadow">
+                        <img src="{{ asset('blog/list/morgon.jpg') }}" alt="sunrise pic de morgon" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                    </div>
+                    <div>
+                        <div class="text-gray-600 text-xs">5 Juillet 2024</div>
+                        <div class="mt-2">
+                            <h2 class="font-semibold text-xl">Le Pic de Morgon avec un bivouac au sommet</h2>
+                            <p>
+                                Combinant des panoramas grandioses et une nuit sous les étoiles, le Pic de Morgon
+                                est l’itinéraire parfait. Culminant à plus de 2 300 mètres d'altitude dans les Alpes du Sud,
+                                il surplombe le majestueux lac de Serre-Ponçon et offre aux randonneurs une expérience inoubliable.
+                            </p>
+                        </div>
+                        <div class="mt-2 flex flex-wrap gap-2 text-sm">
+                            <div class="text-red-400">Randonnée</div>
+                            <div class="text-red-400">Bivouac</div>
+                            <div class="text-red-400">Nature</div>
+                        </div>
+                        {% include "app/pages/blog/components/view.html.twig" with { adventureId: 6 } %}
+                    </div>
+                </div>
+                <div class="cursor-pointer group flex flex-col gap-4" onclick="location.href = '{{ path('app_adventures_semaphore') }}'">
+                    <div class="w-full h-48 overflow-hidden rounded-md shadow">
+                        <img src="{{ asset('blog/list/goudes.jpg') }}" alt="vue goudes" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                    </div>
+                    <div>
+                        <div class="text-gray-600 text-xs">4 Mai 2024</div>
+                        <div class="mt-2">
+                            <h2 class="font-semibold text-xl">Le Pas de la Demi-lune et Sémaphore</h2>
+                            <p>
+                                Le Pas de la Demi-Lune jusqu’au Sémaphore des Goudes, niché au cœur des
+                                Calanques de Marseille, offre une expérience unique. Entre falaises abruptes et vues
+                                imprenables sur la Méditerranée, ce sentier expose les randonneurs aux caprices du mistral.
+                            </p>
+                        </div>
+                        <div class="mt-2 flex flex-wrap gap-2 text-sm">
+                            <div class="text-red-400">Randonnée</div>
+                            <div class="text-red-400">Calanque</div>
+                            <div class="text-red-400">Nature</div>
+                        </div>
+                        {% include "app/pages/blog/components/view.html.twig" with { adventureId: 6 } %}
+                    </div>
+                </div>
+                <div class="cursor-pointer group flex flex-col gap-4" onclick="location.href = '{{ path('app_adventures_miroir') }}'">
+                    <div class="w-full h-48 overflow-hidden rounded-md shadow">
+                        <img src="{{ asset('blog/list/miroir.jpg') }}" alt="lac miroir Queyras" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                    </div>
+                    <div>
+                        <div class="text-gray-600 text-xs">14 Octobre 2023</div>
+                        <div class="mt-2">
+                            <h2 class="font-semibold text-xl">La beauté du lac miroir dans le Queyras</h2>
+                            <p>
+                                Dans le Parc naturel régional du Queyras, le Lac Miroir est une destination prisée des
+                                randonneurs et des amoureux de la nature. Niché à plus de 2 200 mètres d'altitude, ce
+                                lac aux eaux reflète les montagnes environnantes, d'où son nom évocateur.
+                            </p>
+                        </div>
+                        <div class="mt-2 flex flex-wrap gap-2 text-sm">
+                            <div class="text-red-400">Randonnée</div>
+                            <div class="text-red-400">Nature</div>
+                        </div>
+                        {% include "app/pages/blog/components/view.html.twig" with { adventureId: 4 } %}
+                    </div>
+                </div>
                 <div class="cursor-pointer group flex flex-col gap-4" onclick="location.href = '{{ path('app_adventures_ayous') }}'">
                     <div class="w-full h-48 overflow-hidden rounded-md shadow">
                         <img src="{{ asset('blog/list/ayous.jpg') }}" alt="lac ayous Pyrénées" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
@@ -67,6 +133,7 @@
                             <div class="text-red-400">Randonnée</div>
                             <div class="text-red-400">Nature</div>
                         </div>
+                        {% include "app/pages/blog/components/view.html.twig" with { adventureId: 3 } %}
                     </div>
                 </div>
                 <div class="cursor-pointer group flex flex-col gap-4" onclick="location.href = '{{ path('app_adventures_gaube') }}'">
@@ -76,7 +143,7 @@
                     <div>
                         <div class="text-gray-600 text-xs">25 Juillet 2023</div>
                         <div class="mt-2">
-                            <h2 class="font-semibold text-xl">Le lac de Gaube dans les Pyrénées</h2>
+                            <h2 class="font-semibold text-xl">Le connu lac de Gaube dans les Pyrénées</h2>
                             <p>
                                 Le lac de Gaube offre un panorama spectaculaire sur les montagnes environnantes.
                                 Le parcours menant au lac de Gaube vous promet une immersion inoubliable dans l’un
@@ -87,6 +154,29 @@
                             <div class="text-red-400">Randonnée</div>
                             <div class="text-red-400">Nature</div>
                         </div>
+                        {% include "app/pages/blog/components/view.html.twig" with { adventureId: 2 } %}
+                    </div>
+                </div>
+                <div class="cursor-pointer group flex flex-col gap-4" onclick="location.href = '{{ path('app_adventures_reunion') }}'">
+                    <div class="w-full h-48 overflow-hidden rounded-md shadow">
+                        <img src="{{ asset('blog/list/reunion.jpg') }}" alt="lever soleil reunion mafate" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                    </div>
+                    <div>
+                        <div class="text-gray-600 text-xs">01 Novembre 2022</div>
+                        <div class="mt-2">
+                            <h2 class="font-semibold text-xl">La Réunion : ses cascades, volcans, plages et son soleil</h2>
+                            <p>
+                                La Réunion vous transporte dans un univers d’une richesse exceptionnelle : entre plages
+                                de sable, volcans, forêts tropicales et cirques vertigineux, chaque coin de
+                                l’île réserve des découvertes inoubliables.
+                            </p>
+                        </div>
+                        <div class="mt-2 flex flex-wrap gap-2 text-sm">
+                            <div class="text-red-400">Voyage</div>
+                            <div class="text-red-400">Randonnée</div>
+                            <div class="text-red-400">Nature</div>
+                        </div>
+                        {% include "app/pages/blog/components/view.html.twig" with { adventureId: 5 } %}
                     </div>
                 </div>
             </div>

@@ -9,7 +9,6 @@ use App\Entity\Main\Gallery\GaImage;
 use App\Repository\Main\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Exception;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -518,5 +517,10 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
         }
 
         return $this;
+    }
+
+    public function getIsAdmin(): bool
+    {
+        return $this->getHighRoleCode() == User::CODE_ROLE_DEVELOPER || $this->getHighRoleCode() == User::CODE_ROLE_ADMIN;
     }
 }

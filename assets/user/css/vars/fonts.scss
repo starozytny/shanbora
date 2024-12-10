@@ -33,6 +33,30 @@
 }
 
 @font-face {
+  font-family: 'cormorant';
+  src: url('../../fonts/CormorantGaramond-Medium.woff2') format('woff2'),
+  url('../../fonts/CormorantGaramond-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'cormorant';
+  src: url('../../fonts/CormorantGaramond-SemiBold.woff2') format('woff2'),
+  url('../../fonts/CormorantGaramond-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'cormorant';
+  src: url('../../fonts/CormorantGaramond-Bold.woff2') format('woff2'),
+  url('../../fonts/CormorantGaramond-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'icomoon';
   src:  url('../../fonts/icomoon.eot');
   src:  url('../../fonts/icomoon.eot') format('embedded-opentype'),
