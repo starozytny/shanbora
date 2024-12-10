@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
 
-import Inputs from "@commonFunctions/inputs";
 import Formulaire from "@commonFunctions/formulaire";
 import Validateur from "@commonFunctions/validateur";
 
@@ -39,23 +38,8 @@ class Form extends Component {
 		}
 	}
 
-	componentDidMount = () => {
-		Inputs.initDateInput(this.handleChangeDate, this.handleChange, null)
-	}
-
-	handleChange = (e, picker) => {
-		let name = e.currentTarget.name;
-		let value = e.currentTarget.value;
-
-		if (name === "dateAt") {
-			value = Inputs.dateInput(e, picker, this.state[name]);
-		}
-
-		this.setState({ [name]: value })
-	}
-
-	handleChangeDate = (name, value) => {
-		this.setState({ [name]: value })
+	handleChange = (e,) => {
+		this.setState({ [e.currentTarget.name]: e.currentTarget.value })
 	}
 
 	handleSubmit = (e) => {
@@ -68,7 +52,7 @@ class Form extends Component {
 
 		let paramsToValidate = [
 			{ type: "text", id: 'title', value: title },
-			{ type: "text", id: 'dateAt', value: dateAt },
+			{ type: "date", id: 'dateAt', value: dateAt },
 		];
 
 		let validate = Validateur.validateur(paramsToValidate)
@@ -111,7 +95,7 @@ class Form extends Component {
 								<Input identifiant="title" valeur={title} {...params0}>Titre</Input>
 							</div>
 							<div className="w-full">
-								<Input type="js-date" identifiant="dateAt" valeur={dateAt} {...params0}>Date</Input>
+								<Input type="date" identifiant="dateAt" valeur={dateAt} {...params0}>Date</Input>
 							</div>
 						</div>
 					</div>
