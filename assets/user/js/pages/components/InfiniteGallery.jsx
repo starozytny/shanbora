@@ -157,9 +157,11 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover
 					<span className="icon-chart-3"></span>
 				</div>
 				{error[index]
-					? <div className="w-full h-full bg-gray-900 text-white text-center flex items-center justify-center">
-						Cliquez pour voir la photo..
-					</div>
+					? <img
+						src={Routing.generate(URL_READ_IMAGE, { id: image.id })}
+						alt={`Photo ${image.originalName}`}
+						className="pointer-events-none w-full h-auto rounded-md group-hover:scale-105 transition-transform"
+					/>
 					: <>
 						<img
 							src={Routing.generate(URL_READ_IMAGE, { id: image.id })}
@@ -169,19 +171,19 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover
 							onLoad={() => handleImageLoad(index)} // Appelé quand l'image est chargée
 							onError={() => handleImageError(index)} // En cas d'erreur de chargement
 						/>
-						{isAdmin
-							? <div className="absolute top-2 left-2 w-[calc(100%-1rem)] flex justify-between gap-2">
-								<div className="bg-gray-300/80 w-6 h-6 rounded-full text-xs flex justify-center items-center">
-									{image.nbDownload}
-								</div>
-								<ButtonIcon type="default" icon="image" tooltipPosition="-bottom-7 right-0" tooltipWidth={130}
-											onClick={() => onCover(image.id)}>
-									Image de couverture
-								</ButtonIcon>
-							</div>
-							: null
-						}
 					</>
+				}
+				{isAdmin
+					? <div className="absolute top-2 left-2 w-[calc(100%-1rem)] flex justify-between gap-2">
+						<div className="bg-gray-300/80 w-6 h-6 rounded-full text-xs flex justify-center items-center">
+							{image.nbDownload}
+						</div>
+						<ButtonIcon type="default" icon="image" tooltipPosition="-bottom-7 right-0" tooltipWidth={130}
+									onClick={() => onCover(image.id)}>
+							Image de couverture
+						</ButtonIcon>
+					</div>
+					: null
 				}
 			</div>
 		))}
