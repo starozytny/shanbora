@@ -9,6 +9,7 @@ import { createRoot } from "react-dom/client";
 
 import AOS from "aos/dist/aos";
 import Menu from "@tailwindFunctions/menu";
+import Toastr from "@tailwindFunctions/toastr";
 
 import { ContactFormulaire } from "@appFolder/pages/components/Contact/ContactForm";
 import { Cookies, CookiesGlobalResponse } from "@tailwindComponents/Modules/Cookies/Cookies";
@@ -18,6 +19,7 @@ Routing.setRoutingData(routes);
 AOS.init();
 
 Menu.menuListener();
+Toastr.flashes();
 inputPassword();
 
 let el = document.getElementById("contacts_create");
