@@ -81,10 +81,16 @@ function textMoneyMinusInput (value, source) {
     return value;
 }
 
-function functionSelect (self, name, item) {
-    return self.state[name].some(v => v.value === item.value)
-        ? self.state[name].filter(v => v.value !== item.value)
-        : [...self.state[name], item];
+function functionSelect (self, name, item, onlyValue) {
+    if(onlyValue){
+        return self.state[name].some(v => v === item.value)
+            ? self.state[name].filter(v => v !== item.value)
+            : [...self.state[name], item.value];
+    }else{
+        return self.state[name].some(v => v.value === item.value)
+            ? self.state[name].filter(v => v.value !== item.value)
+            : [...self.state[name], item];
+    }
 }
 
 module.exports = {

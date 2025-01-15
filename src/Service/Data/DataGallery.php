@@ -19,6 +19,7 @@ class DataGallery
             ->setTitle($title)
             ->setSlug($this->sanitizeData->slugString($title))
             ->setDateAt($this->sanitizeData->createDate($data->dateAt))
+            ->setCanAccess($data->canAccess)
         ;
     }
 }

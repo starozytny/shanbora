@@ -4,22 +4,26 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
 
+import Inputs from "@commonFunctions/inputs";
 import Formulaire from "@commonFunctions/formulaire";
 import Validateur from "@commonFunctions/validateur";
 
-import { Input} from "@tailwindComponents/Elements/Fields";
+import { Input, SelectComboboxMultiple } from "@tailwindComponents/Elements/Fields";
 import { Button } from "@tailwindComponents/Elements/Button";
 
 const URL_INDEX_ELEMENTS = "admin_galleries_index";
 const URL_UPDATE_ELEMENT = "intern_api_user_gallery_albums_update";
 
-export function AlbumFormulaire ({ element }) {
+export function AlbumFormulaire ({ element, itemsUsers }) {
 	let url = Routing.generate(URL_UPDATE_ELEMENT, { id: element.id });
 
 	return  <Form
         url={url}
         title={Formulaire.setValue(element.title)}
         dateAt={Formulaire.setValueDate(element.dateAt)}
+		canAccess={Formulaire.setValue(element.canAccess, [])}
+
+		itemsUsers={itemsUsers}
     />
 }
 
@@ -34,12 +38,19 @@ class Form extends Component {
 		this.state = {
 			title: props.title,
 			dateAt: props.dateAt,
+			canAccess: props.canAccess,
 			errors: [],
 		}
 	}
 
 	handleChange = (e,) => {
 		this.setState({ [e.currentTarget.name]: e.currentTarget.value })
+	}
+
+	handleSelectMultiple = (name, item) => {
+		const newValues = Inputs.functionSelect(this, name, item, true);
+		console.log(newValues);
+		this.setState({ [name]: newValues });
 	}
 
 	handleSubmit = (e) => {
@@ -75,10 +86,11 @@ class Form extends Component {
 	}
 
 	render () {
-		const { context } = this.props;
-		const { errors, title, dateAt } = this.state;
+		const { context, itemsUsers } = this.props;
+		const { errors, title, dateAt, canAccess } = this.state;
 
 		let params0 = { errors: errors, onChange: this.handleChange }
+		let params1 = { errors: errors, onSelect: this.handleSelectMultiple }
 
 		return <form onSubmit={this.handleSubmit}>
 			<div className="flex flex-col gap-4 xl:gap-6">
@@ -97,6 +109,12 @@ class Form extends Component {
 							<div className="w-full">
 								<Input type="date" identifiant="dateAt" valeur={dateAt} {...params0}>Date</Input>
 							</div>
+						</div>
+						<div>
+							<SelectComboboxMultiple identifiant="canAccess" valeur={canAccess} items={itemsUsers}
+													{...params1} toSort={true} onlyValue={true}>
+								Accessible par d'autres utilisateurs
+							</SelectComboboxMultiple>
 						</div>
 					</div>
 				</div>

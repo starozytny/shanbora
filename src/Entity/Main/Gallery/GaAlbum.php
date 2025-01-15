@@ -51,6 +51,10 @@ class GaAlbum extends DataEntity
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $archive = null;
 
+    #[ORM\Column(nullable: true)]
+    #[Groups(['gallery_form'])]
+    private ?array $canAccess = null;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -171,6 +175,18 @@ class GaAlbum extends DataEntity
     public function setArchive(?string $archive): static
     {
         $this->archive = $archive;
+
+        return $this;
+    }
+
+    public function getCanAccess(): ?array
+    {
+        return $this->canAccess;
+    }
+
+    public function setCanAccess(?array $canAccess): static
+    {
+        $this->canAccess = $canAccess;
 
         return $this;
     }
