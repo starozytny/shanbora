@@ -121,7 +121,7 @@ export function ComboboxSimple({ identifiant, valeur, items, onSelect, placehold
     )
 }
 
-export function ComboboxMultiple({ identifiant, valeurs, items, onSelect, placeholder, btnClassName, onChange, withInput, withItems }) {
+export function ComboboxMultiple({ identifiant, valeurs, items, onSelect, placeholder, btnClassName, onChange, withInput, withItems, onlyValue }) {
     const [inputValue, setInputValue] = React.useState("")
     const [open, setOpen] = React.useState(false)
 
@@ -172,8 +172,16 @@ export function ComboboxMultiple({ identifiant, valeurs, items, onSelect, placeh
                     {valeurs
                         ? <div className="flex flex-wrap gap-1">
                             {valeurs.map((val, index) => {
+
+                                let valeurLabel = onlyValue ? val : val.inputName ? val.inputName : val.label;
+                                items.forEach(it => {
+                                    if(it.value === (onlyValue ? val : val.value)){
+                                        valeurLabel = it.label;
+                                    }
+                                })
+
                                 return <div className="flex items-stretch border border-color1-o-4 rounded-md" key={index}>
-                                    <span className="bg-color1-o-4/20 rounded-l-sm py-0.5 pl-2 pr-1.5">{val.inputName ? val.inputName : val.label}</span>
+                                    <span className="bg-color1-o-4/20 rounded-l-sm py-0.5 pl-2 pr-1.5">{valeurLabel}</span>
                                     <div onClick={(e) => handleDel(e, val)} className="flex items-center justify-center bg-color1-o-4/20 rounded-r-sm  py-0.5 px-1.5 hover:bg-color1-o-4/10 transition-colors">
                                         <span className="icon-close !text-xs"></span>
                                     </div>
@@ -220,7 +228,7 @@ export function ComboboxMultiple({ identifiant, valeurs, items, onSelect, placeh
                                         <Check
                                             className={cn(
                                                 "ml-auto",
-                                                valeurs.some(v => v.value === choice.value) ? "opacity-100" : "opacity-0",
+                                                valeurs.some(v => (onlyValue ? v : v.value) === choice.value) ? "opacity-100" : "opacity-0",
                                             )}
                                         />
                                     </CommandItem>

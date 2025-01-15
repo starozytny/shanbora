@@ -13,7 +13,9 @@ if (el) {
 
 el = document.getElementById("albums_update");
 if (el) {
-	createRoot(el).render(<AlbumFormulaire element={JSON.parse(el.dataset.obj)} />)
+	createRoot(el).render(<AlbumFormulaire element={JSON.parse(el.dataset.obj)}
+										   itemsUsers={JSON.parse(el.dataset.itemsUsers)}
+	/>)
 }
 
 let deletesAlbum = document.querySelectorAll('.delete-album');

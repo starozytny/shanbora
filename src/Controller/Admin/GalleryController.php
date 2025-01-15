@@ -3,7 +3,9 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Main\Gallery\GaAlbum;
+use App\Entity\Main\User;
 use App\Repository\Main\Gallery\GaAlbumRepository;
+use App\Repository\Main\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -29,9 +31,15 @@ class GalleryController extends AbstractController
     }
 
     #[Route('/galerie/modifier/{id}', name: 'update', options: ['expose' => true])]
-    public function update(GaAlbum $elem, SerializerInterface $serializer): Response
+    public function update(GaAlbum $elem, SerializerInterface $serializer, UserRepository $userRepository): Response
     {
         $obj = $serializer->serialize($elem, 'json', ['groups' => GaAlbum::FORM]);
-        return $this->render('admin/pages/gallery/update.html.twig', ['elem' => $elem, 'obj' => $obj]);
+        $itemsUsers = $serializer->serialize($userRepository->findAll(), 'json', ['groups' => User::SELECT]);
+
+        return $this->render('admin/pages/gallery/update.html.twig', [
+            'elem' => $elem,
+            'itemsUsers' => $itemsUsers,
+            'obj' => $obj
+        ]);
     }
 }

@@ -22,6 +22,7 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
 
     const LIST = ['user_list'];
     const FORM = ['user_form'];
+    const SELECT = ['user_select'];
 
     const CODE_ROLE_USER = 0;
     const CODE_ROLE_DEVELOPER = 1;
@@ -522,5 +523,17 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
     public function getIsAdmin(): bool
     {
         return $this->getHighRoleCode() == User::CODE_ROLE_DEVELOPER || $this->getHighRoleCode() == User::CODE_ROLE_ADMIN;
+    }
+
+    #[Groups(['user_select'])]
+    public function getValue(): ?int
+    {
+        return $this->id;
+    }
+
+    #[Groups(['user_select'])]
+    public function getLabel(): ?string
+    {
+        return trim($this->lastname . " " . $this->firstname);
     }
 }
