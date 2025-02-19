@@ -49,7 +49,6 @@ class Form extends Component {
 
 	handleSelectMultiple = (name, item) => {
 		const newValues = Inputs.functionSelect(this, name, item, true);
-		console.log(newValues);
 		this.setState({ [name]: newValues });
 	}
 

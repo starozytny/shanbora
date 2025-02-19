@@ -13,7 +13,28 @@
         <div class="w-full px-2 lg:px-8 md:min-h-[628px] lg:min-h-[562px] xl:min-h-[600px] 2xl:min-h-[668px] mt-4">
             <div class="relative bg-gray-900 rounded-2xl py-24 sm:py-48 overflow-hidden md:min-h-[628px] md:max-h-[628px] lg:min-h-[562px] lg:max-h-[562px] xl:max-h-[600px] 2xl:max-h-[668px]">
                 <div class="absolute top-0 left-0 rounded-2xl w-full h-full">
-                    <img src="{{ asset('build/app/images/homepage.jpg') }}" alt="background image" class="opacity-50 object-cover w-full h-full">
+                    <div id="slideshow" class="relative w-full h-screen overflow-hidden opacity-50">
+                        <img src="{{ asset('build/app/images/homepage1.jpg') }}" alt="background image" class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000">
+                        <img src="{{ asset('build/app/images/homepage2.jpg') }}" alt="background image" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
+                        <img src="{{ asset('build/app/images/homepage3.jpg') }}" alt="background image" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
+                    </div>
+
+                    <script>
+						document.addEventListener("DOMContentLoaded", function () {
+							let images = document.querySelectorAll("#slideshow img");
+							let current = 0;
+
+							setInterval(() => {
+								images[current].classList.remove("opacity-100");
+								images[current].classList.add("opacity-0");
+
+								current = (current + 1) % images.length;
+
+								images[current].classList.remove("opacity-0");
+								images[current].classList.add("opacity-100");
+							}, 2500);
+						});
+                    </script>
                 </div>
                 <div class="relative flex flex-col justify-between gap-12 max-w-screen-2xl mx-auto lg:flex-row lg:justify-between">
                     <div class="px-4 lg:pl-12 xl:pl-24">
