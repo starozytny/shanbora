@@ -174,15 +174,17 @@ export function ComboboxMultiple({ identifiant, valeurs, items, onSelect, placeh
                             {valeurs.map((val, index) => {
 
                                 let valeurLabel = onlyValue ? val : val.inputName ? val.inputName : val.label;
+                                let valeurItem = null;
                                 items.forEach(it => {
                                     if(it.value === (onlyValue ? val : val.value)){
                                         valeurLabel = it.label;
+                                        valeurItem = it;
                                     }
                                 })
 
                                 return <div className="flex items-stretch border border-color1-o-4 rounded-md" key={index}>
                                     <span className="bg-color1-o-4/20 rounded-l-sm py-0.5 pl-2 pr-1.5">{valeurLabel}</span>
-                                    <div onClick={(e) => handleDel(e, val)} className="flex items-center justify-center bg-color1-o-4/20 rounded-r-sm  py-0.5 px-1.5 hover:bg-color1-o-4/10 transition-colors">
+                                    <div onClick={(e) => handleDel(e, onlyValue ? valeurItem : val)} className="flex items-center justify-center bg-color1-o-4/20 rounded-r-sm  py-0.5 px-1.5 hover:bg-color1-o-4/10 transition-colors">
                                         <span className="icon-close !text-xs"></span>
                                     </div>
                                 </div>
