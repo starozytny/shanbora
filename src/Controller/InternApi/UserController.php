@@ -189,6 +189,11 @@ class UserController extends AbstractController
         }
 
         $user = $repository->findOneBy(['token' => $token]);
+
+        if($data->code != $user->getLostCode()){
+            return $apiResponse->apiJsonResponseBadRequest('Mais ça va pas ou quoi looaa ?');
+        }
+
         $user = ($user)
             ->setPassword($passwordHasher->hashPassword($user, $data->password))
             ->setLostAt(null)
