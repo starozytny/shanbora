@@ -78,6 +78,6 @@ class LoginController extends AbstractController
             }
         }
 
-        return $this->render('app/pages/security/reinit.html.twig', ['token' => $token]);
+        return $this->render('app/pages/security/reinit.html.twig', ['token' => $token, 'code' => $code]);
     }
 }

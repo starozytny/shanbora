@@ -17,6 +17,7 @@ export class Reinit extends Component {
 		super(props);
 
 		this.state = {
+			code: props.code,
 			password: "",
 			password2: "",
 			errors: [],

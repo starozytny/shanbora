@@ -38,7 +38,7 @@
                             } %}
                         </div>
                     {% else %}
-                        <div id="reinit" data-token={{ token }}>
+                        <div id="reinit" data-token={{ token }} data-code={{ code }}>
                             {% include "layout/components/tailwind/loaders/loader.html.twig" %}
                         </div>
                     {% endif %}
