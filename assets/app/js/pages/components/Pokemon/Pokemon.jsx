@@ -5,10 +5,10 @@ import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
 
 import Formulaire from "@commonFunctions/formulaire";
 
-import { Button } from "@tailwindComponents/Elements/Button";
 import { Input } from "@tailwindComponents/Elements/Fields";
-import { LoaderElements } from "@tailwindComponents/Elements/Loader";
 import { Alert } from "@tailwindComponents/Elements/Alert";
+import { Button } from "@tailwindComponents/Elements/Button";
+import { LoaderElements } from "@tailwindComponents/Elements/Loader";
 
 const URL_SEARCH_POKEMON = "intern_api_pokemons_search";
 
