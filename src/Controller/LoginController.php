@@ -9,6 +9,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Attribute\Route;
@@ -31,6 +32,30 @@ class LoginController extends AbstractController
             'last_username' => $lastUsername,
             'error' => $error
         ]);
+    }
+
+    #[Route('/espace-ppt', name: 'app_login_ppt', methods: ['GET', 'POST'])]
+    public function loginPpt(Request $request): Response
+    {
+        $valuesGranted = ["shanbo", "shanbora", "el_rey"];
+
+        $session = $request->getSession();
+
+        $username = $session->get('ppt_username');
+
+        if($request->isMethod('POST')) {
+            $username = $request->get('username');
+
+            $session->set("ppt_username", $username);
+        }
+
+        if(!in_array($username, $valuesGranted)){
+            $this->addFlash('error', 'Mais ça va pas ou quoi loaa ?');
+            return $this->redirectToRoute('app_ppt');
+        }
+
+        $this->addFlash('info', 'Salutations grand monarque.');
+        return $this->render('app/pages/ppt/espace.html.twig');
     }
 
     #[Route('/connected', name: 'app_logged')]

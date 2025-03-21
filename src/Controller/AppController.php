@@ -55,4 +55,9 @@ class AppController extends AbstractController
         return $this->render('app/pages/legales/cookies.html.twig');
     }
 
+    #[Route('/ppt', name: 'app_ppt')]
+    public function ppt(): Response
+    {
+        return $this->render('app/pages/ppt/index.html.twig');
+    }
 }

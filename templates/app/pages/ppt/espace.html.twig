@@ -1,0 +1,24 @@
+{% extends 'app/pages/gallery/template.html.twig' %}
+
+{% set page_title %}Grand monarque{% endset %}
+
+{% block main_content %}
+<div class="w-full px-2 lg:px-8">
+    <div class="mb-8 grid grid-cols-4 gap-1 max-w-screen-lg mx-auto lg:gap-4">
+        <img src="{{ asset('build/app/images/ppt/kebab.jpg') }}" alt="automne femme" class="pointer-events-non w-full h-full" loading="lazy">
+        <img src="{{ asset('build/app/images/ppt/cuisine.png') }}" alt="fashion week" class="pointer-events-none w-full h-full" loading="lazy">
+        <img src="{{ asset('build/app/images/ppt/chef.png') }}" alt="lac automne" class="pointer-events-none w-full h-full" loading="lazy">
+        <img src="{{ asset('build/app/images/ppt/manger.png') }}" alt="fashion week" class="pointer-events-none w-full h-full" loading="lazy">
+    </div>
+    <div class="md:flex md:flex-col md:justify-center md:items-center mb-48">
+        <div class="text-yellow-500 font-semibold mb-1 text-lg md:text-center">Lergadium leviosaaaaaaaa</div>
+        <h1 class="font-bold text-4xl md:text-6xl md:text-center">L'ouverture au monde</h1>
+        <p class="mt-4 text-gray-600 max-w-screen-md md:text-center">
+            La découverte des API !
+        </p>
+        <div id="pokemon" class="mt-4 w-full max-w-screen-md">
+            {% include "layout/components/tailwind/loaders/loader.html.twig" %}
+        </div>
+    </div>
+</div>
+{% endblock %}
