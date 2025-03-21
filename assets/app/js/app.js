@@ -13,6 +13,7 @@ import Menu from "@tailwindFunctions/menu";
 import { ContactFormulaire } from "@appFolder/pages/components/Contact/ContactForm";
 import { Cookies, CookiesGlobalResponse } from "@tailwindComponents/Modules/Cookies/Cookies";
 import { Pokemon } from "@appFolder/pages/components/Pokemon/Pokemon";
+
 import SplashColor from "@appFolder/pages/components/Pokemon/SplashColor";
 
 Routing.setRoutingData(routes);
