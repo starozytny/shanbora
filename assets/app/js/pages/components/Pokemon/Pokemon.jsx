@@ -28,7 +28,7 @@ export function Pokemon () {
 		}else{
 			if(specials.includes(name)){
 				setPokemon(name);
-				setType(types[getRandomInt(17)])
+				setType(name === specials[0] ? "fire" : types[getRandomInt(17)])
 			}else{
 				if(!load){
 					setLoad(true);
@@ -309,7 +309,7 @@ const borderColors = {
 
 const types = ["fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy", "normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel"]
 
-const specials = ["chhaydarong", "chanda", "chloe", "marie", "riddthy", "sophia", "oceane", "mike"]
+const specials = ["chhaydarong", "chanda", "chloe", "marie", "riddthy", "sophia", "oceane", "mike", "florian", "manon", "fiona"]
 
 function getRandomInt(max) {
 	return Math.floor(Math.random() * max);
