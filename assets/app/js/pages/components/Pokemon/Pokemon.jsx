@@ -9,6 +9,7 @@ import { Input } from "@tailwindComponents/Elements/Fields";
 import { Alert } from "@tailwindComponents/Elements/Alert";
 import { Button } from "@tailwindComponents/Elements/Button";
 import { LoaderElements } from "@tailwindComponents/Elements/Loader";
+import TiltedCard from "@appFolder/pages/components/Pokemon/TiltedCard";
 
 const URL_SEARCH_POKEMON = "intern_api_pokemons_search";
 
@@ -191,56 +192,66 @@ const PokemonCardSpecial = ({ pokemon, type }) => {
 	];
 
 	return (
-		<div className={`relative border-4 ${borderColors[type] || ""} rounded-md w-72 shadow-lg text-center font-sans`}>
-			<div className={`${bgColors[type] || "bg-gray-100"} p-4`}>
-				<div className="absolute inset-0 bg-gradient-to-r from-blue-300 via-purple-300 to-yellow-300 opacity-30 mix-blend-multiply animate-holo"></div>
+		<TiltedCard
+			containerHeight="578px"
+			containerWidth="280px"
+			imageHeight="578px"
+			imageWidth="280px"
+			rotateAmplitude={12}
+			scaleOnHover={1.2}
+			showMobileWarning={false}
+		>
+			<div className={`relative border-4 ${borderColors[type] || ""} rounded-md w-72 shadow-lg text-center font-sans`}>
+				<div className={`${bgColors[type] || "bg-gray-100"} p-4`}>
+					<div className="absolute inset-0 bg-gradient-to-r from-blue-300 via-purple-300 to-yellow-300 opacity-30 mix-blend-multiply animate-holo"></div>
 
-				<div className="flex justify-between items-center text-lg font-bold">
-					<span className="capitalize">{pokemon}</span>
-					<span className="text-red-600">{hp} HP</span>
-				</div>
+					<div className="flex justify-between items-center text-lg font-bold">
+						<span className="capitalize">{pokemon}</span>
+						<span className="text-red-600">{hp} HP</span>
+					</div>
 
-				<div className={`bg-gray-200 mt-2 border-4 shadow-md ${borderColors[type] || ""}`}>
-					<img src={'/build/app/images/ppt/pokemon/' + pokemon + '.jpg'} alt={pokemon} className="w-[245px] h-[245px] object-cover" />
-				</div>
+					<div className={`bg-gray-200 mt-2 border-4 shadow-md ${borderColors[type] || ""}`}>
+						<img src={'/build/app/images/ppt/pokemon/' + pokemon + '.jpg'} alt={pokemon} className="w-[245px] h-[245px] object-cover" />
+					</div>
 
-				<div className="flex gap-2 text-xs text-gray-600 items-center justify-center mt-1 border bg-gray-200 py-0.5 px-2">
-					<div>N° : 999</div>
-					<div>Taille : ? m</div>
-					<div>Poids : ? kg</div>
-				</div>
+					<div className="flex gap-2 text-xs text-gray-600 items-center justify-center mt-1 border bg-gray-200 py-0.5 px-2">
+						<div>N° : 999</div>
+						<div>Taille : ? m</div>
+						<div>Poids : ? kg</div>
+					</div>
 
-				<div className="flex justify-center gap-2 mt-4">
-					<span className={`text-white text-sm font-semibold px-3 py-1 rounded-full ${bgColors2[type] || "bg-gray-500"}`}>
-						{type}
-					</span>
-				</div>
+					<div className="flex justify-center gap-2 mt-4">
+						<span className={`text-white text-sm font-semibold px-3 py-1 rounded-full ${bgColors2[type] || "bg-gray-500"}`}>
+							{type}
+						</span>
+					</div>
 
-				<div className="mt-4 text-left bg-white p-3 rounded-lg shadow-inner">
-					{attacks.map((attack, index) => (
-						<div key={index} className="mt-1 border-b pb-1 text-sm">
-							<span className="font-semibold">{attack.name}</span>
-							{attack.description
-								? <p className="text-xs text-gray-600">{attack.description}</p>
-								: null
-							}
+					<div className="mt-4 text-left bg-white p-3 rounded-lg shadow-inner">
+						{attacks.map((attack, index) => (
+							<div key={index} className="mt-1 border-b pb-1 text-sm">
+								<span className="font-semibold">{attack.name}</span>
+								{attack.description
+									? <p className="text-xs text-gray-600">{attack.description}</p>
+									: null
+								}
+							</div>
+						))}
+					</div>
+
+					<div className="mt-4 flex justify-between text-sm">
+						<div>
+							<strong>Faiblesse</strong> {weakness || "None"}
 						</div>
-					))}
-				</div>
-
-				<div className="mt-4 flex justify-between text-sm">
-					<div>
-						<strong>Faiblesse</strong> {weakness || "None"}
-					</div>
-					<div>
-						<strong>Résistance</strong> {resistance || "None"}
-					</div>
-					<div>
-						<strong>Défense</strong> {defense || "None"}
+						<div>
+							<strong>Résistance</strong> {resistance || "None"}
+						</div>
+						<div>
+							<strong>Défense</strong> {defense || "None"}
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</TiltedCard>
 	);
 };
 

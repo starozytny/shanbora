@@ -48,6 +48,7 @@
         "cleave.js": "^1.6.0",
         "clsx": "^2.1.1",
         "cmdk": "1.0.0",
+        "framer-motion": "^12.5.0",
         "html-react-parser": "^5.1.18",
         "lodash": "^4.17.21",
         "lodash.debounce": "^4.0.8",
