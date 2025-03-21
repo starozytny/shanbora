@@ -15,6 +15,7 @@ const URL_SEARCH_POKEMON = "intern_api_pokemons_search";
 export function Pokemon () {
 	const [name, setName] = useState("");
 	const [pokemon, setPokemon] = useState(null);
+	const [type, setType] = useState("fire");
 	const [errors, setErrors] = useState([]);
 	const [load, setLoad] = useState(false);
 
@@ -27,6 +28,7 @@ export function Pokemon () {
 		}else{
 			if(specials.includes(name)){
 				setPokemon(name);
+				setType(types[getRandomInt(17)])
 			}else{
 				if(!load){
 					setLoad(true);
@@ -62,9 +64,9 @@ export function Pokemon () {
 		</div>
 
 		<div className="mt-4 pb-4">
-			{pokemon === "chhaydarong"
+			{specials.includes(pokemon)
 				? <div className="flex justify-center items-center">
-					<PokemonCardSpecial pokemon={pokemon} />
+					<PokemonCardSpecial pokemon={pokemon} type={type} key={pokemon} />
 				</div>
 				: load
 					? <LoaderElements />
@@ -176,14 +178,12 @@ const PokemonCardV2 = ({ pokemon }) => {
 	);
 };
 
-const PokemonCardSpecial = ({ pokemon }) => {
+const PokemonCardSpecial = ({ pokemon, type }) => {
 	let weakness="Aucun"
 	let resistance="Tout"
 
-	let type = "water";
-
-	let hp = 99999;
-	let defense = 99999;
+	let hp = pokemon !== specials[0] ? getRandomInt(99) : 99999;
+	let defense = pokemon !== specials[0] ? getRandomInt(99) : 99999;
 
 	let attacks = [
 		{ name: "Éclair", description: "Inflige 9999 dégâts." },
@@ -307,4 +307,10 @@ const borderColors = {
 	steel: "border-gray-500",
 };
 
-const specials = ["chhaydarong"]
+const types = ["fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy", "normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel"]
+
+const specials = ["chhaydarong", "chanda", "chloe", "marie", "riddthy", "sophia", "oceane", "mike"]
+
+function getRandomInt(max) {
+	return Math.floor(Math.random() * max);
+}
