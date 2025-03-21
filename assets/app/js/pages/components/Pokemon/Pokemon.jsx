@@ -309,7 +309,7 @@ const borderColors = {
 
 const types = ["fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy", "normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel"]
 
-const specials = ["chhaydarong", "chanda", "chloe", "marie", "riddthy", "sophia", "oceane", "mike", "florian", "manon", "fiona"]
+const specials = ["chhaydarong", "chanda", "chloe", "marie", "riddthy", "sophia", "oceane", "mike", "florian", "manon", "fiona", "john", "kevin", "sergio", "chhay", "yoan"]
 
 function getRandomInt(max) {
 	return Math.floor(Math.random() * max);
