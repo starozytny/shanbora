@@ -98,8 +98,8 @@ const PokemonCardV1 = ({ pokemon }) => {
 };
 
 const PokemonCardV2 = ({ pokemon }) => {
-	let weakness="Sol"
-	let resistance="Acier"
+	let weakness = "Sol"
+	let resistance = "Acier"
 
 	let type = "normal";
 	if(pokemon.types[0]){
@@ -179,8 +179,8 @@ const PokemonCardV2 = ({ pokemon }) => {
 };
 
 const PokemonCardSpecial = ({ pokemon, type }) => {
-	let weakness="Aucun"
-	let resistance="Tout"
+	let weakness = pokemon !== specials[0] ? types[getRandomInt(17)] : "Aucun";
+	let resistance = pokemon !== specials[0] ? types[getRandomInt(17)] : "Tout";
 
 	let hp = pokemon !== specials[0] ? getRandomInt(99) : 99999;
 	let defense = pokemon !== specials[0] ? getRandomInt(99) : 99999;

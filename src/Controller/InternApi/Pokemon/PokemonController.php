@@ -19,8 +19,6 @@ class PokemonController extends AbstractController
 
         $pokemon = $apiPokemon->getPokemon($data->name);
 
-        dump($pokemon);
-
         return $apiResponse->apiJsonResponseCustom($pokemon);
     }
 }
