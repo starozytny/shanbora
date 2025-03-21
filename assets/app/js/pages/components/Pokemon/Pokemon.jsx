@@ -25,22 +25,25 @@ export function Pokemon () {
 				message: "Tape sur le clavier moldu"
 			}])
 		}else{
-			if(!load){
-				setLoad(true);
+			if(specials.includes(name)){
+				setPokemon(name);
+			}else{
+				if(!load){
+					setLoad(true);
 
-				axios({ method: "POST", url: Routing.generate(URL_SEARCH_POKEMON), data: {name: name} })
-					.then(function (response) {
-						setPokemon(response.data);
-					})
-					.catch(function (error) {
-						Formulaire.displayErrors(null, error);
-					})
-					.then(function () {
-						setLoad(false)
-					})
-				;
+					axios({ method: "POST", url: Routing.generate(URL_SEARCH_POKEMON), data: {name: name} })
+						.then(function (response) {
+							setPokemon(response.data);
+						})
+						.catch(function (error) {
+							Formulaire.displayErrors(null, error);
+						})
+						.then(function () {
+							setLoad(false)
+						})
+					;
+				}
 			}
-
 		}
 	}
 
@@ -59,13 +62,18 @@ export function Pokemon () {
 		</div>
 
 		<div className="mt-4 pb-4">
-			{load
-				? <LoaderElements />
-				: pokemon
-					? <div className="flex justify-center items-center">
-						<PokemonCardV2 pokemon={pokemon} />
-					</div>
-					: pokemon === false ? <Alert type="red" icon="warning">Introuvable gros.</Alert> : null
+			{pokemon === "chhaydarong"
+				? <div className="flex justify-center items-center">
+					<PokemonCardSpecial pokemon={pokemon} />
+				</div>
+				: load
+					? <LoaderElements />
+					: pokemon
+						? <div className="flex justify-center items-center">
+							<PokemonCardV2 pokemon={pokemon} />
+						</div>
+						: pokemon === false ? <Alert type="red" icon="warning">Introuvable gros.</Alert> : null
+
 			}
 		</div>
 	</div>
@@ -168,6 +176,74 @@ const PokemonCardV2 = ({ pokemon }) => {
 	);
 };
 
+const PokemonCardSpecial = ({ pokemon }) => {
+	let weakness="Aucun"
+	let resistance="Tout"
+
+	let type = "water";
+
+	let hp = 99999;
+	let defense = 99999;
+
+	let attacks = [
+		{ name: "Éclair", description: "Inflige 9999 dégâts." },
+		{ name: "Tonnerre", description: "Inflige 9999 dégâts et peut paralyser." }
+	];
+
+	return (
+		<div className={`relative border-4 ${borderColors[type] || ""} rounded-md w-72 shadow-lg text-center font-sans`}>
+			<div className={`${bgColors[type] || "bg-gray-100"} p-4`}>
+				<div className="absolute inset-0 bg-gradient-to-r from-blue-300 via-purple-300 to-yellow-300 opacity-30 mix-blend-multiply animate-holo"></div>
+
+				<div className="flex justify-between items-center text-lg font-bold">
+					<span className="capitalize">{pokemon}</span>
+					<span className="text-red-600">{hp} HP</span>
+				</div>
+
+				<div className={`bg-gray-200 mt-2 border-4 shadow-md ${borderColors[type] || ""}`}>
+					<img src={'/build/app/images/ppt/pokemon/' + pokemon + '.jpg'} alt={pokemon} className="w-[245px] h-[245px] object-cover" />
+				</div>
+
+				<div className="flex gap-2 text-xs text-gray-600 items-center justify-center mt-1 border bg-gray-200 py-0.5 px-2">
+					<div>N° : 999</div>
+					<div>Taille : ? m</div>
+					<div>Poids : ? kg</div>
+				</div>
+
+				<div className="flex justify-center gap-2 mt-4">
+					<span className={`text-white text-sm font-semibold px-3 py-1 rounded-full ${bgColors2[type] || "bg-gray-500"}`}>
+						{type}
+					</span>
+				</div>
+
+				<div className="mt-4 text-left bg-white p-3 rounded-lg shadow-inner">
+					{attacks.map((attack, index) => (
+						<div key={index} className="mt-1 border-b pb-1 text-sm">
+							<span className="font-semibold">{attack.name}</span>
+							{attack.description
+								? <p className="text-xs text-gray-600">{attack.description}</p>
+								: null
+							}
+						</div>
+					))}
+				</div>
+
+				<div className="mt-4 flex justify-between text-sm">
+					<div>
+						<strong>Faiblesse</strong> {weakness || "None"}
+					</div>
+					<div>
+						<strong>Résistance</strong> {resistance || "None"}
+					</div>
+					<div>
+						<strong>Défense</strong> {defense || "None"}
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+};
+
 const bgColors = {
 	fire: "bg-red-100",
 	water: "bg-blue-100",
@@ -191,7 +267,7 @@ const bgColors = {
 
 const bgColors2 = {
 	fire: "bg-red-500",
-	water: "bg-blue-500",
+	water: "bg-blue-300",
 	grass: "bg-green-500",
 	electric: "bg-yellow-500",
 	psychic: "bg-pink-500",
@@ -212,7 +288,7 @@ const bgColors2 = {
 
 const borderColors = {
 	fire: "border-red-500",
-	water: "border-blue-500",
+	water: "border-blue-300",
 	grass: "border-green-500",
 	electric: "border-yellow-500",
 	psychic: "border-pink-500",
@@ -230,3 +306,5 @@ const borderColors = {
 	ghost: "border-indigo-900",
 	steel: "border-gray-500",
 };
+
+const specials = ["chhaydarong"]
