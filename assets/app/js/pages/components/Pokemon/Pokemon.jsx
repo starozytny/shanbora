@@ -186,8 +186,8 @@ const PokemonCardSpecial = ({ pokemon, type }) => {
 	let defense = pokemon !== specials[0] ? getRandomInt(99) : 99999;
 
 	let attacks = [
-		{ name: "Éclair", description: "Inflige 9999 dégâts." },
-		{ name: "Tonnerre", description: "Inflige 9999 dégâts et peut paralyser." }
+		{ name: "Éclair", description: "Inflige "+ (pokemon !== specials[0] ? getRandomInt(99) : 99999) +" dégâts." },
+		{ name: "Tonnerre", description: "Inflige "+ (pokemon !== specials[0] ? getRandomInt(99) : 99999) +" dégâts et peut paralyser." }
 	];
 
 	return (
