@@ -12,11 +12,20 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/aventures', name: 'app_adventures_')]
 class BlogController extends AbstractController
 {
-    // LAST ID 9
+    // LAST ID 10
 
     public function __construct(private readonly BoCommentaryRepository $commentaryRepository,
                                 private readonly BoViewRepository $viewRepository)
     {}
+
+    #[Route('/plateau-emparis', name: 'emparis')]
+    public function emparis(): Response
+    {
+        if(!$this->isGranted('ROLE_ADMIN')) {
+            $this->stat(10);
+        }
+        return $this->render('app/pages/blog/2024/plateau_emparis.html.twig', $this->getCommentaries(10));
+    }
 
     #[Route('/lacs-petarel', name: 'petarel')]
     public function petarel(): Response

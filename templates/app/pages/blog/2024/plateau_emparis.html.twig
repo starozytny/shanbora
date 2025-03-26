@@ -1,0 +1,196 @@
+{% extends 'app/pages/blog/template.html.twig' %}
+
+{% set page_title %}Plateau d'Emparis et bivouac au lac Noir{% endset %}
+
+{% block meta_description %}Vivez une randonnée solo inoubliable au Plateau d'Emparis, avec bivouac au Lac Noir. Profitez de paysages splendides, d’un coucher de soleil apaisant et d’une nuit étoilée sous la voie lactée. Une aventure en pleine nature à ne pas manquer.{% endblock %}
+{% block meta_keywords %}randonnée Plateau d'Emparis, bivouac Lac Noir, randonnée solo montagne, coucher de soleil montagne, nuit étoilée, voie lactée, trek Alpes, randonnée en solo, bivouac dans les Alpes, randonnée nature, aventure en montagne, randonnée bivouac, trekking France, paysages grandioses{% endblock %}
+
+{% block main_content_in %}
+    <div class="w-full min-h-56">
+        <div class="relative bg-gray-900 rounded-2xl pt-24 pb-12 sm:pt-36 sm:pb-24 overflow-hidden min-h-56">
+            <div class="absolute top-0 left-0 rounded-2xl w-full h-full">
+                <img src="{{ asset('blog/articles/2024/lauzon/cover-lauzon.jpg') }}" alt="background image" class="opacity-50 object-cover w-full h-full pointer-events-none">
+            </div>
+            <div class="relative px-4 lg:px-8">
+                <div class="text-yellow-500 font-semibold text-lg md:text-center">28 Août 2024</div>
+                <h1 class="text-white font-bold text-4xl md:text-6xl md:text-center">Plateau d'Emparis et bivouac au lac Noir en solo</h1>
+                <div class="flex items-end justify-end">
+                    <p class="mt-16 text-gray-300 text-right max-w-screen-md">
+                        Partir seul en randonnée, c’est parfois l’occasion de se retrouver, de se recentrer et de profiter
+                        pleinement de la nature. Cette randonnée au Plateau d'Emparis, avec bivouac au Lac Noir, a été
+                        l’occasion parfaite pour cela.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="mt-10 flex flex-col gap-8 w-full max-w-screen-lg mx-auto px-2 lg:px-8">
+        {% include "app/pages/blog/components/author.html.twig" %}
+        <article class="flex flex-col gap-12">
+            <div class="flex flex-col gap-6">
+                <h2 class="text-2xl font-semibold border-b">Départ</h2>
+                <p>
+                    Le trajet débute tranquillement en journée, avec un chemin bien marqué qui monte doucement vers
+                    le plateau. La montée est un peu exigeante, mais les paysages qui se dévoilent progressivement
+                    au fur et à mesure sont une vraie récompense. En solo, c’est encore plus spécial, car chaque étape
+                    est vécue en toute sérénité, avec pour seul compagnon le souffle du vent.
+                </p>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/chemin.jpg') }}" alt="chemin vers lac" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/800', iso: 250 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/pause.jpg') }}" alt="pause vue montagne" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/800', iso: 250 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/cascade-homme.jpg') }}" alt="cascade avec homme" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 1.8, speed: '1/1600', iso: 64 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/cascade.jpg') }}" alt="cascade nature" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5, speed: '1/800', iso: 125 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/lac-lauzon.jpg') }}" alt="lac du lauzon" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 4, speed: '1/320', iso: 50 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Le plateau et le lac Noir</h2>
+                    <p class="mt-4">
+                        Arrivé au Lac Noir juste avant le coucher du soleil, un sentiment de calme absolu m'envahit. L'endroit est
+                        calme, presque magique, avec les derniers rayons du soleil qui viennent caresser les montagnes. Ce moment,
+                        suspendu dans le temps, où l’on se sent tout petit face à la grandeur du paysage, est un de ceux
+                        qui marquent le plus.
+                    </p>
+                </div>
+                <div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/reflet.jpg') }}" alt="reflet nuage" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 4, speed: '1/320', iso: 80 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/lac-bleu.jpg') }}" alt="lac bleu et reflet" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 4.5, speed: '1/320', iso: 80 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/pause-bleu.jpg') }}" alt="pause a cote du lac bleu" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 4.5, speed: '1/320', iso: 80 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">La Voie Lactée</h2>
+                    <p class="mt-4">
+                        J'installe le bivouac, profite du coucher de soleil et, une fois la nuit tombée, la voie lactée
+                        se dévoile dans toute sa splendeur. Il n'y a rien de plus beau que de s'endormir sous un ciel
+                        aussi étoilé, loin de toute lumière artificielle.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/pano.jpg') }}" alt="homme marche vue cascade derriere" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/500', iso: 50, boitier: 'Xiaomi 11T pro' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/lueur.jpg') }}" alt="lueur soleil sur cascade et homme" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/1000', iso: 50, boitier: 'Xiaomi 11T pro' } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/vue.jpg') }}" alt="vue sur les montagnes" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/800', iso: 50, boitier: 'Xiaomi 11T pro' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/cascades.jpg') }}" alt="succession de cascade" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/800', iso: 50, boitier: 'Xiaomi 11T pro' } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Le réveil</h2>
+                    <p class="mt-4">
+                        Le matin, le réveil est tout aussi splendide. Le soleil commence à peine à percer l’horizon,
+                        illuminant le lac et les montagnes d’une lumière douce et dorée. C’est un vrai bonheur de se
+                        réveiller dans un endroit aussi paisible et avec cette vue incroyable devant soi.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/mer-nuage-1.jpg') }}" alt="mer de nuage 1" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 2.5, speed: '1/100', iso: 640 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/mer-nuage-2.jpg') }}" alt="mer de nuage 2" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 2.8, speed: '1/100', iso: 640 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/mer-nuage-3.jpg') }}" alt="mer de nuage 3" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 2.8, speed: '1/100', iso: 320 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/mer-nuage-4.jpg') }}" alt="mer de nuage 4" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 2.8, speed: '1/100', iso: 320 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/mer-nuage-silhouette.jpg') }}" alt="mer de nuage silhouette homme" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/200', iso: 125 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/mer-nuage-homme.jpg') }}" alt="contraste nuage homme" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/200', iso: 80 } %}
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                            <div>
+                                <img src="{{ asset('blog/articles/2024/lauzon/brume.jpg') }}" alt="brume foret" class="pointer-events-none">
+                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 80 } %}
+                            </div>
+                            <div>
+                                <img src="{{ asset('blog/articles/2024/lauzon/maison.jpg') }}" alt="brume maison" class="pointer-events-none">
+                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 64 } %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Conclusion</h2>
+                    <p class="mt-4">
+                        Si vous avez l’opportunité de faire une randonnée au Plateau d'Emparis, je vous conseille
+                        vivement de tenter l’expérience du bivouac au Lac Noir. C’est une aventure qui mêle solitude,
+                        beauté naturelle et moments d’émerveillement.
+                    </p>
+                </div>
+                {% include "app/pages/blog/components/data_technique.html.twig" with { duration: '2h40', km: 6.78, d: 841, altitude: 2103, isOnlyAller: true } %}
+                <div class="mt-4">
+                    <img src="{{ asset('blog/articles/2024/lauzon/carte.png') }}" alt="carte rando" class="pointer-events-none">
+                </div>
+            </div>
+            {% include "app/pages/blog/components/social_media.html.twig" %}
+        </article>
+    </section>
+{% endblock %}

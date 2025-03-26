@@ -50,6 +50,29 @@
                 </div>
             </div>
             <div class="p-4 bg-white border-md rounded-md flex flex-col gap-12 md:grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+                <div class="cursor-pointer group flex flex-col gap-4" onclick="location.href = '{{ path('app_adventures_emparis') }}'">
+                    <div class="w-full h-48 overflow-hidden rounded-md shadow">
+                        <img src="{{ asset('blog/list/lauzon.jpg') }}" alt="vue sur le lac du lauzon" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                    </div>
+                    <div>
+                        <div class="text-gray-600 text-xs">28 Août 2024</div>
+                        <div class="mt-2">
+                            <h2 class="font-semibold text-xl">Plateau d'Emparis et lac Noir</h2>
+                            <p>
+                                Découvrez la randonnée au Plateau d'Emparis, avec un bivouac au Lac Noir. Entre paysages
+                                grandioses, coucher de soleil apaisant, nuit sous la voie lactée et réveil magique.
+                                Laissez-vous guider dans cette aventure où chaque instant, du lever au coucher du soleil,
+                                est une invitation à la contemplation.
+                            </p>
+                        </div>
+                        <div class="mt-2 flex flex-wrap gap-2 text-sm">
+                            <div class="text-red-400">Randonnée</div>
+                            <div class="text-red-400">Bivouac</div>
+                            <div class="text-red-400">Nature</div>
+                        </div>
+                        {% include "app/pages/blog/components/view.html.twig" with { adventureId: 10 } %}
+                    </div>
+                </div>
                 <div class="cursor-pointer group flex flex-col gap-4" onclick="location.href = '{{ path('app_adventures_petarel') }}'">
                     <div class="w-full h-48 overflow-hidden rounded-md shadow">
                         <img src="{{ asset('blog/list/lauzon.jpg') }}" alt="vue sur le lac du lauzon" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
@@ -70,7 +93,7 @@
                             <div class="text-red-400">Bivouac</div>
                             <div class="text-red-400">Nature</div>
                         </div>
-                        {% include "app/pages/blog/components/view.html.twig" with { adventureId: 6 } %}
+                        {% include "app/pages/blog/components/view.html.twig" with { adventureId: 9 } %}
                     </div>
                 </div>
                 <div class="cursor-pointer group flex flex-col gap-4" onclick="location.href = '{{ path('app_adventures_lauzon') }}'">
@@ -92,7 +115,7 @@
                             <div class="text-red-400">Refuge</div>
                             <div class="text-red-400">Nature</div>
                         </div>
-                        {% include "app/pages/blog/components/view.html.twig" with { adventureId: 6 } %}
+                        {% include "app/pages/blog/components/view.html.twig" with { adventureId: 8 } %}
                     </div>
                 </div>
                 <div class="cursor-pointer group flex flex-col gap-4" onclick="location.href = '{{ path('app_adventures_morgon') }}'">
