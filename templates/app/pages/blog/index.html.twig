@@ -50,6 +50,28 @@
                 </div>
             </div>
             <div class="p-4 bg-white border-md rounded-md flex flex-col gap-12 md:grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+                <div class="cursor-pointer group flex flex-col gap-4" onclick="location.href = '{{ path('app_adventures_lauzon') }}'">
+                    <div class="w-full h-48 overflow-hidden rounded-md shadow">
+                        <img src="{{ asset('blog/list/lauzon.jpg') }}" alt="vue sur le lac du lauzon" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                    </div>
+                    <div>
+                        <div class="text-gray-600 text-xs">3 Août 2024</div>
+                        <div class="mt-2">
+                            <h2 class="font-semibold text-xl">Lac du Lauzon, lac bleu et refuge du Pigeonnier</h2>
+                            <p>
+                                Quand la montagne appelle, difficile de résister. Cette fois, direction un itinéraire
+                                d’exception : une randonnée reliant le Lac du Lauzon, le Lac Bleu et le refuge du Pigeonnier.
+                                Un parcours où chaque étape réserve son lot de merveilles.
+                            </p>
+                        </div>
+                        <div class="mt-2 flex flex-wrap gap-2 text-sm">
+                            <div class="text-red-400">Randonnée</div>
+                            <div class="text-red-400">Refuge</div>
+                            <div class="text-red-400">Nature</div>
+                        </div>
+                        {% include "app/pages/blog/components/view.html.twig" with { adventureId: 6 } %}
+                    </div>
+                </div>
                 <div class="cursor-pointer group flex flex-col gap-4" onclick="location.href = '{{ path('app_adventures_morgon') }}'">
                     <div class="w-full h-48 overflow-hidden rounded-md shadow">
                         <img src="{{ asset('blog/list/morgon.jpg') }}" alt="sunrise pic de morgon" class="w-full h-full object-cover group-hover:scale-105 transition-transform">

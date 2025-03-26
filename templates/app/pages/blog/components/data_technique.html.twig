@@ -1,5 +1,5 @@
 <div>
-    <p>Données techniques approximatives : <br></p>
+    <p>Données techniques approximatives {{ isOnlyAller is defined ? "- aller" : "" }} : <br></p>
     <div class="font-medium flex gap-4 mt-2 text-red-500">
         {% if duration is defined %}
             <div>{{ duration }}</div>
