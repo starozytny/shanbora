@@ -1,0 +1,146 @@
+{% extends 'app/pages/blog/template.html.twig' %}
+
+{% set page_title %}Randonnée automnale au lac de Sainte-Marguerite aux Orres : rencontre avec les vaches et shooting photo{% endset %}
+
+{% block meta_description %}Découvrez une magnifique randonnée automnale au lac de Sainte-Marguerite aux Orres. Entre forêts dorées, rencontre avec des vaches en liberté et shooting photo au cœur d’une nature flamboyante, cette aventure est un vrai spectacle pour les amoureux de la montagne.{% endblock %}
+{% block meta_keywords %}randonnée lac de Sainte-Marguerite, randonnée aux Orres, trek automnal, randonnée automne, bivouac montagne, paysage automnal, shooting photo nature, vaches en montagne, randonnée Alpes, randonnée Hautes-Alpes, photographie automne, nature en automne, randonnée avec animaux, couleurs automnales{% endblock %}
+
+{% block main_content_in %}
+    <div class="w-full min-h-56">
+        <div class="relative bg-gray-900 rounded-2xl pt-24 pb-12 sm:pt-36 sm:pb-24 overflow-hidden min-h-56">
+            <div class="absolute top-0 left-0 rounded-2xl w-full h-full">
+                <img src="{{ asset('blog/articles/2024/lauzon/cover-lauzon.jpg') }}" alt="background image" class="opacity-50 object-cover w-full h-full pointer-events-none">
+            </div>
+            <div class="relative px-4 lg:px-8">
+                <div class="text-yellow-500 font-semibold text-lg md:text-center">19 Octobre 2024</div>
+                <h1 class="text-white font-bold text-4xl md:text-6xl md:text-center">Randonnée automnale au lac de Sainte-Marguerite</h1>
+                <div class="flex items-end justify-end">
+                    <p class="mt-16 text-gray-300 text-right max-w-screen-md">
+                        Parfois, les randonnées offrent plus que de simples paysages : elles nous réservent de belles
+                        surprises. C’est exactement ce qui est arrivé lors de ma randonnée au lac de Sainte-Marguerite,
+                        aux Orres.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="mt-10 flex flex-col gap-8 w-full max-w-screen-lg mx-auto px-2 lg:px-8">
+        {% include "app/pages/blog/components/author.html.twig" %}
+        <article class="flex flex-col gap-12">
+            <div class="flex flex-col gap-6">
+                <h2 class="text-2xl font-semibold border-b">Départ</h2>
+                <p>
+                    Dès le départ, le chemin est bien tracé et serpente à travers des forêts aux couleurs d’automne.
+                    Les feuilles dorées et rouges créent une atmosphère magique, presque irréelle, tandis que le
+                    vent léger fait virevolter les dernières feuilles. L’odeur de l’automne, entre l'humidité de la
+                    terre et la douceur de l’air frais, rend l’atmosphère encore plus apaisante.
+                    <br><br>
+                    Mais la véritable surprise, c’est la rencontre avec les vaches. Elles paissent tranquillement sur
+                    les sentiers, sans se soucier des randonneurs si vous ne les cherchez pas.
+                </p>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/chemin.jpg') }}" alt="chemin vers lac" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/800', iso: 250 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/pause.jpg') }}" alt="pause vue montagne" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/800', iso: 250 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/cascade-homme.jpg') }}" alt="cascade avec homme" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 1.8, speed: '1/1600', iso: 64 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/cascade.jpg') }}" alt="cascade nature" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5, speed: '1/800', iso: 125 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/lac-lauzon.jpg') }}" alt="lac du lauzon" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 4, speed: '1/320', iso: 50 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Shooting improvisé</h2>
+                    <p class="mt-4">
+                        L’automne aux Orres, c’est bien plus que des feuilles qui tombent, c’est un spectacle de couleurs
+                        et de textures. Les arbres créent un tableau vivant à chaque détour de sentier. Alors, appareil photo
+                        en main, on s’est laissé guider par la lumière du soleil de l’après-midi et la richesse de la
+                        végétation pour capturer quelques moments de vie.
+                    </p>
+                </div>
+                <div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/reflet.jpg') }}" alt="reflet nuage" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 4, speed: '1/320', iso: 80 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/lac-bleu.jpg') }}" alt="lac bleu et reflet" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 4.5, speed: '1/320', iso: 80 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/pause-bleu.jpg') }}" alt="pause a cote du lac bleu" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 4.5, speed: '1/320', iso: 80 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Le lac de Sainte-Marguerite</h2>
+                    <p class="mt-4">
+                        Le lac de Sainte-Marguerite, une fois atteint, est très beau. Entouré de montagnes et baigné dans
+                        une lumière automnale douce, il offre un cadre parfait pour une pause bien méritée.
+                        On s’assoit un instant, en profitant du calme ambiant, et on admire la nature qui nous entoure.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/pano.jpg') }}" alt="homme marche vue cascade derriere" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/500', iso: 50, boitier: 'Xiaomi 11T pro' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/lueur.jpg') }}" alt="lueur soleil sur cascade et homme" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/1000', iso: 50, boitier: 'Xiaomi 11T pro' } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/vue.jpg') }}" alt="vue sur les montagnes" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/800', iso: 50, boitier: 'Xiaomi 11T pro' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/lauzon/cascades.jpg') }}" alt="succession de cascade" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/800', iso: 50, boitier: 'Xiaomi 11T pro' } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Conclusion</h2>
+                    <p class="mt-4">
+                        Cette randonnée fut bien plus qu’un simple exercice physique. Elle a été une véritable immersion
+                        dans l’automne aux Orres, une rencontre avec une nature qui se pare de ses plus belles couleurs.
+                        Et comme un bonus, un shooting photo au cœur de tout cela a ajouté une touche créative et mémorable
+                        à cette journée.
+                    </p>
+                </div>
+                {% include "app/pages/blog/components/data_technique.html.twig" with { duration: '2h00', km: 5.98, d: 617, altitude: 2246, isOnlyAller: true } %}
+                <div class="mt-4">
+                    <img src="{{ asset('blog/articles/2024/marguerite/carte.png') }}" alt="carte rando" class="pointer-events-none">
+                </div>
+            </div>
+            {% include "app/pages/blog/components/social_media.html.twig" %}
+        </article>
+    </section>
+{% endblock %}
