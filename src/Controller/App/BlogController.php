@@ -12,11 +12,47 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/aventures', name: 'app_adventures_')]
 class BlogController extends AbstractController
 {
-    // LAST 7
+    // LAST ID 11
 
     public function __construct(private readonly BoCommentaryRepository $commentaryRepository,
                                 private readonly BoViewRepository $viewRepository)
     {}
+
+    #[Route('/lac-sainte-marguerite', name: 'marguerite')]
+    public function marguerite(): Response
+    {
+        if(!$this->isGranted('ROLE_ADMIN')) {
+            $this->stat(11);
+        }
+        return $this->render('app/pages/blog/2024/sainte_marguerite.html.twig', $this->getCommentaries(11));
+    }
+
+    #[Route('/plateau-emparis', name: 'emparis')]
+    public function emparis(): Response
+    {
+        if(!$this->isGranted('ROLE_ADMIN')) {
+            $this->stat(10);
+        }
+        return $this->render('app/pages/blog/2024/plateau_emparis.html.twig', $this->getCommentaries(10));
+    }
+
+    #[Route('/lacs-petarel', name: 'petarel')]
+    public function petarel(): Response
+    {
+        if(!$this->isGranted('ROLE_ADMIN')) {
+            $this->stat(9);
+        }
+        return $this->render('app/pages/blog/2024/lacs_petarel.html.twig', $this->getCommentaries(9));
+    }
+
+    #[Route('/lac-lauzon-blue-refuge', name: 'lauzon')]
+    public function lauzon(): Response
+    {
+        if(!$this->isGranted('ROLE_ADMIN')) {
+            $this->stat(8);
+        }
+        return $this->render('app/pages/blog/2024/refuge_pigeonnier.html.twig', $this->getCommentaries(8));
+    }
 
     #[Route('/lac-orceyrette', name: 'orceyrette')]
     public function orceyrette(): Response
