@@ -26,9 +26,36 @@
 
         <div class="my-10 lg:mt-16 flex flex-col gap-16 md:gap-12">
             <div class="max-w-screen-md mx-auto">
-                <div class="cursor-pointer group flex flex-col gap-4 bg-white p-4 rounded-md md:flex-row md:gap-8" onclick="location.href = '{{ path('app_adventures_marguerite') }}'">
+                <div class="cursor-pointer group flex flex-col gap-4 bg-white p-4 rounded-md md:flex-row md:gap-8"
+                     onclick="location.href = '{{ path('app_adventures_minorque') }}'"
+                >
                     <div class="w-full h-64 overflow-hidden rounded-md shadow md:min-w-80">
                         <img src="{{ asset('blog/list/marguerite.jpg') }}" alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
+                    </div>
+                    <div>
+                        <div class="text-gray-600 text-xs">31 mars au 5 avril 2025</div>
+                        <div class="mt-2">
+                            <h2 class="font-semibold text-xl">Escapade à l'île Baléares Minorque</h2>
+                            <p>
+                                Du 31 mars au 5 avril 2025, j’ai exploré Minorque avec mon appareil photo. Criques
+                                paradisiaques, ruelles charmantes, couchers de soleil magiques et découvertes
+                                gourmandes : cinq jours riches en lumière et en souvenirs. Un vrai condensé
+                                de bonheur méditerranéen !
+                            </p>
+                        </div>
+                        <div class="mt-2 flex flex-wrap gap-2 text-sm">
+                            <div class="text-red-400">Voyage</div>
+                            <div class="text-red-400">Nature</div>
+                            <div class="text-red-400">Urbain</div>
+                        </div>
+                        {% include "app/pages/blog/components/view.html.twig" with { adventureId: 12 } %}
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 bg-white border-md rounded-md flex flex-col gap-12 md:grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+                <div class="cursor-pointer group flex flex-col gap-4" onclick="location.href = '{{ path('app_adventures_marguerite') }}'">
+                    <div class="w-full h-48 overflow-hidden rounded-md shadow">
+                        <img src="{{ asset('blog/list/marguerite.jpg') }}" alt="lac sainte marguerite" class="w-full h-full object-cover group-hover:scale-105 transition-transform">
                     </div>
                     <div>
                         <div class="text-gray-600 text-xs">16 octobre 2024</div>
@@ -48,8 +75,6 @@
                         {% include "app/pages/blog/components/view.html.twig" with { adventureId: 11 } %}
                     </div>
                 </div>
-            </div>
-            <div class="p-4 bg-white border-md rounded-md flex flex-col gap-12 md:grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
                 <div class="cursor-pointer group flex flex-col gap-4" onclick="location.href = '{{ path('app_adventures_orceyrette') }}'">
                     <div class="w-full h-48 overflow-hidden rounded-md shadow">
                         <img src="{{ asset('blog/list/orceyrette.jpg') }}" alt="lac orceyrette Alpes de France" class="w-full h-full object-cover group-hover:scale-105 transition-transform">

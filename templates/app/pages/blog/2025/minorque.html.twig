@@ -1,0 +1,214 @@
+{% extends 'app/pages/blog/template.html.twig' %}
+
+{% set page_title %}Minorque : 5 jours de lumière, de rires et de couchers de soleil{% endset %}
+
+{% block meta_description %}Découvrez notre road trip de 5 jours à Minorque : criques sublimes, couchers de soleil inoubliables, village blanc et photos au cœur de paysages méditerranéens.{% endblock %}
+{% block meta_keywords %}vacances Minorque 2025, que faire à Minorque, criques Minorque, road trip Minorque, coucher de soleil Minorque, cala Macarelleta, Binibeca, phare Punta Nati, plage Cala Turqueta, village blanc Minorque, itinéraire 5 jours Minorque, photographe à Minorque, voyage photo Baléares, visiter Ciutadella, meilleur sunset Minorque, Mont Toro Minorque, bar phare Artrutx{% endblock %}
+
+{% block main_content_in %}
+    <div class="w-full min-h-56">
+        <div class="relative bg-gray-900 rounded-2xl pt-24 pb-12 sm:pt-36 sm:pb-24 overflow-hidden min-h-56">
+            <div class="absolute top-0 left-0 rounded-2xl w-full h-full">
+                <img src="{{ asset('blog/articles/2024/marguerite/cover-marguerite.jpg') }}" alt="background image" class="opacity-50 object-cover w-full h-full pointer-events-none">
+            </div>
+            <div class="relative px-4 lg:px-8">
+                <div class="text-yellow-500 font-semibold text-lg md:text-center">31 mars au 5 avril 2025</div>
+                <h1 class="text-white font-bold text-4xl md:text-6xl md:text-center">Escapade à l'île Baléares Minorque en 5 jours</h1>
+                <div class="flex items-end justify-end">
+                    <p class="mt-16 text-gray-300 text-right max-w-screen-md">
+                        J’ai embarqué pour Minorque sans trop savoir à quoi m’attendre. Ce que j’y ai trouvé ? Une île
+                        lumineuse, pleine de contrastes, de criques aux eaux turquoise, de couchers de soleil inoubliables
+                        et de moments simples partagés face à la beauté des paysages.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="mt-10 flex flex-col gap-8 w-full max-w-screen-lg mx-auto px-2 lg:px-8">
+        {% include "app/pages/blog/components/author.html.twig" %}
+        <article class="flex flex-col gap-12">
+            <div class="flex flex-col gap-6">
+                <h2 class="text-2xl font-semibold border-b">Minorque au printemps : couchers de soleil, criques paradisiaques et souvenirs</h2>
+                <p>
+                    Du 31 mars au 5 avril 2025, j’ai eu la chance de découvrir Minorque, cette perle des Baléares encore
+                    préservée. Entre criques turquoise, villages pleins de charme, apéros au coucher du soleil et une
+                    météo parfois capricieuse, ces quelques jours ont été un vrai bol d’air méditerranéen.
+                </p>
+                <div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/marguerite/troupeau.jpg') }}" alt="troupeau de vache" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 2.8, speed: '1/500', iso: 160 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/marguerite/vache.jpg') }}" alt="vache milieu image" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 2.8, speed: '1/800', iso: 100 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/marguerite/vache-vue.jpg') }}" alt="vache avec vue arriere plan montagne" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 2.8, speed: '1/800', iso: 100 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/marguerite/montagne-vue.jpg') }}" alt="montagne cache par foret" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 2.8, speed: '1/640', iso: 100 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Jour 1 – Atterrissage, Ciutadella et premier sunset magique</h2>
+                    <p class="mt-4">
+                        Dès l’arrivée, on récupère la voiture de location (indispensable sur l’île) et on file vers Ciutadella.
+                        Des ruelles pavées, façades colorées et une ambiance tranquille. On s’installe à
+                        une terrasse pour manger, puis petite visite du jardin du palais botanique. C’est paisible,
+                        photogénique et parfait pour se mettre dans le bain.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/marguerite/marche-1.jpg') }}" alt="marche automne 1" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 1.8, speed: '1/200', iso: 160 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/marguerite/marche-2.jpg') }}" alt="marche automne 2" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 1.8, speed: '1/200', iso: 160 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/marguerite/marche-3.jpg') }}" alt="marche automne 3" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 1.8, speed: '1/200', iso: 160 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/marguerite/marche-4.jpg') }}" alt="marche automne 4" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 1.8, speed: '1/200', iso: 160 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/marguerite/portrait-1.jpg') }}" alt="portrait femme 1" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 2.8, speed: '1/200', iso: 160 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/marguerite/portrait-2.jpg') }}" alt="portrait femme 2" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 2.8, speed: '1/200', iso: 160 } %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        L’après-midi, on prend possession de notre logement à Son Xoriguer. Juste le temps de poser les
+                        valises et de repartir direction <b>Cala en Brut</b>, spot parfait pour des photos.
+                        Puis, cap sur le Pont d’en Gil pour le coucher du soleil. Le ciel s’enflamme, la
+                        lumière est folle. On sort les appareils et c’est séance photo. Un premier soir
+                        qui donne le ton du séjour !
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Jour 2 – Les plus belles calanques de l’île et sunset au phare</h2>
+                    <p class="mt-4">
+                        Objectif du jour : en prendre plein les yeux. Et clairement, Minorque ne nous a pas déçus. On
+                        commence par la plage de <b>Son Saura</b>, belle et sauvage, avant d’enchaîner avec <b>Cala Talaier</b>,
+                        <b>Cala Turqueta</b> et enfin <b>Cala Macarelleta</b>.
+                        Cette dernière est un vrai bijou : eau turquoise, sable blanc, végétation luxuriante… La lumière de
+                        l’après-midi est idéale pour faire quelques clichés dignes d’une carte postale.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/marguerite/foret.jpg') }}" alt="foret et montagne" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 4, speed: '1/400', iso: 200 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/marguerite/cascade.jpg') }}" alt="vue sur cascade dans foret" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 4, speed: '1/800', iso: 200 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/marguerite/dos-cascade.jpg') }}" alt="cascade avec femme de dos" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/500', iso: 500 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2024/marguerite/cascade-femme.jpg') }}" alt="cascade femme" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.8, speed: '1/500', iso: 500 } %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        Le soir, on termine en beauté avec un sunset incroyable au phare de <b>Punta Nati</b>. Les falaises,
+                        le vent, l’horizon à perte de vue… L’endroit est brut, puissant, photogénique à souhait.
+                        On reste là, silencieux, à regarder le soleil tomber.
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Jour 3 – Village blanc, marché local et sunset en terrasse</h2>
+                    <p class="mt-4">
+                        Changement d’ambiance avec la visite de <b>Binibeca</b>, le célèbre village blanc de Minorque.
+                        Ruelles toutes blanches, volets bleus, coins d’ombre parfaits pour faire des portraits doux
+                        et contrastés. Après avoir shooté sous tous les angles, direction Mahon pour un bon repas et
+                        un moment chill au <b>Mercat de Peix</b>.
+                    </p>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        Dans l’après-midi, montée au <b>Mont Toro</b>, le point culminant de l’île. La vue est dégagée et offre
+                        un panorama à 360° assez impressionnant. Puis, dernière escale au bar du phare d’<b>Artrutx</b> pour
+                        un coucher de soleil plus posé : tapas, boissons fraîches et ambiance détendue avec vue sur
+                        la mer. Un vrai moment de plaisir simple.
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Jour 4 – Vent, restau top et tentative de sunset avortée</h2>
+                    <p class="mt-4">
+                        Le vent s’invite sérieusement. On décide de ralentir le rythme et de se faire plaisir à midi dans
+                        un super resto à Ciutadella : <b>Moriarty</b>. Bonne cuisine, ambiance cosy, parfait pour se poser.
+                        On tente quand même une virée vers les plages du nord, mais honnêtement… pas de grand intérêt ce jour-là.
+                    </p>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        Petite visite de <b>Fornells</b>, village sympa mais vite balayé par le vent. Et malgré notre optimisme,
+                        le sunset au <b>Far de Cavalleria</b> est complètement bouché par les nuages. Dommage, mais ça fait partie du jeu !
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Jour 5 – Vent encore, mais final en beauté</h2>
+                    <p class="mt-4">
+                        Toujours du vent, mais on ne se laisse pas abattre. On file vers <b>Cala Mitjana</b>, très belle même sans
+                        baignade possible. Puis on décide de profiter à fond du dernier sunset au <b>Castell de Sant Nicolau</b> : belle
+                        lumière dorée, ambiance calme, et un moment parfait pour immortaliser ces derniers instants sur l’île.
+                    </p>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        On termine par un dîner au Franola, une belle surprise gastronomique pour clore ce séjour en douceur.
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Conclusion</h2>
+                    <p class="mt-4">
+                        Cette escapade à Minorque a été riche en paysages, en couchers de soleil inoubliables.
+                        En tant que photographe, j’ai été servi : lumières magnifiques, décors variés, et deux modèles
+                        toujours partantes des séances photos. Minorque est un vrai terrain de jeu pour les amoureux de
+                        nature, de photo et de belles ambiances.
+                    </p>
+                </div>
+            </div>
+            {% include "app/pages/blog/components/social_media.html.twig" %}
+        </article>
+    </section>
+{% endblock %}
