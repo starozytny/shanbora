@@ -4,7 +4,9 @@
         {% if focal is defined %}
             <div>{{ focal }} mm</div>
         {% endif %}
-        <div>F{{ apeture }}</div>
+        {% if apeture is defined %}
+            <div>F{{ apeture }}</div>
+        {% endif %}
         <div>{{ speed }}s</div>
         <div>ISO {{ iso }}</div>
     </div>
