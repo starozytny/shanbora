@@ -105,7 +105,7 @@ class UserController extends AbstractController
     #[Route('/create', name: 'create', options: ['expose' => true], methods: 'POST')]
     #[IsGranted('ROLE_ADMIN')]
     public function create(Request $request, ManagerRegistry $doctrine, ApiResponse $apiResponse,
-                           ValidatorService $validator, DataMain$dataEntity, UserRepository $repository,
+                           ValidatorService $validator, DataMain $dataEntity, UserRepository $repository,
                            UserPasswordHasherInterface $passwordHasher, FileUploader $fileUploader): Response
     {
         $em = $doctrine->getManager();
@@ -116,7 +116,7 @@ class UserController extends AbstractController
     #[Route('/update/{id}', name: 'update', options: ['expose' => true], methods: 'POST')]
     #[IsGranted('ROLE_USER')]
     public function update(Request $request, User $obj, ManagerRegistry $doctrine, ApiResponse $apiResponse,
-                           ValidatorService $validator, DataMain$dataEntity, UserRepository $repository,
+                           ValidatorService $validator, DataMain $dataEntity, UserRepository $repository,
                            UserPasswordHasherInterface $passwordHasher, FileUploader $fileUploader): Response
     {
         $em = $doctrine->getManager();
