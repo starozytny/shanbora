@@ -22,7 +22,7 @@ class BlogController extends AbstractController
     public function minorque(): Response
     {
         if(!$this->isGranted('ROLE_ADMIN')) {
-            $this->stat(11);
+            $this->stat(12);
         }
         return $this->render('app/pages/blog/2025/minorque.html.twig', $this->getCommentaries(12));
     }
