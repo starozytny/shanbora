@@ -35,6 +35,7 @@ security:
         ROLE_DEVELOPER: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
 
     access_control:
+         - { path: ^/intern/api/blog/stats/create,        roles: PUBLIC_ACCESS }
          - { path: ^/intern/api/blog/commentaries/create, roles: PUBLIC_ACCESS }
          - { path: ^/intern/api/users/password,           roles: PUBLIC_ACCESS }
          - { path: ^/intern/api/contacts/create,          roles: PUBLIC_ACCESS }

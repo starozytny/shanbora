@@ -1,12 +1,30 @@
 import React from "react";
+import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
+
+import axios from "axios";
+
 import { createRoot } from "react-dom/client";
 import { CommentaryFormulaire } from "@appFolder/pages/components/Blog/Commentary/CommentaryForm";
 import { CommentaryDelete } from "@appFolder/pages/components/Blog/Commentary/CommentaryDelete";
 import { CommentaryResponse } from "@appFolder/pages/components/Blog/Commentary/CommentaryResponse";
 
+const URL_CREATE_STAT = "intern_api_blog_stats_create";
+
 let el = document.getElementById("commentary_create");
 if(el){
     createRoot(el).render(<CommentaryFormulaire {...el.dataset} />)
+}
+
+let stats = document.getElementById("adventures_stats");
+if(stats){
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            axios({ method: "POST", url: Routing.generate(URL_CREATE_STAT), data: {adventureId: stats.dataset.adventureId} })
+                .then(function (response) {})
+            ;
+        }, 3000)
+    });
+    createRoot(stats).render(<CommentaryFormulaire {...stats.dataset} />)
 }
 
 let deletes = document.querySelectorAll(".commentary_delete");
