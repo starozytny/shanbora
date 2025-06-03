@@ -1,0 +1,350 @@
+{% extends 'app/pages/blog/template.html.twig' %}
+
+{% set page_title %}Roadtrip et Randonnées en Écosse : 10 jours entre lochs, montagnes et couchers de soleil{% endset %}
+
+{% block meta_description %}Récit d’un roadtrip de 10 jours en Écosse entre montagnes, lochs et randonnées. Découvrez les paysages mythiques de l’île de Skye, le Ben Nevis et Édimbourg à travers les yeux d’un photographe et randonneur passionné.{% endblock %}
+{% block meta_keywords %}roadtrip Écosse, île de Skye, Ben Nevis, randonnée Écosse, photographe voyage, Old Man of Storr, Glenfinnan, Steall Waterfall, Glencoe, street photography Édimbourg, voyage nature Écosse, récit voyage Écosse{% endblock %}
+
+{% block main_content_in %}
+    <div class="w-full min-h-56">
+        <div class="relative bg-gray-900 rounded-2xl pt-24 pb-12 sm:pt-36 sm:pb-24 overflow-hidden min-h-56">
+            <div class="absolute top-0 left-0 rounded-2xl w-full h-full">
+                <img src="{{ asset('blog/articles/2025/minorque/cover-minorque.jpg') }}" alt="background image" class="opacity-50 object-cover w-full h-full pointer-events-none">
+            </div>
+            <div class="relative px-4 lg:px-8">
+                <div class="text-yellow-500 font-semibold text-lg md:text-center">8 mai au 17 mai 2025</div>
+                <h1 class="text-white font-bold text-4xl md:text-6xl md:text-center">Roadtrip en Écosse et les Highlands en 10 jours</h1>
+                <div class="flex items-end justify-end">
+                    <p class="mt-16 text-gray-300 text-right max-w-screen-md">
+                        Ce voyage, c’était une envie de nature brute, de paysages qui serrent le cœur et de ces instants
+                        suspendus qu’on ne vit qu’en marchant, loin du réseau et des foules.
+                        <br>
+                        Je vous embarque ?
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="mt-10 flex flex-col gap-8 w-full max-w-screen-lg mx-auto px-2 lg:px-8">
+        {% include "app/pages/blog/components/author.html.twig" %}
+        <article class="flex flex-col gap-12">
+            <div class="flex flex-col gap-6">
+                <h2 class="text-2xl font-semibold border-b">Écosse sauvage : 10 jours de roadtrip entre lochs, montagnes et lumière dorée</h2>
+                <p>
+                    Du 8 au 17 mai 2025, j’ai pris la route à travers l’Écosse. Dix jours à avaler les kilomètres sur
+                    des routes sinueuses, à gravir des montagnes solitaires et à m’arrêter quand la lumière devenait
+                    trop belle pour être ignorée. Dix jours où j’ai laissé mon appareil photo capturer l’essentiel… et
+                    parfois choisi de simplement poser le regard sans le filtre d’un objectif.
+                </p>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h2 class="text-2xl font-semibold border-b">Jour 1 : Le choc des premiers kilomètres</h2>
+                <p>
+                    Mon aventure commence à Édimbourg, ville vibrante que je retrouverai à la fin du séjour. À peine la
+                    voiture récupérée, me voilà confronté à la conduite à gauche et aux routes étroites des Highlands.
+                    Les premiers kilomètres sont hésitants, la main qui cherche le levier de vitesse du mauvais côté et
+                    les habitudes de réflexes inversés. Mais très vite, la magie des paysages m’aide à oublier tout ça.
+                    <br><br>
+                    La route vers Fort Augustus dévoile déjà ce que sera ce voyage : Loch Laggan, calme absolu, l’eau est lisse comme du verre,
+                    Puis vient le Commando Memorial, lieu sobre et émouvant, avec une vue panoramique sur les montagnes de Ben Nevis.
+                    <br><br>
+                    Un petit détour me conduit aux Eas Chia Aig Waterfalls. La cascade, bien qu’à taille humaine,
+                    dégage une sérénité apaisante. Je m’y arrête longuement, bercé par le bruit de l’eau.
+                    <br><br>
+                    Enfin, arrivée à Fort Augustus au bord du légendaire Loch Ness. Pas de monstre à l’horizon, mais
+                    un village adorable et un premier sunset aux couleurs douces qui annonce la suite du voyage.
+                </p>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Jour 2 : Cap sur l’île de Skye</h2>
+                    <p class="mt-4">
+                        Le lendemain, je prends la direction de la fameuse île de Skye, ce bout du monde écossais où la météo
+                        change toutes les dix minutes et où les paysages semblent tout droit sortis d’un rêve.
+                        <br><br>
+                        Sur la route, je m’arrête devant <b class="font-semibold">Eilean Donan Castle</b>, majestueux
+                        sur son îlot, c’est l’un des plus beaux châteaux que j’ai vus. Le contraste entre la pierre grise
+                        et les eaux noires du loch est saisissant.
+                        <br><br>
+                        Pause déjeuner à Kyle of Lochalsh. Une simple sandwich et boulette de viande, mais dans ce décor, c’est un festin.
+                        <br><br>
+                        Je franchis ensuite le pont pour Skye et me dirige vers le Fairy Glen. Ce lieu est une énigme :
+                        collines arrondies, formations rocheuses étranges et végétation d’un vert intense.
+                        On se croirait dans un décor de conte celtique.
+                        <br><br>
+                        La journée se termine à Brother’s Point pour assister au coucher du soleil. La lumière dorée
+                        baigne les falaises et la mer d’un éclat irréel. Je m’installe au bord du
+                        promontoire et savoure cet instant hors du temps.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/marche.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1250', iso: 125, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/bateau.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1250', iso: 125, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/symetrie.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 4, speed: '1/1000', iso: 125 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/ruelle.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1250', iso: 125, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/puit.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1250', iso: 125, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/croix.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 1.8, speed: '1/3200', iso: 125 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/cadre.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 4, speed: '1/1000', iso: 125 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/banc.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 1.8, speed: '1/3200', iso: 125 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Jour 3 : Randonnées et solitude</h2>
+                    <p class="mt-4">
+                        Ce matin-là, je me lève à l'aube. Le ciel est encore sombre quand je gare la voiture au pied de
+                        l'Old Man of Storr. La montée est raide, le vent fouette le visage, mais à mesure que j'avance,
+                        les nuages laissent filtrer des lueurs du soleil.
+                        <br><br>
+                        Arrivé au sommet, le spectacle est magnifique. Le loch en contrebas miroite sous une lumière
+                        timide, les collines verdoyantes s’étendent à perte de vue et le Old Man, massif et solitaire,
+                        semble veiller sur cette île ancestrale. Le moment est suspendu. Je suis seul face à cette
+                        scène grandiose, et je prends le temps. Photos, bien sûr, mais aussi contemplation pure.
+                        <br><br>
+                        Je poursuis la route vers les Lealt Falls. Petite cascade encaissée dans une gorge étroite,
+                        c’est une halte rafraîchissante. Le sentier qui descend au pied de la chute offre un autre angle.
+                        J’y reste un moment à écouter le grondement de l’eau et à observer les animaux qui nichent dans la falaise.
+                        <br><br>
+                        L’après-midi, je pars pour le Quiraing, un autre monument naturel de Skye. Cette randonnée est
+                        l’une des plus impressionnantes que j’ai faites. Le sentier serpente le long de falaises abruptes.
+                        Le vent s’engouffre dans les vallons, les nuages courent sur les cimes.
+                        <br>
+                        Chaque virage dévoile un nouveau décor de film fantastique. C’est sauvage, c’est grandiose,
+                        et c’est exactement pour ça que je suis venu en Écosse.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/minorque/grain.jpg') }}" alt="marche" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1600', iso: 500, boitier: 'Sony A7 III & Minolta' } %}
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/cala.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/400', iso: 800, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/arbre.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/400', iso: 800, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/plage.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/400', iso: 800, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/minorque/plage-dos.jpg') }}" alt="marche" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/400', iso: 100, boitier: 'Sony A7 III & Minolta' } %}
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Jour 4 : Le défi Sgurr na Stri</h2>
+                    <p class="mt-4">
+                        C’est le jour de l’une des randonnées que j’attendais le plus : Sgurr na Stri.
+                        Réputée pour offrir l’un des plus beaux panoramas d’Écosse, elle se mérite.
+                        <br><br>
+                        La randonnée est longue et isolée. Les sentiers sont étroits, parfois escarpés, et demandent vigilance.
+                        Mais chaque pas m’amène un peu plus loin dans un décor minéral et silencieux.
+                        L’arrivée au sommet est saisissante. Devant moi s’étend le Loch Coruisk, entouré d’un cirque
+                        montagneux parfait. Les nuages effleurent les cimes et le vent transporte l’écho de l’eau.
+                        <br><br>
+                        Je reste là longtemps, savourant ce sentiment de bout du monde.
+                        <br><br>
+                        Le soir, je m’arrête à Kyleakin, petite bourgade en bord de mer. Sunset depuis un petit bar
+                        face au pont, fish & chips d’un foodtruck local, et cette impression douce de fin de journée accomplie.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/minorque/pano-dos.jpg') }}" alt="marche" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/800', iso: 200, boitier: 'Sony A7 III & Minolta' } %}
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/balade.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1250', iso: 200, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/porte.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/2000', iso: 320, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/escalier.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/2000', iso: 320, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/terasse.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/640', iso: 500, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/pano.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/320', iso: 1000, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Jour 5 : Magie écossaise</h2>
+                    <p class="mt-4">
+                        Après les efforts des derniers jours, je choisis une journée plus tranquille. Direction
+                        Glenfinnan, célèbre pour son viaduc où passe le Poudlard Express dans Harry Potter. Pas
+                        de train à vapeur ce jour-là, mais l’endroit reste envoûtant.
+                        <br>
+                        Le Glenfinnan Monument se dresse au bord du loch, rappelant les heures sombres et héroïques
+                        de l’histoire écossaise.
+                        <br><br>
+                        Je profite de cette journée pour me reposer. Un bon repas local et un verre de whisky.
+                        <br>
+                        Une parenthèse bienvenue dans ce roadtrip physique.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/rouge.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/640', iso: 160, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/porte-4.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/640', iso: 160, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/porte-7.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/640', iso: 160, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Jour 6 : Fort William et Steall Waterfall</h2>
+                    <p class="mt-4">
+                        Après quelques jours intenses, je prends la route vers Fort William, petite ville blottie au pied
+                        du Ben Nevis. Avant de me poser, je fais un arrêt à Corpach pour admirer l’épave rouillée
+                        d’un vieux bateau de pêcheur abandonné sur la grève.
+                        <br><br>
+                        Mais le clou de la journée, c’est la randonnée jusqu’à Steall Waterfall.
+                        Le sentier démarre dans une gorge encaissée et luxuriante. Le chemin est étroit,
+                        bordé de fougères et d’arbres tordus.
+                        <br>
+                        Au bout de quelques heures de marche, le paysage s’ouvre brusquement sur une grande prairie, cernée de
+                        montagnes escarpées. Et là, devant moi, Steall Waterfall dévale la roche en un long ruban blanc,
+                        l’une des plus hautes cascades d’Écosse.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/femme-dos.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/2500', iso: 64, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/femme-pano.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1250', iso: 160, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/cala-vent.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1600', iso: 125, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/minorque/chevaux.jpg') }}" alt="marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1250', iso: 160, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Jour 7 : Ben Nevis et Glencoe</h2>
+                    <p class="mt-4">
+                        Le réveil sonne tôt. Le Ben Nevis est dans les nuages, entièrement dissimulé par un épais
+                        brouillard gris. J’hésite. Monter dans ces conditions semble déraisonnable.
+                        Mais je suis venu pour ça, et l’Écosse m’a déjà appris à ne pas me fier aux apparences.
+                        <br><br>
+                        Je débute l’ascension sous un ciel bas, les pierres glissantes sous mes chaussures de rando.
+                        L’air est frais. Le sentier grimpe en lacets serrés. La visibilité est réduite, chaque virage
+                        révèle encore plus de brume.
+                        <br><br>
+                        Vers la mi-parcours, la lumière change. Le brouillard devient laiteux, plus clair.
+                        Puis, sans prévenir, j’émerge au-dessus de cette mer de nuages. Le ciel est d’un bleu
+                        éclatant et devant moi, les cimes des montagnes alentours percent ce tapis blanc.
+                        <br><br>
+                        La descente se fait en silence, l’esprit encore accroché là-haut. La route vers Crianlarich
+                        via Glencoe restent gravées dans ma mémoire. Les montagnes émeraude, les lochs sombres et les
+                        lumières changeantes offrent des paysages qui défilent comme dans un rêve.
+                        <br>
+                        Pas de photos sur cette route mythique. Parfois, il faut poser l’appareil et simplement vivre.
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Jours restants : Retour à Édimbourg</h2>
+                    <p class="mt-4">
+                        Après toutes ces montagnes et ces lochs, le retour à la civilisation se fait en douceur.
+                        Je retrouve Édimbourg, ses rues pavées, ses maisons victoriennes et ses monuments de pierre.
+                        <br><br>
+                        Je passe les jours restants à arpenter les ruelles, faire de la street photography, capturer les
+                        expressions des passants, les reflets dans les vitrines et les contrastes de lumière entre les
+                        bâtisses sombres et les ciels changeants.
+                        <br><br>
+                        Je grimpe sur Calton Hill pour admirer un dernier coucher de soleil. La ville s’étend à mes
+                        pieds, baignée dans des teintes or et lilas - pour un daltonien. Je termine mon voyage dans des pubs animés,
+                        autour d’un whisky.
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Conclusion</h2>
+                    <p class="mt-4">
+                        Ce roadtrip, c’est plus qu’un enchaînement de points sur une carte. C’est l’apprentissage de la
+                        lenteur, du lâcher-prise et de l’émerveillement simple.
+                        <br>
+                        Ce sont des rencontres dans des pubs et auberges de jeunesse, des randonnées où l’on se parle à soi-même,
+                        des lumières qui transforment le paysage et des souvenirs qu’aucune photo ne pourra vraiment capturer.
+                        <br>
+                        C'est aussi l'apprentissage à parfois ranger l’appareil photo pour simplement regarder. À marcher
+                        des heures pour une lumière de dix minutes. Et à apprécier cette beauté brute, imprévisible et
+                        sincère que seule l’Écosse sait offrir.
+                    </p>
+                </div>
+            </div>
+            {% include "app/pages/blog/components/social_media.html.twig" %}
+        </article>
+    </section>
+{% endblock %}

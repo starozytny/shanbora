@@ -10,10 +10,16 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/aventures', name: 'app_adventures_')]
 class BlogController extends AbstractController
 {
-    // LAST ID 12
+    // LAST ID 13
 
     public function __construct(private readonly BoCommentaryRepository $commentaryRepository)
     {}
+
+    #[Route('/ecosse-highlands-ile-de-skye', name: 'ecosse')]
+    public function ecosse(): Response
+    {
+        return $this->render('app/pages/blog/2025/ecosse.html.twig', $this->getCommentaries(13));
+    }
 
     #[Route('/minorque', name: 'minorque')]
     public function minorque(): Response
