@@ -1,0 +1,788 @@
+{% extends 'app/pages/blog/template.html.twig' %}
+
+{% set page_title %}Roadtrip et Randonnées en Écosse : 10 jours entre lochs, montagnes et couchers de soleil{% endset %}
+
+{% block meta_description %}Récit d’un roadtrip de 10 jours en Écosse entre montagnes, lochs et randonnées. Découvrez les paysages mythiques de l’île de Skye, le Ben Nevis et Édimbourg à travers les yeux d’un photographe et randonneur passionné.{% endblock %}
+{% block meta_keywords %}roadtrip Écosse, île de Skye, Ben Nevis, randonnée Écosse, photographe voyage, Old Man of Storr, Glenfinnan, Steall Waterfall, Glencoe, street photography Édimbourg, voyage nature Écosse, récit voyage Écosse{% endblock %}
+
+{% block main_content_in %}
+    <div class="w-full min-h-56">
+        <div class="relative bg-gray-900 rounded-2xl pt-24 pb-12 sm:pt-36 sm:pb-24 overflow-hidden min-h-56">
+            <div class="absolute top-0 left-0 rounded-2xl w-full h-full">
+                <img src="{{ asset('blog/articles/2025/ecosse/cover-ecosse.jpg') }}" alt="background image" class="opacity-50 object-cover w-full h-full pointer-events-none">
+            </div>
+            <div class="relative px-4 lg:px-8">
+                <div class="text-yellow-500 font-semibold text-lg md:text-center">8 mai au 17 mai 2025</div>
+                <h1 class="text-white font-bold text-4xl md:text-6xl md:text-center">Roadtrip en Écosse et les Highlands en 10 jours</h1>
+                <div class="flex items-end justify-end">
+                    <p class="mt-16 text-gray-300 text-right max-w-screen-md">
+                        Ce voyage, c’était une envie de nature brute, de paysages qui serrent le cœur et de ces instants
+                        suspendus qu’on ne vit qu’en marchant, loin du réseau et des foules.
+                        <br>
+                        Je vous embarque ?
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="mt-10 flex flex-col gap-8 w-full max-w-screen-lg mx-auto px-2 lg:px-8">
+        {% include "app/pages/blog/components/author.html.twig" %}
+        <article class="flex flex-col gap-12">
+            <div class="flex flex-col gap-6">
+                <h2 class="text-2xl font-semibold border-b">Écosse sauvage : 10 jours de roadtrip entre lochs, montagnes et lumière dorée</h2>
+                <p>
+                    Du 8 au 17 mai 2025, j’ai pris la route à travers l’Écosse. Dix jours à avaler les kilomètres sur
+                    des routes sinueuses, à gravir des montagnes solitaires et à m’arrêter quand la lumière devenait
+                    trop belle pour être ignorée. Dix jours où j’ai laissé mon appareil photo capturer l’essentiel… et
+                    parfois choisi de simplement poser le regard sans le filtre d’un objectif.
+                </p>
+            </div>
+            <div class="flex flex-col gap-6">
+                <h2 class="text-2xl font-semibold border-b">Jour 1 : Le choc des premiers kilomètres</h2>
+                <p>
+                    Mon aventure commence à <b>Édimbourg</b>, ville vibrante que je retrouverai à la fin du séjour. À peine la
+                    voiture récupérée, me voilà confronté à la conduite à gauche et aux routes étroites des Highlands.
+                    Les premiers kilomètres sont hésitants, la main qui cherche le levier de vitesse du mauvais côté et
+                    les habitudes de réflexes inversés. Mais très vite, la magie des paysages m’aide à oublier tout ça.
+                    <br><br>
+                    La route vers Fort Augustus dévoile déjà ce que sera ce voyage : <b>Loch Laggan</b>, calme absolu, l’eau est lisse comme du verre,
+                    Puis vient le <b>Commando Memorial</b>, lieu sobre et émouvant, avec une vue panoramique sur les montagnes de Ben Nevis.
+                </p>
+                <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/ecosse/laggan.jpg') }}" alt="lac" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/160', iso: 250, boitier: 'Sony A7 III & Minolta' } %}
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/ecosse/bridge.jpg') }}" alt="pont" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/160', iso: 250, boitier: 'Sony A7 III & Minolta' } %}
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/ecosse/commando.jpg') }}" alt="statues" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/160', iso: 125, boitier: 'Sony A7 III & Minolta' } %}
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/ecosse/peinture.jpg') }}" alt="mouton style peinture" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1600', iso: 80, boitier: 'Sony A7 III & Minolta' } %}
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        Un petit détour me conduit aux <b>Eas Chia Aig Waterfalls</b>. La cascade, bien qu’à taille humaine,
+                        dégage une sérénité apaisante. Je m’y arrête longuement, bercé par le bruit de l’eau.
+                        <br><br>
+                        Enfin, arrivée à <b>Fort Augustus</b> au bord du légendaire <b>Loch Ness</b>. Pas de monstre à l’horizon, mais
+                        un village adorable et un premier sunset aux couleurs douces qui annoncent la suite du voyage.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/eas-0.jpg') }}" alt="cascade" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 2.8, speed: '3/5', iso: 320 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/eas-1.jpg') }}" alt="deux cascades" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 2.8, speed: '1/2', iso: 200 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/loch-ness.jpg') }}" alt="femme regarde lac" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 8, speed: '1/200', iso: 320 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/ness.jpg') }}" alt="loch ness" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/125', iso: 400, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/fort-sunset-0.jpg') }}" alt="ciel debut sunset" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 2.8, speed: '1/1000', iso: 100 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/fort-sunset-1.jpg') }}" alt="fin sunset" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 4, speed: '1/1000', iso: 80 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/boat.jpg') }}" alt="bateau sunset" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 4, speed: '1/500', iso: 125 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Jour 2 : Cap sur l’île de Skye</h2>
+                    <p class="mt-4">
+                        Le lendemain, je prends la direction de la fameuse <b>île de Skye</b>, ce bout du monde écossais où la météo
+                        change toutes les dix minutes et où les paysages semblent tout droit sortis d’un rêve.
+                        <br><br>
+                        Sur la route, je m’arrête devant <b>Eilean Donan Castle</b>, majestueux
+                        sur son îlot, c’est l’un des plus beaux châteaux que j’ai vus. Le contraste entre la pierre grise
+                        et les eaux noires du loch est saisissant.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/fenetre.jpg') }}" alt="vue cascade par fenetre" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/250', iso: 250, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/castle.jpg') }}" alt="chateau" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1000', iso: 80, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/canon.jpg') }}" alt="canon" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/800', iso: 160, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/arbre.jpg') }}" alt="arbre" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1000', iso: 80, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/lac.jpg') }}" alt="berge" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/200', iso: 100, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/oiseau.jpg') }}" alt="ile avec mouette" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1600', iso: 160, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        Pause déjeuner à <b>Kyle of Lochalsh</b>. Une simple sandwich et boulette de viande, mais dans ce décor, c’est un festin.
+                        <br><br>
+                        Je franchis ensuite le pont pour Skye et me dirige vers le <b>Fairy Glen</b>. Ce lieu est une énigme :
+                        collines arrondies, formations rocheuses étranges et végétation d’un vert intense.
+                        On se croirait dans un décor de conte celtique.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/view.jpg') }}" alt="vue sur village" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1600', iso: 160, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/view-bridge.jpg') }}" alt="vue sur pont" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1600', iso: 160, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/view-bridge-2.jpg') }}" alt="vue sur pont caché" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1600', iso: 160, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/path.jpg') }}" alt="chemin en pierre" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/800', iso: 250, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/fairy-path.jpg') }}" alt="chemin vers montagne" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/200', iso: 320, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/fairy.jpg') }}" alt="fairy glen" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/800', iso: 250, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        La journée se termine à <b>Brother’s Point</b> pour assister au coucher du soleil. La lumière dorée
+                        baigne les falaises et la mer d’un éclat irréel. Je m’installe au bord du
+                        promontoire et savoure cet instant hors du temps.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/boat-sunset.jpg') }}" alt="bateau echoué" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/400', iso: 200, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/man.jpg') }}" alt="homme sur falaise" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1000', iso: 200, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/plage.jpg') }}" alt="vue sur plage" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1000', iso: 200, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/falaise-2.jpg') }}" alt="falaise" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 4, speed: '1/1000', iso: 100 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/mouton.jpg') }}" alt="mouton" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/400', iso: 80, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/falaise.jpg') }}" alt="falaise" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 4, speed: '1/1000', iso: 100 } %}
+                        </div>
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/ecosse/brother.jpg') }}" alt="grande vue sur falaise" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 4, speed: '1/1000', iso: 100 } %}
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/sunset-car.jpg') }}" alt="sunset voiture" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/640', iso: 80 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/retro.jpg') }}" alt="sunset sur retro" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/640', iso: 80 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Jour 3 : Randonnées et solitude</h2>
+                    <p class="mt-4">
+                        Ce matin-là, je me lève à l'aube. Le ciel est encore sombre quand je gare la voiture au pied de
+                        l'<b>Old Man of Storr</b>. La montée est raide, le vent fouette le visage, mais à mesure que j'avance,
+                        les nuages laissent filtrer des lueurs du soleil.
+                        <br><br>
+                        Arrivé au sommet, le spectacle est magnifique. Le loch en contrebas miroite sous une lumière
+                        timide, les collines verdoyantes s’étendent à perte de vue et le Old Man, massif et solitaire,
+                        semble veiller sur cette île ancestrale. Le moment est suspendu. Je suis seul face à cette
+                        scène grandiose, et je prends le temps. Photos, bien sûr, mais aussi contemplation pure.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/route.jpg') }}" alt="route" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/500', iso: 80 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/plaine.jpg') }}" alt="plaine" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/500', iso: 80 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/mort.jpg') }}" alt="arbre mort" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/500', iso: 100 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/retour-1.jpg') }}" alt="chemin mort avec un passant" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1250', iso: 160, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/mini-lac.jpg') }}" alt="bout de lac" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/500', iso: 100 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/pano.jpg') }}" alt="lac et route" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/500', iso: 100 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/old-man-0.jpg') }}" alt="old man of storr avec chemin" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/250', iso: 160, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/old-man-1.jpg') }}" alt="old man of storr sur chemin" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/250', iso: 160, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/old-man-2.jpg') }}" alt="old man of storr les trois pierres" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/250', iso: 160, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        Je poursuis la route vers les <b>Lealt Falls</b>. Petite cascade encaissée dans une gorge étroite,
+                        c’est une halte rafraîchissante. Le sentier qui descend au pied de la chute offre un autre angle.
+                        J’y reste un moment à écouter le grondement de l’eau et à observer les animaux qui nichent dans la falaise.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/ecosse/moutons.jpg') }}" alt="moutons sur falaise" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/250', iso: 250, boitier: 'Sony A7 III & Minolta' } %}
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/ecosse/plage-bunker.jpg') }}" alt="plage bunker" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/250', iso: 250, boitier: 'Sony A7 III & Minolta' } %}
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/ecosse/waterfalls.jpg') }}" alt="cascade" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/4', iso: 800, boitier: 'Sony A7 III & Minolta' } %}
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        L’après-midi, je pars pour le <b>Quiraing</b>, un autre monument naturel de Skye. Cette randonnée est
+                        l’une des plus impressionnantes que j’ai faites. Le sentier serpente le long de falaises abruptes.
+                        Le vent s’engouffre dans les vallons, les nuages courent sur les cimes.
+                        <br>
+                        Chaque virage dévoile un nouveau décor de film fantastique. C’est sauvage, c’est grandiose,
+                        et c’est exactement pour ça que je suis venu en Écosse.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/dune.jpg') }}" alt="montagne route" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/200', iso: 80, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/montaine.jpg') }}" alt="lac forme coeur" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/200', iso: 80, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/desert.jpg') }}" alt="chemin vers plaine" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/500', iso: 160, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/ecosse/route-quiraing.jpg') }}" alt="grande vue sur route quiraing" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/200', iso: 80, boitier: 'Sony A7 III & Minolta' } %}
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/quiraing-view.jpg') }}" alt="vue quiraing" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/500', iso: 80, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/plage-noir.jpg') }}" alt="vue plage depuis guiraing" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/800', iso: 160, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/quiraing.jpg') }}" alt="vue cote quiraing" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/800', iso: 160, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Jour 4 : Le défi Sgurr na Stri</h2>
+                    <p class="mt-4">
+                        C’est le jour de l’une des randonnées que j’attendais le plus : <b>Sgurr na Stri</b>.
+                        Réputée pour offrir l’un des plus beaux panoramas d’Écosse, elle se mérite.
+                        <br><br>
+                        La randonnée est longue et isolée. Les sentiers sont étroits, parfois escarpés, et demandent vigilance.
+                        Mais chaque pas m’amène un peu plus loin dans un décor minéral et silencieux.
+                        L’arrivée au sommet est saisissante. Devant moi s’étend le Loch Coruisk, entouré d’un cirque
+                        montagneux parfait. Les nuages effleurent les cimes et le vent transporte l’écho de l’eau.
+                        <br><br>
+                        Je reste là longtemps, savourant ce sentiment de bout du monde.
+                        <br><br>
+                        Le soir, je m’arrête à <b>Kyleakin</b>, petite bourgade en bord de mer. Sunset depuis un petit bar
+                        face au pont, fish & chips d’un foodtruck local, et cette impression douce de fin de journée accomplie.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/croisement.jpg') }}" alt="find mer croisement" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/640', iso: 125, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/fleuves.jpg') }}" alt="fin lac croisement" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/640', iso: 125, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/bout.jpg') }}" alt="lac" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/400', iso: 125, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/plage-sgurr.jpg') }}" alt="plage mer" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/640', iso: 125, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/montagne.jpg') }}" alt="montagne" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/200', iso: 125, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/sunset-bridge.jpg') }}" alt="sunset pont et deux passants ombres" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/2000', iso: 125, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/mi-sunset.jpg') }}" alt="sunset avec pont" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1250', iso: 200, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/end-sunset.jpg') }}" alt="sunset pont avec bout de soleil" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/640', iso: 125, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Jour 5 : Magie écossaise</h2>
+                    <p class="mt-4">
+                        Après les efforts des derniers jours, je choisis une journée plus tranquille. Direction
+                        <b>Glenfinnan</b>, célèbre pour son viaduc où passe le Poudlard Express dans Harry Potter. Pas
+                        de train à vapeur ce jour-là, mais l’endroit reste envoûtant.
+                        <br>
+                        Le <b>Glenfinnan Monument</b> se dresse au bord du loch, rappelant les heures sombres et héroïques
+                        de l’histoire écossaise.
+                        <br><br>
+                        Je profite de cette journée pour me reposer. Un bon repas local et un verre de whisky.
+                        <br>
+                        Une parenthèse bienvenue dans ce roadtrip physique.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/boat-echoue.jpg') }}" alt="bateau echoué dans eaux" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/2000', iso: 80, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/tour.jpg') }}" alt="tour" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/400', iso: 200, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/water.jpg') }}" alt="paysage" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/640', iso: 160, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/viaduc.jpg') }}" alt="viaduc" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 125 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/train.jpg') }}" alt="viaduc avecc train en marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/400', iso: 200, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/moi.jpg') }}" alt="chanbora chhun avec un telephone" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/160', iso: 200, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/book.jpg') }}" alt="chanbora chhun avec un livre" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/200', iso: 640, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Jour 6 : Fort William et Steall Waterfall</h2>
+                    <p class="mt-4">
+                        Après quelques jours intenses, je prends la route vers <b>Fort William</b>, petite ville blottie au pied
+                        du Ben Nevis. Avant de me poser, je fais un arrêt à <b>Corpach</b> pour admirer l’épave rouillée
+                        d’un vieux bateau de pêcheur abandonné sur la grève.
+                        <br><br>
+                        Mais le clou de la journée, c’est la randonnée jusqu’à <b>Steall Waterfall</b>.
+                        Le sentier démarre dans une gorge encaissée et luxuriante. Le chemin est étroit,
+                        bordé de fougères et d’arbres tordus.
+                        <br>
+                        Au bout de quelques heures de marche, le paysage s’ouvre brusquement sur une grande prairie, cernée de
+                        montagnes escarpées. Et là, devant moi, Steall Waterfall dévale la roche en un long ruban blanc,
+                        l’une des plus hautes cascades d’Écosse.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/bateau-proche.jpg') }}" alt="bateau urbex proche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1250', iso: 640, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/bateau.jpg') }}" alt="bateau urbex cote" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1250', iso: 640, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/bateau-devant.jpg') }}" alt="bateau urbex devant" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/1250', iso: 640, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/waterf.jpg') }}" alt="longue vue sur cascade" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/200', iso: 640, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/waterf-2.jpg') }}" alt="cascade proche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/160', iso: 800, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/waterf-1.jpg') }}" alt="cascade cache avec branches" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/200', iso: 800, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Jour 7 : Ben Nevis et Glencoe</h2>
+                    <p class="mt-4">
+                        Le réveil sonne tôt. Le <b>Ben Nevis</b> est dans les nuages, entièrement dissimulé par un épais
+                        brouillard gris. J’hésite. Monter dans ces conditions semble déraisonnable.
+                        Mais je suis venu pour ça, et l’Écosse m’a déjà appris à ne pas me fier aux apparences.
+                        <br><br>
+                        Je débute l’ascension sous un ciel bas, les pierres glissantes sous mes chaussures de rando.
+                        L’air est frais. Le sentier grimpe en lacets serrés. La visibilité est réduite, chaque virage
+                        révèle encore plus de brume.
+                        <br><br>
+                        Vers la mi-parcours, la lumière change. Le brouillard devient laiteux, plus clair.
+                        Puis, sans prévenir, j’émerge au-dessus de cette mer de nuages. Le ciel est d’un bleu
+                        éclatant et devant moi, les cimes des montagnes alentours percent ce tapis blanc.
+                        <br><br>
+                        La descente se fait en silence, l’esprit encore accroché là-haut. La route vers <b>Crianlarich</b>
+                        via <b>Glencoe</b> restent gravées dans ma mémoire. Les montagnes émeraude, les lochs sombres et les
+                        lumières changeantes offrent des paysages qui défilent comme dans un rêve.
+                        <br>
+                        Pas de photos sur cette route mythique. Parfois, il faut poser l’appareil et simplement vivre.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/nuages.jpg') }}" alt="mer de nuage" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 2.4, speed: '1/4000', iso: 25, boitier: 'S24+' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/femme-roche.jpg') }}" alt="femme sur rocher" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/400', iso: 100, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/femme.jpg') }}" alt="femme sur rocher lit" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/400', iso: 100, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/ecosse/femme-pano.jpg') }}" alt="femme sur rocher avec vue" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/400', iso: 100, boitier: 'Sony A7 III & Minolta' } %}
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Jours restants : Retour à Édimbourg</h2>
+                    <p class="mt-4">
+                        Après toutes ces montagnes et ces lochs, le retour à la civilisation se fait en douceur.
+                        Je retrouve <b>Édimbourg</b>, ses rues pavées, ses maisons victoriennes et ses monuments de pierre.
+                        <br><br>
+                        Je passe les jours restants à arpenter les ruelles, faire de la street photography, capturer les
+                        expressions des passants, les reflets dans les vitrines et les contrastes de lumière entre les
+                        bâtisses sombres et les ciels changeants.
+                        <br><br>
+                        Je grimpe sur <b>Calton Hill</b> pour admirer un dernier coucher de soleil. La ville s’étend à mes
+                        pieds, baignée dans des teintes or et lilas - pour un daltonien. Je termine mon voyage dans des pubs animés,
+                        autour d’un whisky.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/femme-chemin.jpg') }}" alt="femme marche" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/2000', iso: 160, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/tombe.jpg') }}" alt="femme cimetiere" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/2000', iso: 160, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/chateau.jpg') }}" alt="vue sur chateau" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/250', iso: 640, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/university.jpg') }}" alt="femme devant universite" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/320', iso: 200, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/rue-0.jpg') }}" alt="rue animée" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/200', iso: 250, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/rue-1.jpg') }}" alt="facade animée" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/200', iso: 200, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/rue-2.jpg') }}" alt="rue animée colorée" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/320', iso: 160, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/chateau-fleur.jpg') }}" alt="chateau avec fleurs" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/250', iso: 160, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/monument.jpg') }}" alt="vue sur monument" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/500', iso: 200, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/urbain.jpg') }}" alt="vue sur la ville" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/200', iso: 250, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/calton.jpg') }}" alt="calton hill" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/400', iso: 125, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/ecosse/shop.jpg') }}" alt="boutique" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/100', iso: 1600, boitier: 'Sony A7 III & Minolta' } %}
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/batiment.jpg') }}" alt="place" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/160', iso: 1000, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/fenetre-lumiere.jpg') }}" alt="fenetre allumé" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/160', iso: 1000, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/eglise.jpg') }}" alt="carreau eglise" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/160', iso: 400, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/cafe.jpg') }}" alt="fenetre cafe" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/160', iso: 1250, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/ecosse/silhouette-0.jpg') }}" alt="femme sunset dos" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 1.8, speed: '1/800', iso: 100 } %}
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/ecosse/silhouette-1.jpg') }}" alt="femme sunset visage lateral" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 1.8, speed: '1/1250', iso: 100 } %}
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/ecosse/silhouette-2.jpg') }}" alt="femme sunset dos cheveux mouvement" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 1.8, speed: '1/800', iso: 100 } %}
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/car.jpg') }}" alt="sunset voiture audi" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 1.8, speed: '1/1600', iso: 250 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/market.jpg') }}" alt="market street" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 1.8, speed: '1/2000', iso: 125} %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/lueurs.jpg') }}" alt="personnes descend escalier sunset" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 1.8, speed: '1/2000', iso: 125 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/feux.jpg') }}" alt="feux passage pietons" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 1.8, speed: '1/2000', iso: 125 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/marche-0.jpg') }}" alt="femme traverse la route" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/200', iso: 320, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/marche-1.jpg') }}" alt="femme sunset regarde telephone" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 1.8, speed: '1/2000', iso: 1250} %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/marche-2.jpg') }}" alt="femme traverse passage pieton" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/200', iso: 500, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/marche-3.jpg') }}" alt="trois personnages sunset" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/250', iso: 200, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/ecosse/people-0.jpg') }}" alt="des gens en sunset trottoir" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 1.8, speed: '1/1000', iso: 125 } %}
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/ecosse/people-1.jpg') }}" alt="voiture en marche sunset" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 1.8, speed: '1/1250', iso: 100 } %}
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/ecosse/people-2.jpg') }}" alt="foule pour sunset" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 1.8, speed: '1/1250', iso: 125 } %}
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/market-0.jpg') }}" alt="restuarant nuit" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/200', iso: 640, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/market-1.jpg') }}" alt="entree restaurant lumineux" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/125', iso: 1000, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/market-2.jpg') }}" alt="entree ruelle" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/100', iso: 1600, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/market-3.jpg') }}" alt="lumiere" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/200', iso: 640, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/walk-0.jpg') }}" alt="femme dos marche sunset" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/200', iso: 500, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/walk-1.jpg') }}" alt="femmes sunset march vers le bas a trois" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/200', iso: 500, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/walk-2.jpg') }}" alt="femmes sunset march vers le bas a trois" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/200', iso: 500, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/ecosse/walk-3.jpg') }}" alt="femmes sunset march vers le bas a trois" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58, speed: '1/200', iso: 500, boitier: 'Sony A7 III & Minolta' } %}
+                        </div>
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/ecosse/last-sunset.jpg') }}" alt="fin du sunset" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 1.8, speed: '1/8000', iso: 160 } %}
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="text-2xl font-semibold border-b">Conclusion</h2>
+                    <p class="mt-4">
+                        Ce roadtrip, c’est plus qu’un enchaînement de points sur une carte. C’est l’apprentissage de la
+                        lenteur, du lâcher-prise et de l’émerveillement simple.
+                        <br><br>
+                        Ce sont des rencontres dans des pubs et auberges de jeunesse, des randonnées où l’on se parle à soi-même,
+                        des lumières qui transforment le paysage et des souvenirs qu’aucune photo ne pourra vraiment capturer.
+                        <br><br>
+                        C'est aussi l'apprentissage à parfois ranger l’appareil photo pour simplement regarder. À marcher
+                        des heures pour une lumière de dix minutes. Et à apprécier cette beauté brute, imprévisible et
+                        sincère que seule l’Écosse sait offrir.
+                        <br><br>
+                        Si tu veux le plan du roadtrip, écris moi !
+                    </p>
+                </div>
+            </div>
+            {% include "app/pages/blog/components/social_media.html.twig" %}
+        </article>
+    </section>
+{% endblock %}
