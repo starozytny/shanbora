@@ -24,7 +24,6 @@ if(stats){
             ;
         }, 3000)
     });
-    createRoot(stats).render(<CommentaryFormulaire {...stats.dataset} />)
 }
 
 let deletes = document.querySelectorAll(".commentary_delete");
