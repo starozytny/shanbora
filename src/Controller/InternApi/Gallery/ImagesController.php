@@ -5,7 +5,7 @@ namespace App\Controller\InternApi\Gallery;
 use App\Entity\Main\Gallery\GaImage;
 use App\Entity\Main\User;
 use App\Repository\Main\Gallery\GaImageRepository;
-use App\Service\ApiResponse;
+use App\Service\Api\ApiResponse;
 use App\Service\Gallery\ImageService;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

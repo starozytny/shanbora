@@ -5,7 +5,7 @@ namespace App\Controller\InternApi\Blog;
 use App\Entity\Blog\BoCommentary;
 use App\Entity\Main\User;
 use App\Repository\Blog\BoCommentaryRepository;
-use App\Service\ApiResponse;
+use App\Service\Api\ApiResponse;
 use App\Service\Data\DataBlog;
 use App\Service\MailerService;
 use App\Service\SettingsService;

@@ -6,7 +6,7 @@ use App\Entity\Main\Gallery\GaAlbum;
 use App\Entity\Main\User;
 use App\Repository\Main\Gallery\GaAlbumRepository;
 use App\Repository\Main\Gallery\GaImageRepository;
-use App\Service\ApiResponse;
+use App\Service\Api\ApiResponse;
 use App\Service\Data\DataGallery;
 use App\Service\Gallery\ImageService;
 use App\Service\ValidatorService;

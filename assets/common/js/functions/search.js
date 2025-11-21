@@ -28,7 +28,7 @@ function switchFunction(type, search, v) {
         case "user":
             if(searchContainsWith(v.username, search)
                 || searchStartWith(v.email, search)
-                || searchContainsWith(v.firstname, search)
+                || (v.firstname && searchContainsWith(v.firstname, search))
                 || searchContainsWith(v.lastname, search)
             ){
                 return v;
@@ -41,8 +41,7 @@ function switchFunction(type, search, v) {
                 return v;
             }
             break;
-        case "contact":
-        case "changelog":
+        case "name":
             if(searchContainsWith(v.name, search)){
                 return v;
             }
