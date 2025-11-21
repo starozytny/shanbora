@@ -7,6 +7,7 @@ use App\Entity\Main\Gallery\GaImage;
 use App\Entity\Main\User;
 use App\Service\DatabaseService;
 use App\Service\SanitizeData;
+use DateTime;
 use Doctrine\Persistence\ObjectManager;
 use PHPImageWorkshop\Core\Exception\ImageWorkshopLayerException;
 use PHPImageWorkshop\Exception\ImageWorkshopException;
@@ -62,19 +63,6 @@ class GalleryUpdateDataCommand extends Command
 
         $io->title("Extraction de l'archive");
 
-        $extractDirectory = $this->galleryDirectory . $username . "/" . $filename . '/original/';
-        if(!is_dir($extractDirectory)){
-            mkdir($extractDirectory, 0777, true);
-        }
-        $thumbsDirectory = $this->galleryDirectory . $username . "/" . $filename . '/thumbs/';
-        if(!is_dir($thumbsDirectory)){
-            mkdir($thumbsDirectory, 0777, true);
-        }
-        $lightboxDirectory = $this->galleryDirectory . $username . "/" . $filename . '/lightbox/';
-        if(!is_dir($lightboxDirectory)){
-            mkdir($lightboxDirectory, 0777, true);
-        }
-
         $nb = 0;
         if($this->extractZIP($io, $username, $filename)){
             $em = $this->em;
@@ -100,7 +88,6 @@ class GalleryUpdateDataCommand extends Command
 
             $files = $album->getImages();
 
-            $nb = 0;
             foreach($files as $file){
                 $fileFile = $this->galleryDirectory . $file->getThumbsFile();
                 if(file_exists($fileFile)){
@@ -121,8 +108,20 @@ class GalleryUpdateDataCommand extends Command
 
             $io->text($nb . ' images supprimées');
             $io->text(count($files) . ' entrées supprimées');
-
             $io->newLine();
+
+            $extractDirectory = $this->galleryDirectory . $username . "/" . $filename . '/original/';
+            if(!is_dir($extractDirectory)){
+                mkdir($extractDirectory, 0777, true);
+            }
+            $thumbsDirectory = $this->galleryDirectory . $username . "/" . $filename . '/thumbs/';
+            if(!is_dir($thumbsDirectory)){
+                mkdir($thumbsDirectory, 0777, true);
+            }
+            $lightboxDirectory = $this->galleryDirectory . $username . "/" . $filename . '/lightbox/';
+            if(!is_dir($lightboxDirectory)){
+                mkdir($lightboxDirectory, 0777, true);
+            }
 
             $finder = new Finder();
             $finder->files()->in($extractDirectory)->name('/\.(jpg|jpeg|png|gif)$/i');
@@ -138,11 +137,17 @@ class GalleryUpdateDataCommand extends Command
             foreach ($finder as $file) {
                 $newFilename = $dateToday . '-' . $file->getFilename();
 
-                $info = new \SplFileInfo($file->getRealPath());
+                $exif = @exif_read_data($file);
 
-                $dateAt = new \DateTime();
-                if($info->isFile() && $info->getCTime() !== false){
-                    $dateAt->setTimestamp($info->getCTime());
+                if ($exif && isset($exif['DateTimeOriginal'])) {
+                    $dateAt = \DateTime::createFromFormat('Y:m:d H:i:s', $exif['DateTimeOriginal']);
+                } else {
+                    $info = new \SplFileInfo($file->getRealPath());
+
+                    $dateAt = new \DateTime();
+                    if($info->isFile() && $info->getCTime() !== false){
+                        $dateAt->setTimestamp($info->getCTime());
+                    }
                 }
 
                 $newImage = (new GaImage())

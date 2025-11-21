@@ -56,7 +56,7 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
     #[Groups(['user_list', 'user_form'])]
     private ?string $lastname = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     #[Groups(['user_list', 'user_form'])]
     private ?string $firstname = null;
 
@@ -94,7 +94,7 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
 
     #[ORM\Column]
     #[Groups(['user_list'])]
-    private ?bool $blocked = false;
+    private ?bool $isBlocked = false;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Mail::class)]
     private Collection $mails;
@@ -135,6 +135,73 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
         return $this->id;
     }
 
+    #[Groups(['user_list'])]
+    public function getHighRole(): string
+    {
+        $rolesSortedByImportance = ['ROLE_DEVELOPER', 'ROLE_ADMIN', 'ROLE_USER'];
+        $rolesLabel = ['Développeur', 'Administrateur', 'Utilisateur'];
+        $i = 0;
+        foreach ($rolesSortedByImportance as $role)
+        {
+            if (in_array($role, $this->roles)) return $rolesLabel[$i];
+            $i++;
+        }
+
+        return $this->isIsBlocked() ? "Bloqué" : "Utilisateur";
+    }
+
+    #[Groups(['user_list'])]
+    public function getHighRoleCode(): int
+    {
+        return match ($this->getHighRole()) {
+            'Développeur' => self::CODE_ROLE_DEVELOPER,
+            'Administrateur' => self::CODE_ROLE_ADMIN,
+            default => self::CODE_ROLE_USER,
+        };
+    }
+
+    public function getHiddenEmail(): string
+    {
+        $email = $this->getEmail();
+        $at = strpos($email, "@");
+        $domain = substr($email, $at, strlen($email));
+        $firstLetter = substr($email, 0, 1);
+        $etoiles = "";
+        for($i=1 ; $i < $at ; $i++){
+            $etoiles .= "*";
+        }
+        return $firstLetter . $etoiles . $domain;
+    }
+
+    #[Groups(['user_list', 'user_form'])]
+    public function getAvatarFile(): ?string
+    {
+        return $this->getFileOrDefault($this->avatar, self::FOLDER, null);
+    }
+
+    #[Groups(['user_list'])]
+    public function getIsAdmin(): bool
+    {
+        return $this->getHighRoleCode() == User::CODE_ROLE_DEVELOPER || $this->getHighRoleCode() == User::CODE_ROLE_ADMIN;
+    }
+
+    public function getIsDev(): bool
+    {
+        return $this->getHighRoleCode() == User::CODE_ROLE_DEVELOPER;
+    }
+
+    #[Groups(['user_select'])]
+    public function getValue(): ?int
+    {
+        return $this->id;
+    }
+
+    #[Groups(['user_select'])]
+    public function getLabel(): ?string
+    {
+        return trim($this->lastname . " " . $this->firstname);
+    }
+
     public function getUsername(): ?string
     {
         return $this->username;
@@ -166,32 +233,7 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
 
-        return $this->isBlocked() ? ['ROLE_BLOCKED'] : array_unique($roles);
-    }
-
-    #[Groups(['user_list'])]
-    public function getHighRole(): string
-    {
-        $rolesSortedByImportance = ['ROLE_DEVELOPER', 'ROLE_ADMIN', 'ROLE_USER'];
-        $rolesLabel = ['Développeur', 'Administrateur', 'Utilisateur'];
-        $i = 0;
-        foreach ($rolesSortedByImportance as $role)
-        {
-            if (in_array($role, $this->roles)) return $rolesLabel[$i];
-            $i++;
-        }
-
-        return $this->isBlocked() ? "Bloqué" : "Utilisateur";
-    }
-
-    #[Groups(['user_list'])]
-    public function getHighRoleCode(): int
-    {
-        return match ($this->getHighRole()) {
-            'Développeur' => self::CODE_ROLE_DEVELOPER,
-            'Administrateur' => self::CODE_ROLE_ADMIN,
-            default => self::CODE_ROLE_USER,
-        };
+        return $this->isIsBlocked() ? ['ROLE_BLOCKED'] : array_unique($roles);
     }
 
     public function setRoles(array $roles): self
@@ -254,7 +296,7 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
         return $this->firstname;
     }
 
-    public function setFirstname(string $firstname): self
+    public function setFirstname(?string $firstname): self
     {
         $this->firstname = $firstname;
 
@@ -369,14 +411,14 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
         return $this;
     }
 
-    public function isBlocked(): ?bool
+    public function isIsBlocked(): ?bool
     {
-        return $this->blocked;
+        return $this->isBlocked;
     }
 
-    public function setBlocked(bool $blocked): self
+    public function setIsBlocked(bool $isBlocked): self
     {
-        $this->blocked = $blocked;
+        $this->isBlocked = $isBlocked;
 
         return $this;
     }
@@ -499,46 +541,5 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
         }
 
         return $this;
-    }
-
-    public function getHiddenEmail(): string
-    {
-        $email = $this->getEmail();
-        $at = strpos($email, "@");
-        $domain = substr($email, $at, strlen($email));
-        $firstLetter = substr($email, 0, 1);
-        $etoiles = "";
-        for($i=1 ; $i < $at ; $i++){
-            $etoiles .= "*";
-        }
-        return $firstLetter . $etoiles . $domain;
-    }
-
-    #[Groups(['user_list', 'user_form'])]
-    public function getAvatarFile(): ?string
-    {
-        return $this->getFileOrDefault($this->avatar, self::FOLDER, null);
-    }
-
-    public function getIsAdmin(): bool
-    {
-        return $this->getHighRoleCode() == User::CODE_ROLE_DEVELOPER || $this->getHighRoleCode() == User::CODE_ROLE_ADMIN;
-    }
-
-    public function getIsDev(): bool
-    {
-        return $this->getHighRoleCode() == User::CODE_ROLE_DEVELOPER;
-    }
-
-    #[Groups(['user_select'])]
-    public function getValue(): ?int
-    {
-        return $this->id;
-    }
-
-    #[Groups(['user_select'])]
-    public function getLabel(): ?string
-    {
-        return trim($this->lastname . " " . $this->firstname);
     }
 }

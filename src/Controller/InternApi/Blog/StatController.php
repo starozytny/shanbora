@@ -4,7 +4,7 @@ namespace App\Controller\InternApi\Blog;
 
 use App\Entity\Blog\BoView;
 use App\Repository\Blog\BoViewRepository;
-use App\Service\ApiResponse;
+use App\Service\Api\ApiResponse;
 use Jaybizzle\CrawlerDetect\CrawlerDetect;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
