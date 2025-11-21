@@ -199,7 +199,7 @@ class User extends DataEntity implements UserInterface, PasswordAuthenticatedUse
     #[Groups(['user_select'])]
     public function getLabel(): ?string
     {
-        return trim($this->lastname . " " . $this->firstname);
+        return trim($this->lastname . ($this->firstname ? " " . $this->firstname : ""));
     }
 
     public function getUsername(): ?string
