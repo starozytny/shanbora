@@ -19,7 +19,8 @@ class UserController extends AbstractController
         $user = $this->getUser();
 
         $userId = $user->getId();
-        $albums = $albumRepository->findAll();
+        $albums = $albumRepository->findBy([], ['dateAt' => 'DESC']);
+
         return $this->render('user/pages/index.html.twig', [
             'albums' => array_filter($albums, function ($entity) use ($userId) {
                 return ($entity->getCanAccess() && in_array($userId, $entity->getCanAccess())) || $entity->getUser()->getId() === $userId;
