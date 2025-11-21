@@ -18,7 +18,7 @@ class GalleryController extends AbstractController
     public function index(GaAlbumRepository $repository): Response
     {
         return $this->render('admin/pages/gallery/index.html.twig', [
-            'albums' => $repository->findAll(),
+            'albums' => $repository->findBy([], ['dateAt' => 'DESC'])
         ]);
     }
 
