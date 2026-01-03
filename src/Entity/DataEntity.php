@@ -2,18 +2,8 @@
 
 namespace App\Entity;
 
-use Exception;
-
 class DataEntity
 {
-    /**
-     * @throws Exception
-     */
-    public function initToken(): string
-    {
-        return bin2hex(random_bytes(32));
-    }
-
     public function getFileOrDefault($file, $folder, $default = "/placeholders/placeholder.jpg")
     {
         return $file ? "/" . $folder . "/" . $file : $default;
@@ -28,6 +18,10 @@ class DataEntity
      */
     public function crypt($action, $data)
     {
+        if($data == null || $data == ""){
+            return $data;
+        }
+
         $data = trim($data);
         $data = preg_replace('/\s+/', '', $data);
 

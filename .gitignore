@@ -1,4 +1,3 @@
-
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
@@ -31,6 +30,7 @@ winpty.exe.stackdump
 /public/error_log
 /public/immo/photos/*
 /public/immo/logos/*
+/public/tinymce/
 /public/blog/*
 /bin/backup/*
 /documents/data/*
@@ -38,6 +38,8 @@ winpty.exe.stackdump
 /config/databaseConfig.json
 /config/packages/doctrine.yaml
 
-/public/tinymce/*
-
 phpunit.xml.dist
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###
