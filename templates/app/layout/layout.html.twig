@@ -7,7 +7,7 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
             <div class="grid md:grid-cols-3 gap-8 mb-8">
                 <div>
-                    <h3 class="flex flex-col text-[#DAA520]">
+                    <h3 class="flex flex-col text-color0">
                         <span class="block font-bold text-2xl">Shanbo</span>
                         <span class="block ft-special font-semibold">Photographe</span>
                     </h3>
@@ -16,20 +16,20 @@
                 <div>
                     <h4 class="font-semibold mb-4 text-white">Réseaux</h4>
                     <div class="flex flex-col gap-2 text-sm">
-                        <a href="https://www.instagram.com/shanbo_daltonien/" class="text-gray-400 hover:text-[#DAA520] transition-colors">Instagram</a>
-                        <a href="https://unsplash.com/fr/@shanbora" class="text-gray-400 hover:text-[#DAA520] transition-colors">Unsplash</a>
-                        <a href="https://www.linkedin.com/in/chanbora-chhun-00a0a0112/" class="text-gray-400 hover:text-[#DAA520] transition-colors">LinkedIn</a>
-                        <a href="https://github.com/starozytny" class="text-gray-400 hover:text-[#DAA520] transition-colors">GitHub</a>
+                        <a href="https://www.instagram.com/shanbo_daltonien/" class="text-gray-400 hover:text-color0 transition-colors">Instagram</a>
+                        <a href="https://unsplash.com/fr/@shanbora" class="text-gray-400 hover:text-color0 transition-colors">Unsplash</a>
+                        <a href="https://www.linkedin.com/in/chanbora-chhun-00a0a0112/" class="text-gray-400 hover:text-color0 transition-colors">LinkedIn</a>
+                        <a href="https://github.com/starozytny" class="text-gray-400 hover:text-color0 transition-colors">GitHub</a>
                     </div>
                 </div>
                 <div>
                     <h4 class="font-semibold mb-4 text-white">Légal</h4>
                     <div class="flex flex-col gap-2 text-sm">
-                        <a href="{{ path('app_mentions') }}" class="text-gray-400 hover:text-[#DAA520] transition-colors">Mentions légales</a>
-                        <a href="{{ path('app_politique') }}" class="text-gray-400 hover:text-[#DAA520] transition-colors">Politique de confidentialité</a>
-                        <a href="{{ path('app_cookies') }}" class="text-gray-400 hover:text-[#DAA520] transition-colors">Gestion des cookies</a>
+                        <a href="{{ path('app_mentions') }}" class="text-gray-400 hover:text-color0 transition-colors">Mentions légales</a>
+                        <a href="{{ path('app_politique') }}" class="text-gray-400 hover:text-color0 transition-colors">Politique de confidentialité</a>
+                        <a href="{{ path('app_cookies') }}" class="text-gray-400 hover:text-color0 transition-colors">Gestion des cookies</a>
                         {% if is_granted('ROLE_ADMIN') %}
-                            <a href="{{ path('admin_homepage') }}" class="text-gray-400 hover:text-[#DAA520] transition-colors">Espace administrateur</a>
+                            <a href="{{ path('admin_homepage') }}" class="text-gray-400 hover:text-color0 transition-colors">Espace administrateur</a>
                         {% endif %}
                     </div>
                 </div>
