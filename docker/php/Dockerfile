@@ -28,10 +28,10 @@ RUN apt-get update && apt-get install -y \
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Configuration Git pour résoudre le problème de propriété
-RUN git config --global --add safe.directory /var/www/project
+RUN git config --global --add safe.directory /var/www/shanbora
 
 # Configuration du répertoire de travail
-WORKDIR /var/www/project
+WORKDIR /var/www/shanbora
 
 # Copie uniquement composer.json et composer.lock d'abord
 COPY composer.json composer.lock ./
@@ -47,7 +47,7 @@ RUN composer dump-autoload --optimize && \
     composer run-script --no-interaction post-install-cmd || true
 
 # Permissions
-RUN chown -R www-data:www-data /var/www/project
+RUN chown -R www-data:www-data /var/www/shanbora
 
 # Exposition du port
 EXPOSE 9000
