@@ -21,3 +21,95 @@ html{
   0%{ transform: translateX(0px); }
   100% { transform: translateX(-2176px); }
 }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 1s ease-out forwards;
+}
+
+.delay-100 { animation-delay: 0.1s; opacity: 0; }
+.delay-200 { animation-delay: 0.2s; opacity: 0; }
+.delay-300 { animation-delay: 0.3s; opacity: 0; }
+.delay-400 { animation-delay: 0.4s; opacity: 0; }
+.delay-500 { animation-delay: 0.5s; opacity: 0; }
+
+.adventure-card {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.adventure-card:hover::before {
+  opacity: 1;
+}
+
+.adventure-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(67, 67, 67, 0.25);
+}
+
+.adventure-card img {
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.adventure-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Tag styling */
+.tag {
+  background: linear-gradient(135deg, rgba(218, 165, 32, 0.2) 0%, rgba(184, 134, 11, 0.15) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(218, 165, 32, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Decorative elements */
+.deco-line {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #DAA520 0%, transparent 100%);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #DAA520 0%, #B8860B 100%);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #FFD700 0%, #DAA520 100%);
+}
