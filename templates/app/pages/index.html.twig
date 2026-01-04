@@ -38,18 +38,20 @@
                 </div>
                 <div class="relative flex flex-col justify-between gap-12 max-w-screen-2xl mx-auto lg:flex-row lg:justify-between">
                     <div class="px-4 lg:pl-12 xl:pl-24">
-                        <div class="font-medium text-gray-400 mb-1 ft-special">
+                        <div class="font-medium text-color0 mb-1 ft-special text-lg">
                             Photographe
                         </div>
                         <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl lg:max-w-96">
-                            Salut, je m'appelle Chanbora Chhun.
+                            Salut, je suis Chanbora Chhun.
                         </h1>
 
                         <div class="mt-10 flex items-center gap-x-6">
-                            <a href="#restons-en-contact" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                                🤝 Restons en contact !
+                            <a href="#mon-travail" class="cta-btn inline-flex items-center gap-3 px-8 py-4 bg-[#DAA520] text-white font-semibold rounded-lg hover:bg-[#B8860B] transition-colors shadow-xl">
+                                <span>💪 Mon travail</span>
                             </a>
-                            <a href="#mon-travail" class="text-sm font-semibold leading-6 text-gray-200">💪 Mon travail <span aria-hidden="true">→</span></a>
+                            <a href="#restons-en-contact" class="cta-btn inline-flex items-center gap-3 px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors shadow-xl">
+                                <span>🤝 Restons en contact</span>
+                            </a>
                         </div>
                     </div>
 
@@ -64,69 +66,88 @@
         </div>
 
         <div class="w-full mb-12 lg:mb-32" id="mon-travail">
-            <div class="text-center px-2 lg:px-8" data-aos="fade-in">
-                <div class="text-yellow-500 font-semibold text-lg">Fragments du temps</div>
-                <h2 class="font-bold text-6xl">La poésie des images</h2>
-                <p class="mt-4 text-gray-600 max-w-md mx-auto">
-                    En tant que photographe, je souhaite capturer l'essence de chaque moment, que ce soit pour des
-                    portraits, des paysages ou des événements.
+            <div class="mb-12 text-center">
+                <div class="text-[#DAA520] text-sm font-semibold tracking-wider uppercase mb-4">
+                    Fragments du temps
+                </div>
+                <h2 class="font-display text-5xl font-bold text-gray-900">
+                    La poésie des images
+                </h2>
+                <p class="text-gray-600 text-lg mt-4 max-w-2xl mx-auto">
+                    En tant que photographe, je souhaite capturer l'essence de chaque moment, que ce soit pour des portraits, des paysages ou des événements.
                 </p>
             </div>
 
-            <div class="homepage_gallery relative flex gap-4 mt-24">
-                <img src="{{ asset('build/app/images/homepage/sunset-person-1.jpg') }}" alt="sunset person 1" class="pointer-events-none h-96">
-                <img src="{{ asset('build/app/images/homepage/homme-sunset.jpg') }}" alt="homme sunset" class="pointer-events-none h-96 translate-y-10">
-                <img src="{{ asset('build/app/images/homepage/photographe.jpg') }}" alt="homme photographe" class="pointer-events-none h-96 -translate-y-10">
-                <img src="{{ asset('build/app/images/homepage/femme-2.jpg') }}" alt="femme 2" class="pointer-events-none h-96 translate-y-2">
-                <img src="{{ asset('build/app/images/homepage/femme.jpg') }}" alt="femme" class="pointer-events-none h-96 translate-y-14">
-                <img src="{{ asset('build/app/images/homepage/sunset-portrait-1.jpg') }}" alt="sunset portrait 1" class="pointer-events-none h-96">
-                <img src="{{ asset('build/app/images/homepage/couple.jpg') }}" alt="couple" class="pointer-events-none h-96 -translate-y-16">
-                <img src="{{ asset('build/app/images/homepage/femme-sunset.jpg') }}" alt="femme sunset" class="pointer-events-none h-96 translate-y-4">
-                <img src="{{ asset('build/app/images/homepage/portrait-bonnet.jpg') }}" alt="portrait bonnet femme" class="pointer-events-none h-96 -translate-y-10">
-                <img src="{{ asset('build/app/images/homepage/portrait-dos.jpg') }}" alt="portrait dos femme" class="pointer-events-none h-96 translate-y-8">
-                <img src="{{ asset('build/app/images/homepage/sunset-person-1.jpg') }}" alt="sunset person 1" class="pointer-events-none h-96">
-                <img src="{{ asset('build/app/images/homepage/homme-sunset.jpg') }}" alt="homme sunset" class="pointer-events-none h-96 translate-y-10">
-                <img src="{{ asset('build/app/images/homepage/photographe.jpg') }}" alt="homme photographe" class="pointer-events-none h-96 -translate-y-10">
-                <img src="{{ asset('build/app/images/homepage/femme-2.jpg') }}" alt="femme 2" class="pointer-events-none h-96 translate-y-2">
-                <img src="{{ asset('build/app/images/homepage/femme.jpg') }}" alt="femme" class="pointer-events-none h-96 translate-y-14">
-                <img src="{{ asset('build/app/images/homepage/sunset-portrait-1.jpg') }}" alt="sunset portrait 1" class="pointer-events-none h-96">
-                <img src="{{ asset('build/app/images/homepage/couple.jpg') }}" alt="couple" class="pointer-events-none h-96 -translate-y-16">
-                <img src="{{ asset('build/app/images/homepage/femme-sunset.jpg') }}" alt="femme sunset" class="pointer-events-none h-96 translate-y-4">
-                <img src="{{ asset('build/app/images/homepage/portrait-bonnet.jpg') }}" alt="portrait bonnet femme" class="pointer-events-none h-96 -translate-y-10">
-                <img src="{{ asset('build/app/images/homepage/portrait-dos.jpg') }}" alt="portrait dos femme" class="pointer-events-none h-96 translate-y-8">
+            <div class="homepage_gallery relative flex gap-4 mt-32">
+                <img src="{{ asset('build/app/images/homepage/sunset-person-1.jpg') }}" alt="sunset person 1" class="rounded-xl shadow-lg pointer-events-none h-96">
+                <img src="{{ asset('build/app/images/homepage/homme-sunset.jpg') }}" alt="homme sunset" class="rounded-xl shadow-lg pointer-events-none h-96 translate-y-10">
+                <img src="{{ asset('build/app/images/homepage/photographe.jpg') }}" alt="homme photographe" class="rounded-xl shadow-lg pointer-events-none h-96 -translate-y-10">
+                <img src="{{ asset('build/app/images/homepage/femme-2.jpg') }}" alt="femme 2" class="rounded-xl shadow-lg pointer-events-none h-96 translate-y-2">
+                <img src="{{ asset('build/app/images/homepage/femme.jpg') }}" alt="femme" class="rounded-xl shadow-lg pointer-events-none h-96 translate-y-14">
+                <img src="{{ asset('build/app/images/homepage/sunset-portrait-1.jpg') }}" alt="sunset portrait 1" class="rounded-xl shadow-lg pointer-events-none h-96">
+                <img src="{{ asset('build/app/images/homepage/couple.jpg') }}" alt="couple" class="rounded-xl shadow-lg pointer-events-none h-96 -translate-y-16">
+                <img src="{{ asset('build/app/images/homepage/femme-sunset.jpg') }}" alt="femme sunset" class="rounded-xl shadow-lg pointer-events-none h-96 translate-y-4">
+                <img src="{{ asset('build/app/images/homepage/portrait-bonnet.jpg') }}" alt="portrait bonnet femme" class="rounded-xl shadow-lg pointer-events-none h-96 -translate-y-10">
+                <img src="{{ asset('build/app/images/homepage/portrait-dos.jpg') }}" alt="portrait dos femme" class="rounded-xl shadow-lg pointer-events-none h-96 translate-y-8">
+                <img src="{{ asset('build/app/images/homepage/sunset-person-1.jpg') }}" alt="sunset person 1" class="rounded-xl shadow-lg pointer-events-none h-96">
+                <img src="{{ asset('build/app/images/homepage/homme-sunset.jpg') }}" alt="homme sunset" class="rounded-xl shadow-lg pointer-events-none h-96 translate-y-10">
+                <img src="{{ asset('build/app/images/homepage/photographe.jpg') }}" alt="homme photographe" class="rounded-xl shadow-lg pointer-events-none h-96 -translate-y-10">
+                <img src="{{ asset('build/app/images/homepage/femme-2.jpg') }}" alt="femme 2" class="rounded-xl shadow-lg pointer-events-none h-96 translate-y-2">
+                <img src="{{ asset('build/app/images/homepage/femme.jpg') }}" alt="femme" class="rounded-xl shadow-lg pointer-events-none h-96 translate-y-14">
+                <img src="{{ asset('build/app/images/homepage/sunset-portrait-1.jpg') }}" alt="sunset portrait 1" class="rounded-xl shadow-lg pointer-events-none h-96">
+                <img src="{{ asset('build/app/images/homepage/couple.jpg') }}" alt="couple" class="rounded-xl shadow-lg pointer-events-none h-96 -translate-y-16">
+                <img src="{{ asset('build/app/images/homepage/femme-sunset.jpg') }}" alt="femme sunset" class="rounded-xl shadow-lg pointer-events-none h-96 translate-y-4">
+                <img src="{{ asset('build/app/images/homepage/portrait-bonnet.jpg') }}" alt="portrait bonnet femme" class="rounded-xl shadow-lg pointer-events-none h-96 -translate-y-10">
+                <img src="{{ asset('build/app/images/homepage/portrait-dos.jpg') }}" alt="portrait dos femme" class="rounded-xl shadow-lg pointer-events-none h-96 translate-y-8">
             </div>
         </div>
 
-        <div class="w-full bg-white py-12 px-2 lg:mb-12 md:py-20 lg:px-8 lg:py-32 xl:pb-44 md:flex md:flex-col md:items-center lg:flex-row lg:gap-12 xl:items-start xl:gap-24">
-            <div class="lg:pl-24 xl:translate-y-24">
-                <div class="text-yellow-500 font-semibold text-lg" data-aos="fade-in">Instants figés</div>
-                <h2 class="font-bold text-6xl max-w-96" data-aos="fade-in">Capturez vos moments les plus précieux</h2>
-                <p class="mt-6 text-gray-600 max-w-md" data-aos="fade-in">
-                    Chaque moment de la vie mérite d'être immortalisé, et je suis là pour transformer vos instants
-                    précieux en souvenirs inoubliables. En tant que photographe passionné, je me spécialise dans
-                    les portraits et les événements, capturant l'essence et l'émotion de chaque sourire,
-                    chaque regard, et chaque détail qui fait de votre journée un moment unique.
-                    <br>
-                    <br>
-                    Que ce soit pour des portraits intimes qui révèlent votre personnalité ou pour documenter chaque
-                    instant de votre mariage, je m'engage à créer des images authentiques et intemporelles. Mon approche
-                    est à la fois discrète et attentionnée, vous permettant de profiter pleinement de votre journée tout
-                    en sachant que chaque instant est soigneusement capturé.
-                </p>
-                <div class="mt-6 lg:mt-10" data-aos="fade-in">
-                    <a href="{{ path('app_gallery') }}" class="group text-sm font-semibold leading-6 text-blue-500 ft-special">
-                        Voir la galerie <span aria-hidden="true" class="inline-block transition-transform group-hover:translate-x-1">→</span>
-                    </a>
+        <section class="py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center mb-16">
+                    <div>
+                        <div class="text-[#DAA520] text-sm font-semibold tracking-wider uppercase mb-4">
+                            Instants figés
+                        </div>
+                        <h2 class="font-display text-5xl font-bold mb-6 text-gray-900">
+                            Capturez vos moments les plus précieux
+                        </h2>
+                        <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                            Chaque moment de la vie mérite d'être immortalisé, et je suis là pour transformer vos instants
+                            précieux en souvenirs inoubliables. En tant que photographe passionné, je me spécialise dans les
+                            portraits et les événements, capturant l'essence et l'émotion de chaque sourire, chaque regard,
+                            et chaque détail qui fait de votre journée un moment unique.
+                        </p>
+                        <p class="text-gray-600 text-lg leading-relaxed mb-8">
+                            Que ce soit pour des portraits intimes qui révèlent votre personnalité ou pour documenter chaque
+                            instant de votre mariage, je m'engage à créer des images authentiques et intemporelles. Mon
+                            approche est à la fois discrète et attentionnée, vous permettant de profiter pleinement de
+                            votre journée tout en sachant que chaque instant est soigneusement capturé.
+                        </p>
+                        <a href="{{ path('app_gallery') }}" class="cta-btn inline-flex items-center gap-3 px-8 py-4 bg-[#DAA520] text-white font-semibold rounded-lg hover:bg-[#B8860B] transition-colors shadow-lg">
+                            <span>Voir la galerie</span>
+                            <svg class="w-5 h-5" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="image-card rounded-xl overflow-hidden shadow-lg">
+                            <img src="{{ asset('build/app/images/homepage/person.jpg') }}" alt="Person" class="w-full h-full object-cover aspect-[3/4]">
+                        </div>
+                        <div class="image-card rounded-xl overflow-hidden shadow-lg mt-12">
+                            <img src="{{ asset('build/app/images/homepage/femme-sunrise.jpg') }}" alt="Femme sunrise" class="w-full h-full object-cover aspect-[3/4]">
+                        </div>
+                        <div class="image-card rounded-xl overflow-hidden shadow-lg -mt-12">
+                            <img src="{{ asset('build/app/images/homepage/couple-sunset.jpg') }}" alt="Couple sunset" class="w-full h-full object-cover aspect-[3/4]">
+                        </div>
+                        <div class="image-card rounded-xl overflow-hidden shadow-lg">
+                            <img src="{{ asset('build/app/images/homepage/deux-femmes-portrait.jpg') }}" alt="Deux femmes" class="w-full h-full object-cover aspect-[3/4]">
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <div class="relative mt-8 xl:max-w-[568px] xl:pl-24 flex gap-12">
-                <img src="{{ asset('build/app/images/homepage/person.jpg') }}" data-aos="fade-up" alt="person femme" class="pointer-events-none">
-                <img src="{{ asset('build/app/images/homepage/femme-sunrise.jpg') }}" data-aos="fade-up" data-aos-delay="100" alt="femme sunrise" class="pointer-events-none hidden 2xl:block">
-                <img src="{{ asset('build/app/images/homepage/couple-sunset.jpg') }}" data-aos="fade-up" data-aos-delay="200" alt="couple sunset" class="pointer-events-none hidden 2xl:block">
-                <img src="{{ asset('build/app/images/homepage/deux-femmes-portrait.jpg') }}" data-aos="fade-up" data-aos-delay="300" alt="deux femmes portrait" class="pointer-events-none hidden 2xl:block">
-            </div>
-        </div>
+        </section>
 
         {% include "app/pages/contact/component/content.html.twig" with { page: false } %}
     </div>
