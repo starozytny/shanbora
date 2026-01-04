@@ -38,7 +38,7 @@
         </div>
     </section>
 
-    <section class="py-16">
+    <section class="py-16 flex flex-col gap-16">
         {% for year, elements in data %}
             <div class="year-section" data-year="{{ year }}">
                 <div class="flex items-center gap-4 mb-8">
@@ -52,7 +52,7 @@
                         <div class="album-card bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm">
                             <div class="relative h-64 overflow-hidden" onclick="window.location.href = '{{ app.request.schemeAndHttpHost ~ path('admin_galleries_read', {id: elem.id}) }}'">
                                 {% if elem.cover %}
-                                    <img src="{{ path('intern_api_user_gallery_albums_read_cover', {id: elem.id}) }}" alt="photo couverture de {{ elem.title }}" class="w-full h-full object-cover">
+                                    <img src="{{ path('intern_api_user_gallery_albums_read_cover_hd_ultra', {id: elem.id}) }}" alt="photo couverture de {{ elem.title }}" class="w-full h-full object-cover">
                                 {% else %}
                                     <div class="w-full h-full bg-gray-50 flex items-center justify-center text-gray-400 font-semibold">{{ elem.title }}</div>
                                 {% endif %}
