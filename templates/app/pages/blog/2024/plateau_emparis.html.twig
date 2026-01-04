@@ -202,3 +202,47 @@
         </article>
     </section>
 {% endblock %}
+
+{% block others_adventures %}
+    <a href="{{ path('app_adventures_petarel') }}" class="group">
+        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <div class="relative h-64 overflow-hidden">
+                <img src="{{ asset('blog/list/petarel.jpg') }}" alt="petarel" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div class="p-6">
+                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">10 Août 2024</div>
+                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">Lacs de Pétarel</h4>
+                <p class="text-gray-600 text-sm">Randonnée dans le Champsaure-Valgaudemar pour découvrir les lacs de Pétarel, une invitation au bivouac.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="{{ path('app_adventures_lauzon') }}" class="group">
+        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <div class="relative h-64 overflow-hidden">
+                <img src="{{ asset('blog/list/lauzon.jpg') }}" alt="lauzon" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div class="p-6">
+                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">3 Août 2024</div>
+                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">Lac du Lauzon, lac bleu</h4>
+                <p class="text-gray-600 text-sm">Une randonnée qui réserve son lot de merveilles reliant le Lac du Lauzon, le Lac Bleu et le refuge du Pigeonnier.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="{{ path('app_adventures_morgon') }}" class="group">
+        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <div class="relative h-64 overflow-hidden">
+                <img src="{{ asset('blog/list/morgon.jpg') }}" alt="morgon" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div class="p-6">
+                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">5 Juillet 2024</div>
+                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">Le Pic de Morgon</h4>
+                <p class="text-gray-600 text-sm">Surplombant le lac de Serre-Ponçon, le pic de Morgon offre des panoramas grandioses.</p>
+            </div>
+        </div>
+    </a>
+{% endblock %}

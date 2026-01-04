@@ -32,70 +32,24 @@
 
     <div id="adventures_stats" data-adventure-id="{{ adventureId }}"></div>
 
-    {% block others_adventures %}
-        <section class="mt-12 bg-gradient-to-b from-white to-gray-50 py-20">
-            <div class="max-w-7xl mx-auto px-6 lg:px-8">
-                <h3 class="font-display text-4xl font-bold text-center mb-12">Autres aventures</h3>
+    <section class="mt-12 bg-gradient-to-b from-white to-gray-50 py-20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <h3 class="font-display text-4xl font-bold text-center mb-12">Autres aventures</h3>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-                    <a href="{{ path('app_adventures_minorque') }}" class="group">
-                        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                            <div class="relative h-64 overflow-hidden">
-                                <img src="{{ asset('blog/list/minorque.jpg') }}" alt="Minorque" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                            </div>
-                            <div class="p-6">
-                                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">31 mars - 5 avril 2025</div>
-                                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">Escapade à Minorque</h4>
-                                <p class="text-gray-600 text-sm">Criques paradisiaques et couchers de soleil magiques aux Baléares.</p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- Adventure Card 2 -->
-                    <a href="{{ path('app_adventures_marguerite') }}" class="group">
-                        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                            <div class="relative h-64 overflow-hidden">
-                                <img src="{{ asset('blog/list/marguerite.jpg') }}" alt="Lac Sainte-Marguerite" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                            </div>
-                            <div class="p-6">
-                                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">16 octobre 2024</div>
-                                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">Lac de Sainte-Marguerite</h4>
-                                <p class="text-gray-600 text-sm">Randonnée automnale entre forêts flamboyantes et végétation dorée.</p>
-                            </div>
-                        </div>
-                    </a>
-
-                    <!-- Adventure Card 3 -->
-                    <a href="{{ path('app_adventures_emparis') }}" class="group">
-                        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-                            <div class="relative h-64 overflow-hidden">
-                                <img src="{{ asset('blog/list/emparis.jpg') }}" alt="Plateau Emparis" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                            </div>
-                            <div class="p-6">
-                                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">28 août 2024</div>
-                                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">Plateau d'Emparis</h4>
-                                <p class="text-gray-600 text-sm">Bivouac au Lac Noir sous une nuit étoilée dans les Alpes.</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-
-
-                <div class="text-center mt-12">
-                    <a href="{{ path('app_adventures') }}" class="inline-flex items-center gap-2 px-8 py-4 bg-[#DAA520] text-white font-semibold rounded-lg hover:bg-[#B8860B] transition-colors">
-                        Voir toutes les aventures
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                        </svg>
-                    </a>
-                </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {% block others_adventures %}{% endblock %}
             </div>
-        </section>
-    {% endblock %}
+
+            <div class="text-center mt-12">
+                <a href="{{ path('app_adventures') }}" class="inline-flex items-center gap-2 px-8 py-4 bg-[#DAA520] text-white font-semibold rounded-lg hover:bg-[#B8860B] transition-colors">
+                    Voir toutes les aventures
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
 
 
 {% endblock %}

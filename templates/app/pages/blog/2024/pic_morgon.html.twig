@@ -209,3 +209,48 @@
         </article>
     </section>
 {% endblock %}
+
+{% block others_adventures %}
+    <a href="{{ path('app_adventures_semaphore') }}" class="group">
+        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <div class="relative h-64 overflow-hidden">
+                <img src="{{ asset('blog/list/goudes.jpg') }}" alt="goudes" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div class="p-6">
+                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">4 Mai 2024</div>
+                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">Le Pas de la Demi-lune</h4>
+                <p class="text-gray-600 text-sm">Entre falaises abruptes et vues imprenables sur la Méditerranée.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="{{ path('app_adventures_miroir') }}" class="group">
+        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <div class="relative h-64 overflow-hidden">
+                <img src="{{ asset('blog/list/miroir.jpg') }}" alt="miroir" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div class="p-6">
+                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">14 Octobre 2023</div>
+                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">Lac miroir au Queyras</h4>
+                <p class="text-gray-600 text-sm">Destination prisée des randonneurs pour découvrir les reflets des montagnes sur le lac.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="{{ path('app_adventures_ayous') }}" class="group">
+        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <div class="relative h-64 overflow-hidden">
+                <img src="{{ asset('blog/list/ayous.jpg') }}" alt="ayous" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div class="p-6">
+                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">26 Juillet 2023</div>
+                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">Le lac d'Ayous</h4>
+                <p class="text-gray-600 text-sm">Le lac d'Ayous est l'une des plus belles randonnées à découvrir pour les amateurs de nature.</p>
+            </div>
+        </div>
+    </a>
+{% endblock %}
+

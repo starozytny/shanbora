@@ -150,3 +150,47 @@
         </article>
     </section>
 {% endblock %}
+
+{% block others_adventures %}
+    <a href="{{ path('app_adventures_emparis') }}" class="group">
+        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <div class="relative h-64 overflow-hidden">
+                <img src="{{ asset('blog/list/emparis.jpg') }}" alt="Plateau Emparis" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div class="p-6">
+                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">28 août 2024</div>
+                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">Plateau d'Emparis</h4>
+                <p class="text-gray-600 text-sm">Bivouac au Lac Noir sous une nuit étoilée dans les Alpes.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="{{ path('app_adventures_petarel') }}" class="group">
+        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <div class="relative h-64 overflow-hidden">
+                <img src="{{ asset('blog/list/petarel.jpg') }}" alt="petarel" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div class="p-6">
+                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">10 Août 2024</div>
+                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">Lacs de Pétarel</h4>
+                <p class="text-gray-600 text-sm">Randonnée dans le Champsaure-Valgaudemar pour découvrir les lacs de Pétarel, une invitation au bivouac.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="{{ path('app_adventures_lauzon') }}" class="group">
+        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <div class="relative h-64 overflow-hidden">
+                <img src="{{ asset('blog/list/lauzon.jpg') }}" alt="lauzon" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div class="p-6">
+                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">3 Août 2024</div>
+                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">Lac du Lauzon, lac bleu</h4>
+                <p class="text-gray-600 text-sm">Une randonnée qui réserve son lot de merveilles reliant le Lac du Lauzon, le Lac Bleu et le refuge du Pigeonnier.</p>
+            </div>
+        </div>
+    </a>
+{% endblock %}

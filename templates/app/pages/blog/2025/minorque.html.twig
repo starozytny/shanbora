@@ -450,3 +450,47 @@
         </article>
     </section>
 {% endblock %}
+
+{% block others_adventures %}
+    <a href="{{ path('app_adventures_ecosse') }}" class="group">
+        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <div class="relative h-64 overflow-hidden">
+                <img src="{{ asset('blog/list/ecosse.jpg') }}" alt="Ecosse" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div class="p-6">
+                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">8 mai au 17 mai 2025</div>
+                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">Roadtrip en Écosse</h4>
+                <p class="text-gray-600 text-sm">Roadtrip de 10 jours à travers des paysages sauvages, des routes sinueuses et des cascades perdues.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="{{ path('app_adventures_marguerite') }}" class="group">
+        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <div class="relative h-64 overflow-hidden">
+                <img src="{{ asset('blog/list/marguerite.jpg') }}" alt="Lac Sainte-Marguerite" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div class="p-6">
+                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">16 octobre 2024</div>
+                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">Lac de Sainte-Marguerite</h4>
+                <p class="text-gray-600 text-sm">Randonnée automnale entre forêts flamboyantes et végétation dorée.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="{{ path('app_adventures_reunion') }}" class="group">
+        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <div class="relative h-64 overflow-hidden">
+                <img src="{{ asset('blog/list/reunion.jpg') }}" alt="Réunion" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div class="p-6">
+                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">01 Novembre 2022</div>
+                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">La Réunion</h4>
+                <p class="text-gray-600 text-sm">Voyage sur la célèbre île de la Réunion avec ses cascades, volcans, plages et son soleil.</p>
+            </div>
+        </div>
+    </a>
+{% endblock %}
