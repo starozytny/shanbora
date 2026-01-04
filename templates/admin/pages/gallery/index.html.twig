@@ -19,11 +19,11 @@
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
                 <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
-                    <div class="text-3xl font-bold text-[#DAA520]">{{ totalAlbums }}</div>
+                    <div class="text-3xl font-bold text-[#DAA520]">{{ totalAlbums | price }}</div>
                     <div class="text-sm text-gray-600">Albums totaux</div>
                 </div>
                 <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
-                    <div class="text-3xl font-bold text-[#DAA520]">{{ totalPhotos }}</div>
+                    <div class="text-3xl font-bold text-[#DAA520]">{{ totalPhotos | price }}</div>
                     <div class="text-sm text-gray-600">Photos</div>
                 </div>
                 <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
