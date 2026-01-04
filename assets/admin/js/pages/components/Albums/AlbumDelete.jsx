@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import { createPortal } from "react-dom";
-import PropTypes from "prop-types";
 
 import axios from "axios";
 import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
@@ -40,9 +39,4 @@ export function AlbumDelete ({ id, title })
             , document.body
         )}
     </>
-}
-
-AlbumDelete.propTypes = {
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
 }
