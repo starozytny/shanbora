@@ -4,50 +4,72 @@
 {% set page_subtitle %}Accédez aux galeries des utilisateurs.{% endset %}
 
 {% block main_content %}
-    <div class="flex flex-wrap gap-4">
-        {% for elem in albums %}
-            <div>
+    {% if albums | length > 0 %}
+        <div class="flex flex-wrap gap-4">
+            {% for elem in albums %}
+                <div>
 
-                <div class="cursor-pointer block p-4 bg-white rounded-md w-96 border group hover:border-gray-300 max-w-[280px]"
-                     onclick="window.location.href = '{{ app.request.schemeAndHttpHost ~ path('admin_galleries_read', {id: elem.id}) }}'"
-                >
-                    <div class="font-semibold text-center">{{ elem.title }}</div>
-                    <div class="text-sm text-center">{{ elem.nbDownload }} téléchargement{{ elem.nbDownload > 1 ? "s" : "" }}</div>
-                    {% if elem.cover %}
-                        <div class="relative mt-4 rounded w-full h-56 overflow-hidden">
-                            <img src="{{ path('intern_api_user_gallery_albums_read_cover', {id: elem.id}) }}"
-                                 alt="photo couverture de {{ elem.title }}"
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                            >
-                            <div class="absolute bottom-0 right-0 text-gray-600 text-xs bg-white pt-2 pb-1 px-4 rounded-tl">
+                    <div class="cursor-pointer block p-4 bg-white rounded-md w-96 border group hover:border-gray-300 max-w-[280px]"
+                         onclick="window.location.href = '{{ app.request.schemeAndHttpHost ~ path('admin_galleries_read', {id: elem.id}) }}'"
+                    >
+                        <div class="font-semibold text-center">{{ elem.title }}</div>
+                        <div class="text-sm text-center">{{ elem.nbDownload }} téléchargement{{ elem.nbDownload > 1 ? "s" : "" }}</div>
+                        {% if elem.cover %}
+                            <div class="relative mt-4 rounded w-full h-56 overflow-hidden">
+                                <img src="{{ path('intern_api_user_gallery_albums_read_cover', {id: elem.id}) }}"
+                                     alt="photo couverture de {{ elem.title }}"
+                                     class="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                                >
+                                <div class="absolute bottom-0 right-0 text-gray-600 text-xs bg-white pt-2 pb-1 px-4 rounded-tl">
+                                    {{ elem.dateAt | date('d/m/Y') }}
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="text-gray-600 text-xs text-center">
                                 {{ elem.dateAt | date('d/m/Y') }}
                             </div>
-                        </div>
-                    {% else %}
-                        <div class="text-gray-600 text-xs text-center">
-                            {{ elem.dateAt | date('d/m/Y') }}
-                        </div>
-                        <div class="mt-4 font-semibold text-lg text-center">
-                            {{ elem.nbDownload }} téléchargement{{ elem.nbDownload > 1 ? "s" : "" }}
-                        </div>
-                    {% endif %}
-                </div>
+                            <div class="mt-4 font-semibold text-lg text-center">
+                                {{ elem.nbDownload }} téléchargement{{ elem.nbDownload > 1 ? "s" : "" }}
+                            </div>
+                        {% endif %}
+                    </div>
 
-                <div class="mt-2 px-2 flex gap-2 justify-between">
-                    <div class="flex gap-2 justify-end">
-                        <a href="{{ path('admin_galleries_update', {id: elem.id}) }}"
-                           class="text-sm underline cursor-pointer hover:text-gray-700">
-                            Modifier
-                        </a>
-                        <div class="delete-album"
-                             data-id="{{ elem.id }}"
-                             data-title="{{ elem.title }}"
-                        >
-                            <div class="text-sm underline cursor-not-allowed hover:text-gray-700">Supprimer</div>
+                    <div class="mt-2 px-2 flex gap-2 justify-between">
+                        <div class="flex gap-2 justify-end">
+                            <a href="{{ path('admin_galleries_update', {id: elem.id}) }}"
+                               class="text-sm underline cursor-pointer hover:text-gray-700">
+                                Modifier
+                            </a>
+                            <div class="delete-album"
+                                 data-id="{{ elem.id }}"
+                                 data-title="{{ elem.title }}"
+                            >
+                                <div class="text-sm underline cursor-not-allowed hover:text-gray-700">Supprimer</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="w-full flex flex-col items-center justify-center">
+            <div>
+                <div class="flex flex-col items-center justify-center bg-white p-12 rounded-xl shadow-sm">
+                    <div class="bg-blue-100 rounded-lg p-3">
+                        <svg class="w-6 h-6 text-blue-600" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <div class="text-xl font-medium mt-4">Aucun album enregistré</div>
+                    <div class="max-w-sm text-gray-500 text-center mt-2">
+                        <div>Aucun album enregistré, utilisez la commande :</div>
+                        <div class="p-2 rounded-md bg-gray-100 text-gray-600 mt-2">
+                            ga:up:da {username} {zipName}
                         </div>
                     </div>
                 </div>
             </div>
-        {% endfor %}
-    </div>
+        </div>
+    {% endif %}
 {% endblock %}
