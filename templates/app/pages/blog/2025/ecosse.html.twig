@@ -6,14 +6,14 @@
 {% block meta_keywords %}roadtrip Écosse, île de Skye, Ben Nevis, randonnée Écosse, photographe voyage, Old Man of Storr, Glenfinnan, Steall Waterfall, Glencoe, street photography Édimbourg, voyage nature Écosse, récit voyage Écosse{% endblock %}
 
 {% block main_content_in %}
-    <div class="w-full min-h-56">
+    <section class="w-full min-h-56">
         <div class="relative bg-gray-900 rounded-2xl pt-24 pb-12 sm:pt-36 sm:pb-24 overflow-hidden min-h-56">
             <div class="absolute top-0 left-0 rounded-2xl w-full h-full">
                 <img src="{{ asset('blog/articles/2025/ecosse/cover-ecosse.jpg') }}" alt="background image" class="opacity-50 object-cover w-full h-full pointer-events-none">
             </div>
             <div class="relative px-4 lg:px-8">
-                <div class="text-yellow-500 font-semibold text-lg md:text-center">8 mai au 17 mai 2025</div>
-                <h1 class="text-white font-bold text-4xl md:text-6xl md:text-center">Roadtrip en Écosse et les Highlands en 10 jours</h1>
+                <div class="text-color0 font-semibold text-lg mb-2 md:text-center">8 mai au 17 mai 2025</div>
+                <h1 class="max-w-4xl mx-auto text-white font-display font-bold text-4xl md:text-6xl md:text-center">Roadtrip en Écosse et les Highlands en 10 jours</h1>
                 <div class="flex items-end justify-end">
                     <p class="mt-16 text-gray-300 text-right max-w-screen-md">
                         Ce voyage, c’était une envie de nature brute, de paysages qui serrent le cœur et de ces instants
@@ -24,13 +24,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <section class="mt-10 flex flex-col gap-8 w-full max-w-screen-lg mx-auto px-2 lg:px-8">
         {% include "app/pages/blog/components/author.html.twig" %}
         <article class="flex flex-col gap-12">
-            <div class="flex flex-col gap-6">
-                <h2 class="text-2xl font-semibold border-b">Écosse sauvage : 10 jours de roadtrip entre lochs, montagnes et lumière dorée</h2>
+            <div class="text-2xl font-light text-gray-700 leading-relaxed border-l-4 border-[#DAA520] pl-8 mb-12">
                 <p>
                     Du 8 au 17 mai 2025, j’ai pris la route à travers l’Écosse. Dix jours à avaler les kilomètres sur
                     des routes sinueuses, à gravir des montagnes solitaires et à m’arrêter quand la lumière devenait
@@ -39,8 +38,8 @@
                 </p>
             </div>
             <div class="flex flex-col gap-6">
-                <h2 class="text-2xl font-semibold border-b">Jour 1 : Le choc des premiers kilomètres</h2>
-                <p>
+                <h2 class="font-display text-4xl font-bold mb-6">Jour 1 : Le choc des premiers kilomètres</h2>
+                <p class="dropcap">
                     Mon aventure commence à <b>Édimbourg</b>, ville vibrante que je retrouverai à la fin du séjour. À peine la
                     voiture récupérée, me voilà confronté à la conduite à gauche et aux routes étroites des Highlands.
                     Les premiers kilomètres sont hésitants, la main qui cherche le levier de vitesse du mauvais côté et
@@ -115,7 +114,7 @@
             </div>
             <div class="flex flex-col gap-6">
                 <div>
-                    <h2 class="text-2xl font-semibold border-b">Jour 2 : Cap sur l’île de Skye</h2>
+                    <h2 class="font-display text-4xl font-bold mb-6">Jour 2 : Cap sur l’île de Skye</h2>
                     <p class="mt-4">
                         Le lendemain, je prends la direction de la fameuse <b>île de Skye</b>, ce bout du monde écossais où la météo
                         change toutes les dix minutes et où les paysages semblent tout droit sortis d’un rêve.
@@ -248,7 +247,7 @@
             </div>
             <div class="flex flex-col gap-6">
                 <div>
-                    <h2 class="text-2xl font-semibold border-b">Jour 3 : Randonnées et solitude</h2>
+                    <h2 class="font-display text-4xl font-bold mb-6">Jour 3 : Randonnées et solitude</h2>
                     <p class="mt-4">
                         Ce matin-là, je me lève à l'aube. Le ciel est encore sombre quand je gare la voiture au pied de
                         l'<b>Old Man of Storr</b>. La montée est raide, le vent fouette le visage, mais à mesure que j'avance,
@@ -373,7 +372,7 @@
             </div>
             <div class="flex flex-col gap-6">
                 <div>
-                    <h2 class="text-2xl font-semibold border-b">Jour 4 : Le défi Sgurr na Stri</h2>
+                    <h2 class="font-display text-4xl font-bold mb-6">Jour 4 : Le défi Sgurr na Stri</h2>
                     <p class="mt-4">
                         C’est le jour de l’une des randonnées que j’attendais le plus : <b>Sgurr na Stri</b>.
                         Réputée pour offrir l’un des plus beaux panoramas d’Écosse, elle se mérite.
@@ -430,7 +429,7 @@
             </div>
             <div class="flex flex-col gap-6">
                 <div>
-                    <h2 class="text-2xl font-semibold border-b">Jour 5 : Magie écossaise</h2>
+                    <h2 class="font-display text-4xl font-bold mb-6">Jour 5 : Magie écossaise</h2>
                     <p class="mt-4">
                         Après les efforts des derniers jours, je choisis une journée plus tranquille. Direction
                         <b>Glenfinnan</b>, célèbre pour son viaduc où passe le Poudlard Express dans Harry Potter. Pas
@@ -483,7 +482,7 @@
             </div>
             <div class="flex flex-col gap-6">
                 <div>
-                    <h2 class="text-2xl font-semibold border-b">Jour 6 : Fort William et Steall Waterfall</h2>
+                    <h2 class="font-display text-4xl font-bold mb-6">Jour 6 : Fort William et Steall Waterfall</h2>
                     <p class="mt-4">
                         Après quelques jours intenses, je prends la route vers <b>Fort William</b>, petite ville blottie au pied
                         du Ben Nevis. Avant de me poser, je fais un arrêt à <b>Corpach</b> pour admirer l’épave rouillée
@@ -531,7 +530,7 @@
             </div>
             <div class="flex flex-col gap-6">
                 <div>
-                    <h2 class="text-2xl font-semibold border-b">Jour 7 : Ben Nevis et Glencoe</h2>
+                    <h2 class="font-display text-4xl font-bold mb-6">Jour 7 : Ben Nevis et Glencoe</h2>
                     <p class="mt-4">
                         Le réveil sonne tôt. Le <b>Ben Nevis</b> est dans les nuages, entièrement dissimulé par un épais
                         brouillard gris. J’hésite. Monter dans ces conditions semble déraisonnable.
@@ -580,7 +579,7 @@
             </div>
             <div class="flex flex-col gap-6">
                 <div>
-                    <h2 class="text-2xl font-semibold border-b">Jours restants : Retour à Édimbourg</h2>
+                    <h2 class="font-display text-4xl font-bold mb-6">Jours restants : Retour à Édimbourg</h2>
                     <p class="mt-4">
                         Après toutes ces montagnes et ces lochs, le retour à la civilisation se fait en douceur.
                         Je retrouve <b>Édimbourg</b>, ses rues pavées, ses maisons victoriennes et ses monuments de pierre.
@@ -768,9 +767,9 @@
                     </div>
                 </div>
             </div>
-            <div class="flex flex-col gap-6">
+            <div class="pt-12 border-t border-gray-200 flex flex-col gap-6">
                 <div>
-                    <h2 class="text-2xl font-semibold border-b">Conclusion</h2>
+                    <h2 class="font-display text-4xl font-bold mb-6">Conclusion</h2>
                     <p class="mt-4">
                         Ce roadtrip, c’est plus qu’un enchaînement de points sur une carte. C’est l’apprentissage de la
                         lenteur, du lâcher-prise et de l’émerveillement simple.

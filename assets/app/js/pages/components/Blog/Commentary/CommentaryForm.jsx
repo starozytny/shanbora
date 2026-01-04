@@ -122,23 +122,25 @@ class Form extends Component {
 			</>
 		} else {
 			return <form onSubmit={this.handleSubmit}>
-				<div className="flex flex-col gap-4">
-					<div className="max-w-96">
-						<Input identifiant="username" valeur={username} {...params0}>Pseudo</Input>
-						<div className="critere">
-							<Input identifiant="critere" valeur={critere} {...params0}>Critère</Input>
+				<div className="bg-white rounded-xl border border-gray-200 p-6 mb-8">
+					<div className="flex flex-col gap-4">
+						<div>
+							<Input identifiant="username" valeur={username} {...params0}>Pseudo</Input>
+							<div className="critere">
+								<Input identifiant="critere" valeur={critere} {...params0}>Critère</Input>
+							</div>
+						</div>
+						<div>
+							<TextArea identifiant="message" valeur={message} {...params0}>Votre message</TextArea>
 						</div>
 					</div>
-					<div>
-						<TextArea identifiant="message" valeur={message} {...params0}>Votre message</TextArea>
+					<div className="mt-4">
+						<button type="submit" className="px-6 py-3 bg-[#DAA520] text-white font-semibold rounded-lg hover:bg-[#B8860B] transition-colors">
+							Publier le commentaire
+						</button>
 					</div>
-				</div>
-				<div className="mt-4">
-					<Button isSubmit={true} type="blue">Envoyer</Button>
 				</div>
 			</form>
 		}
-
-
 	}
 }
