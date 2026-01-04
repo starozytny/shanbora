@@ -65,6 +65,8 @@ class FixTmpDataCommand extends Command
 
                     if ($exif && isset($exif['DateTimeOriginal'])) {
                         $dateAt = DateTime::createFromFormat('Y:m:d H:i:s', $exif['DateTimeOriginal']);
+
+                        $photo->setDateAt($dateAt);
                     } else {
                         $io->error("Impossible de lire les exifs de : " . $photo->getId() . " - " . $photo->getOriginalName());
                     }
