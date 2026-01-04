@@ -4,6 +4,7 @@ namespace App\Command\Fix;
 
 use App\Entity\Main\Gallery\GaAlbum;
 use App\Service\DatabaseService;
+use DateTime;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -20,12 +21,14 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 class FixTmpDataCommand extends Command
 {
     private ObjectManager $em;
+    private string $galleryDirectory;
 
-    public function __construct(DatabaseService $databaseService)
+    public function __construct(string $galleryImagesDirectory, DatabaseService $databaseService)
     {
         parent::__construct();
 
         $this->em = $databaseService->getDefaultManager();
+        $this->galleryDirectory = $galleryImagesDirectory;
     }
 
 //    protected function configure(): void
@@ -50,7 +53,25 @@ class FixTmpDataCommand extends Command
 
         $data = $this->em->getRepository(GaAlbum::class)->findAll();
         foreach($data as $item){
-            $item->setArchive($item->getUser()->getUsername());
+            $photos = $item->getImages();
+
+            foreach($photos as $photo){
+                $file = $this->galleryDirectory . $photo->getFileFile();
+
+                if(file_exists($file)){
+                    $exif = @exif_read_data($file);
+
+                    $dateAt = $photo->getDateAt();
+
+                    if ($exif && isset($exif['DateTimeOriginal'])) {
+                        $dateAt = DateTime::createFromFormat('Y:m:d H:i:s', $exif['DateTimeOriginal']);
+                    } else {
+                        $io->error("Impossible de lire les exifs de : " . $photo->getId() . " - " . $photo->getOriginalName());
+                    }
+                }else{
+                    $io->error("Le fichier n'existe pas : " . $photo->getId() . " - " . $photo->getOriginalName());
+                }
+            }
         }
 
         $this->em->flush();
