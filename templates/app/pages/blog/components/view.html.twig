@@ -1,10 +1,10 @@
 {% if is_granted('ROLE_ADMIN') %}
-<div class="mt-2">
+<div class="mt-4">
     {% for view in views %}
         {% if view.adventureId == adventureId %}
             {% include "layout/components/tailwind/badges/badge.html.twig" with {
                 badge_type: 'blue',
-                badge_text: view.nbTotal ~ ' vues'
+                badge_text: view.nbTotal ~ ' vue' ~ (view.nbTotal > 1 ? "s" : "")
             } %}
         {% endif %}
     {% endfor %}

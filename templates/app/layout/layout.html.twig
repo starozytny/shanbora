@@ -3,16 +3,40 @@
 {% set page_prefix = "Chanbora Chhun photographe et développeur web fullstack à Marseille" %}
 
 {% block footer %}
-    <div class="bg-black/90 px-4 py-8 text-sm sm:px-6 lg:px-8">
-        <div class="mx-auto max-w-screen-2xl pt-4 flex flex-col text-center lg:flex-row lg:text-left gap-2 justify-center">
-            <p class="text-gray-300">&copy; 2024 - <a href="https://chanbora.chhun.fr" class="text-blue-500">chanbora.chhun.fr</a></p>
-            <span class="text-gray-300">-</span>
-            <a class="text-gray-300 hover:text-white" href="{{ path('app_mentions') }}">Mentions légales</a>
-            <a class="text-gray-300 hover:text-white" href="{{ path('app_politique') }}">Politique de confidentialité</a>
-            <a class="text-gray-300 hover:text-white" href="{{ path('app_cookies') }}">Gestion des cookies</a>
-            {% if is_granted('ROLE_ADMIN') %}
-                <a class="text-gray-300 hover:text-white" href="{{ path('admin_homepage') }}">Espace administrateur</a>
-            {% endif %}
+    <footer class="relative border-t bg-gradient-to-r from-[#0f0f0f] to-[#1a1a1a]">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 py-12">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+                <div class="sm:col-span-2 lg:col-span-1">
+                    <h3 class="flex flex-col text-color0">
+                        <span class="block font-bold text-2xl">Shanbo</span>
+                    </h3>
+                    <p class="text-gray-400 text-sm mt-2">Photographe et développeur web fullstack à Marseille</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Réseaux</h4>
+                    <div class="flex flex-col gap-2 text-sm">
+                        <a href="https://www.instagram.com/shanbo_daltonien/" class="text-gray-400 hover:text-color0 transition-colors">Instagram</a>
+                        <a href="https://unsplash.com/fr/@shanbora" class="text-gray-400 hover:text-color0 transition-colors">Unsplash</a>
+                        <a href="https://www.linkedin.com/in/chanbora-chhun-00a0a0112/" class="text-gray-400 hover:text-color0 transition-colors">LinkedIn</a>
+                        <a href="https://github.com/starozytny" class="text-gray-400 hover:text-color0 transition-colors">GitHub</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Légal</h4>
+                    <div class="flex flex-col gap-2 text-sm">
+                        <a href="{{ path('app_mentions') }}" class="text-gray-400 hover:text-color0 transition-colors">Mentions légales</a>
+                        <a href="{{ path('app_politique') }}" class="text-gray-400 hover:text-color0 transition-colors">Politique de confidentialité</a>
+                        <a href="{{ path('app_cookies') }}" class="text-gray-400 hover:text-color0 transition-colors">Gestion des cookies</a>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ path('admin_homepage') }}" class="text-gray-400 hover:text-color0 transition-colors">Espace administrateur</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-white/5">
+                <p class="text-center text-gray-500 text-sm">© 2024 - chanbora.chhun.fr</p>
+            </div>
         </div>
-    </div>
+    </footer>
+
 {% endblock %}
