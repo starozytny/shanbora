@@ -29,10 +29,10 @@ class ImagesController extends AbstractController
             if($request->query->get('sortBy') == "dl"){
                 $images = $imageRepository->findBy(['album' => $albumId], ['nbDownload' => 'DESC']);
             }else{
-                $images = $imageRepository->findBy(['album' => $albumId], ['dateAt' => 'ASC']);
+                $images = $imageRepository->findBy(['album' => $albumId], ['originalName' => 'ASC']);
             }
         }else{
-            $images = $imageRepository->findBy(['album' => $albumId], ['dateAt' => 'ASC']);
+            $images = $imageRepository->findBy(['album' => $albumId], ['originalName' => 'ASC']);
         }
 
         // Pagination
