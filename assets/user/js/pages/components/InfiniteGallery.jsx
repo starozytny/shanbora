@@ -7,8 +7,9 @@ import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
 import Formulaire from "@commonFunctions/formulaire";
 import ModalFunctions from '@commonFunctions/modal';
 
-import { Button, ButtonA, ButtonIcon } from "@tailwindComponents/Elements/Button";
 import { LightBox } from "@tailwindComponents/Elements/LightBox";
+
+import { Button, ButtonA, ButtonIcon } from "@tailwindComponents/Elements/Button";
 
 const URL_USER_HOMEPAGE = "user_homepage";
 const URL_ADMIN_READ = "admin_galleries_read";
@@ -269,34 +270,34 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 };
 
 function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover, isAdmin, selectedImages, onToggleSelect }) {
-	const [loaded, setLoaded] = useState(Array(currentImages.length).fill(false));
-	const [error, setError] = useState(Array(currentImages.length).fill(false));
-
-	const handleImageLoad = (index) => {
-		const updatedLoaded = [...loaded];
-		updatedLoaded[index] = true;
-		setLoaded(updatedLoaded);
-	};
-
-	const handleImageError = (index) => {
-		const updatedError = [...error];
-		updatedError[index] = true;
-		setError(updatedError);
-	};
+	const [loadedImages, setLoadedImages] = useState(new Set());
+	const [errorImages, setErrorImages] = useState(new Set());
+	const imageRefs = useRef({});
 
 	useEffect(() => {
-		const timeoutId = currentImages.map((_, index) =>
-			setTimeout(() => {
-				if (!loaded[index]) {
-					handleImageError(index);
-				}
-			}, 500)
-		);
+		currentImages.forEach(image => {
+			const imgElement = imageRefs.current[image.id];
+			if (imgElement && imgElement.complete && imgElement.naturalHeight !== 0) {
+				handleImageLoad(image.id);
+			}
+		});
+	}, [currentImages]);
 
-		return () => {
-			timeoutId.forEach((id) => clearTimeout(id));
-		};
-	}, [loaded]);
+	const handleImageLoad = (imageId) => {
+		setLoadedImages(prev => {
+			const newSet = new Set(prev);
+			newSet.add(imageId);
+			return newSet;
+		});
+	};
+
+	const handleImageError = (imageId) => {
+		setErrorImages(prev => {
+			const newSet = new Set(prev);
+			newSet.add(imageId);
+			return newSet;
+		});
+	};
 
 	const handleCheckboxClick = (e, imageId) => {
 		e.stopPropagation();
@@ -315,8 +316,11 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover
 		{currentImages.map((image, index) => {
 			const isSelected = selectedImages.has(image.id);
 			const hasSelection = selectedImages.size > 0;
+			const isLoaded = loadedImages.has(image.id);
+			const hasError = errorImages.has(image.id);
+			const showPlaceholder = !isLoaded && !hasError;
 
-			return <div key={index}
+			return <div key={image.id}
 						className={`relative cursor-pointer flex items-center justify-center bg-gray-900 min-h-[205px] md:min-h-[332px] group gallery-item overflow-hidden rounded-md ${
 							isSelected 
 								? 'border-8 border-[#DAA520]' 
@@ -324,29 +328,30 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover
 						}`}
 						onClick={() => handleImageClick(image)}>
 
-				<div className={`w-full h-full bg-white flex items-center justify-center absolute top-0 left-0 ${!loaded[index] && !error[index] ? "opacity-100" : "opacity-0"}`}>
-					<span className="icon-chart-3"></span>
-				</div>
+				{showPlaceholder && (
+					<div className="w-full h-full bg-white flex items-center justify-center absolute top-0 left-0 z-10">
+						<span className="icon-chart-3 text-gray-400 text-2xl animate-spin"></span>
+					</div>
+				)}
 
-				{error[index]
-					? <img
-						src={Routing.generate(URL_READ_IMAGE, { id: image.id })}
-						alt={`Photo ${image.originalName}`}
-						className="pointer-events-none w-full h-auto rounded-md group-hover:scale-105 transition-transform"
-					/>
-					: <img
-						src={Routing.generate(URL_READ_IMAGE, { id: image.id })}
-						alt={`Photo ${image.originalName}`}
-						className="pointer-events-none w-full h-auto rounded-lg group-hover:scale-105 transition-transform"
-						loading="lazy"
-						onLoad={() => handleImageLoad(index)}
-						onError={() => handleImageError(index)}
-					/>
-				}
+				<img
+					ref={el => imageRefs.current[image.id] = el}
+					src={Routing.generate(URL_READ_IMAGE, { id: image.id })}
+					alt={`Photo ${image.originalName}`}
+					className={`pointer-events-none w-full h-auto rounded-lg group-hover:scale-105 transition-all duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+					loading="lazy"
+					onLoad={(e) => {
+						// Vérifier que l'image est vraiment chargée
+						if (e.target.complete && e.target.naturalHeight !== 0) {
+							handleImageLoad(image.id);
+						}
+					}}
+					onError={() => handleImageError(image.id)}
+				/>
 
 				{!isAdmin && (
 					<div
-						className={`absolute top-3 left-3 w-6 h-6 rounded-md border-2 border-white cursor-pointer transition-all ${
+						className={`absolute top-3 left-3 w-6 h-6 rounded-md border-2 border-white cursor-pointer transition-all z-20 ${
 							isSelected
 								? 'bg-[#DAA520] border-[#DAA520] opacity-100'
 								: 'bg-black/30 backdrop-blur-sm'
@@ -360,7 +365,7 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover
 				)}
 
 				{isAdmin && (
-					<div className="absolute top-2 left-2 w-[calc(100%-1rem)] flex justify-between gap-2">
+					<div className="absolute top-2 left-2 w-[calc(100%-1rem)] flex justify-between gap-2 z-20">
 						<div className="bg-gray-300/80 w-6 h-6 rounded-full text-xs flex justify-center items-center">
 							{image.nbDownload}
 						</div>
