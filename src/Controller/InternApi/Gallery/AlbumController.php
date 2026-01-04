@@ -157,7 +157,7 @@ class AlbumController extends AbstractController
             throw $this->createNotFoundException('Album not found.');
         }
 
-        $response = $imageService->getImageGallery($obj->getCoverThumb());
+        $response = $imageService->getImageGallery($obj->getCoverLightbox());
 
         if($response === false){
             throw $this->createNotFoundException('La photo demandée n\'existe pas.');
