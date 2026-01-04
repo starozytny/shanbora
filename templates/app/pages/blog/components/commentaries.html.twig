@@ -1,6 +1,6 @@
-<section class="mt-24">
-    <h2 class="text-xl font-bold border-b">{{ commentaries | length }} Commentaire{{ commentaries | length > 1 ? "s" : "" }}</h2>
-    <div class="my-4 pb-4">
+<section class="mt-24 max-w-screen-lg mx-auto px-2 lg:px-8">
+    <h3 class="font-display text-3xl font-bold mb-8">{{ commentaries | length }} Commentaire{{ commentaries | length > 1 ? "s" : "" }}</h3>
+    <div class="mt-4 pb-4">
         <div id="commentary_create"
              data-adventure-id="{{ adventureId }}"
              data-adventure-name="{{ page_title }}"
@@ -13,70 +13,70 @@
     {% if commentaries | length > 0 %}
         <div class="flex flex-col gap-8 pt-8 border-t">
             {% for commentary in commentaries %}
-                <div class="flex flex-col gap-4">
-                    <div class="flex flex-col gap-2 bg-white p-4 rounded-md shadow">
-                        <div class="flex gap-2">
-                            <div>
-                                {% if commentary.user %}
-                                    <img class="w-10 h-10 object-cover rounded-full" src="{{ commentary.user.avatarFile }}" alt="Avatar utilisateur">
-                                {% else %}
-                                    <div class="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center font-semibold">
-                                        <span>{{ commentary.username | slice(0,1) | upper }}</span>
-                                    </div>
+                <div class="bg-white rounded-xl border border-gray-200 p-6">
+                    <div class="flex items-start gap-4">
+                        {% if commentary.user and commentary.user.avatar %}
+                            <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                                <img src="{{ resp.user.avatarFile }}" alt="Avatar utilisateur" class="w-full h-full object-cover">
+                            </div>
+                        {% else %}
+                            <div class="h-10 w-10 rounded-full bg-gradient-to-br from-[#DAA520] to-[#B8860B] flex items-center justify-center text-white font-bold text-lg">
+                                <span>{{ commentary.username | slice(0,1) | upper }}</span>
+                            </div>
+                        {% endif %}
+                        <div class="flex-1">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="font-semibold">{{ commentary.username }}</span>
+                                <span class="text-sm text-gray-500">{{ commentary.createdAt | date('d/m/Y \\à H\\hi') }}</span>
+                            </div>
+                            <p class="text-gray-700 mb-3">
+                                {{ commentary.message }}
+                            </p>
+
+                            <div class="flex gap-4">
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <div class="commentary_delete" data-id="{{ commentary.id }}"></div>
                                 {% endif %}
+                                <div class="commentary_response"
+                                     data-id="{{ commentary.id }}"
+                                     data-adventure-id="{{ adventureId }}"
+                                     data-adventure-name="{{ page_title }}"
+                                     data-adventure-url="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"
+                                     data-username="{{ is_granted('IS_AUTHENTICATED_REMEMBERED') ? app.user.userIdentifier : "" }}"
+                                ></div>
                             </div>
-                            <div>
-                                <div class="font-semibold">{{ commentary.username }}</div>
-                                <div class="text-gray-600 text-xs">{{ commentary.createdAt | date('d/m/Y \\à H\\hi') }}</div>
-                            </div>
-                        </div>
-                        <div>
-                            {{ commentary.message }}
-                        </div>
-                        <div class="flex gap-4">
-                            {% if is_granted('ROLE_ADMIN') %}
-                                <div class="commentary_delete" data-id="{{ commentary.id }}"></div>
-                            {% endif %}
-                            <div class="commentary_response"
-                                 data-id="{{ commentary.id }}"
-                                 data-adventure-id="{{ adventureId }}"
-                                 data-adventure-name="{{ page_title }}"
-                                 data-adventure-url="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}"
-                                 data-username="{{ is_granted('IS_AUTHENTICATED_REMEMBERED') ? app.user.userIdentifier : "" }}"
-                            ></div>
-                        </div>
-                    </div>
-                    {% for resp in responses %}
-                        {% if resp.responseId == commentary.id %}
-                            <div class="pl-12">
-                                <div class="flex flex-col gap-2">
-                                    <div class="flex gap-2">
-                                        <div>
-                                            {% if resp.user %}
-                                                <img class="w-10 h-10 object-cover rounded-full" src="{{ resp.user.avatarFile }}" alt="Avatar utilisateur">
+
+                            {% for resp in responses %}
+                                {% if resp.responseId == commentary.id %}
+                                    <div class="ml-8 mt-4 bg-gray-50 rounded-lg p-4 border-l-4 border-[#DAA520]">
+                                        <div class="flex items-start gap-3">
+                                            {% if resp.user and resp.user.avatar %}
+                                                <div class="w-10 h-10 rounded-full overflow-hidden flex-shrink-0">
+                                                    <img src="{{ resp.user.avatarFile }}" alt="Avatar utilisateur" class="w-full h-full object-cover">
+                                                </div>
                                             {% else %}
                                                 <div class="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center font-semibold">
                                                     <span>{{ resp.username | slice(0,1) | upper }}</span>
                                                 </div>
                                             {% endif %}
+                                            <div class="flex-1">
+                                                <div class="flex items-center gap-3 mb-2">
+                                                    <span class="font-semibold text-[#DAA520]">{{ resp.username }}</span>
+                                                    <span class="text-xs text-gray-500">{{ resp.createdAt | date('d/m/Y \\à H\\hi') }}</span>
+                                                </div>
+                                                <p class="text-gray-700 text-sm">
+                                                    {{ resp.message }}
+                                                </p>
+                                                {% if is_granted('ROLE_ADMIN') %}
+                                                    <div class="commentary_delete" data-id="{{ resp.id }}"></div>
+                                                {% endif %}
+                                            </div>
                                         </div>
-                                        <div>
-                                            <div class="font-semibold">{{ resp.username }}</div>
-                                            <div class="text-gray-600 text-xs">{{ resp.createdAt | date('d/m/Y \\à H\\hi') }}</div>
-                                        </div>
                                     </div>
-                                    <div>
-                                        {{ resp.message }}
-                                    </div>
-                                    <div class="flex gap-4">
-                                        {% if is_granted('ROLE_ADMIN') %}
-                                            <div class="commentary_delete" data-id="{{ resp.id }}"></div>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
             {% endfor %}
         </div>
