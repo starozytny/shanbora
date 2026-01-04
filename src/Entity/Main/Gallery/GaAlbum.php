@@ -191,9 +191,9 @@ class GaAlbum extends DataEntity
         return $this;
     }
 
-    public function getCoverThumb()
+    public function getCoverLightbox()
     {
-        return $this->getFileOrDefault($this->cover, $this->user->getUsername() . '/' . $this->getArchive() . '/thumbs', null);
+        return $this->getFileOrDefault($this->cover, $this->user->getUsername() . '/' . $this->getArchive() . '/lightbox', null);
     }
 
     public function getCoverFile()

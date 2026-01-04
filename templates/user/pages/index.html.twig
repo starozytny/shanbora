@@ -25,7 +25,7 @@
                    <div class="font-semibold text-center">{{ elem.title }}</div>
                    {% if elem.cover %}
                        <div class="relative mt-4 rounded w-full h-56 overflow-hidden">
-                           <img src="{{ path('intern_api_user_gallery_albums_read_cover_hd_ultra', {id: elem.id}) }}"
+                           <img src="{{ path('intern_api_user_gallery_albums_read_cover', {id: elem.id}) }}"
                                 alt="photo couverture de {{ elem.title }}"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform"
                            >
