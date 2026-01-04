@@ -10,6 +10,7 @@ import ModalFunctions from '@commonFunctions/modal';
 import { Button, ButtonA, ButtonIcon } from "@tailwindComponents/Elements/Button";
 import { LightBox } from "@tailwindComponents/Elements/LightBox";
 
+const URL_USER_HOMEPAGE = "user_homepage";
 const URL_GET_DATA = "intern_api_user_gallery_images_fetch_images";
 const URL_READ_IMAGE = "intern_api_user_gallery_images_read_image";
 const URL_READ_IMAGE_HD = "intern_api_user_gallery_images_read_image_hd";
@@ -141,7 +142,7 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 			<section className="py-12 bg-gradient-to-br from-gray-50 to-white">
 				<div className="max-w-7xl mx-auto px-6 lg:px-8">
 					<div className="flex items-center gap-4 mb-6">
-						<a href="/albums" className="flex items-center gap-2 text-gray-600 hover:text-[#DAA520] transition-colors">
+						<a href={Routing.generate(URL_USER_HOMEPAGE)} className="flex items-center gap-2 text-gray-600 hover:text-[#DAA520] transition-colors">
 							<span className="icon-left-chevron"></span>
 							<span className="text-sm font-medium">Retour aux albums</span>
 						</a>

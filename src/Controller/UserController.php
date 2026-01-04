@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/espace-membre', name: 'user_')]
 class UserController extends AbstractController
 {
-    #[Route('/', name: 'homepage')]
+    #[Route('/', name: 'homepage', options: ['expose' => true], methods: 'GET')]
     public function index(GaAlbumRepository $albumRepository, GaImageRepository $imageRepository): Response
     {
         /** @var User $user */

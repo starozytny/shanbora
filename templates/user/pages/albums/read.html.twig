@@ -9,6 +9,12 @@
         }
     </style>
     <div class="flex flex-col gap-8 min-h-[calc(100vh-100px-80px)]">
-        <div id="gallery_index" data-album-id="{{ album.id }}"></div>
+        <div id="gallery_index"
+             data-album-id="{{ album.id }}"
+             data-album-name="{{ album.title }}"
+             data-album-date="{{ album.dateAt | date('d/m/Y') }}"
+        >
+            {% include "layout/components/tailwind/loaders/loader.html.twig" %}
+        </div>
     </div>
 {% endblock %}

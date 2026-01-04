@@ -51,9 +51,10 @@
                 {% endif %}
             </div>
         </div>
-
         <div id="gallery_index"
              data-is-admin="1"
+             data-album-name="{{ album.title }}"
+             data-album-date="{{ album.dateAt | date('d/m/Y') }}"
              data-album-id="{{ album.id }}"
              data-sort-by="{{ app.request.query.get('sortBy') ? app.request.query.get('sortBy') : "dl" }}"
         ></div>
