@@ -11,6 +11,7 @@ import { Button, ButtonA, ButtonIcon } from "@tailwindComponents/Elements/Button
 import { LightBox } from "@tailwindComponents/Elements/LightBox";
 
 const URL_USER_HOMEPAGE = "user_homepage";
+const URL_ADMIN_READ = "admin_galleries_read";
 const URL_GET_DATA = "intern_api_user_gallery_images_fetch_images";
 const URL_READ_IMAGE = "intern_api_user_gallery_images_read_image";
 const URL_READ_IMAGE_HD = "intern_api_user_gallery_images_read_image_hd";
@@ -195,6 +196,16 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 								<span>{currentImages.length}</span> photo{currentImages.length > 1 ? 's' : ''} •
 								<span className="ml-2">{selectedImages.size}</span> sélectionnée{selectedImages.size > 1 ? 's' : ''}
 							</p>
+							{isAdmin && (
+								<div className="mt-4 text-sm text-gray-600 underline">
+									<a href={Routing.generate(URL_ADMIN_READ, {id: albumId, sortBy: sortBy === "date" ? "dl" : "date"})}>
+										{sortBy === "date"
+											? 'Trier par ordre de téléchargement'
+											: 'Trier par ordre de prise de vue'
+										}
+									</a>
+								</div>
+							)}
 						</div>
 
 						<div className="flex flex-wrap gap-3">
