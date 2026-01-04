@@ -152,10 +152,18 @@ html{
 }
 
 /* Gallery styling */
-.hero-slider {
+.gallery-hero-slider {
   position: relative;
-  height: 48vh;
+  height: 68vh;
   overflow: hidden;
+
+  @media (min-width: 768px) {
+    height: 58vh;
+  }
+
+  @media (min-width: 1536px) {
+    height: 48vh;
+  }
 }
 
 .slide {
