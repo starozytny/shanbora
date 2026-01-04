@@ -4,50 +4,97 @@
 {% set page_subtitle %}Accédez aux galeries des utilisateurs.{% endset %}
 
 {% block main_content %}
-    <div class="flex flex-wrap gap-4">
-        {% for elem in albums %}
-            <div>
-
-                <div class="cursor-pointer block p-4 bg-white rounded-md w-96 border group hover:border-gray-300 max-w-[280px]"
-                     onclick="window.location.href = '{{ app.request.schemeAndHttpHost ~ path('admin_galleries_read', {id: elem.id}) }}'"
-                >
-                    <div class="font-semibold text-center">{{ elem.title }}</div>
-                    <div class="text-sm text-center">{{ elem.nbDownload }} téléchargement{{ elem.nbDownload > 1 ? "s" : "" }}</div>
-                    {% if elem.cover %}
-                        <div class="relative mt-4 rounded w-full h-56 overflow-hidden">
-                            <img src="{{ path('intern_api_user_gallery_albums_read_cover', {id: elem.id}) }}"
-                                 alt="photo couverture de {{ elem.title }}"
-                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                            >
-                            <div class="absolute bottom-0 right-0 text-gray-600 text-xs bg-white pt-2 pb-1 px-4 rounded-tl">
-                                {{ elem.dateAt | date('d/m/Y') }}
-                            </div>
-                        </div>
-                    {% else %}
-                        <div class="text-gray-600 text-xs text-center">
-                            {{ elem.dateAt | date('d/m/Y') }}
-                        </div>
-                        <div class="mt-4 font-semibold text-lg text-center">
-                            {{ elem.nbDownload }} téléchargement{{ elem.nbDownload > 1 ? "s" : "" }}
-                        </div>
-                    {% endif %}
-                </div>
-
-                <div class="mt-2 px-2 flex gap-2 justify-between">
-                    <div class="flex gap-2 justify-end">
-                        <a href="{{ path('admin_galleries_update', {id: elem.id}) }}"
-                           class="text-sm underline cursor-pointer hover:text-gray-700">
-                            Modifier
-                        </a>
-                        <div class="delete-album"
-                             data-id="{{ elem.id }}"
-                             data-title="{{ elem.title }}"
-                        >
-                            <div class="text-sm underline cursor-not-allowed hover:text-gray-700">Supprimer</div>
-                        </div>
+    <section class="py-16 bg-gradient-to-br from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-[#DAA520]/10 rounded-full mb-4">
+                    <svg class="w-5 h-5 text-[#DAA520]" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 11H9v-2h2v2zm0-4H9V5h2v4z"/>
+                    </svg>
+                    <div class="text-sm font-medium text-[#DAA520]">
+                        Déposez l'archive dans <span class="font-semibold">documents/import/gallery/{username}</span> puis lancez la commande : <span class="font-semibold">ga:up:da {username} {zipName}</span>
                     </div>
                 </div>
             </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+                    <div class="text-3xl font-bold text-[#DAA520]">{{ totalAlbums }}</div>
+                    <div class="text-sm text-gray-600">Albums totaux</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+                    <div class="text-3xl font-bold text-[#DAA520]">{{ totalPhotos }}</div>
+                    <div class="text-sm text-gray-600">Photos</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+                    <div class="text-3xl font-bold text-[#DAA520]">{{ totalYears }}</div>
+                    <div class="text-sm text-gray-600">Années</div>
+                </div>
+                <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm">
+                    <div class="text-3xl font-bold text-[#DAA520]">∞</div>
+                    <div class="text-sm text-gray-600">Souvenirs</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16">
+        {% for year, elements in data %}
+            <div class="year-section" data-year="{{ year }}">
+                <div class="flex items-center gap-4 mb-8">
+                    <h2 class="font-display text-4xl font-bold text-gray-900">{{ year }}</h2>
+                    <div class="h-px flex-1 bg-gradient-to-r from-[#DAA520] to-transparent"></div>
+                    <span class="text-sm text-gray-500">{{ elements | length }} albums</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    {% for elem in elements %}
+                        <div class="album-card bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+                            <div class="relative h-64 overflow-hidden" onclick="window.location.href = '{{ app.request.schemeAndHttpHost ~ path('admin_galleries_read', {id: elem.id}) }}'">
+                                {% if elem.cover %}
+                                    <img src="{{ path('intern_api_user_gallery_albums_read_cover', {id: elem.id}) }}" alt="photo couverture de {{ elem.title }}" class="w-full h-full object-cover">
+                                {% else %}
+                                    <div class="w-full h-full bg-gray-50 flex items-center justify-center text-gray-400 font-semibold">{{ elem.title }}</div>
+                                {% endif %}
+                                <div class="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-gray-700">
+                                    {{ elem.dateAt | format_datetime(pattern="d MMM") }}
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <div onclick="window.location.href = '{{ app.request.schemeAndHttpHost ~ path('admin_galleries_read', {id: elem.id}) }}'">
+                                    <h3 class="font-display text-xl font-bold text-gray-900 mb-2">{{ elem.title }}</h3>
+                                    <div class="flex items-center justify-between text-sm text-gray-500">
+                                        <div class="flex flex-col gap-2">
+                                            <span>{{ indexPhotos[elem.id] ? indexPhotos[elem.id] | length : 0 }} photos</span>
+                                            <span>{{ elem.nbDownload }} téléchargement{{ elem.nbDownload > 1 ? "s" : "" }}</span>
+                                        </div>
+                                        <button class="inline-flex items-center gap-2 text-[#DAA520] hover:text-[#B8860B] font-medium transition-colors">
+                                            <span>Ouvrir</span>
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="mt-4 flex gap-2 justify-between">
+                                    <div class="flex gap-2 justify-end">
+                                        <a href="{{ path('admin_galleries_update', {id: elem.id}) }}"
+                                           class="text-sm underline cursor-pointer hover:text-gray-700">
+                                            Modifier
+                                        </a>
+                                        <div class="delete-album"
+                                             data-id="{{ elem.id }}"
+                                             data-title="{{ elem.title }}"
+                                        >
+                                            <div class="text-sm underline cursor-not-allowed hover:text-gray-700">Supprimer</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         {% endfor %}
-    </div>
+    </section>
 {% endblock %}

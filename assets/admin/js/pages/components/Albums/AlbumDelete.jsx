@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 
 import axios from "axios";
@@ -32,14 +33,16 @@ export function AlbumDelete ({ id, title })
 
     return <>
         <div className="text-sm underline cursor-pointer hover:text-gray-700" onClick={handleClick}>Supprimer</div>
-        <Modal ref={modalRef} identifiant={`delete-tuto-${id}`} maxWidth={414} title="Supprimer un album"
-               content={<p>Êtes-vous sûr de vouloir supprimer ce album : <b>{title}</b> ?</p>}
-               footer={<Button type="red" onClick={handleDelete}>Confirmer la suppression</Button>} closeTxt="Annuler" />
+        {createPortal(
+            <Modal ref={modalRef} identifiant={`delete-tuto-${id}`} maxWidth={414} title="Supprimer un album"
+                   content={<p>Êtes-vous sûr de vouloir supprimer ce album : <b>{title}</b> ?</p>}
+                   footer={<Button type="red" onClick={handleDelete}>Confirmer la suppression</Button>} closeTxt="Annuler" />
+            , document.body
+        )}
     </>
 }
 
 AlbumDelete.propTypes = {
-    context: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
 }

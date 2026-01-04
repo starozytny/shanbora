@@ -124,7 +124,7 @@ class AlbumController extends AbstractController
         if($coverFile){
             $oldCover = $album->getCoverFile();
             $oldCoverFile = $this->getParameter('gallery_images_directory') . $oldCover;
-            if(file_exists($oldCoverFile)){
+            if(!is_dir($oldCoverFile) && file_exists($oldCoverFile)){
                 unlink($oldCoverFile);
             }
 
