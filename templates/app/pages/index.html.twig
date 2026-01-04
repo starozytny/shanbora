@@ -45,13 +45,17 @@
                             Salut, je suis Chanbora Chhun.
                         </h1>
 
-                        <div class="mt-10 flex items-center gap-x-6">
-                            <a href="#mon-travail" class="cta-btn inline-flex items-center gap-3 px-8 py-4 bg-[#DAA520] text-white font-semibold rounded-lg hover:bg-[#B8860B] transition-colors shadow-xl">
-                                <span>💪 Mon travail</span>
-                            </a>
-                            <a href="#restons-en-contact" class="cta-btn inline-flex items-center gap-3 px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors shadow-xl">
-                                <span>🤝 Restons en contact</span>
-                            </a>
+                        <div class="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center">
+                            <div>
+                                <a href="#mon-travail" class="cta-btn inline-flex items-center gap-3 px-8 py-4 bg-[#DAA520] text-white font-semibold rounded-lg hover:bg-[#B8860B] transition-colors shadow-xl">
+                                    <span>💪 Mon travail</span>
+                                </a>
+                            </div>
+                            <div>
+                                <a href="#restons-en-contact" class="cta-btn inline-flex items-center gap-3 px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors shadow-xl">
+                                    <span>🤝 Restons en contact</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -65,7 +69,7 @@
             </div>
         </div>
 
-        <div class="w-full mb-12 lg:mb-32" id="mon-travail">
+        <div class="w-full mb-12 px-6 lg:px-8 lg:mb-32" id="mon-travail">
             <div class="mb-12 text-center">
                 <div class="text-[#DAA520] text-sm font-semibold tracking-wider uppercase mb-4">
                     Fragments du temps
@@ -133,15 +137,15 @@
                     </div>
                     <div class="grid grid-cols-2 gap-4">
                         <div class="image-card rounded-xl overflow-hidden shadow-lg">
-                            <img src="{{ asset('build/app/images/homepage/person.jpg') }}" alt="Person" class="w-full h-full object-cover aspect-[3/4]">
-                        </div>
-                        <div class="image-card rounded-xl overflow-hidden shadow-lg mt-12">
-                            <img src="{{ asset('build/app/images/homepage/femme-sunrise.jpg') }}" alt="Femme sunrise" class="w-full h-full object-cover aspect-[3/4]">
-                        </div>
-                        <div class="image-card rounded-xl overflow-hidden shadow-lg -mt-12">
                             <img src="{{ asset('build/app/images/homepage/couple-sunset.jpg') }}" alt="Couple sunset" class="w-full h-full object-cover aspect-[3/4]">
                         </div>
+                        <div class="image-card rounded-xl overflow-hidden shadow-lg translate-y-12">
+                            <img src="{{ asset('build/app/images/homepage/femme-sunrise.jpg') }}" alt="Femme sunrise" class="w-full h-full object-cover aspect-[3/4]">
+                        </div>
                         <div class="image-card rounded-xl overflow-hidden shadow-lg">
+                            <img src="{{ asset('build/app/images/homepage/person.jpg') }}" alt="Person" class="w-full h-full object-cover aspect-[3/4]">
+                        </div>
+                        <div class="image-card rounded-xl overflow-hidden shadow-lg translate-y-12">
                             <img src="{{ asset('build/app/images/homepage/deux-femmes-portrait.jpg') }}" alt="Deux femmes" class="w-full h-full object-cover aspect-[3/4]">
                         </div>
                     </div>
