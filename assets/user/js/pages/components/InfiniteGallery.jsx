@@ -17,19 +17,19 @@ const URL_DOWNLOAD_FILE = "intern_api_user_gallery_images_download";
 const URL_DOWNLOAD_ARCHIVE = "intern_api_user_gallery_albums_archive";
 const URL_COVER_ALBUM = "intern_api_user_gallery_albums_cover";
 
-const InfiniteGallery = ({ isAdmin, albumId, sortBy }) => {
+const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => {
 	const refLightbox = useRef(null);
-	const [rankPhoto, setRankPhoto] = useState(1); // Stocke les images
-	const [images, setImages] = useState([]); // Stocke les images
-	const [currentImages, setCurrentImages] = useState([]); // Stocke les imagesI
-	const [page, setPage] = useState(1);      // Page courante
-	const [hasMore, setHasMore] = useState(true); // Indique s'il reste des images à charger
-	const [loading, setLoading] = useState(false); // Indique si un chargement est en cours
+	const [rankPhoto, setRankPhoto] = useState(1);
+	const [images, setImages] = useState([]);
+	const [currentImages, setCurrentImages] = useState([]);
+	const [selectedImages, setSelectedImages] = useState(new Set());
+	const [page, setPage] = useState(1);
+	const [hasMore, setHasMore] = useState(true);
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
-		// Fonction pour récupérer les images
 		const fetchImages = async () => {
-			if (loading || !hasMore) return; // Ne pas charger si déjà en cours ou s'il n'y a plus d'images
+			if (loading || !hasMore) return;
 			setLoading(true);
 
 			let url = Routing.generate(URL_GET_DATA, {page: page, albumId: albumId})
@@ -53,8 +53,8 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy }) => {
 
 					setRankPhoto(prevRankPhoto => prevRankPhoto + 48)
 					setImages(data);
-					setCurrentImages(prevImages => [...prevImages, ...currentData]); // Ajoute les nouvelles images à celles déjà chargées
-					setHasMore(response.data.hasMore); // Met à jour s'il reste encore des images à charger
+					setCurrentImages(prevImages => [...prevImages, ...currentData]);
+					setHasMore(response.data.hasMore);
 				})
 				.catch(function (error) {
 					Formulaire.displayErrors(null, error);
@@ -65,7 +65,7 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy }) => {
 			;
 		};
 
-		fetchImages(); // Charge les images lors de chaque changement de page
+		fetchImages();
 	}, [page]);
 
 	const handleMore = () => {
@@ -90,27 +90,123 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy }) => {
 		;
 	}
 
+	const toggleSelectImage = (imageId) => {
+		setSelectedImages(prev => {
+			const newSet = new Set(prev);
+			if (newSet.has(imageId)) {
+				newSet.delete(imageId);
+			} else {
+				newSet.add(imageId);
+			}
+			return newSet;
+		});
+	};
+
+	const handleDownloadSelected = () => {
+		if (selectedImages.size === 0) return;
+
+		Formulaire.loader(true);
+		const imageIds = Array.from(selectedImages);
+
+		// Create download requests for each selected image
+		Promise.all(
+			imageIds.map(imageId =>
+				axios({
+					method: "GET",
+					url: Routing.generate(URL_DOWNLOAD_FILE, { id: imageId }),
+					responseType: 'blob'
+				})
+			)
+		)
+			.then(responses => {
+				responses.forEach((response, index) => {
+					const url = window.URL.createObjectURL(new Blob([response.data]));
+					const link = document.createElement('a');
+					link.href = url;
+					link.setAttribute('download', `photo_${imageIds[index]}.jpg`);
+					document.body.appendChild(link);
+					link.click();
+					link.remove();
+				});
+				Formulaire.loader(false);
+			})
+			.catch(error => {
+				Formulaire.displayErrors(null, error);
+				Formulaire.loader(false);
+			});
+	};
+
 	return (
 		<div>
-			<div className="mb-12 flex items-center justify-center">
-				<ButtonA type="blue" onClick={Routing.generate(URL_DOWNLOAD_ARCHIVE, {id: albumId})}>
-					Télécharger toutes les photos
-				</ButtonA>
-			</div>
-			<div className="grid grid-cols-2 gap-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 pswp-gallery" id="gallery">
-				<LazyLoadingGalleryWithPlaceholder currentImages={currentImages} isAdmin={isAdmin}
-												   onLightbox={handleLightbox} onCover={handleCover} />
-			</div>
-
-			<div className="mt-12">
-				{loading && <div className="text-center text-gray-600 text-sm">Chargement...</div>}
-				{!hasMore
-					? <div className="text-center text-gray-600 text-sm">Plus d'images à afficher.</div>
-					: <div className="flex items-center justify-center mt-8">
-						<Button type="blue" onClick={handleMore}>Afficher plus</Button>
+			<section className="py-12 bg-gradient-to-br from-gray-50 to-white">
+				<div className="max-w-7xl mx-auto px-6 lg:px-8">
+					<div className="flex items-center gap-4 mb-6">
+						<a href="/albums" className="flex items-center gap-2 text-gray-600 hover:text-[#DAA520] transition-colors">
+							<span className="icon-left-chevron"></span>
+							<span className="text-sm font-medium">Retour aux albums</span>
+						</a>
 					</div>
-				}
-			</div>
+
+					<div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8">
+						<div>
+							<div className="inline-flex items-center gap-2 px-3 py-1 bg-[#DAA520]/10 rounded-full mb-3">
+								<span className="text-sm font-medium text-[#DAA520]">{albumDate || '#/11/2024'}</span>
+							</div>
+							<h1 className="font-display text-5xl md:text-6xl font-bold text-gray-900 mb-2">
+								{albumName || 'Album'}
+							</h1>
+							<p className="text-gray-600 text-lg">
+								<span>{currentImages.length}</span> photo{currentImages.length > 1 ? 's' : ''} •
+								<span className="ml-2">{selectedImages.size}</span> sélectionnée{selectedImages.size > 1 ? 's' : ''}
+							</p>
+						</div>
+
+						<div className="flex flex-wrap gap-3">
+							{!isAdmin && (
+								<>
+									<Button
+										type="default"
+										onClick={handleDownloadSelected}
+										isDisabled={selectedImages.size === 0}
+									>
+										<span className="icon-download mr-2"></span>
+										<span>Télécharger la sélection</span>
+									</Button>
+								</>
+							)}
+							<ButtonA type="yellow" onClick={Routing.generate(URL_DOWNLOAD_ARCHIVE, {id: albumId})}>
+								<span className="icon-download mr-2"></span>
+								<span>Télécharger tout</span>
+							</ButtonA>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section className="py-12 bg-gray-50">
+				<div className="max-w-7xl mx-auto px-6 lg:px-8">
+					<div className="grid grid-cols-2 gap-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 pswp-gallery" id="gallery">
+						<LazyLoadingGalleryWithPlaceholder
+							currentImages={currentImages}
+							isAdmin={isAdmin}
+							selectedImages={selectedImages}
+							onLightbox={handleLightbox}
+							onCover={handleCover}
+							onToggleSelect={toggleSelectImage}
+						/>
+					</div>
+
+					<div className="mt-12">
+						{loading && <div className="text-center text-gray-600 text-sm">Chargement...</div>}
+						{!hasMore
+							? <div className="text-center text-gray-600 text-sm">Toutes les photos sont affichées.</div>
+							: <div className="flex items-center justify-center mt-8">
+								<Button type="blue" onClick={handleMore}>Afficher plus</Button>
+							</div>
+						}
+					</div>
+				</div>
+			</section>
 
 			{createPortal(<LightBox ref={refLightbox} identifiant="lightbox" content={null}  />
 				, document.body
@@ -119,7 +215,7 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy }) => {
 	);
 };
 
-function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover, isAdmin }) {
+function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover, isAdmin, selectedImages, onToggleSelect }) {
 	const [loaded, setLoaded] = useState(Array(currentImages.length).fill(false));
 	const [error, setError] = useState(Array(currentImages.length).fill(false));
 
@@ -141,18 +237,24 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover
 				if (!loaded[index]) {
 					handleImageError(index);
 				}
-			}, 500) // 2 secondes
+			}, 500)
 		);
 
 		return () => {
-			// Nettoyer le timeout à la fin
 			timeoutId.forEach((id) => clearTimeout(id));
 		};
 	}, [loaded]);
 
+	const handleCheckboxClick = (e, imageId) => {
+		e.stopPropagation();
+		onToggleSelect(imageId);
+	};
+
 	return <>
 		{currentImages.map((image, index) => (
-			<div key={index} className="relative cursor-pointer flex items-center justify-center bg-gray-900 min-h-[205px] md:min-h-[332px] group gallery-item overflow-hidden rounded-md" onClick={() => onLightbox(image)}>
+			<div key={index} className="relative cursor-pointer flex items-center justify-center bg-gray-900 min-h-[205px] md:min-h-[332px] group gallery-item overflow-hidden rounded-md"
+				 onClick={() => onLightbox(image)}>
+
 				<div className={`w-full h-full bg-white flex items-center justify-center absolute top-0 left-0 ${!loaded[index] && !error[index] ? "opacity-100" : "opacity-0"}`}>
 					<span className="icon-chart-3"></span>
 				</div>
@@ -162,29 +264,45 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover
 						alt={`Photo ${image.originalName}`}
 						className="pointer-events-none w-full h-auto rounded-md group-hover:scale-105 transition-transform"
 					/>
-					: <>
-						<img
-							src={Routing.generate(URL_READ_IMAGE, { id: image.id })}
-							alt={`Photo ${image.originalName}`}
-							className="pointer-events-none w-full h-auto rounded-md group-hover:scale-105 transition-transform"
-							loading="lazy"
-							onLoad={() => handleImageLoad(index)} // Appelé quand l'image est chargée
-							onError={() => handleImageError(index)} // En cas d'erreur de chargement
-						/>
-					</>
+					: <img
+						src={Routing.generate(URL_READ_IMAGE, { id: image.id })}
+						alt={`Photo ${image.originalName}`}
+						className="pointer-events-none w-full h-auto rounded-lg group-hover:scale-105 transition-transform"
+						loading="lazy"
+						onLoad={() => handleImageLoad(index)}
+						onError={() => handleImageError(index)}
+					/>
 				}
-				{isAdmin
-					? <div className="absolute top-2 left-2 w-[calc(100%-1rem)] flex justify-between gap-2">
+
+				{!isAdmin && (
+					<div
+						className={`absolute top-3 left-3 w-6 h-6 rounded-md border-2 border-white cursor-pointer transition-all ${
+							selectedImages.has(image.id)
+								? 'bg-[#DAA520] border-[#DAA520]'
+								: 'bg-black/30 backdrop-blur-sm'
+						}`}
+						onClick={(e) => handleCheckboxClick(e, image.id)}
+					>
+						{selectedImages.has(image.id) && (
+							<span className="icon-check1 text-white text-xs flex items-center justify-center h-full"></span>
+						)}
+					</div>
+				)}
+
+				{isAdmin && (
+					<div className="absolute top-2 left-2 w-[calc(100%-1rem)] flex justify-between gap-2">
 						<div className="bg-gray-300/80 w-6 h-6 rounded-full text-xs flex justify-center items-center">
 							{image.nbDownload}
 						</div>
 						<ButtonIcon type="default" icon="image" tooltipPosition="-bottom-7 right-0" tooltipWidth={130}
-									onClick={() => onCover(image.id)}>
+									onClick={(e) => {
+										e.stopPropagation();
+										onCover(image.id);
+									}}>
 							Image de couverture
 						</ButtonIcon>
 					</div>
-					: null
-				}
+				)}
 			</div>
 		))}
 	</>
@@ -319,13 +437,13 @@ export class LightboxContent extends Component {
 					<div>
 						<a className="lightbox-action relative group" href={Routing.generate(URL_DOWNLOAD_FILE, { id: elem.id })} download>
 							<span className="icon-download !text-2xl text-gray-400 group-hover:text-white" />
-							<span className="tooltip bg-gray-300 text-black py-1 px-2 rounded absolute -top-10 right-0 text-xs hidden">Télécharger</span>
+							<span className="tooltip bg-gray-300 text-black py-1 px-2 rounded absolute -top-10 right-0 text-xs hidden group-hover:block">Télécharger</span>
 						</a>
 					</div>
 					<div>
 						<div className="lightbox-action relative group close-modal cursor-pointer" onClick={this.handleCloseModal}>
 							<span className="icon-close !text-2xl text-gray-400 group-hover:text-white" />
-							<span className="tooltip bg-gray-300 text-black py-1 px-2 rounded absolute -top-7 right-0 text-xs hidden">Supprimer</span>
+							<span className="tooltip bg-gray-300 text-black py-1 px-2 rounded absolute -top-7 right-0 text-xs hidden group-hover:block">Fermer</span>
 						</div>
 					</div>
 				</div>
@@ -335,7 +453,7 @@ export class LightboxContent extends Component {
 					 onClick={() => this.handlePrev(actualRank > 1 ? actualRank : (images.length + 1))}>
 					<span className="icon-left-chevron !text-2xl text-gray-400 group-hover:text-white"></span>
 				</div>
-				<div ref={this.gallery} className="relative flex justify-center items-center w-full h-full"
+				<div ref={this.gallery} className="relative flex justify-center items-center w-full h-full cursor-grab"
 					 onMouseDown={this.handleMouseDown}
 					 onMouseMove={this.handleMouseMove}
 					 onMouseUp={this.handleMouseUp}
