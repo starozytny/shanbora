@@ -15,7 +15,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 #[Route('/admin/galeries', name: 'admin_galleries_')]
 class GalleryController extends AbstractController
 {
-    #[Route('/', name: 'index', options: ['expose' => true])]
+    #[Route('/', name: 'index', options: ['expose' => true], methods: ['GET'])]
     public function index(GaAlbumRepository $repository, GaImageRepository $imageRepository): Response
     {
         $albums = $repository->findBy([], ['dateAt' => 'DESC']);
@@ -47,7 +47,7 @@ class GalleryController extends AbstractController
         ]);
     }
 
-    #[Route('/galerie/{id}', name: 'read', options: ['expose' => true])]
+    #[Route('/galerie/{id}', name: 'read', options: ['expose' => true], methods: ['GET'])]
     public function read(GaAlbum $album): Response
     {
         return $this->render('admin/pages/gallery/read.html.twig', [

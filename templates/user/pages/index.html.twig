@@ -3,7 +3,6 @@
 {% set page_title %}Vos albums{% endset %}
 
 {% block main_content %}
-
     <div class="w-full">
         <div class="w-full min-h-24">
             <div class="relative bg-gray-900 rounded-2xl py-12 overflow-hidden min-h-24">
@@ -11,35 +10,67 @@
                     <img src="{{ asset('build/app/images/blog/header.jpg') }}" alt="background image" class="opacity-50 object-cover w-full h-full pointer-events-none">
                 </div>
                 <div class="relative px-4 lg:px-8">
-                    <div class="text-yellow-500 font-semibold text-lg md:text-center">Retrouvez l'ensemble des photos en téléchargement en haut qualité.</div>
-                    <h1 class="text-white font-bold text-4xl md:text-6xl md:text-center">Vos albums</h1>
+                    <div class="text-center mb-8">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 bg-[#DAA520]/10 rounded-full mb-4">
+                            <svg class="w-5 h-5 text-[#DAA520]" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 11H9v-2h2v2zm0-4H9V5h2v4z"/>
+                            </svg>
+                            <span class="text-sm font-medium text-[#DAA520]">Retrouvez l'ensemble de vos photos en téléchargement en haute qualité</span>
+                        </div>
+                        <h1 class="font-display text-5xl md:text-6xl font-bold text-white mb-4">
+                            Vos albums
+                        </h1>
+                        <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+                            Bienvenue dans votre espace personnel. Téléchargez vos photos en haute résolution.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
 
-       <div class="mt-10 flex items-center justify-center flex-wrap gap-4">
-           {% for elem in albums %}
-               <div class="cursor-pointer block p-4 bg-white rounded-md w-96 border group hover:border-gray-300 max-w-[280px]"
-                    onclick="window.location.href = '{{ app.request.schemeAndHttpHost ~ path('user_album_read', {slug: elem.slug}) }}'"
-               >
-                   <div class="font-semibold text-center">{{ elem.title }}</div>
-                   {% if elem.cover %}
-                       <div class="relative mt-4 rounded w-full h-56 overflow-hidden">
-                           <img src="{{ path('intern_api_user_gallery_albums_read_cover', {id: elem.id}) }}"
-                                alt="photo couverture de {{ elem.title }}"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                           >
-                           <div class="absolute bottom-0 right-0 text-gray-600 text-xs bg-white pt-2 pb-1 px-4 rounded-tl">
-                               {{ elem.dateAt | date('d/m/Y') }}
-                           </div>
-                       </div>
-                   {% else %}
-                       <div class="text-gray-600 text-xs text-center">
-                           {{ elem.dateAt | date('d/m/Y') }}
-                       </div>
-                   {% endif %}
-               </div>
-           {% endfor %}
-        </div>
+        <section class="py-16 flex flex-col gap-16">
+            {% for year, elements in data %}
+                <div class="year-section" data-year="{{ year }}">
+                    <div class="flex items-center gap-4 mb-8">
+                        <h2 class="font-display text-4xl font-bold text-gray-900">{{ year }}</h2>
+                        <div class="h-px flex-1 bg-gradient-to-r from-[#DAA520] to-transparent"></div>
+                        <span class="text-sm text-gray-500">{{ elements | length }} albums</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                        {% for elem in elements %}
+                            <div class="album-card bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+                                <div class="relative h-64 overflow-hidden" onclick="window.location.href = '{{ app.request.schemeAndHttpHost ~ path('user_album_read', {slug: elem.slug}) }}'">
+                                    {% if elem.cover %}
+                                        <img src="{{ path('intern_api_user_gallery_albums_read_cover', {id: elem.id}) }}" alt="photo couverture de {{ elem.title }}" class="w-full h-full object-cover">
+                                    {% else %}
+                                        <div class="w-full h-full bg-gray-50 flex items-center justify-center text-gray-400 font-semibold">{{ elem.title }}</div>
+                                    {% endif %}
+                                    <div class="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-gray-700">
+                                        {{ elem.dateAt | format_datetime(pattern="d MMM") }}
+                                    </div>
+                                </div>
+                                <div class="p-6">
+                                    <div onclick="window.location.href = '{{ app.request.schemeAndHttpHost ~ path('user_album_read', {slug: elem.slug}) }}'">
+                                        <h3 class="text-xl font-bold text-gray-900 mb-2">{{ elem.title }}</h3>
+                                        <div class="flex items-center justify-between text-sm text-gray-500">
+                                            <div class="flex flex-col gap-2">
+                                                <span>{{ indexPhotos[elem.id] ? indexPhotos[elem.id] | length : 0 }} photos</span>
+                                            </div>
+                                            <button class="inline-flex items-center gap-2 text-[#DAA520] hover:text-[#B8860B] font-medium transition-colors">
+                                                <span>Ouvrir</span>
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </section>
     </div>
 {% endblock %}

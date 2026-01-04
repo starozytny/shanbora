@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Serializer\SerializerInterface;
+use ZipArchive;
 
 #[Route('/intern/api/gallery/images', name: 'intern_api_user_gallery_images_')]
 class ImagesController extends AbstractController
@@ -28,10 +29,10 @@ class ImagesController extends AbstractController
             if($request->query->get('sortBy') == "dl"){
                 $images = $imageRepository->findBy(['album' => $albumId], ['nbDownload' => 'DESC']);
             }else{
-                $images = $imageRepository->findBy(['album' => $albumId], ['originalName' => 'ASC']);
+                $images = $imageRepository->findBy(['album' => $albumId], ['dateAt' => 'ASC']);
             }
         }else{
-            $images = $imageRepository->findBy(['album' => $albumId], ['originalName' => 'ASC']);
+            $images = $imageRepository->findBy(['album' => $albumId], ['dateAt' => 'ASC']);
         }
 
         // Pagination
@@ -102,5 +103,68 @@ class ImagesController extends AbstractController
 
         $repository->save($obj, true);
         return $this->file($file, $obj->getOriginalName());
+    }
+
+    #[Route('/download-selected', name: 'download_selected', options: ['expose' => true], methods: 'POST')]
+    public function downloadSelected(Request $request, GaImageRepository $repository, ApiResponse $apiResponse): BinaryFileResponse|JsonResponse
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+        $data = json_decode($request->getContent());
+
+        if (!is_array($data->imageIds) || empty($data->imageIds)) {
+            return $apiResponse->apiJsonResponseBadRequest("Aucune image sélectionnée.");
+        }
+
+        $imageIds = $data->imageIds;
+
+        $images = $repository->findBy(['id' => $imageIds]);
+
+        if (empty($images)) {
+            return $apiResponse->apiJsonResponseBadRequest("Aucune image trouvée.");
+        }
+
+        // Créer un nom unique pour le fichier ZIP
+        $zipFilename = 'selection_' . date('YmdHis') . '_' . uniqid() . '.zip';
+        $zipPath = sys_get_temp_dir() . '/' . $zipFilename;
+
+        // Créer le ZIP
+        $zip = new ZipArchive();
+        if ($zip->open($zipPath, ZipArchive::CREATE | ZipArchive::OVERWRITE) !== true) {
+            return $apiResponse->apiJsonResponseBadRequest("Impossible de créer l'archive ZIP.");
+        }
+
+        $imagesDirectory = $this->getParameter('gallery_images_directory');
+        $addedCount = 0;
+
+        /** @var GaImage $image */
+        foreach ($images as $image) {
+            $filePath = $imagesDirectory . $image->getFileFile();
+
+            if (file_exists($filePath)) {
+                $zip->addFile($filePath, $image->getOriginalName());
+                $addedCount++;
+
+                if ($user->getHighRoleCode() == User::CODE_ROLE_USER) {
+                    $image->setNbDownload($image->getNbDownload() + 1);
+                }
+            }
+        }
+
+        $zip->close();
+
+        if ($user->getHighRoleCode() == User::CODE_ROLE_USER) {
+            $repository->flush();
+        }
+
+        if ($addedCount === 0) {
+            @unlink($zipPath);
+            return $apiResponse->apiJsonResponseBadRequest("Aucun fichier valide à télécharger.");
+        }
+
+        $response = $this->file($zipPath, 'selection_photos_' . count($images) . '.zip');
+        $response->deleteFileAfterSend(true);
+
+        return $response;
     }
 }
