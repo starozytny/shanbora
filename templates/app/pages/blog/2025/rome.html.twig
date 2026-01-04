@@ -1,0 +1,446 @@
+{% extends 'app/pages/blog/template.html.twig' %}
+
+{% set page_title %}Week-end éclair à Rome : 48h entre monuments antiques et dolce vita{% endset %}
+
+{% block meta_description %}Récit d'un week-end express à Rome du 15 au 17 octobre 2025. Entre Colisée, Forum Romain, Panthéon et Vatican, découvrez la ville éternelle à pied, sans stress, avec une touche de spontanéité et beaucoup de pasta.{% endblock %}
+{% block meta_keywords %}week-end Rome, Colisée coucher soleil, Forum Romain, Panthéon, Fontaine de Trevi, Vatican, voyage Rome 2 jours, photographe Rome, street photography Rome, monuments Rome, voyage en couple Rome{% endblock %}
+
+{% block main_content_in %}
+    <section class="w-full min-h-56">
+        <div class="relative bg-gray-900 rounded-2xl pt-24 pb-12 sm:pt-36 sm:pb-24 overflow-hidden min-h-56">
+            <div class="absolute top-0 left-0 rounded-2xl w-full h-full">
+                <img src="{{ asset('blog/articles/2025/rome/cover-rome.jpg') }}" alt="background image" class="opacity-50 object-cover w-full h-full pointer-events-none">
+            </div>
+            <div class="relative px-4 lg:px-8">
+                <div class="text-color0 font-semibold text-lg mb-2 md:text-center">15 au 17 octobre 2025</div>
+                <h1 class="max-w-4xl mx-auto text-white font-display font-bold text-4xl md:text-6xl md:text-center">48 heures à Rome : La ville éternelle en mode express</h1>
+                <div class="flex items-end justify-end">
+                    <p class="mt-16 text-gray-300 text-right max-w-screen-md">
+                        Un week-end éclair dans la capitale italienne. Pas de planification millimétrée, juste l'envie de marcher,
+                        de se perdre dans les ruelles pavées et de savourer chaque instant entre histoire millénaire et dolce vita.
+                        <br>
+                        Prêt à découvrir Rome autrement ?
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-10 flex flex-col gap-8 w-full max-w-screen-lg mx-auto px-2 lg:px-8">
+        {% include "app/pages/blog/components/author.html.twig" %}
+        <article class="flex flex-col gap-12">
+            <div class="text-2xl font-light text-gray-700 leading-relaxed border-l-4 border-[#DAA520] pl-8 mb-12">
+                <p>
+                    Du 15 au 17 octobre 2025, direction Rome pour un week-end express. Quarante-huit
+                    heures pour découvrir la ville éternelle, ses monuments mythiques et sa gastronomie légendaire.
+                    Pas de stress, pas de course contre la montre, juste l'envie de flâner, d'observer et de capturer
+                    cette lumière si particulière qui baigne la capitale italienne.
+                </p>
+            </div>
+
+            <div class="flex flex-col gap-6">
+                <h2 class="font-display text-4xl font-bold mb-6">Jour 0 : Arrivée mouvementée</h2>
+                <p class="dropcap">
+                    Notre aventure romaine commence mal. Enfin, presque. L'avion a du retard, et quand on atterrit
+                    enfin à <b>Fiumicino</b>, on réalise qu'on a exactement quinze minutes pour attraper le dernier bus
+                    vers le centre-ville. Quinze minutes. On court dans l'aéroport, sacs à dos qui rebondissent,
+                    cœurs qui battent la chamade.
+                    <br><br>
+                    Heureusement, on avait eu le bon réflexe d'acheter nos billets en ligne avant le départ. Arrivés
+                    essoufflés à l'arrêt de bus, le chauffeur nous fait signe : "Due posti !" Deux places. Les deux
+                    dernières places du dernier bus. Une chance incroyable qui lance parfaitement ce week-end sous le
+                    signe de la spontanéité.
+                    <br><br>
+                    On rejoint ensuite notre hôtel à pied à travers les rues romaines déjà endormies. Les pavés sous
+                    nos pas, l'air doux d'octobre, les façades ocres éclairées par les lampadaires… On sait déjà qu'on
+                    va adorer cette ville.
+                </p>
+            </div>
+
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="font-display text-4xl font-bold mb-6">Jour 1 : Marathon culturel au cœur de l'Empire</h2>
+                    <p class="mt-4">
+                        Le réveil sonne tôt. On a une journée bien remplie devant nous et on veut en profiter au maximum.
+                        Première étape : la <b>Basilique Papale Santa Maria Maggiore</b>. Cette église est une merveille.
+                        Les mosaïques dorées brillent sous la lumière du matin, les colonnes imposantes créent une atmosphère
+                        à la fois grandiose et apaisante. C'est un excellent prélude à cette journée chargée d'histoire.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/santa-maria-behind.jpg') }}" alt="derriere basilique" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 52, apeture: 5.6, speed: '1/250', iso: 200 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/santa-maria-behind2.jpg') }}" alt="derriere basilique" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 40.2, apeture: 5.6, speed: '1/250', iso: 200 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/santa-maria-ext.jpg') }}" alt="facade santa maria maggiore" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 5.6, speed: '1/320', iso: 125 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/rue.jpg') }}" alt="rue" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 52.7, apeture: 16, speed: '1/10', iso: 50 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/entree.jpg') }}" alt="entree" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 66.7, apeture: 5.6, speed: '1/320', iso: 400 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/eglise.jpg') }}" alt="eglise" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 64.3, apeture: 5.6, speed: '1/320', iso: 400 } %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        Direction ensuite le monument que tout le monde attend : le <b>Colisée</b>. On l'aperçoit de loin,
+                        majestueux, imposant. Même après 2000 ans, il dégage une puissance incroyable. On fait d'abord le
+                        tour extérieur, cherchant les meilleurs angles pour capturer cette architecture légendaire. Les
+                        pierres usées racontent des milliers d'histoires. On imagine les combats de gladiateurs, la foule
+                        en délire, l'odeur de la sueur et du sable.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/col-large.jpg') }}" alt="architecture colisee" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 60.1, apeture: 5.6, speed: '1/320', iso: 160 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/col-dos.jpg') }}" alt="dos devant colisee" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 51.7, apeture: 5.6, speed: '1/320', iso: 160 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/col-details.jpg') }}" alt="colisee details" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 39.5, apeture: 5.6, speed: '1/320', iso: 160 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/col-facade2.jpg') }}" alt="colisee facade" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 28, apeture: 5.6, speed: '1/320', iso: 160 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/col-face.jpg') }}" alt="face colisee" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 43.4, apeture: 5.6, speed: '1/320', iso: 160 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/col-general.jpg') }}" alt="general colisee" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 63.3, apeture: 5.6, speed: '1/320', iso: 160 } %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        Juste à côté, on découvre la <b>Basilique Santa Francesca Romana</b>, plus discrète mais tout aussi
+                        charmante. Un havre de paix contrastant avec l'agitation touristique du Colisée.
+                    </p>
+                </div>
+
+                <div>
+                    <img src="{{ asset('blog/articles/2025/rome/francesca.jpg') }}" alt="basilique santa francesca" class="pointer-events-none">
+                    {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 2.8, speed: '1/200', iso: 2500 } %}
+                </div>
+                <div>
+                    <p class="mt-4">
+                        On enchaîne avec la visite complète du <b>Forum Romain</b>. C'est ici que battait le cœur de la Rome
+                        antique. Les ruines des temples, des arcs de triomphe et des basiliques s'étendent à perte de vue.
+                        On déambule entre les colonnes brisées, on grimpe sur les hauteurs du Palatin pour avoir une vue
+                        d'ensemble. Le site est immense et fascinant. Chaque pierre a une histoire, chaque chemin menait
+                        autrefois à un marché, un tribunal ou un temple sacré.
+                        <br><br>
+                        La lumière de mi-journée est parfaite pour la photographie. Les ombres marquent les reliefs, les
+                        pierres blanches contrastent avec le ciel bleu profond.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/forum-vue.jpg') }}" alt="vue panoramique forum romain" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 41.2, apeture: 5, speed: '1/200', iso: 50 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/forum-colonnes.jpg') }}" alt="colonnes antiques" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 48.4, apeture: 6.3, speed: '1/200', iso: 80 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/arc-triomphe.jpg') }}" alt="arc de triomphe" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 56.6, apeture: 5.6, speed: '1/250', iso: 100 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/palatin.jpg') }}" alt="vue depuis le palatin" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 54, apeture: 5.6, speed: '1/250', iso: 100 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/ruines.jpg') }}" alt="ruines romaines" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 65.3, apeture: 5.6, speed: '1/250', iso: 250 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/forum-batiment.jpg') }}" alt="vue batiment" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 41.6, apeture: 5.6, speed: '1/250', iso: 80 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/forum-vue2.jpg') }}" alt="vue batiment panorama" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 49.5, apeture: 5.6, speed: '1/250', iso: 100 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/forum-monument.jpg') }}" alt="forum monument" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 46.5, apeture: 6.3, speed: '1/200', iso: 80 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/forum-blanc.jpg') }}" alt="batiment blanc" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 6.3, speed: '1/200', iso: 80 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/forum-colonne.jpg') }}" alt="colonnes romaines" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 5.6, speed: '1/250', iso: 125 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/adelie.jpg') }}" alt="adelie" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 31.4, apeture: 5.6, speed: '1/250', iso: 1000 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/adelie-palatin.jpg') }}" alt="adelie vue palatin" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 42.3, apeture: 5.6, speed: '1/250', iso: 160 } %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        Après plusieurs heures de marche et d'émerveillement, on décide de faire une pause au <b>Panthéon</b>.
+                        Ce monument est époustouflant. L'oculus au sommet de la coupole laisse entrer un rayon de lumière
+                        naturelle qui se déplace au fil des heures.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/scooter.jpg') }}" alt="scooter" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 67.4, apeture: 5.6, speed: '1/200', iso: 80 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/marche.jpg') }}" alt="foule" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 30, apeture: 6.3, speed: '1/500', iso: 320 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/pantheon-ext.jpg') }}" alt="ext pantheon" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 44.6, apeture: 5.6, speed: '1/200', iso: 64 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/pantheon-ext2.jpg') }}" alt="vue pantheon" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 5.6, speed: '1/200', iso: 100 } %}
+                        </div>
+                    </div>
+                    <div>
+                        <p class="mt-4">
+                            Ensuite, on se dirige vers la <b>Fontaine de Trevi</b>. C'est bondé, évidemment, mais qu'importe.
+                            Le spectacle en vaut la chandelle. La foule lance des pièces par-dessus l'épaule en faisant des vœux.
+                        </p>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                            <div>
+                                <img src="{{ asset('blog/articles/2025/rome/fontaine2.jpg') }}" alt="foule devant trevi" class="pointer-events-none">
+                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 28, apeture: 5.6, speed: '1/500', iso: 400 } %}
+                            </div>
+                            <div>
+                                <img src="{{ asset('blog/articles/2025/rome/fontaine3.jpg') }}" alt="dos fontaine" class="pointer-events-none">
+                                {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 28, apeture: 5.6, speed: '1/500', iso: 400 } %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        En fin d'après-midi, on retourne au <b>Colisée</b> pour la visite intérieure. Et quelle timing ! Le soleil
+                        commence à descendre, baignant l'arène dans une lumière dorée magnifique. À l'intérieur, on découvre
+                        les souterrains où étaient enfermés les gladiateurs et les animaux. L'ambiance est lourde, chargée
+                        d'histoire. Mais c'est cette lumière rasante du coucher de soleil qui rend le moment magique. Les
+                        ombres s'allongent sur les gradins, les pierres prennent des teintes chaudes.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/rome/colisee-sunset.jpg') }}" alt="colisee au coucher du soleil" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 28, apeture: 5.6, speed: '1/320', iso: 400 } %}
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/souterrains.jpg') }}" alt="souterrains colisee" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 5.6, speed: '1/320', iso: 250 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/roche.jpg') }}" alt="roche colisee arene" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 5.6, speed: '1/200', iso: 400 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/gradins-sunset.jpg') }}" alt="gradins lumiere doree" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 28, apeture: 5.6, speed: '1/320', iso: 160 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/interieur-colisee.jpg') }}" alt="interieur colisee arene" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 31.7, apeture: 5.6, speed: '1/320', iso: 250 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/sunset.jpg') }}" alt="sunset colisee arene" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 28, apeture: 5.6, speed: '1/320', iso: 160 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/sunset-ext.jpg') }}" alt="sunset colisee ext" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 28, apeture: 5.6, speed: '1/320', iso: 250 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="font-display text-4xl font-bold mb-6">Jour 2 : Direction le Vatican</h2>
+                    <p class="mt-4">
+                        Le dernier jour, on se lève plus tranquillement. Pas de marathon culturel aujourd'hui, plutôt une
+                        balade relaxante. On commence par faire un tour dans les boutiques de souvenirs. Magnets, cartes
+                        postales, petites reproductions du Colisée… On ramène quelques souvenirs pour la famille et les amis.
+                        <br><br>
+                        Ensuite, direction le quartier du <b>Vatican</b>. On traverse le <b>Pont Saint-Angelo</b>, magnifique
+                        pont orné de statues d'anges. Le Tibre coule paisiblement en dessous, les façades colorées se reflètent
+                        dans l'eau. C'est un de ces moments où Rome révèle toute sa beauté tranquille.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/maison.jpg') }}" alt="batiment rome" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 58.8, apeture: 5, speed: '1/200', iso: 50 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/maison2.jpg') }}" alt="batiment italien" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 62.3, apeture: 5.6, speed: '1/200', iso: 80 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/pont-angelo.jpg') }}" alt="pont saint angelo" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 31.1, apeture: 5.6, speed: '1/250', iso: 80 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/ange-statue.jpg') }}" alt="statue ange pont" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 5.6, speed: '1/250', iso: 125 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/tibre.jpg') }}" alt="reflet dans le tibre" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 5.6, speed: '1/250', iso: 125 } %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        On arrive enfin devant la <b>Place Saint-Pierre</b>. L'immensité du lieu impressionne. Les colonnades
+                        de Bernini encerclent la place dans une étreinte architecturale parfaite. La basilique se dresse
+                        majestueusement au fond, couronnée par son dôme monumental. On ne visite pas l'intérieur cette
+                        fois-ci (il faudrait des heures pour en faire le tour), mais le simple fait d'être là, devant ce
+                        symbole du catholicisme mondial, c'est déjà une expérience en soi.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/saint-pierre.jpg') }}" alt="dome saint pierre" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 16, speed: '1/13', iso: 80 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/mur.jpg') }}" alt="garde suisse vatican" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 5.6, speed: '1/250', iso: 125 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/rome/colonne-vatican.jpg') }}" alt="couple devant vatican" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 70, apeture: 5.6, speed: '1/250', iso: 125 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-12 border-t border-gray-200 flex flex-col gap-6">
+                <div>
+                    <h2 class="font-display text-4xl font-bold mb-6">Conclusion</h2>
+                    <p class="mt-4">
+                        Quarante-huit heures à Rome, c'est court. Très court même. Mais c'est suffisant pour voir les monuments
+                        principaux de cette ville. On n'a pas tout vu, loin de là. On n'a pas visité les musées du Vatican, on n'a pas
+                        grimpé sur le dôme de Saint-Pierre, on n'a pas exploré tous les quartiers.
+                        <br><br>
+                        Mais ce n'était pas le but. Le but, c'était de flâner. De marcher sans itinéraire précis. De se
+                        perdre dans des ruelles pavées et de découvrir une <i>piazza</i> cachée. De manger de bonnes pâtes
+                        dans une trattoria de quartier plutôt que dans un restaurant touristique. De prendre le temps.
+                        <br><br>
+                        Un immense merci à ma copine pour avoir partagé ce week-end avec moi. Entre les courses à l'aéroport,
+                        les kilomètres à pied et les pizzas dévorées ensemble, ces souvenirs resteront gravés.
+                        <br><br>
+                        On reviendra, c'est sûr. Rome n'a pas fini de nous surprendre.
+                    </p>
+                </div>
+            </div>
+            {% include "app/pages/blog/components/social_media.html.twig" %}
+        </article>
+    </section>
+{% endblock %}
+
+{% block others_adventures %}
+    <a href="{{ path('app_adventures_ecosse') }}" class="group">
+        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <div class="relative h-64 overflow-hidden">
+                <img src="{{ asset('blog/list/ecosse.jpg') }}" alt="Écosse" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div class="p-6">
+                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">8 mai - 17 mai 2025</div>
+                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">Roadtrip en Écosse</h4>
+                <p class="text-gray-600 text-sm">10 jours entre lochs, montagnes et randonnées dans les Highlands.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="{{ path('app_adventures_minorque') }}" class="group">
+        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <div class="relative h-64 overflow-hidden">
+                <img src="{{ asset('blog/list/minorque.jpg') }}" alt="Minorque" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div class="p-6">
+                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">31 mars - 5 avril 2025</div>
+                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">Escapade à Minorque</h4>
+                <p class="text-gray-600 text-sm">Criques paradisiaques et couchers de soleil magiques aux Baléares.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="{{ path('app_adventures_reunion') }}" class="group">
+        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <div class="relative h-64 overflow-hidden">
+                <img src="{{ asset('blog/list/reunion.jpg') }}" alt="Réunion" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div class="p-6">
+                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">01 Novembre 2022</div>
+                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">La Réunion</h4>
+                <p class="text-gray-600 text-sm">Voyage sur la célèbre île de la Réunion avec ses cascades, volcans, plages et son soleil.</p>
+            </div>
+        </div>
+    </a>
+{% endblock %}
