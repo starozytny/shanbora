@@ -419,6 +419,20 @@
 
 
 {% block others_adventures %}
+    <a href="{{ path('app_adventures_rome') }}" class="group">
+        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <div class="relative h-64 overflow-hidden">
+                <img src="{{ asset('blog/list/rome.jpg') }}" alt="Rome" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div class="p-6">
+                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">15 au 17 octobre 2025</div>
+                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">48 heures à Rome</h4>
+                <p class="text-gray-600 text-sm">Visite express à la capitale de l'Italie, Rome pour découvrir sa culture et gastronomie.</p>
+            </div>
+        </div>
+    </a>
+
     <a href="{{ path('app_adventures_ecosse') }}" class="group">
         <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
             <div class="relative h-64 overflow-hidden">
@@ -443,20 +457,6 @@
                 <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">31 mars - 5 avril 2025</div>
                 <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">Escapade à Minorque</h4>
                 <p class="text-gray-600 text-sm">Criques paradisiaques et couchers de soleil magiques aux Baléares.</p>
-            </div>
-        </div>
-    </a>
-
-    <a href="{{ path('app_adventures_marguerite') }}" class="group">
-        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-            <div class="relative h-64 overflow-hidden">
-                <img src="{{ asset('blog/list/marguerite.jpg') }}" alt="Lac Sainte-Marguerite" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-            </div>
-            <div class="p-6">
-                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">16 octobre 2024</div>
-                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">Lac de Sainte-Marguerite</h4>
-                <p class="text-gray-600 text-sm">Randonnée automnale entre forêts flamboyantes et végétation dorée.</p>
             </div>
         </div>
     </a>
