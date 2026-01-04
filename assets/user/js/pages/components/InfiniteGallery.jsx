@@ -190,7 +190,7 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 							<div className="inline-flex items-center gap-2 px-3 py-1 bg-[#DAA520]/10 rounded-full mb-3">
 								<span className="text-sm font-medium text-[#DAA520]">{albumDate || '#/11/2024'}</span>
 							</div>
-							<h1 className="font-display text-5xl md:text-6xl font-bold text-gray-900 mb-2">
+							<h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-2">
 								{albumName || 'Album'}
 							</h1>
 							<p className="text-gray-600 text-lg">
