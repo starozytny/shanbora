@@ -16,6 +16,7 @@ const URL_READ_IMAGE = "intern_api_user_gallery_images_read_image";
 const URL_READ_IMAGE_HD = "intern_api_user_gallery_images_read_image_hd";
 const URL_DOWNLOAD_FILE = "intern_api_user_gallery_images_download";
 const URL_DOWNLOAD_ARCHIVE = "intern_api_user_gallery_albums_archive";
+const URL_DOWNLOAD_SELECTED = "intern_api_user_gallery_images_download_selected";
 const URL_COVER_ALBUM = "intern_api_user_gallery_albums_cover";
 
 const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => {
@@ -103,44 +104,78 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 		});
 	};
 
+	const toggleSelectAll = () => {
+		if (selectedImages.size === currentImages.length) {
+			setSelectedImages(new Set());
+		} else {
+			setSelectedImages(new Set(currentImages.map(img => img.id)));
+		}
+	};
+
 	const handleDownloadSelected = () => {
 		if (selectedImages.size === 0) return;
 
 		Formulaire.loader(true);
 		const imageIds = Array.from(selectedImages);
 
-		// Create download requests for each selected image
-		Promise.all(
-			imageIds.map(imageId =>
-				axios({
-					method: "GET",
-					url: Routing.generate(URL_DOWNLOAD_FILE, { id: imageId }),
-					responseType: 'blob'
-				})
-			)
-		)
-			.then(responses => {
-				responses.forEach((response, index) => {
+		if (imageIds.length >= 5) {
+			axios({
+				method: "POST",
+				url: Routing.generate(URL_DOWNLOAD_SELECTED, { id: albumId }),
+				data: { imageIds: imageIds },
+				responseType: 'blob'
+			})
+				.then(response => {
 					const url = window.URL.createObjectURL(new Blob([response.data]));
 					const link = document.createElement('a');
 					link.href = url;
-					link.setAttribute('download', `photo_${imageIds[index]}.jpg`);
+					link.setAttribute('download', `selection_${albumName || 'photos'}_${imageIds.length}.zip`);
 					document.body.appendChild(link);
 					link.click();
 					link.remove();
+					window.URL.revokeObjectURL(url);
+					Formulaire.loader(false);
+				})
+				.catch(error => {
+					Formulaire.displayErrors(null, error);
+					Formulaire.loader(false);
 				});
-				Formulaire.loader(false);
-			})
-			.catch(error => {
-				Formulaire.displayErrors(null, error);
-				Formulaire.loader(false);
-			});
+		} else {
+			// Moins de 5 photos : téléchargement individuel
+			Promise.all(
+				imageIds.map(imageId =>
+					axios({
+						method: "GET",
+						url: Routing.generate(URL_DOWNLOAD_FILE, { id: imageId }),
+						responseType: 'blob'
+					})
+				)
+			)
+				.then(responses => {
+					responses.forEach((response, index) => {
+						const url = window.URL.createObjectURL(new Blob([response.data]));
+						const link = document.createElement('a');
+						link.href = url;
+						link.setAttribute('download', `photo_${imageIds[index]}.jpg`);
+						document.body.appendChild(link);
+						link.click();
+						link.remove();
+						window.URL.revokeObjectURL(url);
+					});
+					Formulaire.loader(false);
+				})
+				.catch(error => {
+					Formulaire.displayErrors(null, error);
+					Formulaire.loader(false);
+				});
+		}
 	};
+
 
 	return (
 		<div>
-			<section className="py-12 bg-gradient-to-br from-gray-50 to-white">
-				<div className="max-w-7xl mx-auto px-6 lg:px-8">
+			<section className="pt-12 pb-6 bg-gradient-to-br from-gray-50 to-white rounded-lg">
+				<div className="max-w-7xl mx-auto">
 					<div className="flex items-center gap-4 mb-6">
 						<a href={Routing.generate(URL_USER_HOMEPAGE)} className="flex items-center gap-2 text-gray-600 hover:text-[#DAA520] transition-colors">
 							<span className="icon-left-chevron"></span>
@@ -167,6 +202,12 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 								<>
 									<Button
 										type="default"
+										onClick={toggleSelectAll}
+									>
+										{selectedImages.size === currentImages.length ? 'Tout désélectionner' : 'Tout sélectionner'}
+									</Button>
+									<Button
+										type="default"
 										onClick={handleDownloadSelected}
 										isDisabled={selectedImages.size === 0}
 									>
@@ -184,8 +225,8 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 				</div>
 			</section>
 
-			<section className="py-12 bg-gray-50">
-				<div className="max-w-7xl mx-auto px-6 lg:px-8">
+			<section className="py-12">
+				<div className="max-w-screen-2xl mx-auto">
 					<div className="grid grid-cols-2 gap-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 pswp-gallery" id="gallery">
 						<LazyLoadingGalleryWithPlaceholder
 							currentImages={currentImages}
@@ -251,14 +292,31 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover
 		onToggleSelect(imageId);
 	};
 
+	const handleImageClick = (image) => {
+		if (selectedImages.size > 0) {
+			onToggleSelect(image.id);
+		} else {
+			onLightbox(image);
+		}
+	};
+
 	return <>
-		{currentImages.map((image, index) => (
-			<div key={index} className="relative cursor-pointer flex items-center justify-center bg-gray-900 min-h-[205px] md:min-h-[332px] group gallery-item overflow-hidden rounded-md"
-				 onClick={() => onLightbox(image)}>
+		{currentImages.map((image, index) => {
+			const isSelected = selectedImages.has(image.id);
+			const hasSelection = selectedImages.size > 0;
+
+			return <div key={index}
+						className={`relative cursor-pointer flex items-center justify-center bg-gray-900 min-h-[205px] md:min-h-[332px] group gallery-item overflow-hidden rounded-md ${
+							isSelected 
+								? 'border-8 border-[#DAA520]' 
+								: null
+						}`}
+						onClick={() => handleImageClick(image)}>
 
 				<div className={`w-full h-full bg-white flex items-center justify-center absolute top-0 left-0 ${!loaded[index] && !error[index] ? "opacity-100" : "opacity-0"}`}>
 					<span className="icon-chart-3"></span>
 				</div>
+
 				{error[index]
 					? <img
 						src={Routing.generate(URL_READ_IMAGE, { id: image.id })}
@@ -278,13 +336,13 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover
 				{!isAdmin && (
 					<div
 						className={`absolute top-3 left-3 w-6 h-6 rounded-md border-2 border-white cursor-pointer transition-all ${
-							selectedImages.has(image.id)
-								? 'bg-[#DAA520] border-[#DAA520]'
+							isSelected
+								? 'bg-[#DAA520] border-[#DAA520] opacity-100'
 								: 'bg-black/30 backdrop-blur-sm'
-						}`}
+						} ${hasSelection ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
 						onClick={(e) => handleCheckboxClick(e, image.id)}
 					>
-						{selectedImages.has(image.id) && (
+						{isSelected && (
 							<span className="icon-check1 text-white text-xs flex items-center justify-center h-full"></span>
 						)}
 					</div>
@@ -305,7 +363,7 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover
 					</div>
 				)}
 			</div>
-		))}
+		})}
 	</>
 }
 
