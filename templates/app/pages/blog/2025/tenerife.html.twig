@@ -1,0 +1,705 @@
+{% extends 'app/pages/blog/template.html.twig' %}
+
+{% set page_title %}Une semaine à Ténérife : entre tempête Emilia et soleil retrouvé{% endset %}
+
+{% block meta_description %}Récit d'une semaine à Ténérife du 12 au 19 décembre 2025. Entre tempête hivernale, villages perchés de Masca, forêts mystiques d'Anaga et plages du sud, découvrez les deux visages contrastés de l'île canarienne.{% endblock %}
+{% block meta_keywords %}Ténérife décembre, tempête Emilia, Los Gigantes, Masca village, Parque Anaga, Garachico, Puerto de la Cruz, Teide neige, voyage Canaries, photographe Ténérife, contrastes climatiques Ténérife, road trip Canaries{% endblock %}
+
+{% block main_content_in %}
+    <section class="w-full min-h-56">
+        <div class="relative bg-gray-900 rounded-2xl pt-24 pb-12 sm:pt-36 sm:pb-24 overflow-hidden min-h-56">
+            <div class="absolute top-0 left-0 rounded-2xl w-full h-full">
+                <img src="{{ asset('blog/articles/2025/tenerife/cover-tenerife.jpg') }}" alt="background image" class="opacity-50 object-cover w-full h-full pointer-events-none">
+            </div>
+            <div class="relative px-4 lg:px-8">
+                <div class="text-color0 font-semibold text-lg mb-2 md:text-center">12 au 19 décembre 2025</div>
+                <h1 class="max-w-4xl mx-auto text-white font-display font-bold text-4xl md:text-6xl md:text-center">Ténérife sous la tempête : 7 jours entre chaos météo et soleil retrouvé</h1>
+                <div class="flex items-end justify-end">
+                    <p class="mt-16 text-gray-300 text-right max-w-screen-md">
+                        Quand on imagine Ténérife, on pense soleil, plages et chaleur. Nous, on a découvert une île aux
+                        deux visages : tempête de grêle et vent glacial au nord, douceur estivale au sud. Un voyage qui
+                        nous a appris l'art de l'adaptation et de la spontanéité.
+                        <br>
+                        Embarquez avec nous ?
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mt-10 flex flex-col gap-8 w-full max-w-screen-lg mx-auto px-2 lg:px-8">
+        {% include "app/pages/blog/components/author.html.twig" %}
+        <article class="flex flex-col gap-12">
+            <div class="text-lg font-light text-gray-700 leading-relaxed border-l-4 border-[#DAA520] pl-8 mb-12">
+                <p>
+                    Du 12 au 19 décembre 2025, nous avons posé nos valises à Ténérife, l'île de l'éternel printemps.
+                    Sauf qu'en réalité, on a eu droit à la <b>tempête Emilia</b> : grêle, pluie, vent violent, routes
+                    fermées et même de la neige au sommet du Teide. Mais au final, c'est peut-être ce qui a rendu ce
+                    voyage si mémorable. Entre galères météo, villages accrochés aux falaises et soleil retrouvé dans
+                    le sud, voici notre semaine canarienne.
+                </p>
+            </div>
+
+            <div class="flex flex-col gap-6">
+                <h2 class="font-display text-4xl font-bold mb-6">Jour 1 : Arrivée nocturne et première surprise</h2>
+                <p class="dropcap">
+                    Le 12 décembre, on embarque dans l'avion direction <b>Ténérife Sud</b>. Vol de nuit, on atterrit le
+                    13 à 1h du matin. L'aéroport est calme, presque endormi. On récupère notre voiture de location chez
+                    <b>Cicar</b> et on prend la route vers notre premier logement : <b>Los Gigantes</b>, petit village
+                    côtier de l'ouest connu pour ses falaises vertigineuses.
+                    <br><br>
+                    La route serpente dans la nuit noire, on ne voit rien du paysage. On arrive épuisés, on se couche
+                    directement. Le réveil sera pour découvrir l'île... et la surprise qui nous attend.
+                </p>
+            </div>
+
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="font-display text-4xl font-bold mb-6">Jour 2 : Bienvenue à Ténérife... et bienvenue dans la tempête Emilia</h2>
+                    <p class="mt-4">
+                        Au réveil, on ouvre les volets avec enthousiasme. On s'attend à voir le soleil, la mer turquoise,
+                        les falaises majestueuses... Et là, la douche froide. Littéralement. Il pleut. Il vente. Et il
+                        commence à <b>grêler</b>.
+                        <br><br>
+                        On apprendra plus tard qu'on est arrivés pile pendant la <b>tempête Emilia</b>, qui paralyse toute
+                        l'île. Les plages sont fermées, des excursions annulées, la température est proche de 10°C avec un
+                        ressenti encore plus glacial à cause du vent. Le ciel passe du gris au bleu en quelques minutes,
+                        puis retour au gris.
+                        <br><br>
+                        Mais on ne va pas se laisser abattre. On décide de visiter <b>Los Gigantes</b> malgré tout. On
+                        commence par la <b>Playa de la Arena</b>, plage de sable noir balayée par les vagues déchaînées.
+                        Impossible de se baigner, mais l'ambiance est incroyable. Les rouleaux s'écrasent sur le rivage
+                        avec une force impressionnante.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/playa.jpg') }}" alt="playa de la arena sous la tempete" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/250', iso: 25, boitier: 'S24+' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/grele.jpg') }}" alt="grele sur eau" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/1600', iso: 25, boitier: 'S24+' } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/vent.jpg') }}" alt="Vent" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 125 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/vagues.jpg') }}" alt="Vagues" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 125 } %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        On poursuit jusqu'au <b>Charco de Isla Cangrejo</b>, petite piscine naturelle creusée dans la roche.
+                        Fermée également, mais le spectacle des vagues qui s'y engouffrent vaut le détour. Au loin, on
+                        aperçoit les fameuses <b>falaises de Los Gigantes</b> noyées dans la brume. Ces parois verticales
+                        de 600 mètres de haut sont impressionnantes même sous ce ciel gris.
+                        <br><br>
+                        On décide de se réfugier dans un restaurant. On tombe sur <b>Flor del Drago</b>. Et quelle découverte !
+                        On s'attendait à un piège à touristes, mais pas du tout.
+                        Le personnel est adorable, le patron super sympa, la cuisine excellente. Une <i>paella</i>
+                        avec 1L de <i>sangria</i>. On reprend des forces et des couleurs.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/charco-cangrejo.jpg') }}" alt="charco de isla cangrejo" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 125 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/falaises-brume.jpg') }}" alt="falaises los gigantes dans brume" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 125 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/habitations.jpg') }}" alt="Habitations de los gigantes" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 125 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/paella.jpg') }}" alt="paella" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/200', iso: 50, boitier: 'S24+' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/plage.jpg') }}" alt="plage" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 125 } %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        L'après-midi, on retourne à la <b>Playa de la Arena</b> pour quelques photos. Le temps s'améliore
+                        légèrement, quelques rayons de soleil percent les nuages. On profite de ces éclaircies pour capturer
+                        les contrastes entre le sable noir volcanique, les vagues blanches d'écume et le ciel tourmenté.
+                        <br><br>
+                        Le soir, on se fait plaisir avec un dîner au <b>Pogetto</b>. Restaurant incroyable avec vue sur la
+                        mer. La cuisine est raffinée, l'ambiance chaleureuse. Malgré la météo capricieuse, cette première
+                        journée se termine bien.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/femme1.jpg') }}" alt="femme1" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 125 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/femme2.jpg') }}" alt="femme2" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 125 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/femme3.jpg') }}" alt="femme3" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 125 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/femme4.jpg') }}" alt="femme4" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 125 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/plat1.jpg') }}" alt="plat pogetto" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/100', iso: 800, boitier: 'S24+' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/plat2.jpg') }}" alt="restaurant pogetto" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/100', iso: 800, boitier: 'S24+' } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="font-display text-4xl font-bold mb-6">Jour 3 : Excursion ratée... mais quand même beau</h2>
+                    <p class="mt-4">
+                        Le 14 décembre, on a réservé une <b>excursion observation de baleines et dauphins</b> en mer. La
+                        tempête Emilia vient de passer, et c'est notre seule fenêtre possible. On ne peut pas reporter.
+                        <br><br>
+                        On embarque sur le bateau et... la mer est <b>hyper agitée</b>. Les vagues sont énormes, le bateau
+                        tangue violemment. On s'accroche comme on peut. Le capitaine est honnête avec nous : avec ces
+                        conditions, il y a très peu de chances de voir des cétacés. Les baleines et dauphins restent en
+                        profondeur quand la mer est déchaînée.
+                        <br><br>
+                        Résultat : pas de baleines, pas de dauphins. Mais on a quand même le droit à un spectacle grandiose :
+                        les <b>falaises de Los Gigantes vues depuis la mer</b>. Ces parois verticales qui plongent dans
+                        l'océan sont vertigineuses. Les vagues s'écrasent contre la roche noire dans un fracas assourdissant.
+                        C'est sauvage, c'est puissant, c'est impressionnant.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/falaises-mer.jpg') }}" alt="falaises los gigantes depuis mer" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 125 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/mer-agitee.jpg') }}" alt="mer dechainees vagues" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 125 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/falaises-vertigineuses.jpg') }}" alt="parois verticales falaises" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 125 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/oiseaux-falaises.jpg') }}" alt="vagues contre rochers" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 125 } %}
+                        </div>
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/tenerife/vue.jpg') }}" alt="vue sur los gigantes" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 200 } %}
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        L'après-midi, on devait aller à <b>Masca</b>, mais les routes sont endommagées par la tempête.
+                        Certains tronçons sont fermés, d'autres dangereux. On reporte au lendemain.
+                        <br><br>
+                        On termine la journée tranquillement avec un <b>coucher de soleil</b> à Los Gigantes. Le ciel
+                        s'embrase dans des teintes orangées et roses, la mer se calme enfin. Ce moment paisible fait du
+                        bien après l'agitation de la journée.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/playa-sunset.jpg') }}" alt="coucher soleil playa arena" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/200', iso: 100, boitier: 'S24+' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/roches.jpg') }}" alt="roches orange coucher soleil" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/100', iso: 250, boitier: 'S24+' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/sunset-vagues.jpg') }}" alt="reflet coucher soleil mer" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/100', iso: 640, boitier: 'S24+' } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/sunset-nuage.jpg') }}" alt="coucher soleil playa arena" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 100 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/sunset-nuages.jpg') }}" alt="roches orange coucher soleil" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 100 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/sunset-hide.jpg') }}" alt="roches orange coucher soleil" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 100 } %}
+                        </div>
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/tenerife/sunset.jpg') }}" alt="coucher soleil playa arena" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 100 } %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="font-display text-4xl font-bold mb-6">Jour 4 : Le village de Masca</h2>
+                    <p class="mt-4">
+                        Le 15 décembre, on se réveille avec l'envie d'aller au <b>Teide</b>, le volcan culminant à 3 718
+                        mètres d'altitude. Mais surprise : il a <b>neigé</b> pendant la nuit et toutes les routes d'accès
+                        sont <b>fermées</b>. Complètement fermées. Impossible d'approcher.
+                        <br><br>
+                        On change de plan et on se dirige vers <b>Masca</b>. Ce village est perché dans les montagnes,
+                        accessible par une route sinueuse vertigineuse. Pour éviter les galères de stationnement, on se
+                        gare à <b>Santiago del Teide</b> et on prend le bus. Excellente décision.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/masca.jpg') }}" alt="village de masca" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/500', iso: 25, boitier: 'S24+' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/arbre.jpg') }}" alt="arbre masca" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/320', iso: 400 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/marche.jpg') }}" alt="marché village de masca" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/320', iso: 800 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/client.jpg') }}" alt="client du marché masca" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/320', iso: 250 } %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        <b>Masca</b> est un lieu à part. Un petit village isolé, accroché aux flancs d'une gorge
+                        spectaculaire. Les maisons traditionnelles semblent suspendues entre ciel et terre. C'est calme,
+                        presque hors du temps. On se balade dans les ruelles étroites, on admire les vues vertigineuses
+                        sur les canyons.
+                        <br><br>
+                        L'endroit est vraiment coupé du monde. Pas de wifi, pas de réseau mobile, juste le silence des
+                        montagnes et le chant des oiseaux. On prend quelques photos souvenirs, on savoure ce moment de
+                        tranquillité.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/adelie.jpg') }}" alt="shooting femme" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/1600', iso: 25, boitier: 'S24+' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/adelie2.jpg') }}" alt="shooting femme 2" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/640', iso: 25, boitier: 'S24+' } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/spot2.jpg') }}" alt="spot masca 2" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/320', iso: 250 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/spot1.jpg') }}" alt="spot masca 1" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/320', iso: 250 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/montagne.jpg') }}" alt="montagne masca" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/320', iso: 250 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/pente.jpg') }}" alt="chemin pente masca" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/320', iso: 400 } %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        On reprend le bus, puis la voiture direction <b>Garachico</b>, village côtier du nord.
+                        Malheureusement, les <b>piscines naturelles</b> restent fermées à cause des vagues dangereuses.
+                        On se contente de se balader dans les rues pavées, d'admirer l'architecture coloniale et les
+                        façades colorées.
+                        <br><br>
+                        Ensuite, cap sur <b>Icod de los Vinos</b> pour voir le fameux <b>Drago Milenario</b>, un arbre
+                        dragon millénaire. Cet arbre étrange et majestueux est l'un des symboles de Ténérife. Sa forme
+                        tortueuse et ses branches qui ressemblent à des tentacules lui donnent un aspect presque mythologique.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/garachico.jpg') }}" alt="village garachico" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/320', iso: 160 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/piscine-fermees.jpg') }}" alt="piscines naturelles fermees" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/320', iso: 80 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/drago-milenario.jpg') }}" alt="drago milenario arbre" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/2500', iso: 25, boitier: 'S24+' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/drago-detail.jpg') }}" alt="detail branches drago" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/320', iso: 250 } %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        Après avoir mangé, on prend la route vers <b>Puerto de la Cruz</b> pour rejoindre notre second
+                        logement. Cette ville du nord est plus touristique, mais elle garde un charme certain. Les rues
+                        animées, les places bordées de palmiers, l'architecture coloniale... C'est agréable à découvrir.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/tenerife/puerto-cruz.jpg') }}" alt="puerto de la cruz ville" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/2000', iso: 25, boitier: 'S24+' } %}
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/tenerife/puerto-plage.jpg') }}" alt="plage puerto de la cruz" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/1250', iso: 25, boitier: 'S24+' } %}
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/tenerife/puerto-piscine.jpg') }}" alt="piscine puerto de la cruz" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/1250', iso: 25, boitier: 'S24+' } %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="font-display text-4xl font-bold mb-6">Jour 5 : Forêt mystique d'Anaga</h2>
+                    <p class="mt-4">
+                        Le 16 décembre, on se lève avec l'envie de découvrir le <b>Parque Rural de Anaga</b>, réputé pour
+                        ses forêts de lauriers millénaires et ses paysages spectaculaires. Mais encore une fois, la météo
+                        n'est pas clémente : il pleut.
+                        <br><br>
+                        On hésite. Faire une randonnée sous la pluie, ce n'est pas l'idéal. Mais finalement, on se dit pourquoi
+                        pas ? Et on ne regrette <b>absolument pas</b>. L'ambiance est <b>féerique</b>. La forêt prend des
+                        allures de conte fantastique.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/foret.jpg') }}" alt="foret lauriers millénaires" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/2000', iso: 1250 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/sentier.jpg') }}" alt="sentier" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/200', iso: 2000 } %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        Après cette balade mystique, on se dirige vers <b>Punta del Hidalgo</b>, pointe nord-est de l'île.
+                        On trouve un des rares restaurants ouverts. La cuisine est bonne, la vue sur l'océan superbe. Puis
+                        on va au <b>belvédère</b> pour quelques photos panoramiques.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/punta-hidalgo.jpg') }}" alt="punta del hidalgo vue" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/2000', iso: 25, boitier: 'S24+' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/adelie-belvedere.jpg') }}" alt="adelie vue ocean" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/2000', iso: 25, boitier: 'S24+' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/punta-mer.jpg') }}" alt="belvedere punta hidalgo panorama" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/200', iso: 64 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/dos-adelie2.jpg') }}" alt="dos vue 2" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/200', iso: 64 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/dos-adelie1.jpg') }}" alt="dos vue" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/200', iso: 64 } %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        On part ensuite à <b>La Laguna</b> avant 16h pour éviter le trafic. Heureusement, on trouve une
+                        place de parking gratuite ! La Laguna est inscrite au patrimoine mondial de l'UNESCO pour son
+                        centre historique colonial. Mais honnêtement, <b>la ville est très rapide à visiter</b>. Quelques
+                        rues pavées, des façades colorées, une belle cathédrale... En une heure, on a fait le tour.
+                        <br><br>
+                        On décide de rentrer chill à l'appartement. On achète quelques produits locaux dans une épicerie
+                        et on passe la soirée tranquille à la maison.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="font-display text-4xl font-bold mb-6">Jour 6 : Santa Cruz et décision spontanée</h2>
+                    <p class="mt-4">
+                        Le 17 décembre, on part visiter <b>Santa Cruz de Tenerife</b>, la capitale. On prend le <b>tram</b>
+                        depuis La Laguna, c'est seulement 30 minutes et c'est pratique. Santa Cruz est une ville agréable,
+                        mais là aussi, <b>très rapide à découvrir</b>.
+                        <br><br>
+                        Le centre-ville est compact : quelques places, le port, le marché... Il fait encore froid, venteux,
+                        avec quelques averses. On se balade tranquillement, on profite des <b>décorations de Noël</b> qui
+                        illuminent les rues. C'est joli, festif, mais on sent qu'on est un peu lassés du nord et de cette
+                        météo capricieuse.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/tenerife/laguna.jpg') }}" alt="restaurant laguna" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/200', iso: 100, boitier: 'S24+' } %}
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        On retourne à La Laguna en fin d'après-midi. Et là, dans l'appartement, on prend une décision
+                        <b>spontanée</b> qui va changer la fin de notre séjour : on ne va <b>pas finir les vacances ici</b>.
+                        <br><br>
+                        Pourquoi ? Parce qu'on en a marre du froid, de la pluie, du vent. On a envie de profiter du
+                        Ténérife avec son soleil, ses plages, sa chaleur. Et d'après ce qu'on a compris,
+                        tout ça, c'est dans le <b>sud</b>.
+                        <br><br>
+                        On réserve une nuit à <b>Adeje</b> pour le lendemain. On quitte le nord, direction le sud !
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-6">
+                <div>
+                    <h2 class="font-display text-4xl font-bold mb-6">Jour 7 : Le sud enfin ! Adeje et la renaissance</h2>
+                    <p class="mt-4">
+                        Le 18 décembre, on prend la voiture et on roule vers <b>Adeje</b>, station balnéaire du sud-ouest.
+                        À peine arrivés, on comprend qu'on a fait le bon choix. Il fait <b>chaud</b>.
+                        Il fait <b>beau</b>. Le ciel est d'un bleu éclatant. Les plages sont <b>ouvertes</b>.
+                        <br><br>
+                        C'est incroyable : on est sur la même île, à seulement 50 kilomètres du nord, mais c'est un monde
+                        complètement différent. Ici, c'est l'été perpétuel. Les touristes sont tous là. Les terrasses sont
+                        pleines. Les surfeurs sont à l'eau. On se sent renaître.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/adeje.jpg') }}" alt="sud ensoleille adeje" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { apeture: 1.8, speed: '1/2000', iso: 25, boitier: 'S24+' } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/chill.jpg') }}" alt="chill sur la plage" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 80 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/surfeuse.jpg') }}" alt="surfeuse adeje" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 80 } %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        On passe la journée à <b>flâner</b>. Regarder les <b>surfeurs</b> prendre les vagues. On ne réfléchit plus,
+                        on ne planifie rien, on se laisse porter.
+                        <br><br>
+                        C'est exactement ce dont on avait besoin. Après une semaine à courir après la météo, à adapter nos
+                        plans en permanence, on savoure enfin ce moment de <b>détente totale</b>.
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/surfeur.jpg') }}" alt="surfeur adeje" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 80 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/adeje-vagues.jpg') }}" alt="vagues adeje" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 80 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/surfeur1.jpg') }}" alt="surfeur 1 adeje" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 80 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/surfeur2.jpg') }}" alt="surfeur 2 adeje" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 80 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/surfeur3.jpg') }}" alt="surfeur 3 adeje" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/400', iso: 80 } %}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="mt-4">
+                        En fin d'après-midi, on s'installe dans un <b>bar en bord de mer</b>. Vue directe sur l'océan. On
+                        commande un cocktail, on se pose sur la terrasse. Et là, devant nous, se déroule un <b>coucher de
+                        soleil magnifique</b>. Le ciel s'embrase dans ses teintes oranges. Le soleil
+                        descend lentement vers l'horizon, se reflétant sur les vagues.
+                        <br><br>
+                        C'est le moment parfait. L'instant idéal pour clôturer ce séjour à Ténérife. Après tous les rebondissements,
+                        toutes les surprises météo, toutes les adaptations... On termine en beauté, un verre à la main, face à ce spectacle grandiose.
+                        <br><br>
+                        <b>Rien de mieux pour finir ces vacances.</b>
+                    </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/sunset-adeje.jpg') }}" alt="coucher soleil magnifique adeje" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/640', iso: 100 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/ombre.jpg') }}" alt="ombre sunset" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/640', iso: 160 } %}
+                        </div>
+                    </div>
+                    <div>
+                        <img src="{{ asset('blog/articles/2025/tenerife/bateau.jpg') }}" alt="bateau" class="pointer-events-none">
+                        {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/640', iso: 250 } %}
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/sunset-debut.jpg') }}" alt="soleil touche horizon" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/800', iso: 200 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/sunset-fin.jpg') }}" alt="reflet coucher soleil eau" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/500', iso: 80 } %}
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-2 md:flex-row md:gap-1">
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/lunette1.jpg') }}" alt="lunette reflet sunset 1" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 5.6, speed: '1/640', iso: 1250 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/lunette2.jpg') }}" alt="lunette reflet sunset 2" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 2.8, speed: '1/320', iso: 400 } %}
+                        </div>
+                        <div>
+                            <img src="{{ asset('blog/articles/2025/tenerife/lunette3.jpg') }}" alt="lunette reflet sunset 3" class="pointer-events-none">
+                            {% include "app/pages/blog/components/photo-commentary.html.twig" with { focal: 85, apeture: 2, speed: '1/400', iso: 200 } %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-12 border-t border-gray-200 flex flex-col gap-6">
+                <div>
+                    <h2 class="font-display text-4xl font-bold mb-6">Conclusion</h2>
+                    <p class="mt-4">
+                        Ténérife, c'est vraiment l'île des contrastes. Et notre séjour l'a parfaitement illustré.
+                        <br><br>
+                        Au nord : la tempête Emilia, la pluie, le froid, les routes fermées, les plages interdites. Des
+                        paysages mystiques sous la brume, des forêts féeriques, des villages perchés hors du temps. Une
+                        Ténérife sauvage et authentique, loin des clichés touristiques.
+                        <br><br>
+                        Au sud : le soleil, la chaleur, les plages ouvertes, les surfeurs, les terrasses animées. La
+                        Ténérife carte postale, celle qu'on imagine quand on pense aux Canaries.
+                        <br><br>
+                        On ne regrette rien. Ni la tempête, ni les galères, ni les changements de plan. Tout ça fait partie
+                        de l'aventure. Ça nous a appris à <b>lâcher prise</b>, à accepter l'imprévu, à nous adapter. Et
+                        finalement, c'est peut-être ça le plus important en voyage : rester flexible, garder le sourire, et
+                        profiter de chaque instant, qu'il pleuve ou qu'il fasse beau.
+                        <br><br>
+                        Cette semaine à Ténérife nous a offert deux voyages en un. Le nord mystérieux et le sud ensoleillé.
+                        Les falaises vertigineuses et les plages de rêve. La forêt millénaire et le désert de lave. La
+                        tempête et le calme. L'aventure et la détente.
+                        <br><br>
+                        Merci Ténérife. Même si tu ne nous as pas facilité la tâche, on a adoré découvrir tous tes visages.
+                    </p>
+                </div>
+            </div>
+            {% include "app/pages/blog/components/social_media.html.twig" %}
+        </article>
+    </section>
+{% endblock %}
+
+{% block others_adventures %}
+    <a href="{{ path('app_adventures_rome') }}" class="group">
+        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <div class="relative h-64 overflow-hidden">
+                <img src="{{ asset('blog/list/rome.jpg') }}" alt="Rome" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div class="p-6">
+                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">15 - 17 octobre 2025</div>
+                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">Week-end à Rome</h4>
+                <p class="text-gray-600 text-sm">48 heures dans la ville éternelle entre Colisée, Forum et dolce vita.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="{{ path('app_adventures_ecosse') }}" class="group">
+        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <div class="relative h-64 overflow-hidden">
+                <img src="{{ asset('blog/list/ecosse.jpg') }}" alt="Écosse" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div class="p-6">
+                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">8 - 17 mai 2025</div>
+                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">Roadtrip en Écosse</h4>
+                <p class="text-gray-600 text-sm">10 jours entre lochs, montagnes et randonnées dans les Highlands.</p>
+            </div>
+        </div>
+    </a>
+
+    <a href="{{ path('app_adventures_minorque') }}" class="group">
+        <div class="rounded-xl overflow-hidden bg-white border border-gray-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <div class="relative h-64 overflow-hidden">
+                <img src="{{ asset('blog/list/minorque.jpg') }}" alt="Minorque" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div class="p-6">
+                <div class="text-xs text-[#DAA520] font-medium mb-2 uppercase tracking-wider">31 mars - 5 avril 2025</div>
+                <h4 class="font-display text-xl font-bold mb-2 group-hover:text-[#DAA520] transition-colors">Escapade à Minorque</h4>
+                <p class="text-gray-600 text-sm">Criques paradisiaques et couchers de soleil magiques aux Baléares.</p>
+            </div>
+        </div>
+    </a>
+{% endblock %}
