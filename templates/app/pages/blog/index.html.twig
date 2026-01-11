@@ -26,33 +26,58 @@
         <section class="relative py-20">
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12">
                 <div class="md:col-span-2 xl:col-span-3 adventure-card rounded-2xl shadow overflow-hidden bg-gradient-to-br from-white/50 to-white/30 backdrop-blur-sm border border-gray-900/5 animate-scale-in"
-                     onclick="location.href = '{{ path('app_adventures_rome') }}'"
+                     onclick="location.href = '{{ path('app_adventures_tenerife') }}'"
                 >
                     <div class="grid md:grid-cols-2 gap-0">
                         <div class="relative h-96 md:h-full xl:h-96 overflow-hidden">
-                            <img src="{{ asset('blog/list/rome.jpg') }}" alt="Rome" class="w-full h-full object-cover">
+                            <img src="{{ asset('blog/list/tenerife.jpg') }}" alt="tenerife" class="w-full h-full object-cover">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                         </div>
                         <div class="p-10 flex flex-col justify-center">
-                            <div class="text-sm text-color0 font-medium mb-3 tracking-wider uppercase">15 octobre au 17 octobre 2025</div>
+                            <div class="text-sm text-color0 font-medium mb-3 tracking-wider uppercase">13 au 19 décembre 2025</div>
                             <h2 class="font-display text-4xl font-bold mb-4 leading-tight">
-                                48 heures à Rome
+                                Ténérife après la tempête
                             </h2>
                             <p class="text-gray-400 mb-6 leading-relaxed">
-                                Direction Rome pour un week-end express à la capitale italienne. Un moment de détente à
-                                flâner dans la ville éternelle avec ses monuments mythiques et sa gastronomie
-                                traditionnelle.
+                                Il est temps de découvrir une île Canarienne, Ténérife ! Sept jours entre la pluie,
+                                le soleil, le froid et la chaleur. On a eu la malchance d'y séjourner durant la
+                                tempête Emilia, mais le voyage reste mémorable !
                             </p>
                             <div class="flex flex-wrap gap-2">
                                 <span class="tag text-xs px-4 py-2 rounded-full">Voyage</span>
                                 <span class="tag text-xs px-4 py-2 rounded-full">Urbain</span>
+                                <span class="tag text-xs px-4 py-2 rounded-full">Nature</span>
                             </div>
-                            {% include "app/pages/blog/components/view.html.twig" with { adventureId: 14 } %}
+                            {% include "app/pages/blog/components/view.html.twig" with { adventureId: 15 } %}
                         </div>
                     </div>
                 </div>
 
                 <!-- Regular Posts -->
+                <article class="adventure-card rounded-2xl shadow overflow-hidden bg-gradient-to-br from-white/50 to-white/30 backdrop-blur-sm border border-gray-900/5" data-aos="fade-up"
+                         onclick="location.href = '{{ path('app_adventures_rome') }}'"
+                >
+                    <div class="relative h-72 overflow-hidden">
+                        <img src="{{ asset('blog/list/rome.jpg') }}" alt="Rome" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                    </div>
+                    <div class="p-8">
+                        <div class="text-xs text-color0 font-medium mb-3 tracking-wider uppercase">15 au 17 octobre 2025</div>
+                        <h3 class="font-display text-2xl font-bold mb-3 leading-tight">
+                            48 heures express à Rome
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 leading-relaxed">
+                            Direction Rome pour un week-end express à la capitale italienne. Un moment de détente à
+                            flâner dans la ville éternelle avec ses monuments mythiques et sa gastronomie
+                            traditionnelle.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="tag text-xs px-4 py-2 rounded-full">Voyage</span>
+                            <span class="tag text-xs px-4 py-2 rounded-full">Urbain</span>
+                        </div>
+                        {% include "app/pages/blog/components/view.html.twig" with { adventureId: 14 } %}
+                    </div>
+                </article>
                 <article class="adventure-card rounded-2xl shadow overflow-hidden bg-gradient-to-br from-white/50 to-white/30 backdrop-blur-sm border border-gray-900/5" data-aos="fade-up"
                          onclick="location.href = '{{ path('app_adventures_ecosse') }}'"
                 >
@@ -61,7 +86,7 @@
                         <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                     </div>
                     <div class="p-8">
-                        <div class="text-xs text-color0 font-medium mb-3 tracking-wider uppercase">8 mai au 17 mai 2025</div>
+                        <div class="text-xs text-color0 font-medium mb-3 tracking-wider uppercase">8 au 17 mai 2025</div>
                         <h3 class="font-display text-2xl font-bold mb-3 leading-tight">
                             Roadtrip en Écosse et les Highlands
                         </h3>
