@@ -9,6 +9,7 @@
         {% block openGraph %}{% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/png">
         <link rel="apple-touch-icon" href="{{ asset('logo-apple-touch.png') }}"/>
+        {% block head_extra %}{% endblock %}
         <title>{% block title %}Chanbora Chhun photographe et développeur web fullstack à Marseille{% endblock %}</title>
 
         {% block stylesheets %}
