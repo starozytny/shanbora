@@ -16,6 +16,10 @@
     </style>
 {% endblock %}
 
+{% block head_extra %}
+    <link rel="canonical" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">
+{% endblock %}
+
 {% set main_class = "bg-[#fafaf8]" %}
 
 {% block main_content %}
