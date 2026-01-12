@@ -1,3 +1,4 @@
 @forward "../../../common/css/vars/vars";
 
 @mixin fontRegular() { font-family: 'barlowregular', sans-serif; }
+@mixin fontDisplay() { font-family: 'playfair_display', sans-serif; }

@@ -79,7 +79,7 @@ class GalleryUpdateDataCommand extends Command
             if(!$album){
                 $album = (new GaAlbum())
                     ->setTitle($filename)
-                    ->setDateAt(new \DateTime())
+                    ->setDateAt(new DateTime())
                     ->setSlug($this->sanitizeData->slugString($filename))
                     ->setArchive($filename)
                     ->setUser($user)
@@ -126,7 +126,7 @@ class GalleryUpdateDataCommand extends Command
             $finder = new Finder();
             $finder->files()->in($extractDirectory)->name('/\.(jpg|jpeg|png|gif)$/i');
 
-            $today = new \DateTime();
+            $today = new DateTime();
             $today->setTimezone(new \DateTimeZone('Europe/Paris'));
             $dateToday = $today->format('d_m_Y_H_i');
 
@@ -140,11 +140,12 @@ class GalleryUpdateDataCommand extends Command
                 $exif = @exif_read_data($file);
 
                 if ($exif && isset($exif['DateTimeOriginal'])) {
-                    $dateAt = \DateTime::createFromFormat('Y:m:d H:i:s', $exif['DateTimeOriginal']);
+                    $dateAt = DateTime::createFromFormat('Y:m:d H:i:s', $exif['DateTimeOriginal']);
+                    $dateAt = $dateAt ?: new DateTime();
                 } else {
                     $info = new \SplFileInfo($file->getRealPath());
 
-                    $dateAt = new \DateTime();
+                    $dateAt = new DateTime();
                     if($info->isFile() && $info->getCTime() !== false){
                         $dateAt->setTimestamp($info->getCTime());
                     }

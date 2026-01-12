@@ -124,7 +124,7 @@ class AlbumController extends AbstractController
         if($coverFile){
             $oldCover = $album->getCoverFile();
             $oldCoverFile = $this->getParameter('gallery_images_directory') . $oldCover;
-            if(file_exists($oldCoverFile)){
+            if(!is_dir($oldCoverFile) && file_exists($oldCoverFile)){
                 unlink($oldCoverFile);
             }
 
@@ -157,7 +157,7 @@ class AlbumController extends AbstractController
             throw $this->createNotFoundException('Album not found.');
         }
 
-        $response = $imageService->getImageGallery($obj->getCoverThumb());
+        $response = $imageService->getImageGallery($obj->getCoverLightbox());
 
         if($response === false){
             throw $this->createNotFoundException('La photo demandée n\'existe pas.');

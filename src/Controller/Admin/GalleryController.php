@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Main\Gallery\GaAlbum;
 use App\Entity\Main\User;
 use App\Repository\Main\Gallery\GaAlbumRepository;
+use App\Repository\Main\Gallery\GaImageRepository;
 use App\Repository\Main\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,15 +15,39 @@ use Symfony\Component\Serializer\SerializerInterface;
 #[Route('/admin/galeries', name: 'admin_galleries_')]
 class GalleryController extends AbstractController
 {
-    #[Route('/', name: 'index', options: ['expose' => true])]
-    public function index(GaAlbumRepository $repository): Response
+    #[Route('/', name: 'index', options: ['expose' => true], methods: ['GET'])]
+    public function index(GaAlbumRepository $repository, GaImageRepository $imageRepository): Response
     {
+        $albums = $repository->findBy([], ['dateAt' => 'DESC']);
+        $photos = $imageRepository->findAll();
+
+        $data = []; $totalAlbums = count($albums); $totalPhotos = 0; $totalYears = 0;
+        foreach($albums as $album) {
+            $tmp = $data[$album->getDateAt()->format('Y')] ?? null;
+            if($tmp){
+                $data[$album->getDateAt()->format('Y')][] = $album;
+            }else{
+                $data[$album->getDateAt()->format('Y')] = [$album];
+                $totalYears++;
+            }
+        }
+
+        $indexPhotos = [];
+        foreach($photos as $photo){
+            $indexPhotos[$photo->getAlbum()->getId()][] = $photo;
+            $totalPhotos++;
+        }
+
         return $this->render('admin/pages/gallery/index.html.twig', [
-            'albums' => $repository->findBy([], ['dateAt' => 'DESC'])
+            'data' => $data,
+            'indexPhotos' => $indexPhotos,
+            'totalAlbums' => $totalAlbums,
+            'totalPhotos' => $totalPhotos,
+            'totalYears' => $totalYears,
         ]);
     }
 
-    #[Route('/galerie/{id}', name: 'read', options: ['expose' => true])]
+    #[Route('/galerie/{id}', name: 'read', options: ['expose' => true], methods: ['GET'])]
     public function read(GaAlbum $album): Response
     {
         return $this->render('admin/pages/gallery/read.html.twig', [

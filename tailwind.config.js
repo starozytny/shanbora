@@ -16,6 +16,7 @@ module.exports = {
         '8.5': '2.25rem'
       },
       colors: {
+        color0: '#DAA520',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
