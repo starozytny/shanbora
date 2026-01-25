@@ -7,6 +7,8 @@ import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
 import Formulaire from "@commonFunctions/formulaire";
 import ModalFunctions from '@commonFunctions/modal';
 
+import { Download } from "lucide-react";
+
 import { LightBox } from "@tailwindComponents/Elements/LightBox";
 
 import { Button, ButtonA, ButtonIcon } from "@tailwindComponents/Elements/Button";
@@ -194,7 +196,7 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 								{albumName || 'Album'}
 							</h1>
 							<p className="text-gray-600 text-lg">
-								<span>{currentImages.length}</span> photo{currentImages.length > 1 ? 's' : ''} •
+								<span>{images.length}</span> photo{images.length > 1 ? 's' : ''} •
 								<span className="ml-2">{selectedImages.size}</span> sélectionnée{selectedImages.size > 1 ? 's' : ''}
 							</p>
 							{isAdmin && (
@@ -350,18 +352,27 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover
 				/>
 
 				{!isAdmin && (
-					<div
-						className={`absolute top-3 left-3 w-6 h-6 rounded-md border-2 border-white cursor-pointer transition-all z-20 ${
-							isSelected
-								? 'bg-[#DAA520] border-[#DAA520] opacity-100'
-								: 'bg-black/30 backdrop-blur-sm'
-						} ${hasSelection ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
-						onClick={(e) => handleCheckboxClick(e, image.id)}
-					>
-						{isSelected && (
-							<span className="icon-check1 text-white text-xs flex items-center justify-center h-full"></span>
-						)}
-					</div>
+					<>
+						<div
+							className={`absolute top-3 left-3 w-6 h-6 rounded-md border-2 border-white cursor-pointer transition-all z-20 ${
+								isSelected
+									? 'bg-[#DAA520] border-[#DAA520] opacity-100'
+									: 'bg-black/30 backdrop-blur-sm'
+							} ${hasSelection ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
+							onClick={(e) => handleCheckboxClick(e, image.id)}
+						>
+							{isSelected && (
+								<span className="icon-check1 text-white text-xs flex items-center justify-center h-full"></span>
+							)}
+						</div>
+						<a
+							className={`absolute top-3 right-3 w-6 h-6 rounded-md cursor-pointer transition-all z-20 ${hasSelection ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
+							onClick={(e) => { e.stopPropagation(); }}
+							href={Routing.generate(URL_DOWNLOAD_FILE, { id: image.id })} download
+						>
+							<Download className="w-6 h-6 text-white"></Download>
+						</a>
+					</>
 				)}
 
 				{isAdmin && (
