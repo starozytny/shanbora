@@ -194,7 +194,7 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 								{albumName || 'Album'}
 							</h1>
 							<p className="text-gray-600 text-lg">
-								<span>{currentImages.length}</span> photo{currentImages.length > 1 ? 's' : ''} •
+								<span>{images.length}</span> photo{images.length > 1 ? 's' : ''} •
 								<span className="ml-2">{selectedImages.size}</span> sélectionnée{selectedImages.size > 1 ? 's' : ''}
 							</p>
 							{isAdmin && (
