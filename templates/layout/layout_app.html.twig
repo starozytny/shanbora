@@ -32,7 +32,7 @@
                                     'app_adventures_ayous', 'app_adventures_miroir', 'app_adventures_semaphore',
                                     'app_adventures_morgon', 'app_adventures_orceyrette', 'app_adventures_lauzon',
                                     'app_adventures_petarel', 'app_adventures_emparis', 'app_adventures_marguerite',
-                                    'app_adventures_minorque', 'app_adventures_ecosse'
+                                    'app_adventures_minorque', 'app_adventures_ecosse', 'app_adventures_rome', 'app_adventures_tenerife'
                                 ] ? "underline text-black" : "text-gray-600 hover:text-gray-900 transition-colors" }} px-3 py-2 font-semibold">
                                     <span>Aventures</span>
                                 </a>
@@ -40,7 +40,11 @@
                                     <span>Me contacter</span>
                                 </a>
                                 <a href="{{ path('app_login') }}" class="{{ app.request.get('_route') in ['app_login'] ? "underline text-black" : "text-gray-600 hover:text-gray-900 transition-colors" }} px-3 py-2 font-semibold">
-                                    <span>Galerie privée</span>
+                                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                        <span>Vos albums</span>
+                                    {% else %}
+                                        <span>Galerie privée</span>
+                                    {% endif %}
                                 </a>
                                 <a href="https://www.instagram.com/shanbo_daltonien/" target="_blank" rel="external" class="text-gray-600 hover:text-gray-900 px-3 py-2 font-semibold">
                                     <span>Instagram</span>

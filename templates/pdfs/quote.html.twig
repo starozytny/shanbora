@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Devis {{ quote.reference }} - Shanbo</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            padding: 0;
+            margin: 0 auto;
+            background: white;
+            position: relative;
+            page-break-after: always;
+            overflow: hidden;
+        }
+
+        .page:last-child {
+            page-break-after: avoid;
+        }
+
+        .page-number {
+            position: absolute;
+            bottom: 25px;
+            right: 40px;
+            font-size: 10px;
+            color: #999;
+        }
+
+        /* ========== PAGE 1 - COVER ========== */
+        .cover {
+            height: 297mm;
+            text-align: center;
+            padding-top: 100px;
+            background: #f9f9f9;
+            border-top: 4px solid #1a1a1a;
+        }
+
+        .cover-title {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: -1px;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+        }
+
+        .cover-subtitle {
+            font-size: 14px;
+            color: #666;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 80px;
+        }
+
+        .cover-quote {
+            font-size: 18px;
+            font-style: italic;
+            color: #333;
+            max-width: 500px;
+            margin: 0 auto 15px;
+            line-height: 1.8;
+        }
+
+        .cover-author {
+            font-size: 12px;
+            color: #999;
+            letter-spacing: 1px;
+        }
+
+        .cover-brand {
+            margin-top: 120px;
+        }
+
+        .cover-brand-name {
+            font-size: 32px;
+            font-weight: 300;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .cover-brand-sub {
+            font-size: 11px;
+            color: #999;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* ========== CONTENT PAGES ========== */
+        .content-page {
+            padding: 50px;
+        }
+
+        .section-title {
+            font-size: 26px;
+            font-weight: 300;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-subtitle {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        /* Info tables */
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        .info-table td {
+            vertical-align: top;
+            padding: 0;
+        }
+
+        .info-box {
+            border-left: 3px solid #1a1a1a;
+            padding-left: 20px;
+        }
+
+        .info-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .info-item {
+            font-size: 13px;
+            color: #333;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+
+        .info-item strong {
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        /* Quote meta bar */
+        .quote-meta {
+            background: #f5f5f5;
+            border-left: 3px solid #1a1a1a;
+            padding: 15px 20px;
+            margin-top: 30px;
+        }
+
+        .quote-meta-table {
+            width: 100%;
+        }
+
+        .quote-meta-table td {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .quote-meta-table strong {
+            color: #1a1a1a;
+        }
+
+        /* ========== COLLECTION CARD ========== */
+        .collection-card {
+            border: 1px solid #ddd;
+            padding: 40px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .collection-badge {
+            position: absolute;
+            top: -12px;
+            left: 30px;
+            background: #1a1a1a;
+            color: white;
+            padding: 6px 18px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .collection-header {
+            width: 100%;
+            border-bottom: 1px solid #e5e5e5;
+            padding-bottom: 25px;
+            margin-bottom: 30px;
+        }
+
+        .collection-header td {
+            vertical-align: bottom;
+        }
+
+        .collection-name {
+            font-size: 22px;
+            font-weight: 300;
+            color: #1a1a1a;
+        }
+
+        .collection-price {
+            font-size: 42px;
+            font-weight: 300;
+            color: #1a1a1a;
+            text-align: right;
+        }
+
+        .collection-price-currency {
+            font-size: 18px;
+            color: #666;
+        }
+
+        /* Features */
+        .feature-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .feature-row td {
+            padding: 12px 0;
+            vertical-align: top;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .feature-row:last-child td {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            width: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #1a1a1a;
+            font-weight: bold;
+        }
+
+        .feature-title {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+
+        .feature-desc {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Notes box */
+        .notes-box {
+            background: #f9f9f9;
+            border-left: 3px solid #1a1a1a;
+            padding: 20px;
+            margin-top: 25px;
+        }
+
+        .notes-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .notes-content {
+            font-size: 12px;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        /* ========== CONDITIONS ========== */
+        .conditions-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        .conditions-table td {
+            width: 50%;
+            vertical-align: top;
+            padding: 0 20px 25px 0;
+        }
+
+        .condition-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .condition-item {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 8px;
+            padding-left: 15px;
+            line-height: 1.5;
+        }
+
+        .condition-item:before {
+            content: "- ";
+            margin-left: -15px;
+            color: #999;
+        }
+
+        .legal-notice {
+            font-size: 10px;
+            color: #999;
+            font-style: italic;
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        /* ========== SIGNATURE SECTION ========== */
+        .signature-section {
+            border: 2px solid #1a1a1a;
+            padding: 35px;
+            margin-top: 35px;
+            background: #fafafa;
+        }
+
+        .signature-title {
+            text-align: center;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        /* Total box */
+        .total-box {
+            background: #1a1a1a;
+            color: white;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .total-table {
+            width: 100%;
+        }
+
+        .total-table td {
+            padding: 8px 0;
+            font-size: 13px;
+        }
+
+        .total-table .total-label {
+            color: #ccc;
+        }
+
+        .total-table .total-value {
+            text-align: right;
+            color: white;
+        }
+
+        .total-table .total-main td {
+            padding-top: 15px;
+            margin-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 24px;
+            font-weight: 400;
+        }
+
+        /* Signature boxes */
+        .signature-grid {
+            width: 100%;
+        }
+
+        .signature-grid td {
+            width: 50%;
+            vertical-align: top;
+        }
+
+        .signature-box {
+            text-align: center;
+            border: 1px dashed #ccc;
+            padding: 25px;
+            background: white;
+            margin: 0 5px;
+        }
+
+        .signature-box-title {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .signature-date {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .signature-hint {
+            font-size: 10px;
+            color: #999;
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+
+        .signature-line {
+            height: 60px;
+            border-bottom: 1px solid #ccc;
+            margin: 15px 0 10px;
+        }
+
+        .signature-label {
+            font-size: 11px;
+            color: #666;
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: #1a1a1a;
+            color: #999;
+            padding: 25px 50px;
+            text-align: center;
+            font-size: 10px;
+            line-height: 1.8;
+        }
+
+        .footer strong {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== PAGE 1 - COVER ==================== -->
+    <div class="page cover">
+        <div class="cover-title">Devis Photographie</div>
+        <div class="cover-subtitle">{{ quote.eventType|default('Mariage')|upper }}</div>
+
+        <div style="margin-top: 60px;">
+            <div class="cover-quote">
+                "Le mariage, c'est la volonté à deux de créer l'unique."
+            </div>
+            <div class="cover-author">Friedrich Nietzsche</div>
+        </div>
+
+        <div class="cover-brand">
+            <div class="cover-brand-name">Shanbo</div>
+            <div class="cover-brand-sub">Chanbora Chhun - Photographe</div>
+        </div>
+
+        <div class="page-number">1 / 4</div>
+    </div>
+
+    <!-- ==================== PAGE 2 - INFO ==================== -->
+    <div class="page content-page">
+        <div class="section-title">Votre expérience</div>
+        <div class="section-subtitle">
+            Le mariage est un moment fort et unique, une étape sublime dans votre vie.
+            Je capture des moments uniques pour immortaliser la beauté et l'émotion dans chaque cliché.
+            Mon art est un subtil mélange entre le portrait, l'émotion et le reportage photo.
+        </div>
+
+        <table class="info-table">
+            <tr>
+                <td style="width: 50%; padding-right: 30px;">
+                    <div class="info-box">
+                        <div class="info-label">Photographe</div>
+                        <div class="info-item"><strong>Chanbora Chhun</strong></div>
+                        <div class="info-item">Auto-entrepreneur photographe</div>
+                        <div class="info-item">SIRET : {{ config.siret|default('[SIRET]') }}</div>
+                        <div class="info-item">{{ config.address|default('[Adresse]') }}</div>
+                        <div class="info-item">{{ config.phone|default('[Téléphone]') }}</div>
+                        <div class="info-item">{{ config.email|default('[Email]') }}</div>
+                    </div>
+                </td>
+                <td style="width: 50%;">
+                    <div class="info-box">
+                        <div class="info-label">Client</div>
+                        <div class="info-item"><strong>{{ quote.clientFirstName }} {{ quote.clientLastName }}</strong></div>
+                        {% if quote.clientAddress %}
+                        <div class="info-item">{{ quote.clientAddress }}</div>
+                        {% endif %}
+                        {% if quote.clientPhone %}
+                        <div class="info-item">Tel : {{ quote.clientPhone }}</div>
+                        {% endif %}
+                        <div class="info-item">{{ quote.clientEmail }}</div>
+                        {% if quote.eventDate %}
+                        <div class="info-item" style="margin-top: 12px;"><strong>Date evenement :</strong> {{ quote.eventDate|date('d/m/Y') }}</div>
+                        {% endif %}
+                        {% if quote.eventLocation %}
+                        <div class="info-item"><strong>Lieu :</strong> {{ quote.eventLocation }}</div>
+                        {% endif %}
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="quote-meta">
+            <table class="quote-meta-table">
+                <tr>
+                    <td><strong>N Devis :</strong> {{ quote.reference }}</td>
+                    <td style="text-align: center;"><strong>Date :</strong> {{ quote.createdAt|date('d/m/Y') }}</td>
+                    <td style="text-align: right;"><strong>Validite :</strong> {% if quote.validUntil %}jusqu'au {{ quote.validUntil|date('d/m/Y') }}{% else %}30 jours{% endif %}</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="page-number">2 / 4</div>
+    </div>
+
+    <!-- ==================== PAGE 3 - FORMULE ==================== -->
+    <div class="page content-page">
+        <div class="section-title">Votre formule</div>
+
+        <div class="collection-card">
+            <div class="collection-badge">Formule selectionnee</div>
+
+            <table class="collection-header">
+                <tr>
+                    <td><div class="collection-name">{{ quote.packageName|default('Formule personnalisee') }}</div></td>
+                    <td style="text-align: right;">
+                        <span class="collection-price">{{ quote.totalAmount|number_format(0, ',', ' ') }}</span>
+                        <span class="collection-price-currency">EUR</span>
+                    </td>
+                </tr>
+            </table>
+
+            <table class="feature-table">
+                {% if quote.customContent.duration is defined and quote.customContent.duration %}
+                <tr class="feature-row">
+                    <td class="feature-icon">[1]</td>
+                    <td>
+                        <div class="feature-title">Reportage Photo</div>
+                        <div class="feature-desc">{{ quote.customContent.duration }}</div>
+                    </td>
+                </tr>
+                {% endif %}
+
+                {% if quote.customContent.photos_count is defined and quote.customContent.photos_count %}
+                <tr class="feature-row">
+                    <td class="feature-icon">[2]</td>
+                    <td>
+                        <div class="feature-title">Photos Retouchees</div>
+                        <div class="feature-desc">{{ quote.customContent.photos_count }}</div>
+                    </td>
+                </tr>
+                {% endif %}
+
+                {% if quote.customContent.delivery is defined and quote.customContent.delivery %}
+                <tr class="feature-row">
+                    <td class="feature-icon">[3]</td>
+                    <td>
+                        <div class="feature-title">Livraison</div>
+                        <div class="feature-desc">{{ quote.customContent.delivery }}{% if quote.customContent.delivery_time is defined and quote.customContent.delivery_time %} - {{ quote.customContent.delivery_time }}{% endif %}</div>
+                    </td>
+                </tr>
+                {% endif %}
+
+                {% if quote.customContent.inclusions is defined and quote.customContent.inclusions|length > 0 %}
+                <tr class="feature-row">
+                    <td class="feature-icon">[+]</td>
+                    <td>
+                        <div class="feature-title">Ce qui est inclus</div>
+                        <div class="feature-desc">{{ quote.customContent.inclusions|join(' - ') }}</div>
+                    </td>
+                </tr>
+                {% endif %}
+
+                {% if quote.customContent.extras is defined and quote.customContent.extras|length > 0 %}
+                <tr class="feature-row">
+                    <td class="feature-icon">[*]</td>
+                    <td>
+                        <div class="feature-title">Bonus inclus</div>
+                        <div class="feature-desc">{{ quote.customContent.extras|join(' - ') }}</div>
+                    </td>
+                </tr>
+                {% endif %}
+            </table>
+        </div>
+
+        {% if quote.notes %}
+        <div class="notes-box">
+            <div class="notes-label">Notes</div>
+            <div class="notes-content">{{ quote.notes|nl2br }}</div>
+        </div>
+        {% endif %}
+
+        <div class="page-number">3 / 4</div>
+    </div>
+
+    <!-- ==================== PAGE 4 - CONDITIONS & SIGNATURE ==================== -->
+    <div class="page content-page">
+        <div class="section-title">Conditions generales</div>
+
+        <table class="conditions-table">
+            <tr>
+                <td>
+                    <div class="condition-title">Modalites de paiement</div>
+                    <div class="condition-item">Acompte de {{ quote.depositPercentage|default(30) }}% a la signature pour reservation</div>
+                    <div class="condition-item">Solde de {{ 100 - quote.depositPercentage|default(30) }}% a regler 7 jours avant</div>
+                    <div class="condition-item">Virement bancaire, cheque ou especes</div>
+                </td>
+                <td>
+                    <div class="condition-title">Politique d'annulation</div>
+                    <div class="condition-item">Plus de 3 mois : remboursement 100%</div>
+                    <div class="condition-item">Entre 1 et 3 mois : remboursement 50%</div>
+                    <div class="condition-item">Moins d'1 mois : acompte non remboursable</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="condition-title">Droits d'utilisation</div>
+                    <div class="condition-item">Photos pour usage personnel uniquement</div>
+                    <div class="condition-item">Le photographe conserve les droits d'auteur</div>
+                    <div class="condition-item">Utilisation portfolio par le photographe</div>
+                </td>
+                <td>
+                    <div class="condition-title">Garanties</div>
+                    <div class="condition-item">Materiel professionnel en double securite</div>
+                    <div class="condition-item">RC professionnelle souscrite</div>
+                    <div class="condition-item">Sauvegarde multiple des fichiers</div>
+                </td>
+            </tr>
+        </table>
+
+        <div class="legal-notice">
+            TVA non applicable, article 293 B du CGI (regime auto-entrepreneur) - Assurance RC professionnelle souscrite
+        </div>
+
+        <div class="signature-section">
+            <div class="signature-title">Acceptation du devis</div>
+
+            <div class="total-box">
+                <table class="total-table">
+                    <tr>
+                        <td class="total-label">Montant formule</td>
+                        <td class="total-value">{{ quote.totalAmount|number_format(2, ',', ' ') }} EUR</td>
+                    </tr>
+                    {% if quote.depositAmount %}
+                    <tr>
+                        <td class="total-label">Acompte ({{ quote.depositPercentage }}%)</td>
+                        <td class="total-value">{{ quote.depositAmount|number_format(2, ',', ' ') }} EUR</td>
+                    </tr>
+                    <tr>
+                        <td class="total-label">Solde restant</td>
+                        <td class="total-value">{{ (quote.totalAmount - quote.depositAmount)|number_format(2, ',', ' ') }} EUR</td>
+                    </tr>
+                    {% endif %}
+                    <tr class="total-main">
+                        <td class="total-label">Total</td>
+                        <td class="total-value">{{ quote.totalAmount|number_format(2, ',', ' ') }} EUR</td>
+                    </tr>
+                </table>
+            </div>
+
+            <table class="signature-grid">
+                <tr>
+                    <td>
+                        <div class="signature-box">
+                            <div class="signature-box-title">Le Photographe</div>
+                            <div class="signature-date">Date : _______________</div>
+                            <div class="signature-line"></div>
+                            <div class="signature-label">Signature</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="signature-box">
+                            <div class="signature-box-title">Le Client</div>
+                            <div class="signature-date">Date : _______________</div>
+                            <div class="signature-hint">Precede de "Bon pour accord"</div>
+                            <div class="signature-line"></div>
+                            <div class="signature-label">Signature</div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="page-number">4 / 4</div>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <div class="footer">
+        <strong>Shanbo - Chanbora Chhun</strong><br>
+        Photographe - Auto-entrepreneur - SIRET : {{ config.siret|default('[SIRET]') }}<br>
+        {{ config.address|default('[Adresse]') }} - Tel : {{ config.phone|default('[Telephone]') }} - Email : {{ config.email|default('[Email]') }}
+    </div>
+
+</body>
+</html>

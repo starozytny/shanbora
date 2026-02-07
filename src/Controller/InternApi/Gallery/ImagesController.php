@@ -7,7 +7,6 @@ use App\Entity\Main\User;
 use App\Repository\Main\Gallery\GaImageRepository;
 use App\Service\Api\ApiResponse;
 use App\Service\Gallery\ImageService;
-use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -21,32 +20,45 @@ use ZipArchive;
 class ImagesController extends AbstractController
 {
     #[Route('/fetch-images', name: 'fetch_images', options: ['expose' => true], methods: 'GET')]
-    public function fetchImages(Request $request, PaginatorInterface $paginator, ApiResponse $apiResponse,
-                                GaImageRepository $imageRepository, SerializerInterface $serializer): Response
+    public function fetchImages(Request $request, ApiResponse $apiResponse, GaImageRepository $imageRepository, SerializerInterface $serializer): Response
     {
         $albumId = $request->query->get('albumId');
-        if($request->query->get('isAdmin')){
-            if($request->query->get('sortBy') == "dl"){
-                $images = $imageRepository->findBy(['album' => $albumId], ['nbDownload' => 'DESC']);
-            }else{
-                $images = $imageRepository->findBy(['album' => $albumId], ['originalName' => 'ASC']);
-            }
-        }else{
-            $images = $imageRepository->findBy(['album' => $albumId], ['originalName' => 'ASC']);
+        $page = $request->query->getInt('page', 1);
+        $limit = 48;
+        $offset = ($page - 1) * $limit;
+
+        if ($request->query->get('isAdmin')) {
+            $orderBy = $request->query->get('sortBy') === 'dl'
+                ? ['nbDownload' => 'DESC']
+                : ['originalName' => 'ASC'];
+        } else {
+            $orderBy = ['originalName' => 'ASC'];
         }
 
-        // Pagination
-        $page = $request->query->getInt('page', 1);
-        $pagination = $paginator->paginate(
-            $images, // Les images récupérées
-            $page,   // La page actuelle
-            48  // Nombre d'images par page
+        if ($page === 1) {
+            $allImages = $imageRepository->findBy(['album' => $albumId], $orderBy);
+        } else {
+            $allImages = [];
+        }
+
+        $currentImages = $imageRepository->findBy(
+            ['album' => $albumId],
+            $orderBy,
+            $limit,
+            $offset
         );
 
+        $totalImages = count($allImages);
+        $hasMore = ($offset + $limit) < $totalImages;
+
         return $apiResponse->apiJsonResponseCustom([
-            'images' => $serializer->serialize($images, 'json', ['groups' => GaImage::LIST]),
-            'currentImages' => $serializer->serialize($pagination->getItems(), 'json', ['groups' => GaImage::LIST]),
-            'hasMore' => $pagination->getCurrentPageNumber() < $pagination->getPageCount(),
+            'images' => $page === 1
+                ? $serializer->serialize($allImages, 'json', ['groups' => GaImage::LIST])
+                : '[]',
+            'currentImages' => $serializer->serialize($currentImages, 'json', ['groups' => GaImage::LIST]),
+            'hasMore' => $hasMore,
+            'total' => $totalImages,
+            'page' => $page
         ]);
     }
 
