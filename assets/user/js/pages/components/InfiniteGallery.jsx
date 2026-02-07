@@ -244,7 +244,7 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 										type="default"
 										onClick={toggleSelectAll}
 									>
-										{selectedImages.size === currentImages.length ? 'Tout désélectionner' : 'Tout sélectionner'}
+										{selectedImages.size === images.length ? 'Tout désélectionner' : 'Tout sélectionner'}
 									</Button>
 									<Button
 										type="default"
