@@ -46,23 +46,20 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 
 		axios({ method: "GET", url: url, data: {} })
 			.then(function (response) {
-				let data = response.data.images ? JSON.parse(response.data.images) : [];
+				let data = JSON.parse(response.data.images);
 				let currentData = JSON.parse(response.data.currentImages);
 
-				if (data.length > 0) {
-					let i = 1;
-					data.forEach(item => {
-						item.rankPhoto = i++;
-					})
-					setImages(data);
-				}
-
+				let i = 1;
+				data.forEach(item => {
+					item.rankPhoto = i++;
+				})
 				let j = rankPhoto;
 				currentData.forEach(item => {
 					item.rankPhoto = j++;
 				})
 
 				setRankPhoto(prevRankPhoto => prevRankPhoto + currentData.length)
+				setImages(data);
 				setCurrentImages(prevImages => [...prevImages, ...currentData]);
 				setHasMore(response.data.hasMore);
 				setPage(prevPage => prevPage + 1);
