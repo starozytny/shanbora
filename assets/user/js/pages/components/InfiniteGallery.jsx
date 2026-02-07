@@ -204,7 +204,7 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 
 	return (
 		<div>
-			<section className="pt-12 pb-6 bg-gradient-to-br from-gray-50 to-white rounded-lg">
+			<section className="pt-12 pb-6 px-4 xl:px-6 bg-gradient-to-br from-gray-50 to-white rounded-lg">
 				<div className="max-w-7xl mx-auto">
 					<div className="flex items-center gap-4 mb-6">
 						<a href={Routing.generate(URL_USER_HOMEPAGE)} className="flex items-center gap-2 text-gray-600 hover:text-[#DAA520] transition-colors">
