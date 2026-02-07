@@ -35,11 +35,7 @@ class ImagesController extends AbstractController
             $orderBy = ['originalName' => 'ASC'];
         }
 
-        if ($page === 1) {
-            $allImages = $imageRepository->findBy(['album' => $albumId], $orderBy);
-        } else {
-            $allImages = [];
-        }
+        $allImages = $imageRepository->findBy(['album' => $albumId], $orderBy);
 
         $currentImages = $imageRepository->findBy(
             ['album' => $albumId],
@@ -52,9 +48,7 @@ class ImagesController extends AbstractController
         $hasMore = ($offset + $limit) < $totalImages;
 
         return $apiResponse->apiJsonResponseCustom([
-            'images' => $page === 1
-                ? $serializer->serialize($allImages, 'json', ['groups' => GaImage::LIST])
-                : '[]',
+            'images' => $serializer->serialize($allImages, 'json', ['groups' => GaImage::LIST]),
             'currentImages' => $serializer->serialize($currentImages, 'json', ['groups' => GaImage::LIST]),
             'hasMore' => $hasMore,
             'total' => $totalImages,
