@@ -377,7 +377,7 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover
 					ref={el => imageRefs.current[image.id] = el}
 					src={Routing.generate(URL_READ_IMAGE, { id: image.id })}
 					alt={`Photo ${image.originalName}`}
-					className={`pointer-events-none w-full h-auto rounded-lg group-hover:scale-105 transition-all duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+					className={`pointer-events-none w-full h-auto rounded-md group-hover:scale-105 transition-all duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
 					loading="lazy"
 					onLoad={(e) => {
 						if (e.target.complete && e.target.naturalHeight !== 0) {
