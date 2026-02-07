@@ -3,8 +3,9 @@
 namespace App\Service\Billing;
 
 use App\Entity\Billing\BiQuote;
-use Dompdf\Dompdf;
-use Dompdf\Options;
+use Mpdf\Mpdf;
+use Mpdf\Config\ConfigVariables;
+use Mpdf\Config\FontVariables;
 use Twig\Environment;
 
 class QuotePdfService
@@ -30,21 +31,35 @@ class QuotePdfService
             ],
         ]);
 
-        // Configure Dompdf
-        $options = new Options();
-        $options->set('isHtml5ParserEnabled', true);
-        $options->set('isRemoteEnabled', true);
-        $options->set('defaultFont', 'Helvetica');
-        $options->set('isFontSubsettingEnabled', true);
-        $options->set('isPhpEnabled', false);
+        // Configure mPDF
+        $defaultConfig = (new ConfigVariables())->getDefaults();
+        $fontDirs = $defaultConfig['fontDir'];
 
-        // Generate PDF
-        $dompdf = new Dompdf($options);
-        $dompdf->loadHtml($html);
-        $dompdf->setPaper('A4', 'portrait');
-        $dompdf->render();
+        $defaultFontConfig = (new FontVariables())->getDefaults();
+        $fontData = $defaultFontConfig['fontdata'];
 
-        return $dompdf->output();
+        $mpdf = new Mpdf([
+            'mode' => 'utf-8',
+            'format' => 'A4',
+            'margin_left' => 0,
+            'margin_right' => 0,
+            'margin_top' => 0,
+            'margin_bottom' => 0,
+            'margin_header' => 0,
+            'margin_footer' => 0,
+            'tempDir' => sys_get_temp_dir() . '/mpdf',
+            'fontDir' => $fontDirs,
+            'fontdata' => $fontData,
+            'default_font' => 'dejavusans',
+        ]);
+
+        // Disable auto page break to control pages manually
+        $mpdf->autoPageBreak = false;
+
+        // Write HTML
+        $mpdf->WriteHTML($html);
+
+        return $mpdf->Output('', 'S');
     }
 
     public function getFilename(BiQuote $quote): string
@@ -55,11 +70,8 @@ class QuotePdfService
 
     private function slugify(string $text): string
     {
-        // Transliterate
         $text = transliterator_transliterate('Any-Latin; Latin-ASCII; Lower()', $text);
-        // Replace non-alphanumeric
         $text = preg_replace('/[^a-z0-9]+/', '_', $text);
-        // Trim underscores
         return trim($text, '_');
     }
 }
