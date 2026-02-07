@@ -17,6 +17,7 @@ class QuoteService
         private EntityManagerInterface $em,
         private BiQuoteRepository $quoteRepository,
         private MailerInterface $mailer,
+        private ?QuotePdfService $pdfService,
         private string $senderEmail,
         private string $senderName,
     ) {}
@@ -104,8 +105,11 @@ class QuoteService
                 'quote' => $quote,
             ]);
 
-        // TODO: Attach PDF when implemented
-        // $email->attachFromPath($pdfPath, 'Devis-' . $quote->getReference() . '.pdf');
+        if ($this->pdfService) {
+            $pdfContent = $this->pdfService->generate($quote);
+            $filename = $this->pdfService->getFilename($quote);
+            $email->attach($pdfContent, $filename, 'application/pdf');
+        }
 
         $this->mailer->send($email);
 

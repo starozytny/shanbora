@@ -28,6 +28,7 @@ import { QuoteActions } from '@adminPages/Quotes/QuoteActions';
 import { QuoteForm } from '@adminPages/Quotes/QuoteForm';
 import { QuotePreview } from '@adminPages/Quotes/QuotePreview';
 import { useQuotes, useQuote, useQuoteStats, useQuoteActions } from '@adminHooks/billing/useQuotes';
+import { downloadQuotePdf, getQuotePdfPreviewUrl } from "@adminHooks/billing/quotes-api";
 import { Plus, Search, FileText, Loader2 } from 'lucide-react';
 
 export function QuotesList() {
@@ -128,8 +129,6 @@ export function QuotesList() {
     ], [stats]);
 
     const hasActiveFilters = filters.status || filters.search;
-
-    console.log(editLoading);
 
     return (
         <div className="space-y-6">
@@ -296,6 +295,8 @@ export function QuotesList() {
                                             onDuplicate={() => actions.duplicate(quote.id)}
                                             onDelete={() => actions.remove(quote.id)}
                                             onStatusChange={(status) => actions.updateStatus(quote.id, status)}
+                                            onDownloadPdf={() => downloadQuotePdf(quote.id, `Devis_${quote.reference}.pdf`)}
+                                            onPreviewPdf={() => window.open(getQuotePdfPreviewUrl(quote.id), '_blank')}
                                             loading={actions.loading}
                                         />
                                     </TableCell>

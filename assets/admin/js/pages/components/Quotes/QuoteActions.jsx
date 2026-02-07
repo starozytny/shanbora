@@ -27,7 +27,9 @@ import {
     X,
     FileText,
     Eye,
-    RotateCcw
+    RotateCcw,
+    Download,
+    ExternalLink
 } from 'lucide-react';
 
 export function QuoteActions({
@@ -38,6 +40,8 @@ export function QuoteActions({
     onDuplicate,
     onDelete,
     onStatusChange,
+    onDownloadPdf,
+    onPreviewPdf,
     loading
 }) {
     const [confirmDialog, setConfirmDialog] = useState(null);
@@ -88,6 +92,18 @@ export function QuoteActions({
                     <DropdownMenuItem onClick={onDuplicate}>
                         <Copy className="mr-2 h-4 w-4" />
                         Dupliquer
+                    </DropdownMenuItem>
+
+                    <DropdownMenuSeparator />
+
+                    <DropdownMenuItem onClick={onDownloadPdf}>
+                        <Download className="mr-2 h-4 w-4" />
+                        Télécharger PDF
+                    </DropdownMenuItem>
+
+                    <DropdownMenuItem onClick={onPreviewPdf}>
+                        <ExternalLink className="mr-2 h-4 w-4" />
+                        Aperçu PDF
                     </DropdownMenuItem>
 
                     <DropdownMenuSeparator />

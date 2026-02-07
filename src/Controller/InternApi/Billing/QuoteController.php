@@ -6,6 +6,7 @@ use App\Entity\Billing\BiQuote;
 use App\Entity\Billing\BiQuotePackageTemplate;
 use App\Repository\Billing\BiQuotePackageTemplateRepository;
 use App\Repository\Billing\BiQuoteRepository;
+use App\Service\Billing\QuotePdfService;
 use App\Service\Billing\QuoteService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -21,6 +22,7 @@ class QuoteController extends AbstractController
         private BiQuoteRepository $quoteRepository,
         private BiQuotePackageTemplateRepository $templateRepository,
         private QuoteService $quoteService,
+        private QuotePdfService $pdfService,
         private ValidatorInterface $validator,
     ) {}
 
@@ -223,6 +225,42 @@ class QuoteController extends AbstractController
             'data' => $this->serializeQuote($newQuote),
             'message' => 'Quote duplicated successfully',
         ], Response::HTTP_CREATED);
+    }
+
+    #[Route('/{id}/pdf', name: 'pdf', methods: ['GET'])]
+    public function downloadPdf(int $id): Response
+    {
+        $quote = $this->quoteRepository->find($id);
+
+        if (!$quote) {
+            return $this->json(['error' => 'Quote not found'], Response::HTTP_NOT_FOUND);
+        }
+
+        $pdfContent = $this->pdfService->generate($quote);
+        $filename = $this->pdfService->getFilename($quote);
+
+        return new Response($pdfContent, Response::HTTP_OK, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => sprintf('attachment; filename="%s"', $filename),
+            'Content-Length' => strlen($pdfContent),
+        ]);
+    }
+
+    #[Route('/{id}/pdf/preview', name: 'pdf_preview', methods: ['GET'])]
+    public function previewPdf(int $id): Response
+    {
+        $quote = $this->quoteRepository->find($id);
+
+        if (!$quote) {
+            return $this->json(['error' => 'Quote not found'], Response::HTTP_NOT_FOUND);
+        }
+
+        $pdfContent = $this->pdfService->generate($quote);
+
+        return new Response($pdfContent, Response::HTTP_OK, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline',
+        ]);
     }
 
     private function hydrateQuote(BiQuote $quote, array $data): void

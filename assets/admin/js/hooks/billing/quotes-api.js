@@ -135,3 +135,29 @@ export async function duplicateQuote(id) {
 
     return json.data;
 }
+
+export function getQuotePdfUrl(id) {
+    return `${API_BASE}/${id}/pdf`;
+}
+
+export function getQuotePdfPreviewUrl(id) {
+    return `${API_BASE}/${id}/pdf/preview`;
+}
+
+export async function downloadQuotePdf(id, filename) {
+    const response = await fetch(getQuotePdfUrl(id));
+
+    if (!response.ok) {
+        throw new Error('Erreur lors du téléchargement du PDF');
+    }
+
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename || `devis-${id}.pdf`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+}

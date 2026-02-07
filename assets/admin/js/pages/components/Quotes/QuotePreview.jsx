@@ -1,6 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@shadcnComponents/ui/card';
+import { Button } from "@shadcnComponents/ui/button";
 import { QuoteStatusBadge } from '@adminPages/Quotes/QuoteStatusBadge';
-import { Check, Star, Calendar, MapPin, User, Mail, Phone } from 'lucide-react';
+import { downloadQuotePdf, getQuotePdfPreviewUrl } from "@adminHooks/billing/quotes-api";
+import { Check, Star, Calendar, MapPin, User, Mail, Phone, Download, ExternalLink } from 'lucide-react';
 
 export function QuotePreview({ quote }) {
     if (!quote) return null;
@@ -49,6 +51,26 @@ export function QuotePreview({ quote }) {
                         </p>
                     )}
                 </div>
+            </div>
+
+            {/* PDF Actions */}
+            <div className="flex gap-2">
+                <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => downloadQuotePdf(quote.id, `Devis_${quote.reference}.pdf`)}
+                >
+                    <Download className="mr-2 h-4 w-4" />
+                    Télécharger PDF
+                </Button>
+                <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => window.open(getQuotePdfPreviewUrl(quote.id), '_blank')}
+                >
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    Aperçu PDF
+                </Button>
             </div>
 
             <div className="grid gap-6 md:grid-cols-2">
