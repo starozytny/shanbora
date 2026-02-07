@@ -135,10 +135,10 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 	};
 
 	const toggleSelectAll = () => {
-		if (selectedImages.size === currentImages.length) {
+		if (selectedImages.size === images.length) {
 			setSelectedImages(new Set());
 		} else {
-			setSelectedImages(new Set(currentImages.map(img => img.id)));
+			setSelectedImages(new Set(images.map(img => img.id)));
 		}
 	};
 
@@ -204,7 +204,7 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 
 	return (
 		<div>
-			<section className="pt-12 pb-6 bg-gradient-to-br from-gray-50 to-white rounded-lg">
+			<section className="pt-12 pb-6 px-4 xl:px-6 bg-gradient-to-br from-gray-50 to-white rounded-lg">
 				<div className="max-w-7xl mx-auto">
 					<div className="flex items-center gap-4 mb-6">
 						<a href={Routing.generate(URL_USER_HOMEPAGE)} className="flex items-center gap-2 text-gray-600 hover:text-[#DAA520] transition-colors">
@@ -377,7 +377,7 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover
 					ref={el => imageRefs.current[image.id] = el}
 					src={Routing.generate(URL_READ_IMAGE, { id: image.id })}
 					alt={`Photo ${image.originalName}`}
-					className={`pointer-events-none w-full h-auto rounded-lg group-hover:scale-105 transition-all duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+					className={`pointer-events-none w-full h-auto rounded-md group-hover:scale-105 transition-all duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
 					loading="lazy"
 					onLoad={(e) => {
 						if (e.target.complete && e.target.naturalHeight !== 0) {
