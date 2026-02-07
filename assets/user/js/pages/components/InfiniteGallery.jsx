@@ -135,10 +135,10 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 	};
 
 	const toggleSelectAll = () => {
-		if (selectedImages.size === currentImages.length) {
+		if (selectedImages.size === images.length) {
 			setSelectedImages(new Set());
 		} else {
-			setSelectedImages(new Set(currentImages.map(img => img.id)));
+			setSelectedImages(new Set(images.map(img => img.id)));
 		}
 	};
 
