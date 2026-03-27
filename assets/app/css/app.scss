@@ -77,6 +77,10 @@ html{
   z-index: 1;
 }
 
+.gold-line::before {
+  content: ''; display: inline-block; width: 2rem; height: 1px;
+  background: #DAA520; vertical-align: middle; margin-right: 1rem;
+}
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {

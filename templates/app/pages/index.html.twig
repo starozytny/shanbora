@@ -10,14 +10,15 @@
 
 {% block main_content %}
     <div class="flex flex-col gap-24 mb-24">
-        <div class="w-full px-2 lg:px-8 md:min-h-[628px] lg:min-h-[562px] xl:min-h-[600px] 2xl:min-h-[668px] mt-4">
-            <div class="relative bg-gray-900 rounded-2xl py-24 sm:py-48 overflow-hidden md:min-h-[628px] md:max-h-[628px] lg:min-h-[562px] lg:max-h-[562px] xl:max-h-[600px] 2xl:max-h-[668px]">
-                <div class="absolute top-0 left-0 rounded-2xl w-full h-full">
+        <div>
+            <section class="relative flex items-end min-h-[48vh] overflow-hidden bg-[#141414]">
+                <div class="absolute inset-y-0 right-0 w-2/3 overflow-hidden">
                     <div id="slideshow" class="relative w-full h-screen overflow-hidden opacity-50">
                         <img src="{{ asset('build/app/images/homepage1.jpg') }}" alt="background image" class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-1000">
                         <img src="{{ asset('build/app/images/homepage2.jpg') }}" alt="background image" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
                         <img src="{{ asset('build/app/images/homepage3.jpg') }}" alt="background image" class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000">
                     </div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-[#141414] via-stone-100/10 to-transparent"></div>
 
                     <script>
 						document.addEventListener("DOMContentLoaded", function () {
@@ -36,49 +37,144 @@
 						});
                     </script>
                 </div>
-                <div class="relative flex flex-col justify-between gap-12 max-w-screen-2xl mx-auto lg:flex-row lg:justify-between">
-                    <div class="px-4 lg:pl-12 xl:pl-24">
-                        <div class="font-medium text-color0 mb-1 ft-special text-lg">
-                            Photographe
-                        </div>
-                        <h1 class="text-4xl font-bold tracking-tight text-white sm:text-6xl lg:max-w-96">
-                            Salut, je suis Chanbora Chhun.
-                        </h1>
 
-                        <div class="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center">
-                            <div>
-                                <a href="#mon-travail" class="cta-btn inline-flex items-center gap-3 px-8 py-4 bg-[#DAA520] text-white font-semibold rounded-lg hover:bg-[#B8860B] transition-colors shadow-xl">
-                                    <span>💪 Mon travail</span>
-                                </a>
-                            </div>
-                            <div>
-                                <a href="#restons-en-contact" class="cta-btn inline-flex items-center gap-3 px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors shadow-xl">
-                                    <span>🤝 Restons en contact</span>
-                                </a>
-                            </div>
+                <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 pb-20 pt-24 w-full">
+                    <div class="max-w-xl">
+                        <p class="gold-line text-color0 ft-special text-lg mb-3">
+                            Photographe mariage &amp; portrait · Marseille et plus
+                        </p>
+                        <h1 class="text-4xl font-display tracking-tight text-white mb-12 sm:text-6xl lg:max-w-96">
+                            Des instants<br>vrais, <em class="text-transparent bg-clip-text bg-gradient-to-r from-[#DAA520] to-[#FFD700]">gravés<br>pour toujours</em>
+                        </h1>
+                        <p class="font-light text-white leading-relaxed max-w-sm mb-10">
+                            Je capture ce qui ne se répète pas — un regard complice, une larme retenue, un éclat de rire.
+                            <br> Ma présence est discrète. Mes images sont honnêtes.
+                        </p>
+                        <div class="flex flex-wrap gap-4 items-center">
+                            <a href="{{ path('app_gallery') }}" class="cta-btn inline-flex text-[0.7rem] tracking-widest uppercase bg-gold text-white px-8 py-3.5 hover:bg-gold-muted transition-colors font-light rounded">
+                                📸 Voir le portfolio
+                            </a>
+                            <a href="/contact" class="text-[0.7rem] tracking-widest uppercase text-white hover:text-stone-900 transition-colors font-light flex items-center gap-2">
+                                🤝 Parlons de votre projet <span class="text-gold">→</span>
+                            </a>
                         </div>
                     </div>
+                </div>
+                <div class="absolute bottom-8 right-12 hidden lg:flex flex-col items-center gap-3">
+                    <span class="text-[0.55rem] tracking-[0.3em] uppercase text-stone-400" style="writing-mode:vertical-rl">Défiler</span>
+                    <div class="w-px h-12 bg-stone-300"></div>
+                </div>
+            </section>
 
-                    <div class="px-4 lg:max-w-72 lg:pr-12 xl:pr-24">
-                        <p class="mt-6 text-lg leading-8 text-white ft-special">
-                            Passionné par la créativité sous toutes ses formes, je capture des moments uniques
-                            de la vie afin d'immortaliser la beauté et l’émotion dans chaque cliché.
-                        </p>
+            <div class="border-y border-stone-200 text-center bg-white">
+                <div class="px-10 py-8">
+                    <div class="font-serif text-4xl font-light text-gold mb-1">100%</div>
+                    <div class="text-base text-stone-500 font-light max-w-[768px] mx-auto">
+                        Passionné par la créativité sous toutes ses formes, je capture des moments uniques
+                        de la vie afin d'immortaliser la beauté et l’émotion dans chaque cliché.
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="w-full mb-12 px-6 lg:px-8 lg:mb-32" id="mon-travail">
+        <section class="bg-gray-50" id="mon-travail">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center mb-16">
+                    <div data-aos="fade-up">
+                        <p class="gold-line ft-special text-gold mb-3">
+                            Mon approche · Instants figés
+                        </p>
+                        <h2 class="font-display text-5xl font-bold mb-12 text-gray-900">
+                            La photographie<br>comme <em class="text-transparent bg-clip-text bg-gradient-to-r from-[#DAA520] to-[#FFD700]">témoignage</em>
+                        </h2>
+                        <p class="text-stone-600 text-lg font-light leading-relaxed mb-6">
+                            Chaque moment de la vie mérite d'être immortalisé, et je suis là pour transformer vos instants
+                            précieux en souvenirs inoubliables.
+                        </p>
+                        <p class="text-stone-600 text-lg font-light leading-relaxed mb-6">
+                            En tant que photographe passionné, je ne mets pas en scène.
+                            Je suis là, j'observe et j'attends le moment pour
+                            capturant l'essence et l'émotion de chaque sourire, chaque regard,
+                            et chaque détail qui fait de votre journée un moment unique.
+                        </p>
+                        <p class="text-stone-600 text-lg font-light leading-relaxed mb-6">
+                            Que ce soit pour des portraits intimes qui révèlent votre personnalité ou pour documenter chaque
+                            instant de votre mariage, je m'engage à créer des images authentiques et intemporelles. Mon
+                            approche est à la fois discrète et attentionnée, vous permettant de profiter pleinement de
+                            votre journée tout en sachant que chaque instant est soigneusement capturé.
+                        </p>
+                        <p class="text-stone-600 text-lg font-light leading-relaxed mb-6">
+                            Chaque galerie raconte une histoire vraie. La vôtre.
+                        </p>
+                        <a href="{{ path('app_gallery') }}" class="cta-btn  inline-flex text-[0.7rem] tracking-widest uppercase bg-gold text-white px-8 py-3.5 hover:bg-gold-muted transition-colors font-light rounded">
+                            Voir le portfolio
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4" data-aos="fade-up">
+                        <div class="image-card rounded-xl overflow-hidden shadow-lg">
+                            <img src="{{ asset('build/app/images/homepage/n-couple-sunset.jpg') }}" alt="Couple sunset" class="w-full h-full object-cover aspect-[3/4]">
+                        </div>
+                        <div class="image-card rounded-xl overflow-hidden shadow-lg translate-y-12">
+                            <img src="{{ asset('build/app/images/homepage/femme-sunrise.jpg') }}" alt="Femme sunrise" class="w-full h-full object-cover aspect-[3/4]">
+                        </div>
+                        <div class="image-card rounded-xl overflow-hidden shadow-lg">
+                            <img src="{{ asset('build/app/images/homepage/person.jpg') }}" alt="Person" class="w-full h-full object-cover aspect-[3/4]">
+                        </div>
+                        <div class="image-card rounded-xl overflow-hidden shadow-lg translate-y-12">
+                            <img src="{{ asset('build/app/images/homepage/deux-femmes-portrait.jpg') }}" alt="Deux femmes" class="w-full h-full object-cover aspect-[3/4]">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="mariages" class="bg-stone-100 py-28">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="grid grid-cols-5 gap-3">
+                    <div class="image-card rounded-xl overflow-hidden shadow-lg col-span-3 translate-y-12" style="aspect-ratio:2/3">
+                        <img src="{{ asset('build/app/images/homepage/n-couple-sunset.jpg') }}" alt="Couple sunset" class="w-full h-full object-cover" />
+                    </div>
+                    <div class="col-span-2 flex flex-col gap-3">
+                        <div class="image-card rounded-xl overflow-hidden shadow-lg flex-1">
+                            <img src="{{ asset('build/app/images/homepage/femme-sunrise.jpg') }}" alt="Femme sunrise" class="w-full h-full object-cover" />
+                        </div>
+                        <div class="image-card rounded-xl overflow-hidden shadow-lg flex-1">
+                            <img src="{{ asset('build/app/images/homepage/person.jpg') }}" alt="Person" class="w-full h-full object-cover" />
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p class="gold-line ft-special tracking-wider text-gold mb-3">
+                        Mariage
+                    </p>
+                    <h2 class="font-display text-5xl font-bold mb-12 text-gray-900">
+                        Une journée entière,<br><em class="text-transparent bg-clip-text bg-gradient-to-r from-[#DAA520] to-[#FFD700]">sans rien manquer</em>
+                    </h2>
+                    <blockquote class="ft-special text-xl lg:text-2xl font-light italic text-stone-600 border-l border-gold pl-6 my-8 leading-relaxed">
+                        Ce qui m'intéresse, ce ne sont pas les photos que vous avez imaginées. Ce sont celles que vous n'attendiez pas.
+                    </blockquote>
+                    <div class="space-y-3 text-lg font-light text-stone-500 leading-relaxed mb-10">
+                        <p>Présent de la préparation à la fête, je travaille seul, en immersion totale. Ma discrétion est ma force — les invités oublient ma présence, les émotions restent intactes.</p>
+                        <p>Mariage civil, religieux, laïc, intime ou grand format : chaque récit a sa propre voix.</p>
+                    </div>
+
+                    <a href="#tarifs" class="cta-btn  inline-flex text-[0.7rem] tracking-widest uppercase bg-gold text-white px-8 py-3.5 hover:bg-gold-muted transition-colors font-light rounded">
+                        Voir les formules
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="w-full mb-12 px-6 lg:px-8 lg:mb-32">
             <div class="mb-12 text-center" data-aos="fade-up">
-                <div class="text-[#DAA520] text-sm font-semibold tracking-wider uppercase mb-4">
+                <div class="text-[#DAA520] text-sm ft-special tracking-wider uppercase mb-4">
                     Fragments du temps
                 </div>
                 <h2 class="font-display text-5xl font-bold text-gray-900">
-                    La poésie des images
+                    La poésie des <em class="text-transparent bg-clip-text bg-gradient-to-r from-[#DAA520] to-[#FFD700]">images</em>
                 </h2>
                 <p class="text-gray-600 text-lg mt-4 max-w-2xl mx-auto">
-                    En tant que photographe, je souhaite capturer l'essence de chaque moment, que ce soit pour des portraits, des paysages ou des événements.
+                    Je souhaite capturer l'essence de chaque moment, que ce soit pour des portraits, des paysages ou des événements.
                 </p>
             </div>
 
@@ -106,50 +202,59 @@
             </div>
         </div>
 
-        <section class="py-24 bg-gray-50">
-            <div class="max-w-7xl mx-auto px-6 lg:px-8">
-                <div class="grid lg:grid-cols-2 gap-16 items-center mb-16">
-                    <div data-aos="fade-up">
-                        <div class="text-[#DAA520] text-sm font-semibold tracking-wider uppercase mb-4">
-                            Instants figés
-                        </div>
-                        <h2 class="font-display text-5xl font-bold mb-6 text-gray-900">
-                            Capturez vos moments les plus précieux
-                        </h2>
-                        <p class="text-gray-600 text-lg leading-relaxed mb-6">
-                            Chaque moment de la vie mérite d'être immortalisé, et je suis là pour transformer vos instants
-                            précieux en souvenirs inoubliables. En tant que photographe passionné, je me spécialise dans les
-                            portraits et les événements, capturant l'essence et l'émotion de chaque sourire, chaque regard,
-                            et chaque détail qui fait de votre journée un moment unique.
-                        </p>
-                        <p class="text-gray-600 text-lg leading-relaxed mb-8">
-                            Que ce soit pour des portraits intimes qui révèlent votre personnalité ou pour documenter chaque
-                            instant de votre mariage, je m'engage à créer des images authentiques et intemporelles. Mon
-                            approche est à la fois discrète et attentionnée, vous permettant de profiter pleinement de
-                            votre journée tout en sachant que chaque instant est soigneusement capturé.
-                        </p>
-                        <a href="{{ path('app_gallery') }}" class="cta-btn inline-flex items-center gap-3 px-8 py-4 bg-[#DAA520] text-white font-semibold rounded-lg hover:bg-[#B8860B] transition-colors shadow-lg">
-                            <span>Voir la galerie</span>
-                            <svg class="w-5 h-5" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                            </svg>
-                        </a>
+        <section id="tarifs" class="bg-stone-100 py-28">
+            <div class="max-w-7xl mx-auto px-6 lg:px-12">
+                <p class="gold-line ft-special tracking-wider text-gold mb-3">
+                    Formules
+                </p>
+                <h2 class="font-display text-5xl font-bold mb-12 text-gray-900">
+                    Des prestations<br>pensées pour <em class="text-transparent bg-clip-text bg-gradient-to-r from-[#DAA520] to-[#FFD700]">vous</em>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 border border-stone-200 divide-y md:divide-y-0 md:divide-x divide-stone-200 bg-white">
+                    <div class="presta-card p-10 hover:bg-stone-50 transition-colors">
+                        <div class="font-serif text-6xl font-light text-stone-200 leading-none mb-8 select-none">01</div>
+                        <h3 class="font-serif text-2xl font-light text-stone-900 mb-3">Séance Portrait</h3>
+                        <p class="text-xs font-light text-stone-400 leading-relaxed mb-8">Une heure, un lieu qui vous ressemble. Portraits individuels, couple, famille — en extérieur ou intérieur.</p>
+                        <ul class="space-y-2.5 mb-10">
+                            <li class="flex items-start gap-3 text-xs font-light text-stone-500"><span class="text-gold mt-0.5">—</span>1h de shooting sur site</li>
+                            <li class="flex items-start gap-3 text-xs font-light text-stone-500"><span class="text-gold mt-0.5">—</span>15 photos retouchées livrées</li>
+                            <li class="flex items-start gap-3 text-xs font-light text-stone-500"><span class="text-gold mt-0.5">—</span>Galerie privée</li>
+                            <li class="flex items-start gap-3 text-xs font-light text-stone-500"><span class="text-gold mt-0.5">—</span>Livraison en 1 semaines</li>
+                            <li class="flex items-start gap-3 text-xs font-light text-stone-500"><span class="text-gold mt-0.5">—</span>Frais de déplacement inclus (≤100 km)</li>
+                        </ul>
+                        <div class="font-serif text-3xl font-light text-gold">150 € <span class="font-sans text-xs text-stone-400 font-light tracking-wide">à partir de</span></div>
                     </div>
-                    <div class="grid grid-cols-2 gap-4" data-aos="fade-up">
-                        <div class="image-card rounded-xl overflow-hidden shadow-lg">
-                            <img src="{{ asset('build/app/images/homepage/n-couple-sunset.jpg') }}" alt="Couple sunset" class="w-full h-full object-cover aspect-[3/4]">
-                        </div>
-                        <div class="image-card rounded-xl overflow-hidden shadow-lg translate-y-12">
-                            <img src="{{ asset('build/app/images/homepage/femme-sunrise.jpg') }}" alt="Femme sunrise" class="w-full h-full object-cover aspect-[3/4]">
-                        </div>
-                        <div class="image-card rounded-xl overflow-hidden shadow-lg">
-                            <img src="{{ asset('build/app/images/homepage/person.jpg') }}" alt="Person" class="w-full h-full object-cover aspect-[3/4]">
-                        </div>
-                        <div class="image-card rounded-xl overflow-hidden shadow-lg translate-y-12">
-                            <img src="{{ asset('build/app/images/homepage/deux-femmes-portrait.jpg') }}" alt="Deux femmes" class="w-full h-full object-cover aspect-[3/4]">
-                        </div>
+                    <div class="presta-card p-10 hover:bg-stone-50 transition-colors relative">
+                        <div class="absolute top-6 right-6 text-[0.55rem] tracking-widest uppercase text-gold border border-gold px-2.5 py-1 font-light">Recommandé</div>
+                        <div class="font-serif text-6xl font-light text-stone-200 leading-none mb-8 select-none">02</div>
+                        <h3 class="font-serif text-2xl font-light text-stone-900 mb-3">Mariage Essentiel</h3>
+                        <p class="text-xs font-light text-stone-400 leading-relaxed mb-8">La cérémonie et la réception. L'essentiel de votre journée, capturé avec précision et discrétion.</p>
+                        <ul class="space-y-2.5 mb-10">
+                            <li class="flex items-start gap-3 text-xs font-light text-stone-500"><span class="text-gold mt-0.5">—</span>6-7h de couverture</li>
+                            <li class="flex items-start gap-3 text-xs font-light text-stone-500"><span class="text-gold mt-0.5">—</span>Photos haute résolution retouchées</li>
+                            <li class="flex items-start gap-3 text-xs font-light text-stone-500"><span class="text-gold mt-0.5">—</span>Galerie privée</li>
+                            <li class="flex items-start gap-3 text-xs font-light text-stone-500"><span class="text-gold mt-0.5">—</span>Livraison en 4 semaines</li>
+                            <li class="flex items-start gap-3 text-xs font-light text-stone-500"><span class="text-gold mt-0.5">—</span>Frais de déplacement inclus (≤100 km)</li>
+                        </ul>
+                        <div class="font-serif text-3xl font-light text-gold">850 € <span class="font-sans text-xs text-stone-400 font-light tracking-wide">à partir de</span></div>
+                    </div>
+                    <div class="presta-card p-10 hover:bg-stone-50 transition-colors">
+                        <div class="font-serif text-6xl font-light text-stone-200 leading-none mb-8 select-none">03</div>
+                        <h3 class="font-serif text-2xl font-light text-stone-900 mb-3">Mariage Intégral</h3>
+                        <p class="text-xs font-light text-stone-400 leading-relaxed mb-8">De la préparation à la fête. Une couverture complète, du premier maquillage au dernier slow.</p>
+                        <ul class="space-y-2.5 mb-10">
+                            <li class="flex items-start gap-3 text-xs font-light text-stone-500"><span class="text-gold mt-0.5">—</span>Journée entière (jusqu'à 10h)</li>
+                            <li class="flex items-start gap-3 text-xs font-light text-stone-500"><span class="text-gold mt-0.5">—</span>Photos haute résolution retouchées</li>
+                            <li class="flex items-start gap-3 text-xs font-light text-stone-500"><span class="text-gold mt-0.5">—</span>Galerie privée</li>
+                            <li class="flex items-start gap-3 text-xs font-light text-stone-500"><span class="text-gold mt-0.5">—</span>Livraison en 4–6 semaines</li>
+                            <li class="flex items-start gap-3 text-xs font-light text-stone-500"><span class="text-gold mt-0.5">—</span>Déplacements toute la France</li>
+                        </ul>
+                        <div class="font-serif text-3xl font-light text-gold">1 500 € <span class="font-sans text-xs text-stone-400 font-light tracking-wide">à partir de</span></div>
                     </div>
                 </div>
+                <p class="mt-5 text-[0.65rem] font-light text-stone-400 tracking-wide">
+                    Devis personnalisé sur demande · Acompte de 30 % à la réservation · Paiement par virement
+                </p>
             </div>
         </section>
 

@@ -26,14 +26,14 @@
 
         <div class="absolute bottom-8 left-0 right-0 p-8 md:p-16">
             <div class="max-w-7xl mx-auto">
-                <div class="text-[#FFD700] text-sm font-medium tracking-wider uppercase mb-4 drop-shadow-lg">
-                    Quelques photos
-                </div>
+                <p class="gold-line text-color0 ft-special text-lg mb-3">
+                    Le travail parle pour lui-même
+                </p>
                 <h1 class="font-display text-4xl sm:text-6xl font-bold text-white mb-6 leading-tight drop-shadow-lg">
-                    Une exploration<br>photographique
+                    Une exploration<br><em>photographique</em>
                 </h1>
                 <p class="text-xl text-white font-light max-w-2xl drop-shadow-md">
-                    Contactez-moi pour discuter de votre projet et planifier une séance photo qui vous ressemble vraiment.
+                    Mariage, portrait, événement — chaque image ici est un moment réel, capturé sans mise en scène.
                 </p>
             </div>
         </div>
@@ -51,10 +51,10 @@
     <div class="bg-gradient-to-r from-gray-50 to-gray-100 border-y border-gray-200">
         <div class="max-w-7xl mx-auto px-6 lg:px-8 py-6">
             <p class="text-center text-gray-600 text-sm">
-                Les photos sur ce site ne sont pas libres de droit.
+                Photos non libres de droit · Pour des images libres :
                 <a href="https://unsplash.com/fr/@shanbora" target="_blank" class="text-[#DAA520] hover:underline font-medium">
                     Visitez ma page Unsplash
-                </a> pour des photos libres de droit.
+                </a>
             </p>
         </div>
     </div>
@@ -64,24 +64,20 @@
             <div class="grid lg:grid-cols-2 gap-16 items-center mb-16">
                 <div>
                     <h2 class="font-display text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#DAA520] to-[#FFD700]">
-                        Portraits
+                        Mariages
                     </h2>
                     <p class="text-gray-600 text-lg leading-relaxed mb-8">
-                        Vous cherchez à capturer des moments authentiques et uniques à travers un portrait ? En tant
-                        que photographe, je m'engage à révéler votre personnalité avec des images
-                        artistiques et personnalisées. Faites de votre portrait une œuvre qui vous ressemble.
-                        Contactez-moi dès maintenant pour une séance sur mesure !
+                        Immortalisez chaque instant de votre journée spéciale avec des photos authentiques et
+                        émouvantes. En tant que photographe de mariage, je capture vos plus beaux moments pour
+                        que vous puissiez les revivre à jamais. Contactez-moi pour un reportage unique de votre mariage !
                     </p>
-                    <a href="{{ path('app_contact') }}" class="cta-btn inline-flex items-center gap-3 px-8 py-4 bg-[#DAA520] text-white font-semibold rounded-lg hover:bg-[#B8860B] transition-colors shadow-lg hover:shadow-xl">
-                        <span>Demander un shooting</span>
-                        <svg class="w-5 h-5" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                        </svg>
+                    <a href="{{ path('app_contact') }}" class="cta-btn  inline-flex text-[0.7rem] tracking-widest uppercase bg-gold text-white px-8 py-3.5 hover:bg-gold-muted transition-colors font-light rounded">
+                        Demander un devis
                     </a>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                 <div class="gallery-item rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
                     <img src="{{ asset('build/app/images/gallery/portrait-1.jpg') }}" alt="Portrait 1" class="pointer-events-none" loading="lazy">
                 </div>
@@ -90,6 +86,29 @@
                 </div>
                 <div class="gallery-item rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
                     <img src="{{ asset('build/app/images/gallery/portrait-3.jpg') }}" alt="Portrait 3" class="pointer-events-none" loading="lazy">
+                </div>
+            </div><div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                <div class="image-card rounded-xl overflow-hidden shadow-md">
+                    <img src="{{ asset('build/app/images/homepage/femme.jpg') }}" alt="Portrait femme extérieur" class="w-full h-full object-cover aspect-[3/4] pointer-events-none" loading="lazy">
+                </div>
+                <div class="image-card rounded-xl overflow-hidden shadow-md">
+                    <img src="{{ asset('build/app/images/homepage/portrait-bonnet.jpg') }}" alt="Portrait bonnet" class="w-full h-full object-cover aspect-[3/4] pointer-events-none" loading="lazy">
+                </div>
+                <div class="image-card rounded-xl overflow-hidden shadow-md">
+                    <img src="{{ asset('build/app/images/homepage/portrait-dos.jpg') }}" alt="Portrait de dos" class="w-full h-full object-cover aspect-[3/4] pointer-events-none" loading="lazy">
+                </div>
+                <div class="image-card rounded-xl overflow-hidden shadow-md">
+                    <img src="{{ asset('build/app/images/homepage/deux-femmes-portrait.jpg') }}" alt="Deux femmes portrait" class="w-full h-full object-cover aspect-[3/4] pointer-events-none" loading="lazy">
+                </div>
+            </div>
+
+            {# Grille tertiaire : 1 panoramique + 2 carrés #}
+            <div class="grid grid-cols-3 gap-4">
+                <div class="image-card col-span-3 md:col-span-1 rounded-xl overflow-hidden shadow-md">
+                    <img src="{{ asset('build/app/images/homepage/homme-sunset.jpg') }}" alt="Homme coucher de soleil" class="w-full h-full object-cover aspect-[4/3] pointer-events-none" loading="lazy">
+                </div>
+                <div class="image-card col-span-3 md:col-span-2 rounded-xl overflow-hidden shadow-md">
+                    <img src="{{ asset('build/app/images/homepage/sunset-portrait-1.jpg') }}" alt="Portrait coucher de soleil" class="w-full h-full object-cover aspect-[16/9] pointer-events-none" loading="lazy">
                 </div>
             </div>
         </div>
@@ -122,20 +141,51 @@
                 </div>
                 <div class="order-1 lg:order-2">
                     <h2 class="font-display text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#DAA520] to-[#FFD700]">
-                        Mariages
+                        Portraits
                     </h2>
                     <p class="text-gray-600 text-lg leading-relaxed mb-8">
-                        Immortalisez chaque instant de votre journée spéciale avec des photos authentiques et
-                        émouvantes. En tant que photographe de mariage, je capture vos plus beaux moments pour
-                        que vous puissiez les revivre à jamais. Contactez-moi pour un reportage unique de votre mariage !
+                        Vous cherchez à capturer des moments authentiques et uniques à travers un portrait ? En tant
+                        que photographe, je m'engage à révéler votre personnalité avec des images
+                        artistiques et personnalisées. Faites de votre portrait une œuvre qui vous ressemble.
+                        Contactez-moi dès maintenant pour une séance sur mesure !
                     </p>
-                    <a href="{{ path('app_contact') }}" class="cta-btn inline-flex items-center gap-3 px-8 py-4 bg-[#DAA520] text-white font-semibold rounded-lg hover:bg-[#B8860B] transition-colors shadow-lg hover:shadow-xl">
-                        <span>Demander une prestation</span>
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                        </svg>
+                    <a href="{{ path('app_contact') }}" class="cta-btn  inline-flex text-[0.7rem] tracking-widest uppercase bg-gold text-white px-8 py-3.5 hover:bg-gold-muted transition-colors font-light rounded">
+                        Demander un shooting
                     </a>
                 </div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                <div class="image-card rounded-xl overflow-hidden shadow-md">
+                    <img src="{{ asset('build/app/images/gallery/mariage-4.jpg') }}" alt="Mariage — détail" class="w-full h-full object-cover aspect-[3/4] pointer-events-none" loading="lazy">
+                </div>
+                <div class="image-card rounded-xl overflow-hidden shadow-md">
+                    <img src="{{ asset('build/app/images/homepage/n-couple-sunset.jpg') }}" alt="Couple coucher de soleil" class="w-full h-full object-cover aspect-[3/4] pointer-events-none" loading="lazy">
+                </div>
+                <div class="image-card rounded-xl overflow-hidden shadow-md">
+                    <img src="{{ asset('build/app/images/homepage/femme-sunrise.jpg') }}" alt="Mariée au lever du soleil" class="w-full h-full object-cover aspect-[3/4] pointer-events-none" loading="lazy">
+                </div>
+                <div class="image-card rounded-xl overflow-hidden shadow-md">
+                    <img src="{{ asset('build/app/images/homepage/person.jpg') }}" alt="Mariage — invité" class="w-full h-full object-cover aspect-[3/4] pointer-events-none" loading="lazy">
+                </div>
+            </div>
+
+            {# Grille tertiaire : 3 paysage #}
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="image-card rounded-xl overflow-hidden shadow-md">
+                    <img src="{{ asset('build/app/images/homepage/couple.jpg') }}" alt="Couple — mariage" class="w-full h-full object-cover aspect-[4/3] pointer-events-none" loading="lazy">
+                </div>
+                <div class="image-card rounded-xl overflow-hidden shadow-md">
+                    <img src="{{ asset('build/app/images/gallery/header/automne.jpg') }}" alt="Mariage automne" class="w-full h-full object-cover aspect-[4/3] pointer-events-none" loading="lazy">
+                </div>
+                <div class="image-card rounded-xl overflow-hidden shadow-md">
+                    <img src="{{ asset('build/app/images/gallery/header/automne-lac.jpg') }}" alt="Mariage lac" class="w-full h-full object-cover aspect-[4/3] pointer-events-none" loading="lazy">
+                </div>
+            </div>
+
+            <div class="mt-10 sm:hidden">
+                <a href="{{ path('app_contact') }}" class="cta-btn  inline-flex text-[0.7rem] tracking-widest uppercase bg-gold text-white px-8 py-3.5 hover:bg-gold-muted transition-colors font-light rounded">
+                    Réserver une date
+                </a>
             </div>
         </div>
 
@@ -154,16 +204,13 @@
                         professionnelle. Que ce soit une fête, un concert ou une conférence, je m’assure de
                         capturer l’essence de chaque instant. Parlons de vos besoins dès aujourd’hui !
                     </p>
-                    <a href="{{ path('app_contact') }}" class="cta-btn inline-flex items-center gap-3 px-8 py-4 bg-[#DAA520] text-white font-semibold rounded-lg hover:bg-[#B8860B] transition-colors shadow-lg hover:shadow-xl">
-                        <span>Demander une prestation</span>
-                        <svg class="w-5 h-5" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                        </svg>
+                    <a href="{{ path('app_contact') }}" class="cta-btn  inline-flex text-[0.7rem] tracking-widest uppercase bg-gold text-white px-8 py-3.5 hover:bg-gold-muted transition-colors font-light rounded">
+                        Demander un devis
                     </a>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                 <div class="gallery-item rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
                     <img src="{{ asset('build/app/images/gallery/event-1.jpg') }}" alt="Event 1" class="pointer-events-none" loading="lazy">
                 </div>
@@ -174,46 +221,29 @@
                     <img src="{{ asset('build/app/images/gallery/event-3.jpg') }}" alt="Event 3" class="pointer-events-none" loading="lazy">
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="relative py-24 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid lg:grid-cols-2 gap-16 items-center mb-16">
-                <div class="order-2 lg:order-1">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="gallery-item rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-                            <img src="{{ asset('build/app/images/gallery/nuage-1.jpg') }}" alt="Nature 1" class="pointer-events-none" loading="lazy">
-                        </div>
-                        <div class="gallery-item rounded-xl overflow-hidden masonry-item-tall shadow-md hover:shadow-xl transition-shadow">
-                            <img src="{{ asset('build/app/images/gallery/nuage-2.jpg') }}" alt="Nature 2" class="pointer-events-none" loading="lazy">
-                        </div>
-                        <div class="gallery-item rounded-xl overflow-hidden col-span-2 shadow-md hover:shadow-xl transition-shadow">
-                            <img src="{{ asset('build/app/images/gallery/nuage-2.jpg') }}" alt="Nature 3" style="aspect-ratio: 16/9;" class="pointer-events-none w-full h-full object-cover" loading="lazy">
-                        </div>
-                    </div>
+            <div class="grid grid-cols-3 gap-4 mb-4">
+                <div class="image-card col-span-3 md:col-span-1 rounded-xl overflow-hidden shadow-md">
+                    <img src="{{ asset('build/app/images/homepage/homme-sunset.jpg') }}" alt="Homme coucher de soleil" class="w-full h-full object-cover aspect-[4/3] pointer-events-none" loading="lazy">
                 </div>
-                <div class="order-1 lg:order-2">
-                    <h2 class="font-display text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#DAA520] to-[#FFD700]">
-                        Nature
-                    </h2>
-                    <p class="text-gray-600 text-lg leading-relaxed mb-8">
-                        Plongez dans la beauté de la nature à travers des clichés époustouflants. Spécialisé
-                        dans la photographie de paysages et d'animaux, je capture la magie du monde qui nous
-                        entoure. Contactez-moi pour des images qui vous transportent en plein cœur de la nature.
-                    </p>
-                    <a href="{{ path('app_contact') }}" class="cta-btn inline-flex items-center gap-3 px-8 py-4 bg-[#DAA520] text-white font-semibold rounded-lg hover:bg-[#B8860B] transition-colors shadow-lg hover:shadow-xl">
-                        <span>Demander un projet</span>
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                        </svg>
-                    </a>
+                <div class="image-card col-span-3 md:col-span-2 rounded-xl overflow-hidden shadow-md">
+                    <img src="{{ asset('build/app/images/homepage/sunset-portrait-1.jpg') }}" alt="Portrait coucher de soleil" class="w-full h-full object-cover aspect-[16/9] pointer-events-none" loading="lazy">
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="image-card rounded-xl overflow-hidden shadow-md">
+                    <img src="{{ asset('build/app/images/gallery/header/fashion-week.jpg') }}" alt="Fashion week" class="w-full h-full object-cover aspect-[4/3] pointer-events-none" loading="lazy">
+                </div>
+                <div class="image-card rounded-xl overflow-hidden shadow-md">
+                    <img src="{{ asset('build/app/images/homepage/photographe.jpg') }}" alt="Reportage" class="w-full h-full object-cover aspect-[4/3] pointer-events-none" loading="lazy">
+                </div>
+                <div class="image-card rounded-xl overflow-hidden shadow-md">
+                    <img src="{{ asset('build/app/images/gallery/header/sunset-portrait.jpg') }}" alt="Événement coucher de soleil" class="w-full h-full object-cover aspect-[4/3] pointer-events-none" loading="lazy">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="relative py-32 bg-gradient-to-b from-white via-[#DAA520]/5 to-white">
+    <section class="relative py-32 bg-stone-100">
         <div class="relative max-w-4xl mx-auto px-6 lg:px-8 text-center">
             <h2 class="font-display text-5xl md:text-6xl font-bold mb-6 text-gray-900">
                 Prêt à créer ensemble ?
