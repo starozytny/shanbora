@@ -106,7 +106,7 @@ const InfiniteGallery = ({ isAdmin, isPaid, albumId, sortBy, albumName, albumDat
 
 	let handleLightbox = (elem) => {
 		if (!isPaid) return;
-		refLightbox.current.handleUpdateContent(<LightboxContent key={elem.rankPhoto} identifiant="lightbox" images={images} elem={elem} />);
+		refLightbox.current.handleUpdateContent(<LightboxContent key={elem.rankPhoto} isPaid={isPaid} identifiant="lightbox" images={images} elem={elem} />);
 		refLightbox.current.handleClick();
 	}
 
@@ -267,6 +267,7 @@ const InfiniteGallery = ({ isAdmin, isPaid, albumId, sortBy, albumName, albumDat
 						<LazyLoadingGalleryWithPlaceholder
 							currentImages={currentImages}
 							isAdmin={isAdmin}
+							isPaid={isPaid}
 							selectedImages={selectedImages}
 							onLightbox={handleLightbox}
 							onCover={handleCover}
