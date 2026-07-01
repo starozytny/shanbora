@@ -1,0 +1,261 @@
+{% extends 'emails/base.html.twig' %}
+
+{% block subject %}Devis {{ quote.reference }} · Chanbora Chhun Photographie{% endblock %}
+
+{% block preview %}Votre devis {{ quote.reference }} pour {{ quote.packageName }} - {{ quote.totalAmount|number_format(2, ',', ' ') }} €{% endblock %}
+
+{% block content %}
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+    
+    <!-- Greeting -->
+    <tr>
+        <td style="padding-bottom: 24px;">
+            <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #333333;">
+                Bonjour {{ quote.clientFirstName }},
+            </p>
+        </td>
+    </tr>
+    
+    <!-- Intro text -->
+    <tr>
+        <td style="padding-bottom: 32px;">
+            <p style="margin: 0; font-size: 16px; line-height: 1.7; color: #555555;">
+                Suite à notre échange, je vous adresse votre devis pour la prestation photographique. 
+                Vous trouverez ci-dessous le récapitulatif.
+            </p>
+        </td>
+    </tr>
+    
+    <!-- Quote card -->
+    <tr>
+        <td style="padding-bottom: 32px;">
+            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f9f9f9; border-radius: 12px; border: 1px solid #eeeeee;">
+                
+                <!-- Card header -->
+                <tr>
+                    <td style="padding: 24px 24px 20px;">
+                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tr>
+                                <td>
+                                    <p style="margin: 0 0 4px; font-size: 11px; font-weight: 500; color: #999999; text-transform: uppercase; letter-spacing: 1px;">
+                                        Devis
+                                    </p>
+                                    <p style="margin: 0; font-size: 20px; font-weight: 600; color: #111111;">
+                                        {{ quote.reference }}
+                                    </p>
+                                </td>
+                                <td align="right" valign="top">
+                                    <span style="display: inline-block; padding: 6px 12px; background-color: #111111; color: #ffffff; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; border-radius: 4px;">
+                                        {{ quote.packageName }}
+                                    </span>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                
+                <!-- Divider -->
+                <tr>
+                    <td style="padding: 0 24px;">
+                        <div style="height: 1px; background-color: #e5e5e5;"></div>
+                    </td>
+                </tr>
+                
+                <!-- Card content -->
+                <tr>
+                    <td style="padding: 20px 24px;">
+                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            
+                            {% if quote.eventDate %}
+                            <tr>
+                                <td style="padding-bottom: 12px;">
+                                    <p style="margin: 0 0 2px; font-size: 12px; color: #888888;">Date de l'événement</p>
+                                    <p style="margin: 0; font-size: 15px; color: #333333; font-weight: 500;">
+                                        {{ quote.eventDate|format_datetime('full', 'none', locale='fr') }}
+                                    </p>
+                                </td>
+                            </tr>
+                            {% endif %}
+                            
+                            {% if quote.eventLocation %}
+                            <tr>
+                                <td style="padding-bottom: 12px;">
+                                    <p style="margin: 0 0 2px; font-size: 12px; color: #888888;">Lieu</p>
+                                    <p style="margin: 0; font-size: 15px; color: #333333; font-weight: 500;">
+                                        {{ quote.eventLocation }}
+                                    </p>
+                                </td>
+                            </tr>
+                            {% endif %}
+                            
+                            {% if quote.customContent.duration is defined %}
+                            <tr>
+                                <td style="padding-bottom: 12px;">
+                                    <p style="margin: 0 0 2px; font-size: 12px; color: #888888;">Durée</p>
+                                    <p style="margin: 0; font-size: 15px; color: #333333; font-weight: 500;">
+                                        {{ quote.customContent.duration }}
+                                    </p>
+                                </td>
+                            </tr>
+                            {% endif %}
+                            
+                            {% if quote.customContent.photos_count is defined %}
+                            <tr>
+                                <td>
+                                    <p style="margin: 0 0 2px; font-size: 12px; color: #888888;">Photos</p>
+                                    <p style="margin: 0; font-size: 15px; color: #333333; font-weight: 500;">
+                                        {{ quote.customContent.photos_count }}
+                                    </p>
+                                </td>
+                            </tr>
+                            {% endif %}
+                            
+                        </table>
+                    </td>
+                </tr>
+                
+                <!-- Inclusions -->
+                {% if quote.customContent.inclusions is defined and quote.customContent.inclusions|length > 0 %}
+                <tr>
+                    <td style="padding: 0 24px;">
+                        <div style="height: 1px; background-color: #e5e5e5;"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 20px 24px;">
+                        <p style="margin: 0 0 12px; font-size: 12px; color: #888888;">Ce qui est inclus</p>
+                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            {% for inclusion in quote.customContent.inclusions %}
+                            <tr>
+                                <td width="20" valign="top" style="padding-bottom: 8px;">
+                                    <span style="color: #22c55e; font-size: 14px;">✓</span>
+                                </td>
+                                <td style="padding-bottom: 8px;">
+                                    <p style="margin: 0; font-size: 14px; color: #444444; line-height: 1.4;">
+                                        {{ inclusion }}
+                                    </p>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </td>
+                </tr>
+                {% endif %}
+                
+                <!-- Extras -->
+                {% if quote.customContent.extras is defined and quote.customContent.extras|length > 0 %}
+                <tr>
+                    <td style="padding: 0 24px;">
+                        <div style="height: 1px; background-color: #e5e5e5;"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 20px 24px;">
+                        <p style="margin: 0 0 12px; font-size: 12px; color: #888888;">En bonus</p>
+                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            {% for extra in quote.customContent.extras %}
+                            <tr>
+                                <td width="20" valign="top" style="padding-bottom: 8px;">
+                                    <span style="color: #8b5cf6; font-size: 14px;">★</span>
+                                </td>
+                                <td style="padding-bottom: 8px;">
+                                    <p style="margin: 0; font-size: 14px; color: #444444; line-height: 1.4;">
+                                        {{ extra }}
+                                    </p>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </td>
+                </tr>
+                {% endif %}
+                
+                <!-- Price section -->
+                <tr>
+                    <td style="padding: 0 24px;">
+                        <div style="height: 1px; background-color: #e5e5e5;"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 24px; background-color: #f4f4f4; border-radius: 0 0 11px 11px;">
+                        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                            <tr>
+                                <td>
+                                    <p style="margin: 0 0 4px; font-size: 12px; color: #888888;">Montant total</p>
+                                    <p style="margin: 0; font-size: 28px; font-weight: 600; color: #111111; letter-spacing: -0.5px;">
+                                        {{ quote.totalAmount|number_format(2, ',', ' ') }} €
+                                    </p>
+                                </td>
+                                {% if quote.depositAmount %}
+                                <td align="right" valign="bottom">
+                                    <p style="margin: 0; font-size: 13px; color: #666666;">
+                                        Acompte {{ quote.depositPercentage }}%<br>
+                                        <strong style="color: #333333;">{{ quote.depositAmount|number_format(2, ',', ' ') }} €</strong>
+                                    </p>
+                                </td>
+                                {% endif %}
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                
+            </table>
+        </td>
+    </tr>
+    
+    <!-- Validity notice -->
+    {% if quote.validUntil %}
+    <tr>
+        <td style="padding-bottom: 32px;">
+            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                    <td width="4" style="background-color: #fbbf24; border-radius: 2px;"></td>
+                    <td style="padding-left: 16px;">
+                        <p style="margin: 0; font-size: 14px; color: #666666;">
+                            Ce devis est valable jusqu'au <strong style="color: #333333;">{{ quote.validUntil|format_datetime('long', 'none', locale='fr') }}</strong>
+                        </p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    {% endif %}
+    
+    <!-- Notes -->
+    {% if quote.notes %}
+    <tr>
+        <td style="padding-bottom: 32px;">
+            <p style="margin: 0 0 8px; font-size: 12px; font-weight: 500; color: #888888; text-transform: uppercase; letter-spacing: 0.5px;">
+                Notes
+            </p>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #555555;">
+                {{ quote.notes|nl2br }}
+            </p>
+        </td>
+    </tr>
+    {% endif %}
+    
+    <!-- CTA text -->
+    <tr>
+        <td style="padding-bottom: 24px;">
+            <p style="margin: 0; font-size: 16px; line-height: 1.7; color: #555555;">
+                N'hésitez pas à me contacter si vous avez des questions ou si vous souhaitez 
+                personnaliser cette offre. Je reste disponible pour en discuter.
+            </p>
+        </td>
+    </tr>
+    
+    <!-- Signature -->
+    <tr>
+        <td>
+            <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #555555;">
+                À très bientôt,
+            </p>
+            <p style="margin: 8px 0 0; font-size: 16px; font-weight: 600; color: #111111;">
+                Chanbora
+            </p>
+        </td>
+    </tr>
+    
+</table>
+{% endblock %}

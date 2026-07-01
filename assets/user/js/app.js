@@ -27,5 +27,5 @@ if (cookiesGlobalResponse) {
 
 let gallery = document.getElementById("gallery_index");
 if (gallery) {
-    createRoot(gallery).render(<InfiniteGallery {...gallery.dataset} />)
+    createRoot(gallery).render(<InfiniteGallery {...gallery.dataset} isPaid={gallery.dataset.isPaid === "1"} />)
 }

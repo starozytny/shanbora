@@ -8,7 +8,7 @@ import { AlbumDelete } from "@adminPages/Albums/AlbumDelete";
 
 let el = document.getElementById("gallery_index");
 if (el) {
-	createRoot(el).render(<InfiniteGallery {...el.dataset} />)
+	createRoot(el).render(<InfiniteGallery {...el.dataset} isPaid={el.dataset.isPaid === "1"} />)
 }
 
 el = document.getElementById("albums_update");

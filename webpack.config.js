@@ -1,5 +1,5 @@
 const Encore = require('@symfony/webpack-encore');
-const path = require("path");
+const path = require('path');
 
 // Manually configure the runtime environment if not already configured yet by the "encore" command.
 // It's useful when you use tools that rely on webpack.config.js file.
@@ -27,6 +27,7 @@ Encore
         '@commonHooks': path.resolve(__dirname, './assets/common/js/hooks'),
         '@appFolder': path.resolve(__dirname, './assets/app/js'),
         '@adminPages': path.resolve(__dirname, './assets/admin/js/pages/components'),
+        '@adminHooks': path.resolve(__dirname, './assets/admin/js/hooks'),
         '@userPages': path.resolve(__dirname, './assets/user/js/pages/components'),
         '@nodeModulesFolder': path.resolve(__dirname, './node_modules'),
     })
@@ -83,6 +84,7 @@ Encore
     .addEntry('admin_storage', './assets/admin/js/pages/storage.js')
     .addEntry('admin_mails', './assets/admin/js/pages/mails.js')
     .addEntry('admin_galleries', './assets/admin/js/pages/galleries.js')
+    .addEntry('admin_billing_quotes', './assets/admin/js/pages/billing_quotes.js')
 
     .addEntry('user_app', './assets/user/js/app.js')
 
@@ -117,7 +119,7 @@ Encore
     // enables and configure @babel/preset-env polyfills
     .configureBabelPresetEnv((config) => {
         config.useBuiltIns = 'usage';
-        config.corejs = '3.23';
+        config.corejs = '3.38';
     })
 
     // enables Sass/SCSS support

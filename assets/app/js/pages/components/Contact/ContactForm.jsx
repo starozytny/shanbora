@@ -84,19 +84,17 @@ export class ContactFormulaire extends Component {
 		return <form onSubmit={this.handleSubmit}>
 			<div className="flex flex-col gap-4">
 				{success && <div><Alert type="blue" icon="check1">{success}</Alert></div>}
-				<div className="flex gap-4">
-					<div className="w-full">
-						<Input identifiant="name" valeur={name} {...params0}>Comment dois-je t'appeler ?</Input>
-					</div>
-					<div className="w-full">
-						<Input identifiant="email" valeur={email} {...params0} type="email">Une adresse email <span className="hidden md:inline">pour garder contact</span></Input>
-					</div>
+				<div>
+					<Input identifiant="name" valeur={name} {...params0}>Nom complet</Input>
 				</div>
 				<div>
-					<TextArea identifiant="message" valeur={message} {...params0}>Ton message pour comprendre ton projet ou ta demande</TextArea>
+					<Input identifiant="email" valeur={email} {...params0} type="email">Email</Input>
 				</div>
 				<div className="critere">
 					<Input identifiant="critere" valeur={critere} {...params0}>Critère</Input>
+				</div>
+				<div>
+					<TextArea identifiant="message" valeur={message} {...params0} placeholder="Parlez-moi de votre projet...">Message</TextArea>
 				</div>
 			</div>
 			<div className="mt-4">
@@ -113,7 +111,9 @@ export class ContactFormulaire extends Component {
 				</Alert>
 			</div>
 			<div className="mt-4">
-				<Button type="blue" isSubmit={true} width="w-full" pa="p-4">Envoyer ton message</Button>
+				<button type="submit" className="cta-btn w-full px-8 py-4 bg-[#DAA520] text-white font-semibold rounded-lg hover:bg-[#B8860B] transition-colors shadow-lg">
+					<span>Envoyer le message</span>
+				</button>
 			</div>
 		</form>
 	}
