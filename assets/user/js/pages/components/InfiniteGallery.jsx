@@ -23,7 +23,7 @@ const URL_DOWNLOAD_ARCHIVE = "intern_api_user_gallery_albums_archive";
 const URL_DOWNLOAD_SELECTED = "intern_api_user_gallery_images_download_selected";
 const URL_COVER_ALBUM = "intern_api_user_gallery_albums_cover";
 
-const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => {
+const InfiniteGallery = ({ isAdmin, isPaid, albumId, sortBy, albumName, albumDate }) => {
 	const refLightbox = useRef(null);
 	const sentinelRef = useRef(null);
 	const [rankPhoto, setRankPhoto] = useState(1);
@@ -105,6 +105,7 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 	};
 
 	let handleLightbox = (elem) => {
+		if (!isPaid) return;
 		refLightbox.current.handleUpdateContent(<LightboxContent key={elem.rankPhoto} identifiant="lightbox" images={images} elem={elem} />);
 		refLightbox.current.handleClick();
 	}
@@ -143,7 +144,7 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 	};
 
 	const handleDownloadSelected = () => {
-		if (selectedImages.size === 0) return;
+		if (!isPaid || selectedImages.size === 0) return;
 
 		Formulaire.loader(true);
 		const imageIds = Array.from(selectedImages);
@@ -238,28 +239,23 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 						</div>
 
 						<div className="flex flex-wrap gap-3">
-							{!isAdmin && (
+							{!isAdmin && isPaid && (
 								<>
-									<Button
-										type="default"
-										onClick={toggleSelectAll}
-									>
+									<Button type="default" onClick={toggleSelectAll}>
 										{selectedImages.size === images.length ? 'Tout désélectionner' : 'Tout sélectionner'}
 									</Button>
-									<Button
-										type="default"
-										onClick={handleDownloadSelected}
-										isDisabled={selectedImages.size === 0}
-									>
+									<Button type="default" onClick={handleDownloadSelected} isDisabled={selectedImages.size === 0}>
 										<span className="icon-download mr-2"></span>
 										<span>Télécharger la sélection</span>
 									</Button>
 								</>
 							)}
-							<ButtonA type="yellow" onClick={Routing.generate(URL_DOWNLOAD_ARCHIVE, {id: albumId})}>
-								<span className="icon-download mr-2"></span>
-								<span>Télécharger tout</span>
-							</ButtonA>
+							{isPaid && (
+								<ButtonA type="yellow" onClick={Routing.generate(URL_DOWNLOAD_ARCHIVE, {id: albumId})}>
+									<span className="icon-download mr-2"></span>
+									<span>Télécharger tout</span>
+								</ButtonA>
+							)}
 						</div>
 					</div>
 				</div>
@@ -307,7 +303,7 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 	);
 };
 
-function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover, isAdmin, selectedImages, onToggleSelect }) {
+function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover, isAdmin, isPaid, selectedImages, onToggleSelect }) {
 	const [loadedImages, setLoadedImages] = useState(new Set());
 	const [errorImages, setErrorImages] = useState(new Set());
 	const imageRefs = useRef({});
@@ -343,6 +339,7 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover
 	};
 
 	const handleImageClick = (image) => {
+		if (!isPaid) return;
 		if (selectedImages.size > 0) {
 			onToggleSelect(image.id);
 		} else {
@@ -359,10 +356,8 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover
 			const showPlaceholder = !isLoaded && !hasError;
 
 			return <div key={image.id}
-						className={`relative cursor-pointer flex items-center justify-center bg-gray-900 min-h-[205px] md:min-h-[332px] group gallery-item overflow-hidden rounded-md ${
-							isSelected
-								? 'border-8 border-[#DAA520]'
-								: null
+			            className={`relative ${isPaid ? 'cursor-pointer' : 'cursor-default'} flex items-center justify-center bg-gray-900 min-h-[205px] md:min-h-[332px] group gallery-item overflow-hidden rounded-md ${
+							isSelected ? 'border-8 border-[#DAA520]' : null
 						}`}
 						onClick={() => handleImageClick(image)}
 			>
@@ -387,7 +382,7 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover
 					onError={() => handleImageError(image.id)}
 				/>
 
-				{!isAdmin && (
+				{!isAdmin && isPaid && (
 					<>
 						<div
 							className={`absolute top-3 left-3 w-6 h-6 rounded-md border-2 border-white cursor-pointer transition-all z-20 ${
@@ -557,10 +552,12 @@ export class LightboxContent extends Component {
 				<div className="text-gray-400">{elem.rankPhoto} / {images.length}</div>
 				<div className="flex gap-4">
 					<div>
-						<a className="lightbox-action relative group" href={Routing.generate(URL_DOWNLOAD_FILE, { id: elem.id })} download>
-							<span className="icon-download !text-2xl text-gray-400 group-hover:text-white" />
-							<span className="tooltip bg-gray-300 text-black py-1 px-2 rounded absolute -top-10 right-0 text-xs hidden group-hover:block">Télécharger</span>
-						</a>
+						{this.props.isPaid && (
+							<a className="lightbox-action relative group" href={Routing.generate(URL_DOWNLOAD_FILE, { id: elem.id })} download>
+								<span className="icon-download !text-2xl text-gray-400 group-hover:text-white" />
+								<span className="tooltip bg-gray-300 text-black py-1 px-2 rounded absolute -top-10 right-0 text-xs hidden group-hover:block">Télécharger</span>
+							</a>
+						)}
 					</div>
 					<div>
 						<div className="lightbox-action relative group close-modal cursor-pointer" onClick={this.handleCloseModal}>

@@ -16,7 +16,8 @@
       "@adminHooks/*": ["assets/admin/js/hooks/*"],
       "@userPages/*": ["assets/user/js/pages/components/*"],
       "@nodeModulesFolder/*": ["node_modules/*"]
-    }
+    },
+    "jsx": "react"
   },
   "exclude": ["node_modules", "vendor", "var"]
 }

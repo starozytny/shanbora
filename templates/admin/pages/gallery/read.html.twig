@@ -15,6 +15,7 @@
 {% block main_content %}
     <div id="gallery_index"
          data-is-admin="1"
+         data-is-paid="{{ album.isPaid }}"
          data-album-name="{{ album.title }}"
          data-album-date="{{ album.dateAt | date('d/m/Y') }}"
          data-album-id="{{ album.id }}"

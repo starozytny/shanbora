@@ -55,8 +55,12 @@ class GaAlbum extends DataEntity
     #[Groups(['gallery_form'])]
     private ?array $canAccess = null;
 
+    #[ORM\Column]
+    private ?bool $isPaid = null;
+
     public function __construct()
     {
+        $this->isPaid = false;
         $this->images = new ArrayCollection();
     }
 
@@ -199,5 +203,17 @@ class GaAlbum extends DataEntity
     public function getCoverFile()
     {
         return $this->getFileOrDefault($this->cover, $this->user->getUsername() . '/' . $this->getArchive() . '/cover', null);
+    }
+
+    public function isPaid(): ?bool
+    {
+        return $this->isPaid;
+    }
+
+    public function setIsPaid(bool $isPaid): static
+    {
+        $this->isPaid = $isPaid;
+
+        return $this;
     }
 }
