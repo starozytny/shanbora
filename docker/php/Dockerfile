@@ -22,6 +22,7 @@ RUN apt-get update && apt-get install -y \
     gd \
     exif \
     opcache \
+    bcmath \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Installation de Composer

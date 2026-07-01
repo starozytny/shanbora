@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="x-apple-disable-message-reformatting">
+    <meta name="color-scheme" content="light">
+    <meta name="supported-color-schemes" content="light">
+    <title>{% block subject %}{% endblock %}</title>
+    <!--[if mso]>
+    <noscript>
+        <xml>
+            <o:OfficeDocumentSettings>
+                <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+    </noscript>
+    <style>
+        table { border-collapse: collapse; }
+        td { font-family: Arial, sans-serif; }
+    </style>
+    <![endif]-->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            -webkit-text-size-adjust: 100%;
+            -ms-text-size-adjust: 100%;
+        }
+        
+        table {
+            border-spacing: 0;
+            mso-table-lspace: 0pt;
+            mso-table-rspace: 0pt;
+        }
+        
+        td {
+            padding: 0;
+        }
+        
+        img {
+            border: 0;
+            line-height: 100%;
+            outline: none;
+            text-decoration: none;
+            -ms-interpolation-mode: bicubic;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        @media only screen and (max-width: 620px) {
+            .container {
+                width: 100% !important;
+                padding: 20px !important;
+            }
+            .content-padding {
+                padding: 30px 24px !important;
+            }
+            .mobile-full {
+                width: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f7f7f7; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;">
+    
+    <!-- Preview text -->
+    <div style="display: none; max-height: 0; overflow: hidden;">
+        {% block preview %}{% endblock %}
+        &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847;
+    </div>
+    
+    <!-- Email wrapper -->
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f7f7f7;">
+        <tr>
+            <td align="center" style="padding: 48px 16px;">
+                
+                <!-- Main container -->
+                <table role="presentation" class="container" width="580" cellspacing="0" cellpadding="0" border="0" style="background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+                    
+                    <!-- Header -->
+                    <tr>
+                        <td align="center" style="padding: 40px 40px 32px;">
+                            {% block header %}
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                                <tr>
+                                    <td align="center">
+                                        <p style="margin: 0; font-size: 22px; font-weight: 600; color: #111111; letter-spacing: -0.3px;">
+                                            Chanbora Chhun
+                                        </p>
+                                        <p style="margin: 6px 0 0; font-size: 11px; font-weight: 500; color: #999999; text-transform: uppercase; letter-spacing: 1.5px;">
+                                            Photographe
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                            {% endblock %}
+                        </td>
+                    </tr>
+                    
+                    <!-- Divider -->
+                    <tr>
+                        <td style="padding: 0 40px;">
+                            <div style="height: 1px; background-color: #eeeeee;"></div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Content -->
+                    <tr>
+                        <td class="content-padding" style="padding: 40px;">
+                            {% block content %}{% endblock %}
+                        </td>
+                    </tr>
+                    
+                    <!-- Footer -->
+                    <tr>
+                        <td style="padding: 32px 40px 40px; background-color: #fafafa;">
+                            {% block footer %}
+                            <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+                                <tr>
+                                    <td align="center">
+                                        <p style="margin: 0 0 12px; font-size: 13px; color: #666666;">
+                                            Chanbora Chhun · Photographe
+                                        </p>
+                                        <p style="margin: 0;">
+                                            <a href="https://chanbora-chhun.fr" style="font-size: 13px; color: #111111; text-decoration: none; border-bottom: 1px solid #dddddd;">
+                                                chanbora-chhun.fr
+                                            </a>
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                            {% endblock %}
+                        </td>
+                    </tr>
+                    
+                </table>
+                
+                <!-- Post-footer -->
+                <table role="presentation" width="580" cellspacing="0" cellpadding="0" border="0">
+                    <tr>
+                        <td align="center" style="padding: 24px 16px;">
+                            <p style="margin: 0; font-size: 12px; color: #999999;">
+                                Cet email a été envoyé par Chanbora Chhun Photographie
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+                
+            </td>
+        </tr>
+    </table>
+    
+</body>
+</html>

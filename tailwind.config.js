@@ -17,6 +17,20 @@ module.exports = {
       },
       colors: {
         color0: '#DAA520',
+        gold: '#DAA520',
+        'gold-muted': '#C9971A',
+        stone: {
+          50:  '#faf9f7',
+          100: '#f4f2ee',
+          200: '#e8e4dc',
+          300: '#d6d0c4',
+          400: '#b8b0a0',
+          500: '#9a9080',
+          600: '#7a7268',
+          700: '#5e574f',
+          800: '#3e3a34',
+          900: '#141414',
+        },
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {

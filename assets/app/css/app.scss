@@ -77,6 +77,10 @@ html{
   z-index: 1;
 }
 
+.gold-line::before {
+  content: ''; display: inline-block; width: 2rem; height: 1px;
+  background: #DAA520; vertical-align: middle; margin-right: 1rem;
+}
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
@@ -187,7 +191,6 @@ html{
 .gallery-item {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 3/4;
   background: #f0f0f0;
 }
 
@@ -206,7 +209,6 @@ html{
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(218, 165, 32, 0.3) 0%, rgba(184, 134, 11, 0.3) 100%);
   opacity: 0;
   transition: opacity 0.4s ease;
 }

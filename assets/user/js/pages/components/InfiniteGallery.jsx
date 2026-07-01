@@ -7,6 +7,8 @@ import Routing from '@publicFolder/bundles/fosjsrouting/js/router.min.js';
 import Formulaire from "@commonFunctions/formulaire";
 import ModalFunctions from '@commonFunctions/modal';
 
+import { Download } from "lucide-react";
+
 import { LightBox } from "@tailwindComponents/Elements/LightBox";
 
 import { Button, ButtonA, ButtonIcon } from "@tailwindComponents/Elements/Button";
@@ -23,6 +25,7 @@ const URL_COVER_ALBUM = "intern_api_user_gallery_albums_cover";
 
 const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => {
 	const refLightbox = useRef(null);
+	const sentinelRef = useRef(null);
 	const [rankPhoto, setRankPhoto] = useState(1);
 	const [images, setImages] = useState([]);
 	const [currentImages, setCurrentImages] = useState([]);
@@ -31,49 +34,74 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 	const [hasMore, setHasMore] = useState(true);
 	const [loading, setLoading] = useState(false);
 
+	// Fetch images
+	const fetchImages = async () => {
+		if (loading || !hasMore) return;
+		setLoading(true);
+
+		let url = Routing.generate(URL_GET_DATA, {page: page, albumId: albumId})
+		if(isAdmin){
+			url = Routing.generate(URL_GET_DATA, {page: page, albumId: albumId, isAdmin: isAdmin, sortBy: sortBy})
+		}
+
+		axios({ method: "GET", url: url, data: {} })
+			.then(function (response) {
+				let data = JSON.parse(response.data.images);
+				let currentData = JSON.parse(response.data.currentImages);
+
+				let i = 1;
+				data.forEach(item => {
+					item.rankPhoto = i++;
+				})
+				let j = rankPhoto;
+				currentData.forEach(item => {
+					item.rankPhoto = j++;
+				})
+
+				setRankPhoto(prevRankPhoto => prevRankPhoto + currentData.length)
+				setImages(data);
+				setCurrentImages(prevImages => [...prevImages, ...currentData]);
+				setHasMore(response.data.hasMore);
+				setPage(prevPage => prevPage + 1);
+			})
+			.catch(function (error) {
+				Formulaire.displayErrors(null, error);
+			})
+			.then(function () {
+				setLoading(false);
+			})
+		;
+	};
+
+	// Initial load
 	useEffect(() => {
-		const fetchImages = async () => {
-			if (loading || !hasMore) return;
-			setLoading(true);
-
-			let url = Routing.generate(URL_GET_DATA, {page: page, albumId: albumId})
-			if(isAdmin){
-				url = Routing.generate(URL_GET_DATA, {page: page, albumId: albumId, isAdmin: isAdmin, sortBy: sortBy})
-			}
-
-			axios({ method: "GET", url: url, data: {} })
-				.then(function (response) {
-					let data = JSON.parse(response.data.images);
-					let currentData = JSON.parse(response.data.currentImages);
-
-					let i = 1;
-					data.forEach(item => {
-						item.rankPhoto = i++;
-					})
-					let j = rankPhoto;
-					currentData.forEach(item => {
-						item.rankPhoto = j++;
-					})
-
-					setRankPhoto(prevRankPhoto => prevRankPhoto + 48)
-					setImages(data);
-					setCurrentImages(prevImages => [...prevImages, ...currentData]);
-					setHasMore(response.data.hasMore);
-				})
-				.catch(function (error) {
-					Formulaire.displayErrors(null, error);
-				})
-				.then(function () {
-					setLoading(false);
-				})
-			;
-		};
-
 		fetchImages();
-	}, [page]);
+	}, []);
+
+	// IntersectionObserver pour le scroll infini
+	useEffect(() => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				if (entries[0].isIntersecting && hasMore && !loading) {
+					fetchImages();
+				}
+			},
+			{ threshold: 0.1 }
+		);
+
+		if (sentinelRef.current) {
+			observer.observe(sentinelRef.current);
+		}
+
+		return () => {
+			if (sentinelRef.current) {
+				observer.unobserve(sentinelRef.current);
+			}
+		};
+	}, [hasMore, loading, page]);
 
 	const handleMore = () => {
-		setPage(prevPage => prevPage + 1);
+		fetchImages();
 	};
 
 	let handleLightbox = (elem) => {
@@ -107,10 +135,10 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 	};
 
 	const toggleSelectAll = () => {
-		if (selectedImages.size === currentImages.length) {
+		if (selectedImages.size === images.length) {
 			setSelectedImages(new Set());
 		} else {
-			setSelectedImages(new Set(currentImages.map(img => img.id)));
+			setSelectedImages(new Set(images.map(img => img.id)));
 		}
 	};
 
@@ -176,7 +204,7 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 
 	return (
 		<div>
-			<section className="pt-12 pb-6 bg-gradient-to-br from-gray-50 to-white rounded-lg">
+			<section className="pt-12 pb-6 px-4 xl:px-6 bg-gradient-to-br from-gray-50 to-white rounded-lg">
 				<div className="max-w-7xl mx-auto">
 					<div className="flex items-center gap-4 mb-6">
 						<a href={Routing.generate(URL_USER_HOMEPAGE)} className="flex items-center gap-2 text-gray-600 hover:text-[#DAA520] transition-colors">
@@ -194,7 +222,7 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 								{albumName || 'Album'}
 							</h1>
 							<p className="text-gray-600 text-lg">
-								<span>{currentImages.length}</span> photo{currentImages.length > 1 ? 's' : ''} •
+								<span>{images.length}</span> photo{images.length > 1 ? 's' : ''} •
 								<span className="ml-2">{selectedImages.size}</span> sélectionnée{selectedImages.size > 1 ? 's' : ''}
 							</p>
 							{isAdmin && (
@@ -216,7 +244,7 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 										type="default"
 										onClick={toggleSelectAll}
 									>
-										{selectedImages.size === currentImages.length ? 'Tout désélectionner' : 'Tout sélectionner'}
+										{selectedImages.size === images.length ? 'Tout désélectionner' : 'Tout sélectionner'}
 									</Button>
 									<Button
 										type="default"
@@ -250,14 +278,24 @@ const InfiniteGallery = ({ isAdmin, albumId, sortBy, albumName, albumDate }) => 
 						/>
 					</div>
 
+					{/* Sentinel pour l'IntersectionObserver */}
+					<div ref={sentinelRef} className="h-10"></div>
+
 					<div className="mt-12">
-						{loading && <div className="text-center text-gray-600 text-sm">Chargement...</div>}
-						{!hasMore
-							? <div className="text-center text-gray-600 text-sm">Toutes les photos sont affichées.</div>
-							: <div className="flex items-center justify-center mt-8">
+						{loading && (
+							<div className="text-center text-gray-600 text-sm py-4">
+								<span className="icon-chart-3 animate-spin inline-block mr-2"></span>
+								Chargement...
+							</div>
+						)}
+						{!hasMore && currentImages.length > 0 && (
+							<div className="text-center text-gray-600 text-sm">Toutes les photos sont affichées.</div>
+						)}
+						{hasMore && !loading && currentImages.length > 0 && (
+							<div className="flex items-center justify-center mt-8">
 								<Button type="blue" onClick={handleMore}>Afficher plus</Button>
 							</div>
-						}
+						)}
 					</div>
 				</div>
 			</section>
@@ -322,11 +360,12 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover
 
 			return <div key={image.id}
 						className={`relative cursor-pointer flex items-center justify-center bg-gray-900 min-h-[205px] md:min-h-[332px] group gallery-item overflow-hidden rounded-md ${
-							isSelected 
-								? 'border-8 border-[#DAA520]' 
+							isSelected
+								? 'border-8 border-[#DAA520]'
 								: null
 						}`}
-						onClick={() => handleImageClick(image)}>
+						onClick={() => handleImageClick(image)}
+			>
 
 				{showPlaceholder && (
 					<div className="w-full h-full bg-white flex items-center justify-center absolute top-0 left-0 z-10">
@@ -338,10 +377,9 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover
 					ref={el => imageRefs.current[image.id] = el}
 					src={Routing.generate(URL_READ_IMAGE, { id: image.id })}
 					alt={`Photo ${image.originalName}`}
-					className={`pointer-events-none w-full h-auto rounded-lg group-hover:scale-105 transition-all duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+					className={`pointer-events-none w-full h-auto rounded-md group-hover:scale-105 transition-all duration-300 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
 					loading="lazy"
 					onLoad={(e) => {
-						// Vérifier que l'image est vraiment chargée
 						if (e.target.complete && e.target.naturalHeight !== 0) {
 							handleImageLoad(image.id);
 						}
@@ -350,18 +388,27 @@ function LazyLoadingGalleryWithPlaceholder ({ currentImages, onLightbox, onCover
 				/>
 
 				{!isAdmin && (
-					<div
-						className={`absolute top-3 left-3 w-6 h-6 rounded-md border-2 border-white cursor-pointer transition-all z-20 ${
-							isSelected
-								? 'bg-[#DAA520] border-[#DAA520] opacity-100'
-								: 'bg-black/30 backdrop-blur-sm'
-						} ${hasSelection ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
-						onClick={(e) => handleCheckboxClick(e, image.id)}
-					>
-						{isSelected && (
-							<span className="icon-check1 text-white text-xs flex items-center justify-center h-full"></span>
-						)}
-					</div>
+					<>
+						<div
+							className={`absolute top-3 left-3 w-6 h-6 rounded-md border-2 border-white cursor-pointer transition-all z-20 ${
+								isSelected
+									? 'bg-[#DAA520] border-[#DAA520] opacity-100'
+									: 'bg-black/30 backdrop-blur-sm'
+							} ${hasSelection ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
+							onClick={(e) => handleCheckboxClick(e, image.id)}
+						>
+							{isSelected && (
+								<span className="icon-check1 text-white text-xs flex items-center justify-center h-full"></span>
+							)}
+						</div>
+						<a
+							className={`absolute top-3 right-3 w-6 h-6 rounded-md cursor-pointer transition-all z-20 ${hasSelection ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}
+							onClick={(e) => { e.stopPropagation(); }}
+							href={Routing.generate(URL_DOWNLOAD_FILE, { id: image.id })} download
+						>
+							<Download className="w-6 h-6 text-white"></Download>
+						</a>
+					</>
 				)}
 
 				{isAdmin && (
