@@ -17,7 +17,14 @@
 {% endblock %}
 
 {% block head_extra %}
-    <link rel="canonical" href="{{ url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) }}">
+    {% if adventureId is defined %}
+        {% include "app/pages/blog/components/schema-article.html.twig" with {
+            'article_headline': page_title,
+            'article_description': block('meta_description'),
+            'article_image': block('og_image'),
+            'article_date_published': article_date_published is defined ? article_date_published : null
+        } %}
+    {% endif %}
 {% endblock %}
 
 {% set main_class = "bg-[#fafaf8]" %}
