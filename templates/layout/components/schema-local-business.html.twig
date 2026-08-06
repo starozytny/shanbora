@@ -1,0 +1,25 @@
+{% set schema_local_business = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Shanbo Photographe",
+    "description": "Photographe portrait et mariage à Marseille et ses alentours.",
+    "image": absolute_url(asset('build/app/images/homepage/photographe.jpg')),
+    "url": absolute_url(path('app_homepage')),
+    "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Marseille",
+        "addressCountry": "FR"
+    },
+    "areaServed": "Marseille",
+    "founder": {
+        "@type": "Person",
+        "name": "Chanbora Chhun",
+        "jobTitle": "Photographe"
+    },
+    "sameAs": [
+        "https://www.instagram.com/shanbo_photographe/",
+        "https://unsplash.com/fr/@shanbora",
+        "https://www.linkedin.com/in/chanbora-chhun-00a0a0112/"
+    ]
+} %}
+<script type="application/ld+json">{{ schema_local_business|json_encode(constant('JSON_UNESCAPED_SLASHES') b-or constant('JSON_UNESCAPED_UNICODE'))|raw }}</script>

@@ -2,6 +2,10 @@
 
 {% set page_title %}Demande de contact{% endset %}
 
+{% block meta_description %}Vous souhaitez immortaliser un moment unique ? Contactez Chanbora Chhun, photographe portrait et mariage à Marseille, pour échanger sur votre projet et obtenir un devis personnalisé.{% endblock %}
+{% block meta_keywords %}contact photographe marseille, devis photographe mariage, contact photographe portrait, chanbora chhun contact{% endblock %}
+{% block og_image %}{{ absolute_url(asset('build/app/images/contact.jpg')) }}{% endblock %}
+
 {% block main_content %}
     <div class="my-20">
         {% include "app/pages/contact/component/content.html.twig" with { page: true } %}

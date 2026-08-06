@@ -1,0 +1,27 @@
+{% set schema_article = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": article_headline,
+    "description": article_description,
+    "image": article_image,
+    "url": canonical_url,
+    "datePublished": article_date_published,
+    "dateModified": article_date_published,
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": canonical_url
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Chanbora Chhun"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Shanbo Photographe",
+        "logo": {
+            "@type": "ImageObject",
+            "url": absolute_url(asset('logo-apple-touch.png'))
+        }
+    }
+} %}
+<script type="application/ld+json">{{ schema_article|json_encode(constant('JSON_UNESCAPED_SLASHES') b-or constant('JSON_UNESCAPED_UNICODE'))|raw }}</script>

@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="fr" class="h-full bg-stone-50">
     <head>
+        {% set canonical_url = url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="{% block meta_description %}{% endblock %}" />
         <meta name="keywords" content="{% block meta_keywords %}{% endblock %}" />
         {% block noindex %}{% endblock %}
-        {% block openGraph %}{% endblock %}
+        {% block canonical %}<link rel="canonical" href="{{ canonical_url }}">{% endblock %}
+        {% block openGraph %}
+            <meta property="og:type" content="website" />
+            <meta property="og:site_name" content="Chanbora Chhun Photographe" />
+            <meta property="og:locale" content="fr_FR" />
+            <meta property="og:url" content="{{ canonical_url }}" />
+            <meta property="og:title" content="{{ block('title') }}" />
+            <meta property="og:description" content="{{ block('meta_description') }}" />
+            <meta property="og:image" content="{% block og_image %}{{ absolute_url(asset('build/app/images/homepage/photographe.jpg')) }}{% endblock %}" />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content="{{ block('title') }}" />
+            <meta name="twitter:description" content="{{ block('meta_description') }}" />
+            <meta name="twitter:image" content="{{ block('og_image') }}" />
+        {% endblock %}
         <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/png">
         <link rel="apple-touch-icon" href="{{ asset('logo-apple-touch.png') }}"/>
+        {% block structured_data %}{% endblock %}
         {% block head_extra %}{% endblock %}
         <title>{% block title %}Chanbora Chhun photographe et développeur web fullstack à Marseille{% endblock %}</title>
 
