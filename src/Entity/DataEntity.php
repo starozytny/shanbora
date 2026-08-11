@@ -26,14 +26,22 @@ class DataEntity
         $data = preg_replace('/\s+/', '', $data);
 
         $method = 'aes-256-cbc';
-        $passBank = "shanboHelpsdff89*ù^@rt.569!4*+(=)";
+        $passBank = $_ENV['APP_CRYPT_KEY'] ?? null;
+        if (!$passBank) {
+            throw new \RuntimeException('APP_CRYPT_KEY environment variable is not configured.');
+        }
         $passBank = substr(hash('sha256', $passBank, true), 0, 32);
-        $iv = chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0) . chr(0x0);
+        $ivLength = openssl_cipher_iv_length($method);
 
         if ($action == 'encrypt') {
-            return base64_encode(openssl_encrypt($data, $method, $passBank, OPENSSL_RAW_DATA, $iv));
+            $iv = random_bytes($ivLength);
+            $encrypted = openssl_encrypt($data, $method, $passBank, OPENSSL_RAW_DATA, $iv);
+            return base64_encode($iv . $encrypted);
         } elseif ($action == 'decrypt') {
-            return openssl_decrypt(base64_decode($data), $method, $passBank, OPENSSL_RAW_DATA, $iv);
+            $raw = base64_decode($data);
+            $iv = substr($raw, 0, $ivLength);
+            $encrypted = substr($raw, $ivLength);
+            return openssl_decrypt($encrypted, $method, $passBank, OPENSSL_RAW_DATA, $iv);
         }
     }
 }

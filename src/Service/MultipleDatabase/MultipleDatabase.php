@@ -22,6 +22,8 @@ class MultipleDatabase
 
     public function createManager(string $code, bool $force): bool
     {
+        $this->assertValidCode($code);
+
         if (!$force) {
             $society = $this->em->getRepository(Society::class)->findOneBy(['code' => $code]);
             if($society){
@@ -75,6 +77,18 @@ class MultipleDatabase
         return true;
     }
 
+    /**
+     * $code ends up written raw into .env, doctrine.yaml and a SQL identifier
+     * (CREATE DATABASE/GRANT). It must never contain anything but safe
+     * identifier characters, whatever the caller already validated upstream.
+     */
+    private function assertValidCode(string $code): void
+    {
+        if (!preg_match('/^[A-Za-z0-9_]+$/', $code)) {
+            throw new \InvalidArgumentException('Invalid society code: only letters, digits and underscores are allowed.');
+        }
+    }
+
     private function createDatabaseIfNotExists(string $dbName): void
     {
         $dsn = sprintf('mysql:host=%s', $_ENV['DATABASE_HOST']);
@@ -92,6 +106,9 @@ class MultipleDatabase
 
     public function updateManager(string $oldCode, string $newCode): bool
     {
+        $this->assertValidCode($oldCode);
+        $this->assertValidCode($newCode);
+
         $society0 = $this->em->getRepository(Society::class)->findOneBy(['code' => $oldCode]);
         $society1 = $this->em->getRepository(Society::class)->findOneBy(['code' => $newCode]);
         if(!$society0 || $society1){
