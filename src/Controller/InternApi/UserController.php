@@ -32,12 +32,27 @@ class UserController extends AbstractController
     #[IsGranted('ROLE_ADMIN')]
     public function list(UserRepository $repository, ApiResponse $apiResponse): Response
     {
-        return $apiResponse->apiJsonResponse($repository->findAll(), User::LIST);
+        /** @var User $currentUser */
+        $currentUser = $this->getUser();
+        $isDeveloper = $currentUser->getHighRoleCode() === User::CODE_ROLE_DEVELOPER;
+
+        $users = $isDeveloper ? $repository->findAll() : $repository->findBy(['society' => $currentUser->getSociety()]);
+
+        return $apiResponse->apiJsonResponse($users, User::LIST);
     }
 
     #[Route('/society/{society}', name: 'society', options: ['expose' => true], methods: 'GET')]
+    #[IsGranted('ROLE_ADMIN')]
     public function society(Society $society, UserRepository $repository, ApiResponse $apiResponse): Response
     {
+        /** @var User $currentUser */
+        $currentUser = $this->getUser();
+        $isDeveloper = $currentUser->getHighRoleCode() === User::CODE_ROLE_DEVELOPER;
+
+        if (!$isDeveloper && $society->getId() !== $currentUser->getSociety()?->getId()) {
+            return $apiResponse->apiJsonResponseForbidden();
+        }
+
         return $apiResponse->apiJsonResponse($repository->findBy(['society' => $society]), User::LIST);
     }
 
@@ -190,7 +205,7 @@ class UserController extends AbstractController
 
         $user = $repository->findOneBy(['token' => $token]);
 
-        if($data->code != $user->getLostCode()){
+        if (!$user || !$user->getLostCode() || $data->code !== $user->getLostCode()) {
             return $apiResponse->apiJsonResponseBadRequest('Mais ça va pas ou quoi looaa ?');
         }
 
@@ -210,10 +225,20 @@ class UserController extends AbstractController
     }
 
     #[Route('/password/reinit/{token}', name: 'password_reinit', options: ['expose' => true], methods: 'post')]
+    #[IsGranted('ROLE_ADMIN')]
     public function passwordReinit($token, ValidatorService $validator, UserPasswordHasherInterface $passwordHasher,
                                    ApiResponse $apiResponse, UserRepository $repository): Response
     {
         $user = $repository->findOneBy(['token' => $token]);
+
+        /** @var User $currentUser */
+        $currentUser = $this->getUser();
+        $isDeveloper = $currentUser->getHighRoleCode() === User::CODE_ROLE_DEVELOPER;
+
+        if (!$user || (!$isDeveloper && $user->getSociety()?->getId() !== $currentUser->getSociety()?->getId())) {
+            return $apiResponse->apiJsonResponseBadRequest('Utilisateur introuvable.');
+        }
+
         $pass = uniqid();
 
         $user = ($user)

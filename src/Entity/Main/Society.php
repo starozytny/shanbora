@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: SocietyRepository::class)]
 #[UniqueEntity("code", "Ce code est déjà utilisé.")]
@@ -40,6 +41,10 @@ class Society extends DataEntity
 
     #[ORM\Column(length: 20)]
     #[Groups(['society_list', 'society_form', 'user_list'])]
+    #[Assert\Regex(
+        pattern: '/^[A-Za-z0-9_]+$/',
+        message: 'Le code ne doit contenir que des lettres, des chiffres et des underscores.'
+    )]
     private ?string $code = null;
 
     #[ORM\Column]
