@@ -10,6 +10,7 @@ use App\Entity\Main\Notification;
 use App\Entity\Main\Settings;
 use App\Entity\Main\Society;
 use App\Entity\Main\User;
+use App\Service\RichTextSanitizer;
 use App\Service\SanitizeData;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -17,7 +18,8 @@ class DataMain
 {
     public function __construct(
         private readonly SanitizeData $sanitizeData,
-        private readonly ManagerRegistry $registry
+        private readonly ManagerRegistry $registry,
+        private readonly RichTextSanitizer $richTextSanitizer
     ) {}
 
     public function setDataUser(User $obj, $data): User
@@ -48,7 +50,7 @@ class DataMain
         return ($obj)
             ->setName($this->sanitizeData->trimData($data->name))
             ->setType((int) $data->type)
-            ->setContent($this->sanitizeData->trimData($data->content->html))
+            ->setContent($this->richTextSanitizer->sanitize($this->sanitizeData->trimData($data->content->html)))
         ;
     }
 
@@ -88,7 +90,7 @@ class DataMain
         return ($obj)
             ->setName($this->sanitizeData->trimData($data->name))
             ->setType((int) $data->type)
-            ->setContent($this->sanitizeData->trimData($data->content->html))
+            ->setContent($this->richTextSanitizer->sanitize($this->sanitizeData->trimData($data->content->html)))
             ->setLocalisation($this->sanitizeData->trimData($data->localisation))
             ->setAllDay($data->allDay[0])
         ;

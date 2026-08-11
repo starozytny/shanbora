@@ -21,6 +21,10 @@ class Society extends DataEntity
     const LIST = ['society_list'];
     const FORM = ['society_form'];
 
+    // Code of the platform's own bootstrap society (see AdminCreateUsersCommand),
+    // never blockable.
+    const CODE_SYSTEM = '999';
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

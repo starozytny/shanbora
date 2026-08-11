@@ -167,7 +167,7 @@ class UserController extends AbstractController
             }
         }
 
-        $code = uniqid($user->getId());
+        $code = bin2hex(random_bytes(32));
 
         $user->setLostAt(new \DateTime());
         $user->setLostCode($code);

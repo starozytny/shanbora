@@ -52,3 +52,7 @@ services:
     App\EventListener\SecurityListener:
         tags:
             - { name: kernel.event_listener, event: kernel.request }
+
+    App\EventListener\CsrfHeaderListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.request }
