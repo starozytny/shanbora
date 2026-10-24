@@ -84,7 +84,7 @@ if [ "$RUN_YARN" = true ]; then
   yarn install
 fi
 step "Migrations Doctrine"
-php bin/console doctrine:migrations:migrate --no-interaction --env=prod --ansi
+php bin/console doctrine:sc:up -f --complete --ansi
 step "Dump des routes JS"
 php bin/console fos:js-routing:dump --format=json --target=public/js/fos_js_routes.json --env=prod --ansi
 step "Réchauffement du cache"
