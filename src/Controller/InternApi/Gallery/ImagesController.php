@@ -74,11 +74,15 @@ class ImagesController extends AbstractController
     }
 
     #[Route('/image-hd/{id}', name: 'read_image_hd', options: ['expose' => true], methods: 'GET')]
-    public function readHD($id, GaImageRepository $repository, ImageService $imageService): Response
+    public function readHD($id, GaImageRepository $repository, ImageService $imageService, ApiResponse $apiResponse): Response
     {
         $obj = $repository->findOneBy(['id' => $id]);
         if($obj === false) {
             throw $this->createNotFoundException('Image not found.');
+        }
+
+        if (!$obj?->getAlbum()?->isPaid()) {
+            return $apiResponse->apiJsonResponseForbidden("Cet album n'est pas encore accessible.");
         }
 
         $response = $imageService->getImageGallery($obj->getLightboxFile());
@@ -96,6 +100,10 @@ class ImagesController extends AbstractController
         /** @var User $user */
         $user = $this->getUser();
         $obj = $repository->findOneBy(['id' => $id]);
+
+        if (!$obj || !$obj->getAlbum()?->isPaid()) {
+            return $apiResponse->apiJsonResponseForbidden("Cet album n'est pas encore accessible.");
+        }
 
         if($user->getHighRoleCode() == User::CODE_ROLE_USER){
             $obj->setNbDownload($obj->getNbDownload() + 1);
@@ -125,6 +133,7 @@ class ImagesController extends AbstractController
         $imageIds = $data->imageIds;
 
         $images = $repository->findBy(['id' => $imageIds]);
+        $images = array_filter($images, fn(GaImage $image) => $image->getAlbum()?->isPaid());
 
         if (empty($images)) {
             return $apiResponse->apiJsonResponseBadRequest("Aucune image trouvée.");

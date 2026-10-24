@@ -89,6 +89,10 @@ class AlbumController extends AbstractController
     #[Route('/archive/{id}', name: 'archive', options: ['expose' => true], methods: 'GET')]
     public function archive(GaAlbum $album, ApiResponse $apiResponse, GaAlbumRepository $repository): BinaryFileResponse|JsonResponse
     {
+        if (!$album->isPaid()) {
+            return $apiResponse->apiJsonResponseForbidden("Cet album n'est pas encore accessible.");
+        }
+
         /** @var User $user */
         $user = $this->getUser();
         $file = $this->getParameter('gallery_archive_directory') . $album->getUser()->getUsername() . "/" . $album->getArchive() . ".zip";

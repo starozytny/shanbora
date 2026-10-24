@@ -49,7 +49,7 @@ export function ContactsItem ({ elem, highlight, onModal })
                 </div>
                 <div className="col-2">
                     <div className="text-gray-600 text-sm">{Sanitaze.toFormatCalendar(elem.createdAt)}</div>
-                    <div dangerouslySetInnerHTML={{ __html: elem.message }} />
+                    <div className="whitespace-pre-wrap">{elem.message}</div>
                 </div>
                 <div className="col-3">
                     {seen

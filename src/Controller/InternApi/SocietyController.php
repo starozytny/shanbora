@@ -167,7 +167,7 @@ class SocietyController extends AbstractController
     {
         $obj = $repository->findOneBy(['id' => $id]);
 
-        if($obj->getCode() == 999){
+        if($obj->getCode() === Society::CODE_SYSTEM){
             return $apiResponse->apiJsonResponseBadRequest("Vous ne pouvez pas bloquer cette société.");
         }
 

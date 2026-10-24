@@ -17,6 +17,14 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 
 class FileUploader
 {
+    // Extensions guessed from actual file content (UploadedFile::guessExtension()), not the
+    // client-supplied name. Deliberately excludes anything a browser or server could execute
+    // or interpret as markup (html, svg, js, php...).
+    private const ALLOWED_EXTENSIONS = [
+        'jpg', 'jpeg', 'png', 'gif', 'webp',
+        'pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt', 'csv', 'zip',
+    ];
+
     private string $publicDirectory;
     private string $privateDirectory;
     private SluggerInterface $slugger;
@@ -28,11 +36,16 @@ class FileUploader
         $this->slugger = $slugger;
     }
 
-    public function upload(UploadedFile $file, $folder=null, $isPublic=true): string
+    public function upload(UploadedFile $file, $folder=null, $isPublic=true): string|false
     {
+        $extension = strtolower((string) $file->guessExtension());
+        if (!in_array($extension, self::ALLOWED_EXTENSIONS, true)) {
+            return false;
+        }
+
         $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
         $safeFilename = $this->slugger->slug($originalFilename);
-        $fileName = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
+        $fileName = $safeFilename.'-'.uniqid().'.'.$extension;
 
         try {
             $directory = $isPublic ? $this->getPublicDirectory() : $this->getPrivateDirectory();
