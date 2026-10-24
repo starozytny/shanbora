@@ -96,7 +96,7 @@ deploy-composer: ## Déploie avec composer install en plus
 	bash bin/deploy.sh --composer
 
 deploy-composer-yarn: ## Déploie avec composer install en plus et yarn install
-	bash bin/deploy.sh --composer -- yarn
+	bash bin/deploy.sh --composer --yarn
 
 deploy-no-build-composer: ## Déploie sans rebuild mais avec composer install
 	bash bin/deploy.sh --no-build --composer
