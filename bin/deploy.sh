@@ -81,7 +81,7 @@ if [ "$RUN_COMPOSER" = true ]; then
 fi
 if [ "$RUN_YARN" = true ]; then
   step "yarn install"
-  yarn install --frozen-lockfile
+  yarn install
 fi
 step "Migrations Doctrine"
 php bin/console doctrine:migrations:migrate --no-interaction --env=prod --ansi
